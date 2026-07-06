@@ -39,6 +39,7 @@ class ConfigAuthArgs:
                  oidc_auto_onboard: pulumi.Input[Optional[_builtins.bool]] = None,
                  oidc_client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  oidc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  oidc_client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  oidc_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  oidc_group_filter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -53,6 +54,7 @@ class ConfigAuthArgs:
         The set of arguments for constructing a ConfigAuth resource.
 
         :param pulumi.Input[_builtins.str] auth_mode: Harbor authentication mode. Can be `"oidc_auth"`, `"db_auth"` or `"ldap_auth"`. (Default: `"db_auth"`)
+        :param pulumi.Input[_builtins.str] oidc_client_secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         """
         pulumi.set(__self__, "auth_mode", auth_mode)
         if ldap_base_dn is not None:
@@ -93,6 +95,8 @@ class ConfigAuthArgs:
             pulumi.set(__self__, "oidc_client_id", oidc_client_id)
         if oidc_client_secret is not None:
             pulumi.set(__self__, "oidc_client_secret", oidc_client_secret)
+        if oidc_client_secret_wo is not None:
+            pulumi.set(__self__, "oidc_client_secret_wo", oidc_client_secret_wo)
         if oidc_client_secret_wo_version is not None:
             pulumi.set(__self__, "oidc_client_secret_wo_version", oidc_client_secret_wo_version)
         if oidc_endpoint is not None:
@@ -298,6 +302,18 @@ class ConfigAuthArgs:
         pulumi.set(self, "oidc_client_secret", value)
 
     @_builtins.property
+    @pulumi.getter(name="oidcClientSecretWo")
+    def oidc_client_secret_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "oidc_client_secret_wo")
+
+    @oidc_client_secret_wo.setter
+    def oidc_client_secret_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "oidc_client_secret_wo", value)
+
+    @_builtins.property
     @pulumi.getter(name="oidcClientSecretWoVersion")
     def oidc_client_secret_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "oidc_client_secret_wo_version")
@@ -411,6 +427,7 @@ class _ConfigAuthState:
                  oidc_auto_onboard: pulumi.Input[Optional[_builtins.bool]] = None,
                  oidc_client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  oidc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  oidc_client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  oidc_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  oidc_group_filter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -425,6 +442,7 @@ class _ConfigAuthState:
         Input properties used for looking up and filtering ConfigAuth resources.
 
         :param pulumi.Input[_builtins.str] auth_mode: Harbor authentication mode. Can be `"oidc_auth"`, `"db_auth"` or `"ldap_auth"`. (Default: `"db_auth"`)
+        :param pulumi.Input[_builtins.str] oidc_client_secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         """
         if auth_mode is not None:
             pulumi.set(__self__, "auth_mode", auth_mode)
@@ -466,6 +484,8 @@ class _ConfigAuthState:
             pulumi.set(__self__, "oidc_client_id", oidc_client_id)
         if oidc_client_secret is not None:
             pulumi.set(__self__, "oidc_client_secret", oidc_client_secret)
+        if oidc_client_secret_wo is not None:
+            pulumi.set(__self__, "oidc_client_secret_wo", oidc_client_secret_wo)
         if oidc_client_secret_wo_version is not None:
             pulumi.set(__self__, "oidc_client_secret_wo_version", oidc_client_secret_wo_version)
         if oidc_endpoint is not None:
@@ -671,6 +691,18 @@ class _ConfigAuthState:
         pulumi.set(self, "oidc_client_secret", value)
 
     @_builtins.property
+    @pulumi.getter(name="oidcClientSecretWo")
+    def oidc_client_secret_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "oidc_client_secret_wo")
+
+    @oidc_client_secret_wo.setter
+    def oidc_client_secret_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "oidc_client_secret_wo", value)
+
+    @_builtins.property
     @pulumi.getter(name="oidcClientSecretWoVersion")
     def oidc_client_secret_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "oidc_client_secret_wo_version")
@@ -787,6 +819,7 @@ class ConfigAuth(pulumi.CustomResource):
                  oidc_auto_onboard: pulumi.Input[Optional[_builtins.bool]] = None,
                  oidc_client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  oidc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  oidc_client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  oidc_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  oidc_group_filter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -811,6 +844,7 @@ class ConfigAuth(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_mode: Harbor authentication mode. Can be `"oidc_auth"`, `"db_auth"` or `"ldap_auth"`. (Default: `"db_auth"`)
+        :param pulumi.Input[_builtins.str] oidc_client_secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         """
         ...
     @overload
@@ -863,6 +897,7 @@ class ConfigAuth(pulumi.CustomResource):
                  oidc_auto_onboard: pulumi.Input[Optional[_builtins.bool]] = None,
                  oidc_client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  oidc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  oidc_client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  oidc_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  oidc_group_filter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -904,6 +939,7 @@ class ConfigAuth(pulumi.CustomResource):
             __props__.__dict__["oidc_auto_onboard"] = oidc_auto_onboard
             __props__.__dict__["oidc_client_id"] = oidc_client_id
             __props__.__dict__["oidc_client_secret"] = None if oidc_client_secret is None else pulumi.Output.secret(oidc_client_secret)
+            __props__.__dict__["oidc_client_secret_wo"] = None if oidc_client_secret_wo is None else pulumi.Output.secret(oidc_client_secret_wo)
             __props__.__dict__["oidc_client_secret_wo_version"] = oidc_client_secret_wo_version
             __props__.__dict__["oidc_endpoint"] = oidc_endpoint
             __props__.__dict__["oidc_group_filter"] = oidc_group_filter
@@ -914,7 +950,7 @@ class ConfigAuth(pulumi.CustomResource):
             __props__.__dict__["oidc_user_claim"] = oidc_user_claim
             __props__.__dict__["oidc_verify_cert"] = oidc_verify_cert
             __props__.__dict__["primary_auth_mode"] = primary_auth_mode
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["ldapSearchPassword", "oidcClientSecret"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["ldapSearchPassword", "oidcClientSecret", "oidcClientSecretWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ConfigAuth, __self__).__init__(
             'harbor:index/configAuth:ConfigAuth',
@@ -946,6 +982,7 @@ class ConfigAuth(pulumi.CustomResource):
             oidc_auto_onboard: pulumi.Input[Optional[_builtins.bool]] = None,
             oidc_client_id: pulumi.Input[Optional[_builtins.str]] = None,
             oidc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            oidc_client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
             oidc_client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             oidc_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             oidc_group_filter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -964,6 +1001,7 @@ class ConfigAuth(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_mode: Harbor authentication mode. Can be `"oidc_auth"`, `"db_auth"` or `"ldap_auth"`. (Default: `"db_auth"`)
+        :param pulumi.Input[_builtins.str] oidc_client_secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -989,6 +1027,7 @@ class ConfigAuth(pulumi.CustomResource):
         __props__.__dict__["oidc_auto_onboard"] = oidc_auto_onboard
         __props__.__dict__["oidc_client_id"] = oidc_client_id
         __props__.__dict__["oidc_client_secret"] = oidc_client_secret
+        __props__.__dict__["oidc_client_secret_wo"] = oidc_client_secret_wo
         __props__.__dict__["oidc_client_secret_wo_version"] = oidc_client_secret_wo_version
         __props__.__dict__["oidc_endpoint"] = oidc_endpoint
         __props__.__dict__["oidc_group_filter"] = oidc_group_filter
@@ -1103,6 +1142,14 @@ class ConfigAuth(pulumi.CustomResource):
     @pulumi.getter(name="oidcClientSecret")
     def oidc_client_secret(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "oidc_client_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="oidcClientSecretWo")
+    def oidc_client_secret_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "oidc_client_secret_wo")
 
     @_builtins.property
     @pulumi.getter(name="oidcClientSecretWoVersion")

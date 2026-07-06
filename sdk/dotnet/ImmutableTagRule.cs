@@ -23,7 +23,7 @@ namespace Pulumiverse.Harbor
     public partial class ImmutableTagRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specify if the rule is disable or not. Defaults to `false`
+        /// Specify if the rule is disable or not. Defaults to `False`
         /// </summary>
         [Output("disabled")]
         public Output<bool?> Disabled { get; private set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumiverse.Harbor
     public sealed class ImmutableTagRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specify if the rule is disable or not. Defaults to `false`
+        /// Specify if the rule is disable or not. Defaults to `False`
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -150,7 +150,7 @@ namespace Pulumiverse.Harbor
     public sealed class ImmutableTagRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specify if the rule is disable or not. Defaults to `false`
+        /// Specify if the rule is disable or not. Defaults to `False`
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }

@@ -73,7 +73,7 @@
                 "additionalProperties": {
                     "type": "string"
                 },
-                "description": "A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name.\nUseful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.\n",
+                "description": "A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name. Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.",
                 "secret": true
             },
             "insecure": {
@@ -154,7 +154,7 @@
             "properties": {
                 "decoration": {
                     "type": "string",
-                    "description": "Matches or excludes the result. Can be one of the following. `matches`, `excludes`\n"
+                    "description": "Matches or excludes the result. Can be one of the following. \u003cspan pulumi-lang-nodejs=\"`matches`\" pulumi-lang-dotnet=\"`Matches`\" pulumi-lang-go=\"`matches`\" pulumi-lang-python=\"`matches`\" pulumi-lang-yaml=\"`matches`\" pulumi-lang-java=\"`matches`\" pulumi-lang-hcl=\"`matches`\"\u003e`matches`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`excludes`\" pulumi-lang-dotnet=\"`Excludes`\" pulumi-lang-go=\"`excludes`\" pulumi-lang-python=\"`excludes`\" pulumi-lang-yaml=\"`excludes`\" pulumi-lang-java=\"`excludes`\" pulumi-lang-hcl=\"`excludes`\"\u003e`excludes`\u003c/span\u003e\n"
                 },
                 "labels": {
                     "type": "array",
@@ -169,7 +169,7 @@
                 },
                 "resource": {
                     "type": "string",
-                    "description": "Filter on the resource type. Can be one of the following types. `chart`, `artifact`\n"
+                    "description": "Filter on the resource type. Can be one of the following types. \u003cspan pulumi-lang-nodejs=\"`chart`\" pulumi-lang-dotnet=\"`Chart`\" pulumi-lang-go=\"`chart`\" pulumi-lang-python=\"`chart`\" pulumi-lang-yaml=\"`chart`\" pulumi-lang-java=\"`chart`\" pulumi-lang-hcl=\"`chart`\"\u003e`chart`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`artifact`\" pulumi-lang-dotnet=\"`Artifact`\" pulumi-lang-go=\"`artifact`\" pulumi-lang-python=\"`artifact`\" pulumi-lang-yaml=\"`artifact`\" pulumi-lang-java=\"`artifact`\" pulumi-lang-hcl=\"`artifact`\"\u003e`artifact`\u003c/span\u003e\n"
                 },
                 "tag": {
                     "type": "string",
@@ -226,11 +226,11 @@
                 },
                 "kind": {
                     "type": "string",
-                    "description": "Either `system` or `project`.\n"
+                    "description": "Either \u003cspan pulumi-lang-nodejs=\"`system`\" pulumi-lang-dotnet=\"`System`\" pulumi-lang-go=\"`system`\" pulumi-lang-python=\"`system`\" pulumi-lang-yaml=\"`system`\" pulumi-lang-java=\"`system`\" pulumi-lang-hcl=\"`system`\"\u003e`system`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`project`\" pulumi-lang-dotnet=\"`Project`\" pulumi-lang-go=\"`project`\" pulumi-lang-python=\"`project`\" pulumi-lang-yaml=\"`project`\" pulumi-lang-java=\"`project`\" pulumi-lang-hcl=\"`project`\"\u003e`project`\u003c/span\u003e.\n"
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "namespace is the name of your project. For kind `system` permissions, always use `/` as namespace. Use `*` to match all projects.\n"
+                    "description": "namespace is the name of your project. For kind \u003cspan pulumi-lang-nodejs=\"`system`\" pulumi-lang-dotnet=\"`System`\" pulumi-lang-go=\"`system`\" pulumi-lang-python=\"`system`\" pulumi-lang-yaml=\"`system`\" pulumi-lang-java=\"`system`\" pulumi-lang-hcl=\"`system`\"\u003e`system`\u003c/span\u003e permissions, always use `/` as namespace. Use `*` to match all projects.\n"
                 }
             },
             "type": "object",
@@ -244,15 +244,15 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Eg. `push`, `pull`, `read`, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).\n"
+                    "description": "Eg. \u003cspan pulumi-lang-nodejs=\"`push`\" pulumi-lang-dotnet=\"`Push`\" pulumi-lang-go=\"`push`\" pulumi-lang-python=\"`push`\" pulumi-lang-yaml=\"`push`\" pulumi-lang-java=\"`push`\" pulumi-lang-hcl=\"`push`\"\u003e`push`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pull`\" pulumi-lang-dotnet=\"`Pull`\" pulumi-lang-go=\"`pull`\" pulumi-lang-python=\"`pull`\" pulumi-lang-yaml=\"`pull`\" pulumi-lang-java=\"`pull`\" pulumi-lang-hcl=\"`pull`\"\u003e`pull`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`read`\" pulumi-lang-dotnet=\"`Read`\" pulumi-lang-go=\"`read`\" pulumi-lang-python=\"`read`\" pulumi-lang-yaml=\"`read`\" pulumi-lang-java=\"`read`\" pulumi-lang-hcl=\"`read`\"\u003e`read`\u003c/span\u003e, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).\n"
                 },
                 "effect": {
                     "type": "string",
-                    "description": "Either `allow` or `deny`. Defaults to `allow`.\n"
+                    "description": "Either \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\" pulumi-lang-hcl=\"`allow`\"\u003e`allow`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`deny`\" pulumi-lang-dotnet=\"`Deny`\" pulumi-lang-go=\"`deny`\" pulumi-lang-python=\"`deny`\" pulumi-lang-yaml=\"`deny`\" pulumi-lang-java=\"`deny`\" pulumi-lang-hcl=\"`deny`\"\u003e`deny`\u003c/span\u003e. Defaults to \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\" pulumi-lang-hcl=\"`allow`\"\u003e`allow`\u003c/span\u003e.\n"
                 },
                 "resource": {
                     "type": "string",
-                    "description": "Eg. `repository`, `labels`, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).\n"
+                    "description": "Eg. \u003cspan pulumi-lang-nodejs=\"`repository`\" pulumi-lang-dotnet=\"`Repository`\" pulumi-lang-go=\"`repository`\" pulumi-lang-python=\"`repository`\" pulumi-lang-yaml=\"`repository`\" pulumi-lang-java=\"`repository`\" pulumi-lang-hcl=\"`repository`\"\u003e`repository`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`labels`\" pulumi-lang-dotnet=\"`Labels`\" pulumi-lang-go=\"`labels`\" pulumi-lang-python=\"`labels`\" pulumi-lang-yaml=\"`labels`\" pulumi-lang-java=\"`labels`\" pulumi-lang-hcl=\"`labels`\"\u003e`labels`\u003c/span\u003e, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).\n"
                 }
             },
             "type": "object",
@@ -401,7 +401,7 @@
                 },
                 "level": {
                     "type": "string",
-                    "description": "Level of the robot account, currently either `system` or `project`. Default is `system`.\n"
+                    "description": "Level of the robot account, currently either \u003cspan pulumi-lang-nodejs=\"`system`\" pulumi-lang-dotnet=\"`System`\" pulumi-lang-go=\"`system`\" pulumi-lang-python=\"`system`\" pulumi-lang-yaml=\"`system`\" pulumi-lang-java=\"`system`\" pulumi-lang-hcl=\"`system`\"\u003e`system`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`project`\" pulumi-lang-dotnet=\"`Project`\" pulumi-lang-go=\"`project`\" pulumi-lang-python=\"`project`\" pulumi-lang-yaml=\"`project`\" pulumi-lang-java=\"`project`\" pulumi-lang-hcl=\"`project`\"\u003e`project`\u003c/span\u003e. Default is \u003cspan pulumi-lang-nodejs=\"`system`\" pulumi-lang-dotnet=\"`System`\" pulumi-lang-go=\"`system`\" pulumi-lang-python=\"`system`\" pulumi-lang-yaml=\"`system`\" pulumi-lang-java=\"`system`\" pulumi-lang-hcl=\"`system`\"\u003e`system`\u003c/span\u003e.\n"
                 },
                 "name": {
                     "type": "string",
@@ -477,7 +477,7 @@
                 "additionalProperties": {
                     "type": "string"
                 },
-                "description": "A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name.\nUseful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.\n",
+                "description": "A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name. Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.",
                 "secret": true
             },
             "insecure": {
@@ -513,7 +513,7 @@
                 "additionalProperties": {
                     "type": "string"
                 },
-                "description": "A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name.\nUseful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.\n",
+                "description": "A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name. Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.",
                 "secret": true
             },
             "insecure": {
@@ -567,7 +567,7 @@
             "properties": {
                 "authMode": {
                     "type": "string",
-                    "description": "Harbor authentication mode. Can be `\"oidc_auth\"`, `\"db_auth\"` or `\"ldap_auth\"`. (Default: `\"db_auth\"`)\n"
+                    "description": "Harbor authentication mode. Can be `\u003cspan pulumi-lang-nodejs=\"\"oidcAuth\"\" pulumi-lang-dotnet=\"\"OidcAuth\"\" pulumi-lang-go=\"\"oidcAuth\"\" pulumi-lang-python=\"\"oidc_auth\"\" pulumi-lang-yaml=\"\"oidcAuth\"\" pulumi-lang-java=\"\"oidcAuth\"\" pulumi-lang-hcl=\"\"oidc_auth\"\"\u003e\"oidcAuth\"\u003c/span\u003e`, `\u003cspan pulumi-lang-nodejs=\"\"dbAuth\"\" pulumi-lang-dotnet=\"\"DbAuth\"\" pulumi-lang-go=\"\"dbAuth\"\" pulumi-lang-python=\"\"db_auth\"\" pulumi-lang-yaml=\"\"dbAuth\"\" pulumi-lang-java=\"\"dbAuth\"\" pulumi-lang-hcl=\"\"db_auth\"\"\u003e\"dbAuth\"\u003c/span\u003e` or `\u003cspan pulumi-lang-nodejs=\"\"ldapAuth\"\" pulumi-lang-dotnet=\"\"LdapAuth\"\" pulumi-lang-go=\"\"ldapAuth\"\" pulumi-lang-python=\"\"ldap_auth\"\" pulumi-lang-yaml=\"\"ldapAuth\"\" pulumi-lang-java=\"\"ldapAuth\"\" pulumi-lang-hcl=\"\"ldap_auth\"\"\u003e\"ldapAuth\"\u003c/span\u003e`. (Default: `\u003cspan pulumi-lang-nodejs=\"\"dbAuth\"\" pulumi-lang-dotnet=\"\"DbAuth\"\" pulumi-lang-go=\"\"dbAuth\"\" pulumi-lang-python=\"\"db_auth\"\" pulumi-lang-yaml=\"\"dbAuth\"\" pulumi-lang-java=\"\"dbAuth\"\" pulumi-lang-hcl=\"\"db_auth\"\"\u003e\"dbAuth\"\u003c/span\u003e`)\n"
                 },
                 "ldapBaseDn": {
                     "type": "string"
@@ -626,6 +626,11 @@
                 },
                 "oidcClientSecret": {
                     "type": "string",
+                    "secret": true
+                },
+                "oidcClientSecretWo": {
+                    "type": "string",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\n",
                     "secret": true
                 },
                 "oidcClientSecretWoVersion": {
@@ -665,7 +670,7 @@
             "inputProperties": {
                 "authMode": {
                     "type": "string",
-                    "description": "Harbor authentication mode. Can be `\"oidc_auth\"`, `\"db_auth\"` or `\"ldap_auth\"`. (Default: `\"db_auth\"`)\n"
+                    "description": "Harbor authentication mode. Can be `\u003cspan pulumi-lang-nodejs=\"\"oidcAuth\"\" pulumi-lang-dotnet=\"\"OidcAuth\"\" pulumi-lang-go=\"\"oidcAuth\"\" pulumi-lang-python=\"\"oidc_auth\"\" pulumi-lang-yaml=\"\"oidcAuth\"\" pulumi-lang-java=\"\"oidcAuth\"\" pulumi-lang-hcl=\"\"oidc_auth\"\"\u003e\"oidcAuth\"\u003c/span\u003e`, `\u003cspan pulumi-lang-nodejs=\"\"dbAuth\"\" pulumi-lang-dotnet=\"\"DbAuth\"\" pulumi-lang-go=\"\"dbAuth\"\" pulumi-lang-python=\"\"db_auth\"\" pulumi-lang-yaml=\"\"dbAuth\"\" pulumi-lang-java=\"\"dbAuth\"\" pulumi-lang-hcl=\"\"db_auth\"\"\u003e\"dbAuth\"\u003c/span\u003e` or `\u003cspan pulumi-lang-nodejs=\"\"ldapAuth\"\" pulumi-lang-dotnet=\"\"LdapAuth\"\" pulumi-lang-go=\"\"ldapAuth\"\" pulumi-lang-python=\"\"ldap_auth\"\" pulumi-lang-yaml=\"\"ldapAuth\"\" pulumi-lang-java=\"\"ldapAuth\"\" pulumi-lang-hcl=\"\"ldap_auth\"\"\u003e\"ldapAuth\"\u003c/span\u003e`. (Default: `\u003cspan pulumi-lang-nodejs=\"\"dbAuth\"\" pulumi-lang-dotnet=\"\"DbAuth\"\" pulumi-lang-go=\"\"dbAuth\"\" pulumi-lang-python=\"\"db_auth\"\" pulumi-lang-yaml=\"\"dbAuth\"\" pulumi-lang-java=\"\"dbAuth\"\" pulumi-lang-hcl=\"\"db_auth\"\"\u003e\"dbAuth\"\u003c/span\u003e`)\n"
                 },
                 "ldapBaseDn": {
                     "type": "string"
@@ -724,6 +729,11 @@
                 },
                 "oidcClientSecret": {
                     "type": "string",
+                    "secret": true
+                },
+                "oidcClientSecretWo": {
+                    "type": "string",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\n",
                     "secret": true
                 },
                 "oidcClientSecretWoVersion": {
@@ -765,7 +775,7 @@
                 "properties": {
                     "authMode": {
                         "type": "string",
-                        "description": "Harbor authentication mode. Can be `\"oidc_auth\"`, `\"db_auth\"` or `\"ldap_auth\"`. (Default: `\"db_auth\"`)\n"
+                        "description": "Harbor authentication mode. Can be `\u003cspan pulumi-lang-nodejs=\"\"oidcAuth\"\" pulumi-lang-dotnet=\"\"OidcAuth\"\" pulumi-lang-go=\"\"oidcAuth\"\" pulumi-lang-python=\"\"oidc_auth\"\" pulumi-lang-yaml=\"\"oidcAuth\"\" pulumi-lang-java=\"\"oidcAuth\"\" pulumi-lang-hcl=\"\"oidc_auth\"\"\u003e\"oidcAuth\"\u003c/span\u003e`, `\u003cspan pulumi-lang-nodejs=\"\"dbAuth\"\" pulumi-lang-dotnet=\"\"DbAuth\"\" pulumi-lang-go=\"\"dbAuth\"\" pulumi-lang-python=\"\"db_auth\"\" pulumi-lang-yaml=\"\"dbAuth\"\" pulumi-lang-java=\"\"dbAuth\"\" pulumi-lang-hcl=\"\"db_auth\"\"\u003e\"dbAuth\"\u003c/span\u003e` or `\u003cspan pulumi-lang-nodejs=\"\"ldapAuth\"\" pulumi-lang-dotnet=\"\"LdapAuth\"\" pulumi-lang-go=\"\"ldapAuth\"\" pulumi-lang-python=\"\"ldap_auth\"\" pulumi-lang-yaml=\"\"ldapAuth\"\" pulumi-lang-java=\"\"ldapAuth\"\" pulumi-lang-hcl=\"\"ldap_auth\"\"\u003e\"ldapAuth\"\u003c/span\u003e`. (Default: `\u003cspan pulumi-lang-nodejs=\"\"dbAuth\"\" pulumi-lang-dotnet=\"\"DbAuth\"\" pulumi-lang-go=\"\"dbAuth\"\" pulumi-lang-python=\"\"db_auth\"\" pulumi-lang-yaml=\"\"dbAuth\"\" pulumi-lang-java=\"\"dbAuth\"\" pulumi-lang-hcl=\"\"db_auth\"\"\u003e\"dbAuth\"\u003c/span\u003e`)\n"
                     },
                     "ldapBaseDn": {
                         "type": "string"
@@ -826,6 +836,11 @@
                         "type": "string",
                         "secret": true
                     },
+                    "oidcClientSecretWo": {
+                        "type": "string",
+                        "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\n",
+                        "secret": true
+                    },
                     "oidcClientSecretWoVersion": {
                         "type": "integer"
                     },
@@ -861,7 +876,7 @@
             }
         },
         "harbor:index/configSecurity:ConfigSecurity": {
-            "description": "## Example Usage\n\n```terraform\nresource \"harbor_config_security\" \"main\" {\n  cve_allowlist = [\"CVE-456\", \"CVE-123\"]\n  expires_at = \"1701167767\"\n}\n```\n\n## Import\n\nimport using the id of the repo\n\n```sh\n$ pulumi import harbor:index/configSecurity:ConfigSecurity main \"7\"\n```\n\nNote that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records.\n\n",
+            "description": "## Example Usage\n\n```terraform\nresource \"harbor_config_security\" \"main\" {\n  cve_allowlist = [\"CVE-456\", \"CVE-123\"]\n  expires_at = \"1701167767\"\n}\n```\n\n## Import\n\nimport using the id of the repo\n\n```sh\n$ pulumi import harbor:index/configSecurity:ConfigSecurity main \"7\"\n```\nNote that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records.\n\n",
             "properties": {
                 "creationTime": {
                     "type": "string",
@@ -942,7 +957,7 @@
                 },
                 "notificationEnable": {
                     "type": "boolean",
-                    "description": "Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.\n"
+                    "description": "Whether or not webhook/notification functionality is enabled globally. When \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e, all project-level webhook policies are silently ignored. Defaults to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
                 },
                 "projectCreationRestriction": {
                     "type": "string",
@@ -983,7 +998,7 @@
                 },
                 "notificationEnable": {
                     "type": "boolean",
-                    "description": "Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.\n"
+                    "description": "Whether or not webhook/notification functionality is enabled globally. When \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e, all project-level webhook policies are silently ignored. Defaults to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
                 },
                 "projectCreationRestriction": {
                     "type": "string",
@@ -1026,7 +1041,7 @@
                     },
                     "notificationEnable": {
                         "type": "boolean",
-                        "description": "Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.\n"
+                        "description": "Whether or not webhook/notification functionality is enabled globally. When \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e, all project-level webhook policies are silently ignored. Defaults to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
                     },
                     "projectCreationRestriction": {
                         "type": "string",
@@ -1170,7 +1185,7 @@
             "properties": {
                 "disabled": {
                     "type": "boolean",
-                    "description": "Specify if the rule is disable or not. Defaults to `false`\n"
+                    "description": "Specify if the rule is disable or not. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e\n"
                 },
                 "projectId": {
                     "type": "string",
@@ -1199,7 +1214,7 @@
             "inputProperties": {
                 "disabled": {
                     "type": "boolean",
-                    "description": "Specify if the rule is disable or not. Defaults to `false`\n"
+                    "description": "Specify if the rule is disable or not. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e\n"
                 },
                 "projectId": {
                     "type": "string",
@@ -1231,7 +1246,7 @@
                 "properties": {
                     "disabled": {
                         "type": "boolean",
-                        "description": "Specify if the rule is disable or not. Defaults to `false`\n"
+                        "description": "Specify if the rule is disable or not. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e\n"
                     },
                     "projectId": {
                         "type": "string",
@@ -1373,7 +1388,7 @@
             }
         },
         "harbor:index/preheatInstance:PreheatInstance": {
-            "description": "## Example Usage\n\n### Basic Usage\n\n```terraform\nresource \"harbor_preheat_instance\" \"example\" {\n  name     = \"example-preheat-instance\"\n  vendor   = \"dragonfly\"\n  endpoint = \"http://example.com\"\n}\n```\n\n### Usage with Authentication\n\n```terraform\nresource \"harbor_preheat_instance\" \"example\" {\n  name       = \"example-preheat-instance\"\n  vendor     = \"dragonfly\"\n  endpoint   = \"http://example.com\"\n  auth_mode  = \"BASIC\"\n  username   = \"example-user\"\n  password   = \"example-password\"\n}\n```\n\n## Import\n\nThe `harbor_preheat_instance` resource can be imported using the preheat instance ID.\n\n```sh\n$ pulumi import harbor:index/preheatInstance:PreheatInstance example /p2p/preheat/instances/example-preheat-instance\n```\n\n",
+            "description": "## Example Usage\n\n### Basic Usage\n\n```terraform\nresource \"harbor_preheat_instance\" \"example\" {\n  name     = \"example-preheat-instance\"\n  vendor   = \"dragonfly\"\n  endpoint = \"http://example.com\"\n}\n```\n\n### Usage with Authentication\n\n```terraform\nresource \"harbor_preheat_instance\" \"example\" {\n  name       = \"example-preheat-instance\"\n  vendor     = \"dragonfly\"\n  endpoint   = \"http://example.com\"\n  auth_mode  = \"BASIC\"\n  username   = \"example-user\"\n  password   = \"example-password\"\n}\n```\n\n## Import\n\nThe \u003cspan pulumi-lang-nodejs=\"`harbor.PreheatInstance`\" pulumi-lang-dotnet=\"`harbor.PreheatInstance`\" pulumi-lang-go=\"`PreheatInstance`\" pulumi-lang-python=\"`PreheatInstance`\" pulumi-lang-yaml=\"`harbor.PreheatInstance`\" pulumi-lang-java=\"`harbor.PreheatInstance`\" pulumi-lang-hcl=\"`harbor_preheat_instance`\"\u003e`harbor.PreheatInstance`\u003c/span\u003e resource can be imported using the preheat instance ID.\n\n```sh\n$ pulumi import harbor:index/preheatInstance:PreheatInstance example /p2p/preheat/instances/example-preheat-instance\n```\n\n",
             "properties": {
                 "authMode": {
                     "type": "string",
@@ -1405,17 +1420,17 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "The password for the preheat instance. Required if `auth_mode` is \"BASIC\". Defaults to an empty string.\n",
+                    "description": "The password for the preheat instance. Required if \u003cspan pulumi-lang-nodejs=\"`authMode`\" pulumi-lang-dotnet=\"`AuthMode`\" pulumi-lang-go=\"`authMode`\" pulumi-lang-python=\"`auth_mode`\" pulumi-lang-yaml=\"`authMode`\" pulumi-lang-java=\"`authMode`\" pulumi-lang-hcl=\"`auth_mode`\"\u003e`authMode`\u003c/span\u003e is \"BASIC\". Defaults to an empty string.\n",
                     "secret": true
                 },
                 "token": {
                     "type": "string",
-                    "description": "The token for the preheat instance. Required if `auth_mode` is \"OAUTH\". Defaults to an empty string.\n",
+                    "description": "The token for the preheat instance. Required if \u003cspan pulumi-lang-nodejs=\"`authMode`\" pulumi-lang-dotnet=\"`AuthMode`\" pulumi-lang-go=\"`authMode`\" pulumi-lang-python=\"`auth_mode`\" pulumi-lang-yaml=\"`authMode`\" pulumi-lang-java=\"`authMode`\" pulumi-lang-hcl=\"`auth_mode`\"\u003e`authMode`\u003c/span\u003e is \"OAUTH\". Defaults to an empty string.\n",
                     "secret": true
                 },
                 "username": {
                     "type": "string",
-                    "description": "The username for the preheat instance. Required if `auth_mode` is \"BASIC\". Defaults to an empty string.\n"
+                    "description": "The username for the preheat instance. Required if \u003cspan pulumi-lang-nodejs=\"`authMode`\" pulumi-lang-dotnet=\"`AuthMode`\" pulumi-lang-go=\"`authMode`\" pulumi-lang-python=\"`auth_mode`\" pulumi-lang-yaml=\"`authMode`\" pulumi-lang-java=\"`authMode`\" pulumi-lang-hcl=\"`auth_mode`\"\u003e`authMode`\u003c/span\u003e is \"BASIC\". Defaults to an empty string.\n"
                 },
                 "vendor": {
                     "type": "string",
@@ -1459,17 +1474,17 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "The password for the preheat instance. Required if `auth_mode` is \"BASIC\". Defaults to an empty string.\n",
+                    "description": "The password for the preheat instance. Required if \u003cspan pulumi-lang-nodejs=\"`authMode`\" pulumi-lang-dotnet=\"`AuthMode`\" pulumi-lang-go=\"`authMode`\" pulumi-lang-python=\"`auth_mode`\" pulumi-lang-yaml=\"`authMode`\" pulumi-lang-java=\"`authMode`\" pulumi-lang-hcl=\"`auth_mode`\"\u003e`authMode`\u003c/span\u003e is \"BASIC\". Defaults to an empty string.\n",
                     "secret": true
                 },
                 "token": {
                     "type": "string",
-                    "description": "The token for the preheat instance. Required if `auth_mode` is \"OAUTH\". Defaults to an empty string.\n",
+                    "description": "The token for the preheat instance. Required if \u003cspan pulumi-lang-nodejs=\"`authMode`\" pulumi-lang-dotnet=\"`AuthMode`\" pulumi-lang-go=\"`authMode`\" pulumi-lang-python=\"`auth_mode`\" pulumi-lang-yaml=\"`authMode`\" pulumi-lang-java=\"`authMode`\" pulumi-lang-hcl=\"`auth_mode`\"\u003e`authMode`\u003c/span\u003e is \"OAUTH\". Defaults to an empty string.\n",
                     "secret": true
                 },
                 "username": {
                     "type": "string",
-                    "description": "The username for the preheat instance. Required if `auth_mode` is \"BASIC\". Defaults to an empty string.\n"
+                    "description": "The username for the preheat instance. Required if \u003cspan pulumi-lang-nodejs=\"`authMode`\" pulumi-lang-dotnet=\"`AuthMode`\" pulumi-lang-go=\"`authMode`\" pulumi-lang-python=\"`auth_mode`\" pulumi-lang-yaml=\"`authMode`\" pulumi-lang-java=\"`authMode`\" pulumi-lang-hcl=\"`auth_mode`\"\u003e`authMode`\u003c/span\u003e is \"BASIC\". Defaults to an empty string.\n"
                 },
                 "vendor": {
                     "type": "string",
@@ -1514,17 +1529,17 @@
                     },
                     "password": {
                         "type": "string",
-                        "description": "The password for the preheat instance. Required if `auth_mode` is \"BASIC\". Defaults to an empty string.\n",
+                        "description": "The password for the preheat instance. Required if \u003cspan pulumi-lang-nodejs=\"`authMode`\" pulumi-lang-dotnet=\"`AuthMode`\" pulumi-lang-go=\"`authMode`\" pulumi-lang-python=\"`auth_mode`\" pulumi-lang-yaml=\"`authMode`\" pulumi-lang-java=\"`authMode`\" pulumi-lang-hcl=\"`auth_mode`\"\u003e`authMode`\u003c/span\u003e is \"BASIC\". Defaults to an empty string.\n",
                         "secret": true
                     },
                     "token": {
                         "type": "string",
-                        "description": "The token for the preheat instance. Required if `auth_mode` is \"OAUTH\". Defaults to an empty string.\n",
+                        "description": "The token for the preheat instance. Required if \u003cspan pulumi-lang-nodejs=\"`authMode`\" pulumi-lang-dotnet=\"`AuthMode`\" pulumi-lang-go=\"`authMode`\" pulumi-lang-python=\"`auth_mode`\" pulumi-lang-yaml=\"`authMode`\" pulumi-lang-java=\"`authMode`\" pulumi-lang-hcl=\"`auth_mode`\"\u003e`authMode`\u003c/span\u003e is \"OAUTH\". Defaults to an empty string.\n",
                         "secret": true
                     },
                     "username": {
                         "type": "string",
-                        "description": "The username for the preheat instance. Required if `auth_mode` is \"BASIC\". Defaults to an empty string.\n"
+                        "description": "The username for the preheat instance. Required if \u003cspan pulumi-lang-nodejs=\"`authMode`\" pulumi-lang-dotnet=\"`AuthMode`\" pulumi-lang-go=\"`authMode`\" pulumi-lang-python=\"`auth_mode`\" pulumi-lang-yaml=\"`authMode`\" pulumi-lang-java=\"`authMode`\" pulumi-lang-hcl=\"`auth_mode`\"\u003e`authMode`\u003c/span\u003e is \"BASIC\". Defaults to an empty string.\n"
                     },
                     "vendor": {
                         "type": "string",
@@ -1539,7 +1554,7 @@
             "properties": {
                 "autoSbomGeneration": {
                     "type": "boolean",
-                    "description": "Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above\n"
+                    "description": "Automatically generate SBOM for images pushed to this project. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e) can only be used with Harbor version v2.11.0 and above\n"
                 },
                 "cveAllowlists": {
                     "type": "array",
@@ -1554,11 +1569,11 @@
                 },
                 "enableContentTrust": {
                     "type": "boolean",
-                    "description": "Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).\n"
+                    "description": "Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e).\n"
                 },
                 "enableContentTrustCosign": {
                     "type": "boolean",
-                    "description": "Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)\n"
+                    "description": "Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 },
                 "forceDestroy": {
                     "type": "boolean",
@@ -1579,7 +1594,7 @@
                 },
                 "public": {
                     "type": "boolean",
-                    "description": "The project will be public accessibility.(Default: `false`)\n"
+                    "description": "The project will be public accessibility.(Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 },
                 "registryId": {
                     "type": "integer"
@@ -1590,11 +1605,11 @@
                 },
                 "vulnerabilityScanner": {
                     "type": "string",
-                    "description": "The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via `harbor.InterrogationServices`.\n"
+                    "description": "The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via \u003cspan pulumi-lang-nodejs=\"`harbor.InterrogationServices`\" pulumi-lang-dotnet=\"`harbor.InterrogationServices`\" pulumi-lang-go=\"`InterrogationServices`\" pulumi-lang-python=\"`InterrogationServices`\" pulumi-lang-yaml=\"`harbor.InterrogationServices`\" pulumi-lang-java=\"`harbor.InterrogationServices`\" pulumi-lang-hcl=\"`harbor_interrogation_services`\"\u003e`harbor.InterrogationServices`\u003c/span\u003e.\n"
                 },
                 "vulnerabilityScanning": {
                     "type": "boolean",
-                    "description": "Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)\n"
+                    "description": "Images will be scanned for vulnerabilities when push to harbor. (Default: \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e)\n"
                 }
             },
             "required": [
@@ -1605,7 +1620,7 @@
             "inputProperties": {
                 "autoSbomGeneration": {
                     "type": "boolean",
-                    "description": "Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above\n"
+                    "description": "Automatically generate SBOM for images pushed to this project. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e) can only be used with Harbor version v2.11.0 and above\n"
                 },
                 "cveAllowlists": {
                     "type": "array",
@@ -1620,11 +1635,11 @@
                 },
                 "enableContentTrust": {
                     "type": "boolean",
-                    "description": "Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).\n"
+                    "description": "Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e).\n"
                 },
                 "enableContentTrustCosign": {
                     "type": "boolean",
-                    "description": "Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)\n"
+                    "description": "Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 },
                 "forceDestroy": {
                     "type": "boolean",
@@ -1643,7 +1658,7 @@
                 },
                 "public": {
                     "type": "boolean",
-                    "description": "The project will be public accessibility.(Default: `false`)\n"
+                    "description": "The project will be public accessibility.(Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 },
                 "registryId": {
                     "type": "integer",
@@ -1655,11 +1670,11 @@
                 },
                 "vulnerabilityScanner": {
                     "type": "string",
-                    "description": "The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via `harbor.InterrogationServices`.\n"
+                    "description": "The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via \u003cspan pulumi-lang-nodejs=\"`harbor.InterrogationServices`\" pulumi-lang-dotnet=\"`harbor.InterrogationServices`\" pulumi-lang-go=\"`InterrogationServices`\" pulumi-lang-python=\"`InterrogationServices`\" pulumi-lang-yaml=\"`harbor.InterrogationServices`\" pulumi-lang-java=\"`harbor.InterrogationServices`\" pulumi-lang-hcl=\"`harbor_interrogation_services`\"\u003e`harbor.InterrogationServices`\u003c/span\u003e.\n"
                 },
                 "vulnerabilityScanning": {
                     "type": "boolean",
-                    "description": "Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)\n"
+                    "description": "Images will be scanned for vulnerabilities when push to harbor. (Default: \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e)\n"
                 }
             },
             "stateInputs": {
@@ -1667,7 +1682,7 @@
                 "properties": {
                     "autoSbomGeneration": {
                         "type": "boolean",
-                        "description": "Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above\n"
+                        "description": "Automatically generate SBOM for images pushed to this project. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e) can only be used with Harbor version v2.11.0 and above\n"
                     },
                     "cveAllowlists": {
                         "type": "array",
@@ -1682,11 +1697,11 @@
                     },
                     "enableContentTrust": {
                         "type": "boolean",
-                        "description": "Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).\n"
+                        "description": "Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e).\n"
                     },
                     "enableContentTrustCosign": {
                         "type": "boolean",
-                        "description": "Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)\n"
+                        "description": "Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                     },
                     "forceDestroy": {
                         "type": "boolean",
@@ -1708,7 +1723,7 @@
                     },
                     "public": {
                         "type": "boolean",
-                        "description": "The project will be public accessibility.(Default: `false`)\n"
+                        "description": "The project will be public accessibility.(Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                     },
                     "registryId": {
                         "type": "integer",
@@ -1720,11 +1735,11 @@
                     },
                     "vulnerabilityScanner": {
                         "type": "string",
-                        "description": "The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via `harbor.InterrogationServices`.\n"
+                        "description": "The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via \u003cspan pulumi-lang-nodejs=\"`harbor.InterrogationServices`\" pulumi-lang-dotnet=\"`harbor.InterrogationServices`\" pulumi-lang-go=\"`InterrogationServices`\" pulumi-lang-python=\"`InterrogationServices`\" pulumi-lang-yaml=\"`harbor.InterrogationServices`\" pulumi-lang-java=\"`harbor.InterrogationServices`\" pulumi-lang-hcl=\"`harbor_interrogation_services`\"\u003e`harbor.InterrogationServices`\u003c/span\u003e.\n"
                     },
                     "vulnerabilityScanning": {
                         "type": "boolean",
-                        "description": "Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)\n"
+                        "description": "Images will be scanned for vulnerabilities when push to harbor. (Default: \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e)\n"
                     }
                 },
                 "type": "object"
@@ -1930,7 +1945,7 @@
                 },
                 "notifyType": {
                     "type": "string",
-                    "description": "The notification type either `http` or `slack`.\n"
+                    "description": "The notification type either \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\" pulumi-lang-hcl=\"`http`\"\u003e`http`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`slack`\" pulumi-lang-dotnet=\"`Slack`\" pulumi-lang-go=\"`slack`\" pulumi-lang-python=\"`slack`\" pulumi-lang-yaml=\"`slack`\" pulumi-lang-java=\"`slack`\" pulumi-lang-hcl=\"`slack`\"\u003e`slack`\u003c/span\u003e.\n"
                 },
                 "payloadFormat": {
                     "type": "string"
@@ -1978,7 +1993,7 @@
                 },
                 "notifyType": {
                     "type": "string",
-                    "description": "The notification type either `http` or `slack`.\n"
+                    "description": "The notification type either \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\" pulumi-lang-hcl=\"`http`\"\u003e`http`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`slack`\" pulumi-lang-dotnet=\"`Slack`\" pulumi-lang-go=\"`slack`\" pulumi-lang-python=\"`slack`\" pulumi-lang-yaml=\"`slack`\" pulumi-lang-java=\"`slack`\" pulumi-lang-hcl=\"`slack`\"\u003e`slack`\u003c/span\u003e.\n"
                 },
                 "payloadFormat": {
                     "type": "string"
@@ -2027,7 +2042,7 @@
                     },
                     "notifyType": {
                         "type": "string",
-                        "description": "The notification type either `http` or `slack`.\n"
+                        "description": "The notification type either \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\" pulumi-lang-hcl=\"`http`\"\u003e`http`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`slack`\" pulumi-lang-dotnet=\"`Slack`\" pulumi-lang-go=\"`slack`\" pulumi-lang-python=\"`slack`\" pulumi-lang-yaml=\"`slack`\" pulumi-lang-java=\"`slack`\" pulumi-lang-hcl=\"`slack`\"\u003e`slack`\u003c/span\u003e.\n"
                     },
                     "payloadFormat": {
                         "type": "string"
@@ -2052,11 +2067,11 @@
                 },
                 "includeEventTypes": {
                     "type": "string",
-                    "description": "Valid values are `create`, `push`, `pull`, `delete`, `create_artifact`, `delete_artifact`, `pull_artifact`, `other`, those values can be comma separated. Harbor will include audit logs for those events in the purge (minimal version Harbor 2.13).\n"
+                    "description": "Valid values are \u003cspan pulumi-lang-nodejs=\"`create`\" pulumi-lang-dotnet=\"`Create`\" pulumi-lang-go=\"`create`\" pulumi-lang-python=\"`create`\" pulumi-lang-yaml=\"`create`\" pulumi-lang-java=\"`create`\" pulumi-lang-hcl=\"`create`\"\u003e`create`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`push`\" pulumi-lang-dotnet=\"`Push`\" pulumi-lang-go=\"`push`\" pulumi-lang-python=\"`push`\" pulumi-lang-yaml=\"`push`\" pulumi-lang-java=\"`push`\" pulumi-lang-hcl=\"`push`\"\u003e`push`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pull`\" pulumi-lang-dotnet=\"`Pull`\" pulumi-lang-go=\"`pull`\" pulumi-lang-python=\"`pull`\" pulumi-lang-yaml=\"`pull`\" pulumi-lang-java=\"`pull`\" pulumi-lang-hcl=\"`pull`\"\u003e`pull`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`delete`\" pulumi-lang-dotnet=\"`Delete`\" pulumi-lang-go=\"`delete`\" pulumi-lang-python=\"`delete`\" pulumi-lang-yaml=\"`delete`\" pulumi-lang-java=\"`delete`\" pulumi-lang-hcl=\"`delete`\"\u003e`delete`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`createArtifact`\" pulumi-lang-dotnet=\"`CreateArtifact`\" pulumi-lang-go=\"`createArtifact`\" pulumi-lang-python=\"`create_artifact`\" pulumi-lang-yaml=\"`createArtifact`\" pulumi-lang-java=\"`createArtifact`\" pulumi-lang-hcl=\"`create_artifact`\"\u003e`createArtifact`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`deleteArtifact`\" pulumi-lang-dotnet=\"`DeleteArtifact`\" pulumi-lang-go=\"`deleteArtifact`\" pulumi-lang-python=\"`delete_artifact`\" pulumi-lang-yaml=\"`deleteArtifact`\" pulumi-lang-java=\"`deleteArtifact`\" pulumi-lang-hcl=\"`delete_artifact`\"\u003e`deleteArtifact`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pullArtifact`\" pulumi-lang-dotnet=\"`PullArtifact`\" pulumi-lang-go=\"`pullArtifact`\" pulumi-lang-python=\"`pull_artifact`\" pulumi-lang-yaml=\"`pullArtifact`\" pulumi-lang-java=\"`pullArtifact`\" pulumi-lang-hcl=\"`pull_artifact`\"\u003e`pullArtifact`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`other`\" pulumi-lang-dotnet=\"`Other`\" pulumi-lang-go=\"`other`\" pulumi-lang-python=\"`other`\" pulumi-lang-yaml=\"`other`\" pulumi-lang-java=\"`other`\" pulumi-lang-hcl=\"`other`\"\u003e`other`\u003c/span\u003e, those values can be comma separated. Harbor will include audit logs for those events in the purge (minimal version Harbor 2.13).\n"
                 },
                 "includeOperations": {
                     "type": "string",
-                    "description": "Valid values are `create`, `delete`, `pull`, those values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge. (Harbor \u003c 2.13, deprecated in favor of `include_event_types`)\n"
+                    "description": "Valid values are \u003cspan pulumi-lang-nodejs=\"`create`\" pulumi-lang-dotnet=\"`Create`\" pulumi-lang-go=\"`create`\" pulumi-lang-python=\"`create`\" pulumi-lang-yaml=\"`create`\" pulumi-lang-java=\"`create`\" pulumi-lang-hcl=\"`create`\"\u003e`create`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`delete`\" pulumi-lang-dotnet=\"`Delete`\" pulumi-lang-go=\"`delete`\" pulumi-lang-python=\"`delete`\" pulumi-lang-yaml=\"`delete`\" pulumi-lang-java=\"`delete`\" pulumi-lang-hcl=\"`delete`\"\u003e`delete`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pull`\" pulumi-lang-dotnet=\"`Pull`\" pulumi-lang-go=\"`pull`\" pulumi-lang-python=\"`pull`\" pulumi-lang-yaml=\"`pull`\" pulumi-lang-java=\"`pull`\" pulumi-lang-hcl=\"`pull`\"\u003e`pull`\u003c/span\u003e, those values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge. (Harbor \u003c 2.13, deprecated in favor of \u003cspan pulumi-lang-nodejs=\"`includeEventTypes`\" pulumi-lang-dotnet=\"`IncludeEventTypes`\" pulumi-lang-go=\"`includeEventTypes`\" pulumi-lang-python=\"`include_event_types`\" pulumi-lang-yaml=\"`includeEventTypes`\" pulumi-lang-java=\"`includeEventTypes`\" pulumi-lang-hcl=\"`include_event_types`\"\u003e`includeEventTypes`\u003c/span\u003e)\n"
                 },
                 "schedule": {
                     "type": "string",
@@ -2074,11 +2089,11 @@
                 },
                 "includeEventTypes": {
                     "type": "string",
-                    "description": "Valid values are `create`, `push`, `pull`, `delete`, `create_artifact`, `delete_artifact`, `pull_artifact`, `other`, those values can be comma separated. Harbor will include audit logs for those events in the purge (minimal version Harbor 2.13).\n"
+                    "description": "Valid values are \u003cspan pulumi-lang-nodejs=\"`create`\" pulumi-lang-dotnet=\"`Create`\" pulumi-lang-go=\"`create`\" pulumi-lang-python=\"`create`\" pulumi-lang-yaml=\"`create`\" pulumi-lang-java=\"`create`\" pulumi-lang-hcl=\"`create`\"\u003e`create`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`push`\" pulumi-lang-dotnet=\"`Push`\" pulumi-lang-go=\"`push`\" pulumi-lang-python=\"`push`\" pulumi-lang-yaml=\"`push`\" pulumi-lang-java=\"`push`\" pulumi-lang-hcl=\"`push`\"\u003e`push`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pull`\" pulumi-lang-dotnet=\"`Pull`\" pulumi-lang-go=\"`pull`\" pulumi-lang-python=\"`pull`\" pulumi-lang-yaml=\"`pull`\" pulumi-lang-java=\"`pull`\" pulumi-lang-hcl=\"`pull`\"\u003e`pull`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`delete`\" pulumi-lang-dotnet=\"`Delete`\" pulumi-lang-go=\"`delete`\" pulumi-lang-python=\"`delete`\" pulumi-lang-yaml=\"`delete`\" pulumi-lang-java=\"`delete`\" pulumi-lang-hcl=\"`delete`\"\u003e`delete`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`createArtifact`\" pulumi-lang-dotnet=\"`CreateArtifact`\" pulumi-lang-go=\"`createArtifact`\" pulumi-lang-python=\"`create_artifact`\" pulumi-lang-yaml=\"`createArtifact`\" pulumi-lang-java=\"`createArtifact`\" pulumi-lang-hcl=\"`create_artifact`\"\u003e`createArtifact`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`deleteArtifact`\" pulumi-lang-dotnet=\"`DeleteArtifact`\" pulumi-lang-go=\"`deleteArtifact`\" pulumi-lang-python=\"`delete_artifact`\" pulumi-lang-yaml=\"`deleteArtifact`\" pulumi-lang-java=\"`deleteArtifact`\" pulumi-lang-hcl=\"`delete_artifact`\"\u003e`deleteArtifact`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pullArtifact`\" pulumi-lang-dotnet=\"`PullArtifact`\" pulumi-lang-go=\"`pullArtifact`\" pulumi-lang-python=\"`pull_artifact`\" pulumi-lang-yaml=\"`pullArtifact`\" pulumi-lang-java=\"`pullArtifact`\" pulumi-lang-hcl=\"`pull_artifact`\"\u003e`pullArtifact`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`other`\" pulumi-lang-dotnet=\"`Other`\" pulumi-lang-go=\"`other`\" pulumi-lang-python=\"`other`\" pulumi-lang-yaml=\"`other`\" pulumi-lang-java=\"`other`\" pulumi-lang-hcl=\"`other`\"\u003e`other`\u003c/span\u003e, those values can be comma separated. Harbor will include audit logs for those events in the purge (minimal version Harbor 2.13).\n"
                 },
                 "includeOperations": {
                     "type": "string",
-                    "description": "Valid values are `create`, `delete`, `pull`, those values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge. (Harbor \u003c 2.13, deprecated in favor of `include_event_types`)\n"
+                    "description": "Valid values are \u003cspan pulumi-lang-nodejs=\"`create`\" pulumi-lang-dotnet=\"`Create`\" pulumi-lang-go=\"`create`\" pulumi-lang-python=\"`create`\" pulumi-lang-yaml=\"`create`\" pulumi-lang-java=\"`create`\" pulumi-lang-hcl=\"`create`\"\u003e`create`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`delete`\" pulumi-lang-dotnet=\"`Delete`\" pulumi-lang-go=\"`delete`\" pulumi-lang-python=\"`delete`\" pulumi-lang-yaml=\"`delete`\" pulumi-lang-java=\"`delete`\" pulumi-lang-hcl=\"`delete`\"\u003e`delete`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pull`\" pulumi-lang-dotnet=\"`Pull`\" pulumi-lang-go=\"`pull`\" pulumi-lang-python=\"`pull`\" pulumi-lang-yaml=\"`pull`\" pulumi-lang-java=\"`pull`\" pulumi-lang-hcl=\"`pull`\"\u003e`pull`\u003c/span\u003e, those values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge. (Harbor \u003c 2.13, deprecated in favor of \u003cspan pulumi-lang-nodejs=\"`includeEventTypes`\" pulumi-lang-dotnet=\"`IncludeEventTypes`\" pulumi-lang-go=\"`includeEventTypes`\" pulumi-lang-python=\"`include_event_types`\" pulumi-lang-yaml=\"`includeEventTypes`\" pulumi-lang-java=\"`includeEventTypes`\" pulumi-lang-hcl=\"`include_event_types`\"\u003e`includeEventTypes`\u003c/span\u003e)\n"
                 },
                 "schedule": {
                     "type": "string",
@@ -2098,11 +2113,11 @@
                     },
                     "includeEventTypes": {
                         "type": "string",
-                        "description": "Valid values are `create`, `push`, `pull`, `delete`, `create_artifact`, `delete_artifact`, `pull_artifact`, `other`, those values can be comma separated. Harbor will include audit logs for those events in the purge (minimal version Harbor 2.13).\n"
+                        "description": "Valid values are \u003cspan pulumi-lang-nodejs=\"`create`\" pulumi-lang-dotnet=\"`Create`\" pulumi-lang-go=\"`create`\" pulumi-lang-python=\"`create`\" pulumi-lang-yaml=\"`create`\" pulumi-lang-java=\"`create`\" pulumi-lang-hcl=\"`create`\"\u003e`create`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`push`\" pulumi-lang-dotnet=\"`Push`\" pulumi-lang-go=\"`push`\" pulumi-lang-python=\"`push`\" pulumi-lang-yaml=\"`push`\" pulumi-lang-java=\"`push`\" pulumi-lang-hcl=\"`push`\"\u003e`push`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pull`\" pulumi-lang-dotnet=\"`Pull`\" pulumi-lang-go=\"`pull`\" pulumi-lang-python=\"`pull`\" pulumi-lang-yaml=\"`pull`\" pulumi-lang-java=\"`pull`\" pulumi-lang-hcl=\"`pull`\"\u003e`pull`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`delete`\" pulumi-lang-dotnet=\"`Delete`\" pulumi-lang-go=\"`delete`\" pulumi-lang-python=\"`delete`\" pulumi-lang-yaml=\"`delete`\" pulumi-lang-java=\"`delete`\" pulumi-lang-hcl=\"`delete`\"\u003e`delete`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`createArtifact`\" pulumi-lang-dotnet=\"`CreateArtifact`\" pulumi-lang-go=\"`createArtifact`\" pulumi-lang-python=\"`create_artifact`\" pulumi-lang-yaml=\"`createArtifact`\" pulumi-lang-java=\"`createArtifact`\" pulumi-lang-hcl=\"`create_artifact`\"\u003e`createArtifact`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`deleteArtifact`\" pulumi-lang-dotnet=\"`DeleteArtifact`\" pulumi-lang-go=\"`deleteArtifact`\" pulumi-lang-python=\"`delete_artifact`\" pulumi-lang-yaml=\"`deleteArtifact`\" pulumi-lang-java=\"`deleteArtifact`\" pulumi-lang-hcl=\"`delete_artifact`\"\u003e`deleteArtifact`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pullArtifact`\" pulumi-lang-dotnet=\"`PullArtifact`\" pulumi-lang-go=\"`pullArtifact`\" pulumi-lang-python=\"`pull_artifact`\" pulumi-lang-yaml=\"`pullArtifact`\" pulumi-lang-java=\"`pullArtifact`\" pulumi-lang-hcl=\"`pull_artifact`\"\u003e`pullArtifact`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`other`\" pulumi-lang-dotnet=\"`Other`\" pulumi-lang-go=\"`other`\" pulumi-lang-python=\"`other`\" pulumi-lang-yaml=\"`other`\" pulumi-lang-java=\"`other`\" pulumi-lang-hcl=\"`other`\"\u003e`other`\u003c/span\u003e, those values can be comma separated. Harbor will include audit logs for those events in the purge (minimal version Harbor 2.13).\n"
                     },
                     "includeOperations": {
                         "type": "string",
-                        "description": "Valid values are `create`, `delete`, `pull`, those values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge. (Harbor \u003c 2.13, deprecated in favor of `include_event_types`)\n"
+                        "description": "Valid values are \u003cspan pulumi-lang-nodejs=\"`create`\" pulumi-lang-dotnet=\"`Create`\" pulumi-lang-go=\"`create`\" pulumi-lang-python=\"`create`\" pulumi-lang-yaml=\"`create`\" pulumi-lang-java=\"`create`\" pulumi-lang-hcl=\"`create`\"\u003e`create`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`delete`\" pulumi-lang-dotnet=\"`Delete`\" pulumi-lang-go=\"`delete`\" pulumi-lang-python=\"`delete`\" pulumi-lang-yaml=\"`delete`\" pulumi-lang-java=\"`delete`\" pulumi-lang-hcl=\"`delete`\"\u003e`delete`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pull`\" pulumi-lang-dotnet=\"`Pull`\" pulumi-lang-go=\"`pull`\" pulumi-lang-python=\"`pull`\" pulumi-lang-yaml=\"`pull`\" pulumi-lang-java=\"`pull`\" pulumi-lang-hcl=\"`pull`\"\u003e`pull`\u003c/span\u003e, those values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge. (Harbor \u003c 2.13, deprecated in favor of \u003cspan pulumi-lang-nodejs=\"`includeEventTypes`\" pulumi-lang-dotnet=\"`IncludeEventTypes`\" pulumi-lang-go=\"`includeEventTypes`\" pulumi-lang-python=\"`include_event_types`\" pulumi-lang-yaml=\"`includeEventTypes`\" pulumi-lang-java=\"`includeEventTypes`\" pulumi-lang-hcl=\"`include_event_types`\"\u003e`includeEventTypes`\u003c/span\u003e)\n"
                     },
                     "schedule": {
                         "type": "string",
@@ -2242,11 +2257,11 @@
                 },
                 "copyByChunk": {
                     "type": "boolean",
-                    "description": "Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)\n"
+                    "description": "Specify whether to enable the artifact blobs copied by chunks. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 },
                 "deletion": {
                     "type": "boolean",
-                    "description": "Specify whether to delete the remote resources when locally deleted. (Default: `false`)\n"
+                    "description": "Specify whether to delete the remote resources when locally deleted. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 },
                 "description": {
                     "type": "string",
@@ -2258,15 +2273,15 @@
                 },
                 "destNamespaceReplace": {
                     "type": "integer",
-                    "description": "Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `0`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)\n"
+                    "description": "Specify the destination namespace flattening policy. Integers from `-1` to \u003cspan pulumi-lang-nodejs=\"`3`\" pulumi-lang-dotnet=\"`3`\" pulumi-lang-go=\"`3`\" pulumi-lang-python=\"`3`\" pulumi-lang-yaml=\"`3`\" pulumi-lang-java=\"`3`\" pulumi-lang-hcl=\"`3`\"\u003e`3`\u003c/span\u003e are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e means 'No Flattening', \u003cspan pulumi-lang-nodejs=\"`1`\" pulumi-lang-dotnet=\"`1`\" pulumi-lang-go=\"`1`\" pulumi-lang-python=\"`1`\" pulumi-lang-yaml=\"`1`\" pulumi-lang-java=\"`1`\" pulumi-lang-hcl=\"`1`\"\u003e`1`\u003c/span\u003e 'Flatten 1 Level', \u003cspan pulumi-lang-nodejs=\"`2`\" pulumi-lang-dotnet=\"`2`\" pulumi-lang-go=\"`2`\" pulumi-lang-python=\"`2`\" pulumi-lang-yaml=\"`2`\" pulumi-lang-java=\"`2`\" pulumi-lang-hcl=\"`2`\"\u003e`2`\u003c/span\u003e 'Flatten 2 Levels', \u003cspan pulumi-lang-nodejs=\"`3`\" pulumi-lang-dotnet=\"`3`\" pulumi-lang-go=\"`3`\" pulumi-lang-python=\"`3`\" pulumi-lang-yaml=\"`3`\" pulumi-lang-java=\"`3`\" pulumi-lang-hcl=\"`3`\"\u003e`3`\u003c/span\u003e 'Flatten 3 Levels' (Default: \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)\n"
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Specify whether the replication is enabled. (Default: `true`)\n"
+                    "description": "Specify whether the replication is enabled. (Default: \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e)\n"
                 },
                 "executeOnChanged": {
                     "type": "boolean",
-                    "description": "Specify whether to execute the replication rule if new or modified. (Default: `false`)\n"
+                    "description": "Specify whether to execute the replication rule if new or modified. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 },
                 "filters": {
                     "type": "array",
@@ -2280,7 +2295,7 @@
                 },
                 "override": {
                     "type": "boolean",
-                    "description": "Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)\n"
+                    "description": "Specify whether to override the resources at the destination if a resources with the same name exist. (Default: \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e)\n"
                 },
                 "registryId": {
                     "type": "integer",
@@ -2291,11 +2306,11 @@
                 },
                 "schedule": {
                     "type": "string",
-                    "description": "The scheduled time of when the container register will be push / pull. In cron base format. Hourly `\"0 0 * * * *\"`, Daily `\"0 0 0 * * *\"`, Monthly `\"0 0 0 * * 0\"`. Can be one of the following: `event_based`, `manual`, `cron format` (Default: `manual`)\n"
+                    "description": "The scheduled time of when the container register will be push / pull. In cron base format. Hourly `\"0 0 * * * *\"`, Daily `\"0 0 0 * * *\"`, Monthly `\"0 0 0 * * 0\"`. Can be one of the following: \u003cspan pulumi-lang-nodejs=\"`eventBased`\" pulumi-lang-dotnet=\"`EventBased`\" pulumi-lang-go=\"`eventBased`\" pulumi-lang-python=\"`event_based`\" pulumi-lang-yaml=\"`eventBased`\" pulumi-lang-java=\"`eventBased`\" pulumi-lang-hcl=\"`event_based`\"\u003e`eventBased`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manual`\" pulumi-lang-dotnet=\"`Manual`\" pulumi-lang-go=\"`manual`\" pulumi-lang-python=\"`manual`\" pulumi-lang-yaml=\"`manual`\" pulumi-lang-java=\"`manual`\" pulumi-lang-hcl=\"`manual`\"\u003e`manual`\u003c/span\u003e, `cron format` (Default: \u003cspan pulumi-lang-nodejs=\"`manual`\" pulumi-lang-dotnet=\"`Manual`\" pulumi-lang-go=\"`manual`\" pulumi-lang-python=\"`manual`\" pulumi-lang-yaml=\"`manual`\" pulumi-lang-java=\"`manual`\" pulumi-lang-hcl=\"`manual`\"\u003e`manual`\u003c/span\u003e)\n"
                 },
                 "singleActiveReplication": {
                     "type": "boolean",
-                    "description": ", prevent parallel runs under the same replication. (Default: `false`)\n"
+                    "description": ", prevent parallel runs under the same replication. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 },
                 "speed": {
                     "type": "integer",
@@ -2315,11 +2330,11 @@
                 },
                 "copyByChunk": {
                     "type": "boolean",
-                    "description": "Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)\n"
+                    "description": "Specify whether to enable the artifact blobs copied by chunks. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 },
                 "deletion": {
                     "type": "boolean",
-                    "description": "Specify whether to delete the remote resources when locally deleted. (Default: `false`)\n"
+                    "description": "Specify whether to delete the remote resources when locally deleted. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 },
                 "description": {
                     "type": "string",
@@ -2331,15 +2346,15 @@
                 },
                 "destNamespaceReplace": {
                     "type": "integer",
-                    "description": "Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `0`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)\n"
+                    "description": "Specify the destination namespace flattening policy. Integers from `-1` to \u003cspan pulumi-lang-nodejs=\"`3`\" pulumi-lang-dotnet=\"`3`\" pulumi-lang-go=\"`3`\" pulumi-lang-python=\"`3`\" pulumi-lang-yaml=\"`3`\" pulumi-lang-java=\"`3`\" pulumi-lang-hcl=\"`3`\"\u003e`3`\u003c/span\u003e are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e means 'No Flattening', \u003cspan pulumi-lang-nodejs=\"`1`\" pulumi-lang-dotnet=\"`1`\" pulumi-lang-go=\"`1`\" pulumi-lang-python=\"`1`\" pulumi-lang-yaml=\"`1`\" pulumi-lang-java=\"`1`\" pulumi-lang-hcl=\"`1`\"\u003e`1`\u003c/span\u003e 'Flatten 1 Level', \u003cspan pulumi-lang-nodejs=\"`2`\" pulumi-lang-dotnet=\"`2`\" pulumi-lang-go=\"`2`\" pulumi-lang-python=\"`2`\" pulumi-lang-yaml=\"`2`\" pulumi-lang-java=\"`2`\" pulumi-lang-hcl=\"`2`\"\u003e`2`\u003c/span\u003e 'Flatten 2 Levels', \u003cspan pulumi-lang-nodejs=\"`3`\" pulumi-lang-dotnet=\"`3`\" pulumi-lang-go=\"`3`\" pulumi-lang-python=\"`3`\" pulumi-lang-yaml=\"`3`\" pulumi-lang-java=\"`3`\" pulumi-lang-hcl=\"`3`\"\u003e`3`\u003c/span\u003e 'Flatten 3 Levels' (Default: \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)\n"
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Specify whether the replication is enabled. (Default: `true`)\n"
+                    "description": "Specify whether the replication is enabled. (Default: \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e)\n"
                 },
                 "executeOnChanged": {
                     "type": "boolean",
-                    "description": "Specify whether to execute the replication rule if new or modified. (Default: `false`)\n"
+                    "description": "Specify whether to execute the replication rule if new or modified. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 },
                 "filters": {
                     "type": "array",
@@ -2353,7 +2368,7 @@
                 },
                 "override": {
                     "type": "boolean",
-                    "description": "Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)\n"
+                    "description": "Specify whether to override the resources at the destination if a resources with the same name exist. (Default: \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e)\n"
                 },
                 "registryId": {
                     "type": "integer",
@@ -2361,11 +2376,11 @@
                 },
                 "schedule": {
                     "type": "string",
-                    "description": "The scheduled time of when the container register will be push / pull. In cron base format. Hourly `\"0 0 * * * *\"`, Daily `\"0 0 0 * * *\"`, Monthly `\"0 0 0 * * 0\"`. Can be one of the following: `event_based`, `manual`, `cron format` (Default: `manual`)\n"
+                    "description": "The scheduled time of when the container register will be push / pull. In cron base format. Hourly `\"0 0 * * * *\"`, Daily `\"0 0 0 * * *\"`, Monthly `\"0 0 0 * * 0\"`. Can be one of the following: \u003cspan pulumi-lang-nodejs=\"`eventBased`\" pulumi-lang-dotnet=\"`EventBased`\" pulumi-lang-go=\"`eventBased`\" pulumi-lang-python=\"`event_based`\" pulumi-lang-yaml=\"`eventBased`\" pulumi-lang-java=\"`eventBased`\" pulumi-lang-hcl=\"`event_based`\"\u003e`eventBased`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manual`\" pulumi-lang-dotnet=\"`Manual`\" pulumi-lang-go=\"`manual`\" pulumi-lang-python=\"`manual`\" pulumi-lang-yaml=\"`manual`\" pulumi-lang-java=\"`manual`\" pulumi-lang-hcl=\"`manual`\"\u003e`manual`\u003c/span\u003e, `cron format` (Default: \u003cspan pulumi-lang-nodejs=\"`manual`\" pulumi-lang-dotnet=\"`Manual`\" pulumi-lang-go=\"`manual`\" pulumi-lang-python=\"`manual`\" pulumi-lang-yaml=\"`manual`\" pulumi-lang-java=\"`manual`\" pulumi-lang-hcl=\"`manual`\"\u003e`manual`\u003c/span\u003e)\n"
                 },
                 "singleActiveReplication": {
                     "type": "boolean",
-                    "description": ", prevent parallel runs under the same replication. (Default: `false`)\n"
+                    "description": ", prevent parallel runs under the same replication. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 },
                 "speed": {
                     "type": "integer",
@@ -2385,11 +2400,11 @@
                     },
                     "copyByChunk": {
                         "type": "boolean",
-                        "description": "Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)\n"
+                        "description": "Specify whether to enable the artifact blobs copied by chunks. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                     },
                     "deletion": {
                         "type": "boolean",
-                        "description": "Specify whether to delete the remote resources when locally deleted. (Default: `false`)\n"
+                        "description": "Specify whether to delete the remote resources when locally deleted. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                     },
                     "description": {
                         "type": "string",
@@ -2401,15 +2416,15 @@
                     },
                     "destNamespaceReplace": {
                         "type": "integer",
-                        "description": "Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `0`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)\n"
+                        "description": "Specify the destination namespace flattening policy. Integers from `-1` to \u003cspan pulumi-lang-nodejs=\"`3`\" pulumi-lang-dotnet=\"`3`\" pulumi-lang-go=\"`3`\" pulumi-lang-python=\"`3`\" pulumi-lang-yaml=\"`3`\" pulumi-lang-java=\"`3`\" pulumi-lang-hcl=\"`3`\"\u003e`3`\u003c/span\u003e are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e means 'No Flattening', \u003cspan pulumi-lang-nodejs=\"`1`\" pulumi-lang-dotnet=\"`1`\" pulumi-lang-go=\"`1`\" pulumi-lang-python=\"`1`\" pulumi-lang-yaml=\"`1`\" pulumi-lang-java=\"`1`\" pulumi-lang-hcl=\"`1`\"\u003e`1`\u003c/span\u003e 'Flatten 1 Level', \u003cspan pulumi-lang-nodejs=\"`2`\" pulumi-lang-dotnet=\"`2`\" pulumi-lang-go=\"`2`\" pulumi-lang-python=\"`2`\" pulumi-lang-yaml=\"`2`\" pulumi-lang-java=\"`2`\" pulumi-lang-hcl=\"`2`\"\u003e`2`\u003c/span\u003e 'Flatten 2 Levels', \u003cspan pulumi-lang-nodejs=\"`3`\" pulumi-lang-dotnet=\"`3`\" pulumi-lang-go=\"`3`\" pulumi-lang-python=\"`3`\" pulumi-lang-yaml=\"`3`\" pulumi-lang-java=\"`3`\" pulumi-lang-hcl=\"`3`\"\u003e`3`\u003c/span\u003e 'Flatten 3 Levels' (Default: \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)\n"
                     },
                     "enabled": {
                         "type": "boolean",
-                        "description": "Specify whether the replication is enabled. (Default: `true`)\n"
+                        "description": "Specify whether the replication is enabled. (Default: \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e)\n"
                     },
                     "executeOnChanged": {
                         "type": "boolean",
-                        "description": "Specify whether to execute the replication rule if new or modified. (Default: `false`)\n"
+                        "description": "Specify whether to execute the replication rule if new or modified. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                     },
                     "filters": {
                         "type": "array",
@@ -2423,7 +2438,7 @@
                     },
                     "override": {
                         "type": "boolean",
-                        "description": "Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)\n"
+                        "description": "Specify whether to override the resources at the destination if a resources with the same name exist. (Default: \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e)\n"
                     },
                     "registryId": {
                         "type": "integer",
@@ -2434,11 +2449,11 @@
                     },
                     "schedule": {
                         "type": "string",
-                        "description": "The scheduled time of when the container register will be push / pull. In cron base format. Hourly `\"0 0 * * * *\"`, Daily `\"0 0 0 * * *\"`, Monthly `\"0 0 0 * * 0\"`. Can be one of the following: `event_based`, `manual`, `cron format` (Default: `manual`)\n"
+                        "description": "The scheduled time of when the container register will be push / pull. In cron base format. Hourly `\"0 0 * * * *\"`, Daily `\"0 0 0 * * *\"`, Monthly `\"0 0 0 * * 0\"`. Can be one of the following: \u003cspan pulumi-lang-nodejs=\"`eventBased`\" pulumi-lang-dotnet=\"`EventBased`\" pulumi-lang-go=\"`eventBased`\" pulumi-lang-python=\"`event_based`\" pulumi-lang-yaml=\"`eventBased`\" pulumi-lang-java=\"`eventBased`\" pulumi-lang-hcl=\"`event_based`\"\u003e`eventBased`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manual`\" pulumi-lang-dotnet=\"`Manual`\" pulumi-lang-go=\"`manual`\" pulumi-lang-python=\"`manual`\" pulumi-lang-yaml=\"`manual`\" pulumi-lang-java=\"`manual`\" pulumi-lang-hcl=\"`manual`\"\u003e`manual`\u003c/span\u003e, `cron format` (Default: \u003cspan pulumi-lang-nodejs=\"`manual`\" pulumi-lang-dotnet=\"`Manual`\" pulumi-lang-go=\"`manual`\" pulumi-lang-python=\"`manual`\" pulumi-lang-yaml=\"`manual`\" pulumi-lang-java=\"`manual`\" pulumi-lang-hcl=\"`manual`\"\u003e`manual`\u003c/span\u003e)\n"
                     },
                     "singleActiveReplication": {
                         "type": "boolean",
-                        "description": ", prevent parallel runs under the same replication. (Default: `false`)\n"
+                        "description": ", prevent parallel runs under the same replication. (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                     },
                     "speed": {
                         "type": "integer",
@@ -2522,7 +2537,7 @@
                 },
                 "disable": {
                     "type": "boolean",
-                    "description": "Disables the robot account when set to `true`.\n"
+                    "description": "Disables the robot account when set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
                 },
                 "duration": {
                     "type": "integer",
@@ -2533,7 +2548,7 @@
                 },
                 "level": {
                     "type": "string",
-                    "description": "Level of the robot account, currently either `system` or `project`.\n"
+                    "description": "Level of the robot account, currently either \u003cspan pulumi-lang-nodejs=\"`system`\" pulumi-lang-dotnet=\"`System`\" pulumi-lang-go=\"`system`\" pulumi-lang-python=\"`system`\" pulumi-lang-yaml=\"`system`\" pulumi-lang-java=\"`system`\" pulumi-lang-hcl=\"`system`\"\u003e`system`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`project`\" pulumi-lang-dotnet=\"`Project`\" pulumi-lang-go=\"`project`\" pulumi-lang-python=\"`project`\" pulumi-lang-yaml=\"`project`\" pulumi-lang-java=\"`project`\" pulumi-lang-hcl=\"`project`\"\u003e`project`\u003c/span\u003e.\n"
                 },
                 "name": {
                     "type": "string",
@@ -2553,9 +2568,14 @@
                     "description": "The secret of the robot account used for authentication. Defaults to random generated string from Harbor.\n",
                     "secret": true
                 },
+                "secretWo": {
+                    "type": "string",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nWrite-only alternative for \u003cspan pulumi-lang-nodejs=\"`secret`\" pulumi-lang-dotnet=\"`Secret`\" pulumi-lang-go=\"`secret`\" pulumi-lang-python=\"`secret`\" pulumi-lang-yaml=\"`secret`\" pulumi-lang-java=\"`secret`\" pulumi-lang-hcl=\"`secret`\"\u003e`secret`\u003c/span\u003e. Must be used together with \u003cspan pulumi-lang-nodejs=\"`secretWoVersion`\" pulumi-lang-dotnet=\"`SecretWoVersion`\" pulumi-lang-go=\"`secretWoVersion`\" pulumi-lang-python=\"`secret_wo_version`\" pulumi-lang-yaml=\"`secretWoVersion`\" pulumi-lang-java=\"`secretWoVersion`\" pulumi-lang-hcl=\"`secret_wo_version`\"\u003e`secretWoVersion`\u003c/span\u003e.\n",
+                    "secret": true
+                },
                 "secretWoVersion": {
                     "type": "integer",
-                    "description": "Rotation trigger for write-only secret updates. Must be used together with `secret_wo`.\n"
+                    "description": "Rotation trigger for write-only secret updates. Must be used together with \u003cspan pulumi-lang-nodejs=\"`secretWo`\" pulumi-lang-dotnet=\"`SecretWo`\" pulumi-lang-go=\"`secretWo`\" pulumi-lang-python=\"`secret_wo`\" pulumi-lang-yaml=\"`secretWo`\" pulumi-lang-java=\"`secretWo`\" pulumi-lang-hcl=\"`secret_wo`\"\u003e`secretWo`\u003c/span\u003e.\n"
                 }
             },
             "required": [
@@ -2573,7 +2593,7 @@
                 },
                 "disable": {
                     "type": "boolean",
-                    "description": "Disables the robot account when set to `true`.\n"
+                    "description": "Disables the robot account when set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
                 },
                 "duration": {
                     "type": "integer",
@@ -2581,7 +2601,7 @@
                 },
                 "level": {
                     "type": "string",
-                    "description": "Level of the robot account, currently either `system` or `project`.\n",
+                    "description": "Level of the robot account, currently either \u003cspan pulumi-lang-nodejs=\"`system`\" pulumi-lang-dotnet=\"`System`\" pulumi-lang-go=\"`system`\" pulumi-lang-python=\"`system`\" pulumi-lang-yaml=\"`system`\" pulumi-lang-java=\"`system`\" pulumi-lang-hcl=\"`system`\"\u003e`system`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`project`\" pulumi-lang-dotnet=\"`Project`\" pulumi-lang-go=\"`project`\" pulumi-lang-python=\"`project`\" pulumi-lang-yaml=\"`project`\" pulumi-lang-java=\"`project`\" pulumi-lang-hcl=\"`project`\"\u003e`project`\u003c/span\u003e.\n",
                     "willReplaceOnChanges": true
                 },
                 "name": {
@@ -2600,9 +2620,14 @@
                     "description": "The secret of the robot account used for authentication. Defaults to random generated string from Harbor.\n",
                     "secret": true
                 },
+                "secretWo": {
+                    "type": "string",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nWrite-only alternative for \u003cspan pulumi-lang-nodejs=\"`secret`\" pulumi-lang-dotnet=\"`Secret`\" pulumi-lang-go=\"`secret`\" pulumi-lang-python=\"`secret`\" pulumi-lang-yaml=\"`secret`\" pulumi-lang-java=\"`secret`\" pulumi-lang-hcl=\"`secret`\"\u003e`secret`\u003c/span\u003e. Must be used together with \u003cspan pulumi-lang-nodejs=\"`secretWoVersion`\" pulumi-lang-dotnet=\"`SecretWoVersion`\" pulumi-lang-go=\"`secretWoVersion`\" pulumi-lang-python=\"`secret_wo_version`\" pulumi-lang-yaml=\"`secretWoVersion`\" pulumi-lang-java=\"`secretWoVersion`\" pulumi-lang-hcl=\"`secret_wo_version`\"\u003e`secretWoVersion`\u003c/span\u003e.\n",
+                    "secret": true
+                },
                 "secretWoVersion": {
                     "type": "integer",
-                    "description": "Rotation trigger for write-only secret updates. Must be used together with `secret_wo`.\n"
+                    "description": "Rotation trigger for write-only secret updates. Must be used together with \u003cspan pulumi-lang-nodejs=\"`secretWo`\" pulumi-lang-dotnet=\"`SecretWo`\" pulumi-lang-go=\"`secretWo`\" pulumi-lang-python=\"`secret_wo`\" pulumi-lang-yaml=\"`secretWo`\" pulumi-lang-java=\"`secretWo`\" pulumi-lang-hcl=\"`secret_wo`\"\u003e`secretWo`\u003c/span\u003e.\n"
                 }
             },
             "requiredInputs": [
@@ -2618,7 +2643,7 @@
                     },
                     "disable": {
                         "type": "boolean",
-                        "description": "Disables the robot account when set to `true`.\n"
+                        "description": "Disables the robot account when set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
                     },
                     "duration": {
                         "type": "integer",
@@ -2629,7 +2654,7 @@
                     },
                     "level": {
                         "type": "string",
-                        "description": "Level of the robot account, currently either `system` or `project`.\n",
+                        "description": "Level of the robot account, currently either \u003cspan pulumi-lang-nodejs=\"`system`\" pulumi-lang-dotnet=\"`System`\" pulumi-lang-go=\"`system`\" pulumi-lang-python=\"`system`\" pulumi-lang-yaml=\"`system`\" pulumi-lang-java=\"`system`\" pulumi-lang-hcl=\"`system`\"\u003e`system`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`project`\" pulumi-lang-dotnet=\"`Project`\" pulumi-lang-go=\"`project`\" pulumi-lang-python=\"`project`\" pulumi-lang-yaml=\"`project`\" pulumi-lang-java=\"`project`\" pulumi-lang-hcl=\"`project`\"\u003e`project`\u003c/span\u003e.\n",
                         "willReplaceOnChanges": true
                     },
                     "name": {
@@ -2651,9 +2676,14 @@
                         "description": "The secret of the robot account used for authentication. Defaults to random generated string from Harbor.\n",
                         "secret": true
                     },
+                    "secretWo": {
+                        "type": "string",
+                        "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nWrite-only alternative for \u003cspan pulumi-lang-nodejs=\"`secret`\" pulumi-lang-dotnet=\"`Secret`\" pulumi-lang-go=\"`secret`\" pulumi-lang-python=\"`secret`\" pulumi-lang-yaml=\"`secret`\" pulumi-lang-java=\"`secret`\" pulumi-lang-hcl=\"`secret`\"\u003e`secret`\u003c/span\u003e. Must be used together with \u003cspan pulumi-lang-nodejs=\"`secretWoVersion`\" pulumi-lang-dotnet=\"`SecretWoVersion`\" pulumi-lang-go=\"`secretWoVersion`\" pulumi-lang-python=\"`secret_wo_version`\" pulumi-lang-yaml=\"`secretWoVersion`\" pulumi-lang-java=\"`secretWoVersion`\" pulumi-lang-hcl=\"`secret_wo_version`\"\u003e`secretWoVersion`\u003c/span\u003e.\n",
+                        "secret": true
+                    },
                     "secretWoVersion": {
                         "type": "integer",
-                        "description": "Rotation trigger for write-only secret updates. Must be used together with `secret_wo`.\n"
+                        "description": "Rotation trigger for write-only secret updates. Must be used together with \u003cspan pulumi-lang-nodejs=\"`secretWo`\" pulumi-lang-dotnet=\"`SecretWo`\" pulumi-lang-go=\"`secretWo`\" pulumi-lang-python=\"`secret_wo`\" pulumi-lang-yaml=\"`secretWo`\" pulumi-lang-java=\"`secretWo`\" pulumi-lang-hcl=\"`secret_wo`\"\u003e`secretWo`\u003c/span\u003e.\n"
                     }
                 },
                 "type": "object"
@@ -2695,7 +2725,7 @@
             "properties": {
                 "admin": {
                     "type": "boolean",
-                    "description": "If the user will have admin rights within Harbor (Default: `false`)\n"
+                    "description": "If the user will have admin rights within Harbor (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 },
                 "comment": {
                     "type": "string",
@@ -2711,12 +2741,17 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "The password for the internal user. Conflicts with `password_wo_version`.\n",
+                    "description": "The password for the internal user. Conflicts with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\" pulumi-lang-hcl=\"`password_wo_version`\"\u003e`passwordWoVersion`\u003c/span\u003e.\n",
+                    "secret": true
+                },
+                "passwordWo": {
+                    "type": "string",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nWrite-only alternative for \u003cspan pulumi-lang-nodejs=\"`password`\" pulumi-lang-dotnet=\"`Password`\" pulumi-lang-go=\"`password`\" pulumi-lang-python=\"`password`\" pulumi-lang-yaml=\"`password`\" pulumi-lang-java=\"`password`\" pulumi-lang-hcl=\"`password`\"\u003e`password`\u003c/span\u003e. Must be used together with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\" pulumi-lang-hcl=\"`password_wo_version`\"\u003e`passwordWoVersion`\u003c/span\u003e.\n",
                     "secret": true
                 },
                 "passwordWoVersion": {
                     "type": "integer",
-                    "description": "Rotation trigger for write-only password updates. Must be used together with `password_wo`.\n"
+                    "description": "Rotation trigger for write-only password updates. Must be used together with \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\" pulumi-lang-hcl=\"`password_wo`\"\u003e`passwordWo`\u003c/span\u003e.\n"
                 },
                 "username": {
                     "type": "string",
@@ -2731,7 +2766,7 @@
             "inputProperties": {
                 "admin": {
                     "type": "boolean",
-                    "description": "If the user will have admin rights within Harbor (Default: `false`)\n"
+                    "description": "If the user will have admin rights within Harbor (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 },
                 "comment": {
                     "type": "string",
@@ -2747,12 +2782,17 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "The password for the internal user. Conflicts with `password_wo_version`.\n",
+                    "description": "The password for the internal user. Conflicts with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\" pulumi-lang-hcl=\"`password_wo_version`\"\u003e`passwordWoVersion`\u003c/span\u003e.\n",
+                    "secret": true
+                },
+                "passwordWo": {
+                    "type": "string",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nWrite-only alternative for \u003cspan pulumi-lang-nodejs=\"`password`\" pulumi-lang-dotnet=\"`Password`\" pulumi-lang-go=\"`password`\" pulumi-lang-python=\"`password`\" pulumi-lang-yaml=\"`password`\" pulumi-lang-java=\"`password`\" pulumi-lang-hcl=\"`password`\"\u003e`password`\u003c/span\u003e. Must be used together with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\" pulumi-lang-hcl=\"`password_wo_version`\"\u003e`passwordWoVersion`\u003c/span\u003e.\n",
                     "secret": true
                 },
                 "passwordWoVersion": {
                     "type": "integer",
-                    "description": "Rotation trigger for write-only password updates. Must be used together with `password_wo`.\n"
+                    "description": "Rotation trigger for write-only password updates. Must be used together with \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\" pulumi-lang-hcl=\"`password_wo`\"\u003e`passwordWo`\u003c/span\u003e.\n"
                 },
                 "username": {
                     "type": "string",
@@ -2770,7 +2810,7 @@
                 "properties": {
                     "admin": {
                         "type": "boolean",
-                        "description": "If the user will have admin rights within Harbor (Default: `false`)\n"
+                        "description": "If the user will have admin rights within Harbor (Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                     },
                     "comment": {
                         "type": "string",
@@ -2786,12 +2826,17 @@
                     },
                     "password": {
                         "type": "string",
-                        "description": "The password for the internal user. Conflicts with `password_wo_version`.\n",
+                        "description": "The password for the internal user. Conflicts with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\" pulumi-lang-hcl=\"`password_wo_version`\"\u003e`passwordWoVersion`\u003c/span\u003e.\n",
+                        "secret": true
+                    },
+                    "passwordWo": {
+                        "type": "string",
+                        "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nWrite-only alternative for \u003cspan pulumi-lang-nodejs=\"`password`\" pulumi-lang-dotnet=\"`Password`\" pulumi-lang-go=\"`password`\" pulumi-lang-python=\"`password`\" pulumi-lang-yaml=\"`password`\" pulumi-lang-java=\"`password`\" pulumi-lang-hcl=\"`password`\"\u003e`password`\u003c/span\u003e. Must be used together with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\" pulumi-lang-hcl=\"`password_wo_version`\"\u003e`passwordWoVersion`\u003c/span\u003e.\n",
                         "secret": true
                     },
                     "passwordWoVersion": {
                         "type": "integer",
-                        "description": "Rotation trigger for write-only password updates. Must be used together with `password_wo`.\n"
+                        "description": "Rotation trigger for write-only password updates. Must be used together with \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\" pulumi-lang-hcl=\"`password_wo`\"\u003e`passwordWo`\u003c/span\u003e.\n"
                     },
                     "username": {
                         "type": "string",
@@ -2835,7 +2880,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "ldapGroupDn": {
                         "type": "string",
@@ -2869,7 +2914,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "name": {
                         "type": "string",
@@ -2928,7 +2973,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "projectId": {
                         "type": "string",
@@ -2969,7 +3014,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "projectId": {
                         "type": "string",
@@ -3019,7 +3064,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "name": {
                         "type": "string",
@@ -3079,7 +3124,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "insecure": {
                         "type": "boolean",
@@ -3127,7 +3172,7 @@
                 "properties": {
                     "level": {
                         "type": "string",
-                        "description": "Level of the robot account, currently either `system` or `project`. Default is `system`.\n"
+                        "description": "Level of the robot account, currently either \u003cspan pulumi-lang-nodejs=\"`system`\" pulumi-lang-dotnet=\"`System`\" pulumi-lang-go=\"`system`\" pulumi-lang-python=\"`system`\" pulumi-lang-yaml=\"`system`\" pulumi-lang-java=\"`system`\" pulumi-lang-hcl=\"`system`\"\u003e`system`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`project`\" pulumi-lang-dotnet=\"`Project`\" pulumi-lang-go=\"`project`\" pulumi-lang-python=\"`project`\" pulumi-lang-yaml=\"`project`\" pulumi-lang-java=\"`project`\" pulumi-lang-hcl=\"`project`\"\u003e`project`\u003c/span\u003e. Default is \u003cspan pulumi-lang-nodejs=\"`system`\" pulumi-lang-dotnet=\"`System`\" pulumi-lang-go=\"`system`\" pulumi-lang-python=\"`system`\" pulumi-lang-yaml=\"`system`\" pulumi-lang-java=\"`system`\" pulumi-lang-hcl=\"`system`\"\u003e`system`\u003c/span\u003e.\n"
                     },
                     "name": {
                         "type": "string",
@@ -3145,11 +3190,11 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "level": {
                         "type": "string",
-                        "description": "Level of the robot account, currently either `system` or `project`. Default is `system`.\n"
+                        "description": "Level of the robot account, currently either \u003cspan pulumi-lang-nodejs=\"`system`\" pulumi-lang-dotnet=\"`System`\" pulumi-lang-go=\"`system`\" pulumi-lang-python=\"`system`\" pulumi-lang-yaml=\"`system`\" pulumi-lang-java=\"`system`\" pulumi-lang-hcl=\"`system`\"\u003e`system`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`project`\" pulumi-lang-dotnet=\"`Project`\" pulumi-lang-go=\"`project`\" pulumi-lang-python=\"`project`\" pulumi-lang-yaml=\"`project`\" pulumi-lang-java=\"`project`\" pulumi-lang-hcl=\"`project`\"\u003e`project`\u003c/span\u003e. Default is \u003cspan pulumi-lang-nodejs=\"`system`\" pulumi-lang-dotnet=\"`System`\" pulumi-lang-go=\"`system`\" pulumi-lang-python=\"`system`\" pulumi-lang-yaml=\"`system`\" pulumi-lang-java=\"`system`\" pulumi-lang-hcl=\"`system`\"\u003e`system`\u003c/span\u003e.\n"
                     },
                     "name": {
                         "type": "string",
@@ -3198,7 +3243,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource."
                     },
                     "username": {
                         "type": "string",
@@ -3224,7 +3269,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:harbor"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:harbor/terraformConfig",

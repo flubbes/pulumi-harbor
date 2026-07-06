@@ -15,7 +15,7 @@ namespace Pulumiverse.Harbor.Outputs
     public sealed class ReplicationFilter
     {
         /// <summary>
-        /// Matches or excludes the result. Can be one of the following. `matches`, `excludes`
+        /// Matches or excludes the result. Can be one of the following. `Matches`, `Excludes`
         /// </summary>
         public readonly string? Decoration;
         /// <summary>
@@ -27,7 +27,7 @@ namespace Pulumiverse.Harbor.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Filter on the resource type. Can be one of the following types. `chart`, `artifact`
+        /// Filter on the resource type. Can be one of the following types. `Chart`, `Artifact`
         /// </summary>
         public readonly string? Resource;
         /// <summary>

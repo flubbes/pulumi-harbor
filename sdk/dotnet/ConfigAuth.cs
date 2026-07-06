@@ -23,7 +23,7 @@ namespace Pulumiverse.Harbor
     public partial class ConfigAuth : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Harbor authentication mode. Can be `"oidc_auth"`, `"db_auth"` or `"ldap_auth"`. (Default: `"db_auth"`)
+        /// Harbor authentication mode. Can be `"OidcAuth"`, `"DbAuth"` or `"LdapAuth"`. (Default: `"DbAuth"`)
         /// </summary>
         [Output("authMode")]
         public Output<string> AuthMode { get; private set; } = null!;
@@ -85,6 +85,12 @@ namespace Pulumiverse.Harbor
         [Output("oidcClientSecret")]
         public Output<string?> OidcClientSecret { get; private set; } = null!;
 
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// </summary>
+        [Output("oidcClientSecretWo")]
+        public Output<string?> OidcClientSecretWo { get; private set; } = null!;
+
         [Output("oidcClientSecretWoVersion")]
         public Output<int?> OidcClientSecretWoVersion { get; private set; } = null!;
 
@@ -143,6 +149,7 @@ namespace Pulumiverse.Harbor
                 {
                     "ldapSearchPassword",
                     "oidcClientSecret",
+                    "oidcClientSecretWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -168,7 +175,7 @@ namespace Pulumiverse.Harbor
     public sealed class ConfigAuthArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Harbor authentication mode. Can be `"oidc_auth"`, `"db_auth"` or `"ldap_auth"`. (Default: `"db_auth"`)
+        /// Harbor authentication mode. Can be `"OidcAuth"`, `"DbAuth"` or `"LdapAuth"`. (Default: `"DbAuth"`)
         /// </summary>
         [Input("authMode", required: true)]
         public Input<string> AuthMode { get; set; } = null!;
@@ -248,6 +255,22 @@ namespace Pulumiverse.Harbor
             }
         }
 
+        [Input("oidcClientSecretWo")]
+        private Input<string>? _oidcClientSecretWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// </summary>
+        public Input<string>? OidcClientSecretWo
+        {
+            get => _oidcClientSecretWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _oidcClientSecretWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("oidcClientSecretWoVersion")]
         public Input<int>? OidcClientSecretWoVersion { get; set; }
 
@@ -287,7 +310,7 @@ namespace Pulumiverse.Harbor
     public sealed class ConfigAuthState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Harbor authentication mode. Can be `"oidc_auth"`, `"db_auth"` or `"ldap_auth"`. (Default: `"db_auth"`)
+        /// Harbor authentication mode. Can be `"OidcAuth"`, `"DbAuth"` or `"LdapAuth"`. (Default: `"DbAuth"`)
         /// </summary>
         [Input("authMode")]
         public Input<string>? AuthMode { get; set; }
@@ -364,6 +387,22 @@ namespace Pulumiverse.Harbor
             {
                 var emptySecret = Output.CreateSecret(0);
                 _oidcClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("oidcClientSecretWo")]
+        private Input<string>? _oidcClientSecretWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// </summary>
+        public Input<string>? OidcClientSecretWo
+        {
+            get => _oidcClientSecretWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _oidcClientSecretWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
 

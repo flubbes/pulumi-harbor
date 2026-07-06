@@ -26,13 +26,13 @@ namespace Pulumiverse.Harbor
         public Output<string> Action { get; private set; } = null!;
 
         /// <summary>
-        /// Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
+        /// Specify whether to enable the artifact blobs copied by chunks. (Default: `False`)
         /// </summary>
         [Output("copyByChunk")]
         public Output<bool?> CopyByChunk { get; private set; } = null!;
 
         /// <summary>
-        /// Specify whether to delete the remote resources when locally deleted. (Default: `false`)
+        /// Specify whether to delete the remote resources when locally deleted. (Default: `False`)
         /// </summary>
         [Output("deletion")]
         public Output<bool?> Deletion { get; private set; } = null!;
@@ -56,13 +56,13 @@ namespace Pulumiverse.Harbor
         public Output<int?> DestNamespaceReplace { get; private set; } = null!;
 
         /// <summary>
-        /// Specify whether the replication is enabled. (Default: `true`)
+        /// Specify whether the replication is enabled. (Default: `True`)
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Specify whether to execute the replication rule if new or modified. (Default: `false`)
+        /// Specify whether to execute the replication rule if new or modified. (Default: `False`)
         /// </summary>
         [Output("executeOnChanged")]
         public Output<bool?> ExecuteOnChanged { get; private set; } = null!;
@@ -77,7 +77,7 @@ namespace Pulumiverse.Harbor
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)
+        /// Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `True`)
         /// </summary>
         [Output("override")]
         public Output<bool?> Override { get; private set; } = null!;
@@ -92,13 +92,13 @@ namespace Pulumiverse.Harbor
         public Output<int> ReplicationPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `event_based`, `manual`, `cron format` (Default: `manual`)
+        /// The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `EventBased`, `Manual`, `cron format` (Default: `Manual`)
         /// </summary>
         [Output("schedule")]
         public Output<string?> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// , prevent parallel runs under the same replication. (Default: `false`)
+        /// , prevent parallel runs under the same replication. (Default: `False`)
         /// </summary>
         [Output("singleActiveReplication")]
         public Output<bool?> SingleActiveReplication { get; private set; } = null!;
@@ -160,13 +160,13 @@ namespace Pulumiverse.Harbor
         public Input<string> Action { get; set; } = null!;
 
         /// <summary>
-        /// Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
+        /// Specify whether to enable the artifact blobs copied by chunks. (Default: `False`)
         /// </summary>
         [Input("copyByChunk")]
         public Input<bool>? CopyByChunk { get; set; }
 
         /// <summary>
-        /// Specify whether to delete the remote resources when locally deleted. (Default: `false`)
+        /// Specify whether to delete the remote resources when locally deleted. (Default: `False`)
         /// </summary>
         [Input("deletion")]
         public Input<bool>? Deletion { get; set; }
@@ -190,13 +190,13 @@ namespace Pulumiverse.Harbor
         public Input<int>? DestNamespaceReplace { get; set; }
 
         /// <summary>
-        /// Specify whether the replication is enabled. (Default: `true`)
+        /// Specify whether the replication is enabled. (Default: `True`)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Specify whether to execute the replication rule if new or modified. (Default: `false`)
+        /// Specify whether to execute the replication rule if new or modified. (Default: `False`)
         /// </summary>
         [Input("executeOnChanged")]
         public Input<bool>? ExecuteOnChanged { get; set; }
@@ -216,7 +216,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)
+        /// Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `True`)
         /// </summary>
         [Input("override")]
         public Input<bool>? Override { get; set; }
@@ -228,13 +228,13 @@ namespace Pulumiverse.Harbor
         public Input<int> RegistryId { get; set; } = null!;
 
         /// <summary>
-        /// The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `event_based`, `manual`, `cron format` (Default: `manual`)
+        /// The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `EventBased`, `Manual`, `cron format` (Default: `Manual`)
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
         /// <summary>
-        /// , prevent parallel runs under the same replication. (Default: `false`)
+        /// , prevent parallel runs under the same replication. (Default: `False`)
         /// </summary>
         [Input("singleActiveReplication")]
         public Input<bool>? SingleActiveReplication { get; set; }
@@ -257,13 +257,13 @@ namespace Pulumiverse.Harbor
         public Input<string>? Action { get; set; }
 
         /// <summary>
-        /// Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
+        /// Specify whether to enable the artifact blobs copied by chunks. (Default: `False`)
         /// </summary>
         [Input("copyByChunk")]
         public Input<bool>? CopyByChunk { get; set; }
 
         /// <summary>
-        /// Specify whether to delete the remote resources when locally deleted. (Default: `false`)
+        /// Specify whether to delete the remote resources when locally deleted. (Default: `False`)
         /// </summary>
         [Input("deletion")]
         public Input<bool>? Deletion { get; set; }
@@ -287,13 +287,13 @@ namespace Pulumiverse.Harbor
         public Input<int>? DestNamespaceReplace { get; set; }
 
         /// <summary>
-        /// Specify whether the replication is enabled. (Default: `true`)
+        /// Specify whether the replication is enabled. (Default: `True`)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Specify whether to execute the replication rule if new or modified. (Default: `false`)
+        /// Specify whether to execute the replication rule if new or modified. (Default: `False`)
         /// </summary>
         [Input("executeOnChanged")]
         public Input<bool>? ExecuteOnChanged { get; set; }
@@ -313,7 +313,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)
+        /// Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `True`)
         /// </summary>
         [Input("override")]
         public Input<bool>? Override { get; set; }
@@ -328,13 +328,13 @@ namespace Pulumiverse.Harbor
         public Input<int>? ReplicationPolicyId { get; set; }
 
         /// <summary>
-        /// The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `event_based`, `manual`, `cron format` (Default: `manual`)
+        /// The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `EventBased`, `Manual`, `cron format` (Default: `Manual`)
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
         /// <summary>
-        /// , prevent parallel runs under the same replication. (Default: `false`)
+        /// , prevent parallel runs under the same replication. (Default: `False`)
         /// </summary>
         [Input("singleActiveReplication")]
         public Input<bool>? SingleActiveReplication { get; set; }

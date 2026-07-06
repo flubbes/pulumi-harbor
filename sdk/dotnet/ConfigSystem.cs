@@ -26,7 +26,7 @@ namespace Pulumiverse.Harbor
         public Output<Outputs.ConfigSystemBannerMessage?> BannerMessage { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.
+        /// Whether or not webhook/notification functionality is enabled globally. When `False`, all project-level webhook policies are silently ignored. Defaults to `True`.
         /// </summary>
         [Output("notificationEnable")]
         public Output<bool?> NotificationEnable { get; private set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumiverse.Harbor
         public Input<Inputs.ConfigSystemBannerMessageArgs>? BannerMessage { get; set; }
 
         /// <summary>
-        /// Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.
+        /// Whether or not webhook/notification functionality is enabled globally. When `False`, all project-level webhook policies are silently ignored. Defaults to `True`.
         /// </summary>
         [Input("notificationEnable")]
         public Input<bool>? NotificationEnable { get; set; }
@@ -195,7 +195,7 @@ namespace Pulumiverse.Harbor
         public Input<Inputs.ConfigSystemBannerMessageGetArgs>? BannerMessage { get; set; }
 
         /// <summary>
-        /// Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.
+        /// Whether or not webhook/notification functionality is enabled globally. When `False`, all project-level webhook policies are silently ignored. Defaults to `True`.
         /// </summary>
         [Input("notificationEnable")]
         public Input<bool>? NotificationEnable { get; set; }

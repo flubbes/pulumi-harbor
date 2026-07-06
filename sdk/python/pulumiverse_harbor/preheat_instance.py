@@ -411,7 +411,7 @@ class PreheatInstance(pulumi.CustomResource):
 
         ## Import
 
-        The `harbor_preheat_instance` resource can be imported using the preheat instance ID.
+        The `PreheatInstance` resource can be imported using the preheat instance ID.
 
         ```sh
         $ pulumi import harbor:index/preheatInstance:PreheatInstance example /p2p/preheat/instances/example-preheat-instance
@@ -447,7 +447,7 @@ class PreheatInstance(pulumi.CustomResource):
 
         ## Import
 
-        The `harbor_preheat_instance` resource can be imported using the preheat instance ID.
+        The `PreheatInstance` resource can be imported using the preheat instance ID.
 
         ```sh
         $ pulumi import harbor:index/preheatInstance:PreheatInstance example /p2p/preheat/instances/example-preheat-instance

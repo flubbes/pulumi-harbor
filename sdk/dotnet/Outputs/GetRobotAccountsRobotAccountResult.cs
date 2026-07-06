@@ -22,7 +22,7 @@ namespace Pulumiverse.Harbor.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Level of the robot account, currently either `system` or `project`. Default is `system`.
+        /// Level of the robot account, currently either `System` or `Project`. Default is `System`.
         /// </summary>
         public readonly string Level;
         /// <summary>

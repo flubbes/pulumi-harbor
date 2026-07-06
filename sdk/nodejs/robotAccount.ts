@@ -94,6 +94,11 @@ export class RobotAccount extends pulumi.CustomResource {
      */
     declare public readonly secret: pulumi.Output<string>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative for `secret`. Must be used together with `secretWoVersion`.
+     */
+    declare public readonly secretWo: pulumi.Output<string | undefined>;
+    /**
      * Rotation trigger for write-only secret updates. Must be used together with `secretWo`.
      */
     declare public readonly secretWoVersion: pulumi.Output<number | undefined>;
@@ -120,6 +125,7 @@ export class RobotAccount extends pulumi.CustomResource {
             resourceInputs["permissions"] = state?.permissions;
             resourceInputs["robotId"] = state?.robotId;
             resourceInputs["secret"] = state?.secret;
+            resourceInputs["secretWo"] = state?.secretWo;
             resourceInputs["secretWoVersion"] = state?.secretWoVersion;
         } else {
             const args = argsOrState as RobotAccountArgs | undefined;
@@ -136,12 +142,13 @@ export class RobotAccount extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["permissions"] = args?.permissions;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
+            resourceInputs["secretWo"] = args?.secretWo ? pulumi.secret(args.secretWo) : undefined;
             resourceInputs["secretWoVersion"] = args?.secretWoVersion;
             resourceInputs["fullName"] = undefined /*out*/;
             resourceInputs["robotId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["secret"] };
+        const secretOpts = { additionalSecretOutputs: ["secret", "secretWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(RobotAccount.__pulumiType, name, resourceInputs, opts);
     }
@@ -179,6 +186,11 @@ export interface RobotAccountState {
      */
     secret?: pulumi.Input<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative for `secret`. Must be used together with `secretWoVersion`.
+     */
+    secretWo?: pulumi.Input<string | undefined>;
+    /**
      * Rotation trigger for write-only secret updates. Must be used together with `secretWo`.
      */
     secretWoVersion?: pulumi.Input<number | undefined>;
@@ -213,6 +225,11 @@ export interface RobotAccountArgs {
      * The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
      */
     secret?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative for `secret`. Must be used together with `secretWoVersion`.
+     */
+    secretWo?: pulumi.Input<string | undefined>;
     /**
      * Rotation trigger for write-only secret updates. Must be used together with `secretWo`.
      */

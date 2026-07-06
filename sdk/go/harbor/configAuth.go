@@ -23,26 +23,28 @@ type ConfigAuth struct {
 	pulumi.CustomResourceState
 
 	// Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
-	AuthMode                  pulumi.StringOutput    `pulumi:"authMode"`
-	LdapBaseDn                pulumi.StringPtrOutput `pulumi:"ldapBaseDn"`
-	LdapFilter                pulumi.StringPtrOutput `pulumi:"ldapFilter"`
-	LdapGroupAdminDn          pulumi.StringPtrOutput `pulumi:"ldapGroupAdminDn"`
-	LdapGroupBaseDn           pulumi.StringPtrOutput `pulumi:"ldapGroupBaseDn"`
-	LdapGroupFilter           pulumi.StringPtrOutput `pulumi:"ldapGroupFilter"`
-	LdapGroupGid              pulumi.StringPtrOutput `pulumi:"ldapGroupGid"`
-	LdapGroupMembership       pulumi.StringPtrOutput `pulumi:"ldapGroupMembership"`
-	LdapGroupScope            pulumi.StringPtrOutput `pulumi:"ldapGroupScope"`
-	LdapGroupUid              pulumi.StringPtrOutput `pulumi:"ldapGroupUid"`
-	LdapScope                 pulumi.StringPtrOutput `pulumi:"ldapScope"`
-	LdapSearchDn              pulumi.StringPtrOutput `pulumi:"ldapSearchDn"`
-	LdapSearchPassword        pulumi.StringPtrOutput `pulumi:"ldapSearchPassword"`
-	LdapUid                   pulumi.StringPtrOutput `pulumi:"ldapUid"`
-	LdapUrl                   pulumi.StringPtrOutput `pulumi:"ldapUrl"`
-	LdapVerifyCert            pulumi.BoolPtrOutput   `pulumi:"ldapVerifyCert"`
-	OidcAdminGroup            pulumi.StringPtrOutput `pulumi:"oidcAdminGroup"`
-	OidcAutoOnboard           pulumi.BoolPtrOutput   `pulumi:"oidcAutoOnboard"`
-	OidcClientId              pulumi.StringPtrOutput `pulumi:"oidcClientId"`
-	OidcClientSecret          pulumi.StringPtrOutput `pulumi:"oidcClientSecret"`
+	AuthMode            pulumi.StringOutput    `pulumi:"authMode"`
+	LdapBaseDn          pulumi.StringPtrOutput `pulumi:"ldapBaseDn"`
+	LdapFilter          pulumi.StringPtrOutput `pulumi:"ldapFilter"`
+	LdapGroupAdminDn    pulumi.StringPtrOutput `pulumi:"ldapGroupAdminDn"`
+	LdapGroupBaseDn     pulumi.StringPtrOutput `pulumi:"ldapGroupBaseDn"`
+	LdapGroupFilter     pulumi.StringPtrOutput `pulumi:"ldapGroupFilter"`
+	LdapGroupGid        pulumi.StringPtrOutput `pulumi:"ldapGroupGid"`
+	LdapGroupMembership pulumi.StringPtrOutput `pulumi:"ldapGroupMembership"`
+	LdapGroupScope      pulumi.StringPtrOutput `pulumi:"ldapGroupScope"`
+	LdapGroupUid        pulumi.StringPtrOutput `pulumi:"ldapGroupUid"`
+	LdapScope           pulumi.StringPtrOutput `pulumi:"ldapScope"`
+	LdapSearchDn        pulumi.StringPtrOutput `pulumi:"ldapSearchDn"`
+	LdapSearchPassword  pulumi.StringPtrOutput `pulumi:"ldapSearchPassword"`
+	LdapUid             pulumi.StringPtrOutput `pulumi:"ldapUid"`
+	LdapUrl             pulumi.StringPtrOutput `pulumi:"ldapUrl"`
+	LdapVerifyCert      pulumi.BoolPtrOutput   `pulumi:"ldapVerifyCert"`
+	OidcAdminGroup      pulumi.StringPtrOutput `pulumi:"oidcAdminGroup"`
+	OidcAutoOnboard     pulumi.BoolPtrOutput   `pulumi:"oidcAutoOnboard"`
+	OidcClientId        pulumi.StringPtrOutput `pulumi:"oidcClientId"`
+	OidcClientSecret    pulumi.StringPtrOutput `pulumi:"oidcClientSecret"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	OidcClientSecretWo        pulumi.StringPtrOutput `pulumi:"oidcClientSecretWo"`
 	OidcClientSecretWoVersion pulumi.IntPtrOutput    `pulumi:"oidcClientSecretWoVersion"`
 	OidcEndpoint              pulumi.StringPtrOutput `pulumi:"oidcEndpoint"`
 	OidcGroupFilter           pulumi.StringPtrOutput `pulumi:"oidcGroupFilter"`
@@ -71,9 +73,13 @@ func NewConfigAuth(ctx *pulumi.Context,
 	if args.OidcClientSecret != nil {
 		args.OidcClientSecret = pulumi.ToSecret(args.OidcClientSecret).(pulumi.StringPtrInput)
 	}
+	if args.OidcClientSecretWo != nil {
+		args.OidcClientSecretWo = pulumi.ToSecret(args.OidcClientSecretWo).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"ldapSearchPassword",
 		"oidcClientSecret",
+		"oidcClientSecretWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -100,26 +106,28 @@ func GetConfigAuth(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ConfigAuth resources.
 type configAuthState struct {
 	// Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
-	AuthMode                  *string `pulumi:"authMode"`
-	LdapBaseDn                *string `pulumi:"ldapBaseDn"`
-	LdapFilter                *string `pulumi:"ldapFilter"`
-	LdapGroupAdminDn          *string `pulumi:"ldapGroupAdminDn"`
-	LdapGroupBaseDn           *string `pulumi:"ldapGroupBaseDn"`
-	LdapGroupFilter           *string `pulumi:"ldapGroupFilter"`
-	LdapGroupGid              *string `pulumi:"ldapGroupGid"`
-	LdapGroupMembership       *string `pulumi:"ldapGroupMembership"`
-	LdapGroupScope            *string `pulumi:"ldapGroupScope"`
-	LdapGroupUid              *string `pulumi:"ldapGroupUid"`
-	LdapScope                 *string `pulumi:"ldapScope"`
-	LdapSearchDn              *string `pulumi:"ldapSearchDn"`
-	LdapSearchPassword        *string `pulumi:"ldapSearchPassword"`
-	LdapUid                   *string `pulumi:"ldapUid"`
-	LdapUrl                   *string `pulumi:"ldapUrl"`
-	LdapVerifyCert            *bool   `pulumi:"ldapVerifyCert"`
-	OidcAdminGroup            *string `pulumi:"oidcAdminGroup"`
-	OidcAutoOnboard           *bool   `pulumi:"oidcAutoOnboard"`
-	OidcClientId              *string `pulumi:"oidcClientId"`
-	OidcClientSecret          *string `pulumi:"oidcClientSecret"`
+	AuthMode            *string `pulumi:"authMode"`
+	LdapBaseDn          *string `pulumi:"ldapBaseDn"`
+	LdapFilter          *string `pulumi:"ldapFilter"`
+	LdapGroupAdminDn    *string `pulumi:"ldapGroupAdminDn"`
+	LdapGroupBaseDn     *string `pulumi:"ldapGroupBaseDn"`
+	LdapGroupFilter     *string `pulumi:"ldapGroupFilter"`
+	LdapGroupGid        *string `pulumi:"ldapGroupGid"`
+	LdapGroupMembership *string `pulumi:"ldapGroupMembership"`
+	LdapGroupScope      *string `pulumi:"ldapGroupScope"`
+	LdapGroupUid        *string `pulumi:"ldapGroupUid"`
+	LdapScope           *string `pulumi:"ldapScope"`
+	LdapSearchDn        *string `pulumi:"ldapSearchDn"`
+	LdapSearchPassword  *string `pulumi:"ldapSearchPassword"`
+	LdapUid             *string `pulumi:"ldapUid"`
+	LdapUrl             *string `pulumi:"ldapUrl"`
+	LdapVerifyCert      *bool   `pulumi:"ldapVerifyCert"`
+	OidcAdminGroup      *string `pulumi:"oidcAdminGroup"`
+	OidcAutoOnboard     *bool   `pulumi:"oidcAutoOnboard"`
+	OidcClientId        *string `pulumi:"oidcClientId"`
+	OidcClientSecret    *string `pulumi:"oidcClientSecret"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	OidcClientSecretWo        *string `pulumi:"oidcClientSecretWo"`
 	OidcClientSecretWoVersion *int    `pulumi:"oidcClientSecretWoVersion"`
 	OidcEndpoint              *string `pulumi:"oidcEndpoint"`
 	OidcGroupFilter           *string `pulumi:"oidcGroupFilter"`
@@ -134,26 +142,28 @@ type configAuthState struct {
 
 type ConfigAuthState struct {
 	// Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
-	AuthMode                  pulumi.StringPtrInput
-	LdapBaseDn                pulumi.StringPtrInput
-	LdapFilter                pulumi.StringPtrInput
-	LdapGroupAdminDn          pulumi.StringPtrInput
-	LdapGroupBaseDn           pulumi.StringPtrInput
-	LdapGroupFilter           pulumi.StringPtrInput
-	LdapGroupGid              pulumi.StringPtrInput
-	LdapGroupMembership       pulumi.StringPtrInput
-	LdapGroupScope            pulumi.StringPtrInput
-	LdapGroupUid              pulumi.StringPtrInput
-	LdapScope                 pulumi.StringPtrInput
-	LdapSearchDn              pulumi.StringPtrInput
-	LdapSearchPassword        pulumi.StringPtrInput
-	LdapUid                   pulumi.StringPtrInput
-	LdapUrl                   pulumi.StringPtrInput
-	LdapVerifyCert            pulumi.BoolPtrInput
-	OidcAdminGroup            pulumi.StringPtrInput
-	OidcAutoOnboard           pulumi.BoolPtrInput
-	OidcClientId              pulumi.StringPtrInput
-	OidcClientSecret          pulumi.StringPtrInput
+	AuthMode            pulumi.StringPtrInput
+	LdapBaseDn          pulumi.StringPtrInput
+	LdapFilter          pulumi.StringPtrInput
+	LdapGroupAdminDn    pulumi.StringPtrInput
+	LdapGroupBaseDn     pulumi.StringPtrInput
+	LdapGroupFilter     pulumi.StringPtrInput
+	LdapGroupGid        pulumi.StringPtrInput
+	LdapGroupMembership pulumi.StringPtrInput
+	LdapGroupScope      pulumi.StringPtrInput
+	LdapGroupUid        pulumi.StringPtrInput
+	LdapScope           pulumi.StringPtrInput
+	LdapSearchDn        pulumi.StringPtrInput
+	LdapSearchPassword  pulumi.StringPtrInput
+	LdapUid             pulumi.StringPtrInput
+	LdapUrl             pulumi.StringPtrInput
+	LdapVerifyCert      pulumi.BoolPtrInput
+	OidcAdminGroup      pulumi.StringPtrInput
+	OidcAutoOnboard     pulumi.BoolPtrInput
+	OidcClientId        pulumi.StringPtrInput
+	OidcClientSecret    pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	OidcClientSecretWo        pulumi.StringPtrInput
 	OidcClientSecretWoVersion pulumi.IntPtrInput
 	OidcEndpoint              pulumi.StringPtrInput
 	OidcGroupFilter           pulumi.StringPtrInput
@@ -172,26 +182,28 @@ func (ConfigAuthState) ElementType() reflect.Type {
 
 type configAuthArgs struct {
 	// Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
-	AuthMode                  string  `pulumi:"authMode"`
-	LdapBaseDn                *string `pulumi:"ldapBaseDn"`
-	LdapFilter                *string `pulumi:"ldapFilter"`
-	LdapGroupAdminDn          *string `pulumi:"ldapGroupAdminDn"`
-	LdapGroupBaseDn           *string `pulumi:"ldapGroupBaseDn"`
-	LdapGroupFilter           *string `pulumi:"ldapGroupFilter"`
-	LdapGroupGid              *string `pulumi:"ldapGroupGid"`
-	LdapGroupMembership       *string `pulumi:"ldapGroupMembership"`
-	LdapGroupScope            *string `pulumi:"ldapGroupScope"`
-	LdapGroupUid              *string `pulumi:"ldapGroupUid"`
-	LdapScope                 *string `pulumi:"ldapScope"`
-	LdapSearchDn              *string `pulumi:"ldapSearchDn"`
-	LdapSearchPassword        *string `pulumi:"ldapSearchPassword"`
-	LdapUid                   *string `pulumi:"ldapUid"`
-	LdapUrl                   *string `pulumi:"ldapUrl"`
-	LdapVerifyCert            *bool   `pulumi:"ldapVerifyCert"`
-	OidcAdminGroup            *string `pulumi:"oidcAdminGroup"`
-	OidcAutoOnboard           *bool   `pulumi:"oidcAutoOnboard"`
-	OidcClientId              *string `pulumi:"oidcClientId"`
-	OidcClientSecret          *string `pulumi:"oidcClientSecret"`
+	AuthMode            string  `pulumi:"authMode"`
+	LdapBaseDn          *string `pulumi:"ldapBaseDn"`
+	LdapFilter          *string `pulumi:"ldapFilter"`
+	LdapGroupAdminDn    *string `pulumi:"ldapGroupAdminDn"`
+	LdapGroupBaseDn     *string `pulumi:"ldapGroupBaseDn"`
+	LdapGroupFilter     *string `pulumi:"ldapGroupFilter"`
+	LdapGroupGid        *string `pulumi:"ldapGroupGid"`
+	LdapGroupMembership *string `pulumi:"ldapGroupMembership"`
+	LdapGroupScope      *string `pulumi:"ldapGroupScope"`
+	LdapGroupUid        *string `pulumi:"ldapGroupUid"`
+	LdapScope           *string `pulumi:"ldapScope"`
+	LdapSearchDn        *string `pulumi:"ldapSearchDn"`
+	LdapSearchPassword  *string `pulumi:"ldapSearchPassword"`
+	LdapUid             *string `pulumi:"ldapUid"`
+	LdapUrl             *string `pulumi:"ldapUrl"`
+	LdapVerifyCert      *bool   `pulumi:"ldapVerifyCert"`
+	OidcAdminGroup      *string `pulumi:"oidcAdminGroup"`
+	OidcAutoOnboard     *bool   `pulumi:"oidcAutoOnboard"`
+	OidcClientId        *string `pulumi:"oidcClientId"`
+	OidcClientSecret    *string `pulumi:"oidcClientSecret"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	OidcClientSecretWo        *string `pulumi:"oidcClientSecretWo"`
 	OidcClientSecretWoVersion *int    `pulumi:"oidcClientSecretWoVersion"`
 	OidcEndpoint              *string `pulumi:"oidcEndpoint"`
 	OidcGroupFilter           *string `pulumi:"oidcGroupFilter"`
@@ -207,26 +219,28 @@ type configAuthArgs struct {
 // The set of arguments for constructing a ConfigAuth resource.
 type ConfigAuthArgs struct {
 	// Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
-	AuthMode                  pulumi.StringInput
-	LdapBaseDn                pulumi.StringPtrInput
-	LdapFilter                pulumi.StringPtrInput
-	LdapGroupAdminDn          pulumi.StringPtrInput
-	LdapGroupBaseDn           pulumi.StringPtrInput
-	LdapGroupFilter           pulumi.StringPtrInput
-	LdapGroupGid              pulumi.StringPtrInput
-	LdapGroupMembership       pulumi.StringPtrInput
-	LdapGroupScope            pulumi.StringPtrInput
-	LdapGroupUid              pulumi.StringPtrInput
-	LdapScope                 pulumi.StringPtrInput
-	LdapSearchDn              pulumi.StringPtrInput
-	LdapSearchPassword        pulumi.StringPtrInput
-	LdapUid                   pulumi.StringPtrInput
-	LdapUrl                   pulumi.StringPtrInput
-	LdapVerifyCert            pulumi.BoolPtrInput
-	OidcAdminGroup            pulumi.StringPtrInput
-	OidcAutoOnboard           pulumi.BoolPtrInput
-	OidcClientId              pulumi.StringPtrInput
-	OidcClientSecret          pulumi.StringPtrInput
+	AuthMode            pulumi.StringInput
+	LdapBaseDn          pulumi.StringPtrInput
+	LdapFilter          pulumi.StringPtrInput
+	LdapGroupAdminDn    pulumi.StringPtrInput
+	LdapGroupBaseDn     pulumi.StringPtrInput
+	LdapGroupFilter     pulumi.StringPtrInput
+	LdapGroupGid        pulumi.StringPtrInput
+	LdapGroupMembership pulumi.StringPtrInput
+	LdapGroupScope      pulumi.StringPtrInput
+	LdapGroupUid        pulumi.StringPtrInput
+	LdapScope           pulumi.StringPtrInput
+	LdapSearchDn        pulumi.StringPtrInput
+	LdapSearchPassword  pulumi.StringPtrInput
+	LdapUid             pulumi.StringPtrInput
+	LdapUrl             pulumi.StringPtrInput
+	LdapVerifyCert      pulumi.BoolPtrInput
+	OidcAdminGroup      pulumi.StringPtrInput
+	OidcAutoOnboard     pulumi.BoolPtrInput
+	OidcClientId        pulumi.StringPtrInput
+	OidcClientSecret    pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	OidcClientSecretWo        pulumi.StringPtrInput
 	OidcClientSecretWoVersion pulumi.IntPtrInput
 	OidcEndpoint              pulumi.StringPtrInput
 	OidcGroupFilter           pulumi.StringPtrInput
@@ -405,6 +419,11 @@ func (o ConfigAuthOutput) OidcClientId() pulumi.StringPtrOutput {
 
 func (o ConfigAuthOutput) OidcClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigAuth) pulumi.StringPtrOutput { return v.OidcClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+func (o ConfigAuthOutput) OidcClientSecretWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigAuth) pulumi.StringPtrOutput { return v.OidcClientSecretWo }).(pulumi.StringPtrOutput)
 }
 
 func (o ConfigAuthOutput) OidcClientSecretWoVersion() pulumi.IntPtrOutput {

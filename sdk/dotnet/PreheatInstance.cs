@@ -19,7 +19,7 @@ namespace Pulumiverse.Harbor
     /// 
     /// ## Import
     /// 
-    /// The `harbor_preheat_instance` resource can be imported using the preheat instance ID.
+    /// The `harbor.PreheatInstance` resource can be imported using the preheat instance ID.
     /// 
     /// ```sh
     /// $ pulumi import harbor:index/preheatInstance:PreheatInstance example /p2p/preheat/instances/example-preheat-instance
@@ -71,19 +71,19 @@ namespace Pulumiverse.Harbor
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The password for the preheat instance. Required if `auth_mode` is "BASIC". Defaults to an empty string.
+        /// The password for the preheat instance. Required if `AuthMode` is "BASIC". Defaults to an empty string.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The token for the preheat instance. Required if `auth_mode` is "OAUTH". Defaults to an empty string.
+        /// The token for the preheat instance. Required if `AuthMode` is "OAUTH". Defaults to an empty string.
         /// </summary>
         [Output("token")]
         public Output<string?> Token { get; private set; } = null!;
 
         /// <summary>
-        /// The username for the preheat instance. Required if `auth_mode` is "BASIC". Defaults to an empty string.
+        /// The username for the preheat instance. Required if `AuthMode` is "BASIC". Defaults to an empty string.
         /// </summary>
         [Output("username")]
         public Output<string?> Username { get; private set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumiverse.Harbor
         private Input<string>? _password;
 
         /// <summary>
-        /// The password for the preheat instance. Required if `auth_mode` is "BASIC". Defaults to an empty string.
+        /// The password for the preheat instance. Required if `AuthMode` is "BASIC". Defaults to an empty string.
         /// </summary>
         public Input<string>? Password
         {
@@ -208,7 +208,7 @@ namespace Pulumiverse.Harbor
         private Input<string>? _token;
 
         /// <summary>
-        /// The token for the preheat instance. Required if `auth_mode` is "OAUTH". Defaults to an empty string.
+        /// The token for the preheat instance. Required if `AuthMode` is "OAUTH". Defaults to an empty string.
         /// </summary>
         public Input<string>? Token
         {
@@ -221,7 +221,7 @@ namespace Pulumiverse.Harbor
         }
 
         /// <summary>
-        /// The username for the preheat instance. Required if `auth_mode` is "BASIC". Defaults to an empty string.
+        /// The username for the preheat instance. Required if `AuthMode` is "BASIC". Defaults to an empty string.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
@@ -286,7 +286,7 @@ namespace Pulumiverse.Harbor
         private Input<string>? _password;
 
         /// <summary>
-        /// The password for the preheat instance. Required if `auth_mode` is "BASIC". Defaults to an empty string.
+        /// The password for the preheat instance. Required if `AuthMode` is "BASIC". Defaults to an empty string.
         /// </summary>
         public Input<string>? Password
         {
@@ -302,7 +302,7 @@ namespace Pulumiverse.Harbor
         private Input<string>? _token;
 
         /// <summary>
-        /// The token for the preheat instance. Required if `auth_mode` is "OAUTH". Defaults to an empty string.
+        /// The token for the preheat instance. Required if `AuthMode` is "OAUTH". Defaults to an empty string.
         /// </summary>
         public Input<string>? Token
         {
@@ -315,7 +315,7 @@ namespace Pulumiverse.Harbor
         }
 
         /// <summary>
-        /// The username for the preheat instance. Required if `auth_mode` is "BASIC". Defaults to an empty string.
+        /// The username for the preheat instance. Required if `AuthMode` is "BASIC". Defaults to an empty string.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

@@ -28,6 +28,7 @@ class RobotAccountArgs:
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a RobotAccount resource.
@@ -38,6 +39,8 @@ class RobotAccountArgs:
         :param pulumi.Input[_builtins.int] duration: By default, the robot account will not expire. Set it to the amount of days until the account should expire.
         :param pulumi.Input[_builtins.str] name: The name of the project that will be created in harbor.
         :param pulumi.Input[_builtins.str] secret: The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+        :param pulumi.Input[_builtins.str] secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only alternative for `secret`. Must be used together with `secret_wo_version`.
         :param pulumi.Input[_builtins.int] secret_wo_version: Rotation trigger for write-only secret updates. Must be used together with `secret_wo`.
         """
         pulumi.set(__self__, "level", level)
@@ -52,6 +55,8 @@ class RobotAccountArgs:
             pulumi.set(__self__, "name", name)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
+        if secret_wo is not None:
+            pulumi.set(__self__, "secret_wo", secret_wo)
         if secret_wo_version is not None:
             pulumi.set(__self__, "secret_wo_version", secret_wo_version)
 
@@ -137,6 +142,19 @@ class RobotAccountArgs:
         pulumi.set(self, "secret", value)
 
     @_builtins.property
+    @pulumi.getter(name="secretWo")
+    def secret_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only alternative for `secret`. Must be used together with `secret_wo_version`.
+        """
+        return pulumi.get(self, "secret_wo")
+
+    @secret_wo.setter
+    def secret_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "secret_wo", value)
+
+    @_builtins.property
     @pulumi.getter(name="secretWoVersion")
     def secret_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -161,6 +179,7 @@ class _RobotAccountState:
                  permissions: pulumi.Input[Optional[Sequence[pulumi.Input['RobotAccountPermissionArgs']]]] = None,
                  robot_id: pulumi.Input[Optional[_builtins.str]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RobotAccount resources.
@@ -171,6 +190,8 @@ class _RobotAccountState:
         :param pulumi.Input[_builtins.str] level: Level of the robot account, currently either `system` or `project`.
         :param pulumi.Input[_builtins.str] name: The name of the project that will be created in harbor.
         :param pulumi.Input[_builtins.str] secret: The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+        :param pulumi.Input[_builtins.str] secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only alternative for `secret`. Must be used together with `secret_wo_version`.
         :param pulumi.Input[_builtins.int] secret_wo_version: Rotation trigger for write-only secret updates. Must be used together with `secret_wo`.
         """
         if description is not None:
@@ -191,6 +212,8 @@ class _RobotAccountState:
             pulumi.set(__self__, "robot_id", robot_id)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
+        if secret_wo is not None:
+            pulumi.set(__self__, "secret_wo", secret_wo)
         if secret_wo_version is not None:
             pulumi.set(__self__, "secret_wo_version", secret_wo_version)
 
@@ -294,6 +317,19 @@ class _RobotAccountState:
         pulumi.set(self, "secret", value)
 
     @_builtins.property
+    @pulumi.getter(name="secretWo")
+    def secret_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only alternative for `secret`. Must be used together with `secret_wo_version`.
+        """
+        return pulumi.get(self, "secret_wo")
+
+    @secret_wo.setter
+    def secret_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "secret_wo", value)
+
+    @_builtins.property
     @pulumi.getter(name="secretWoVersion")
     def secret_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -319,6 +355,7 @@ class RobotAccount(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RobotAccountPermissionArgs', 'RobotAccountPermissionArgsDict']]]]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
@@ -362,6 +399,8 @@ class RobotAccount(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] level: Level of the robot account, currently either `system` or `project`.
         :param pulumi.Input[_builtins.str] name: The name of the project that will be created in harbor.
         :param pulumi.Input[_builtins.str] secret: The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+        :param pulumi.Input[_builtins.str] secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only alternative for `secret`. Must be used together with `secret_wo_version`.
         :param pulumi.Input[_builtins.int] secret_wo_version: Rotation trigger for write-only secret updates. Must be used together with `secret_wo`.
         """
         ...
@@ -425,6 +464,7 @@ class RobotAccount(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RobotAccountPermissionArgs', 'RobotAccountPermissionArgsDict']]]]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -446,10 +486,11 @@ class RobotAccount(pulumi.CustomResource):
                 raise TypeError("Missing required property 'permissions'")
             __props__.__dict__["permissions"] = permissions
             __props__.__dict__["secret"] = None if secret is None else pulumi.Output.secret(secret)
+            __props__.__dict__["secret_wo"] = None if secret_wo is None else pulumi.Output.secret(secret_wo)
             __props__.__dict__["secret_wo_version"] = secret_wo_version
             __props__.__dict__["full_name"] = None
             __props__.__dict__["robot_id"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret", "secretWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(RobotAccount, __self__).__init__(
             'harbor:index/robotAccount:RobotAccount',
@@ -470,6 +511,7 @@ class RobotAccount(pulumi.CustomResource):
             permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RobotAccountPermissionArgs', 'RobotAccountPermissionArgsDict']]]]] = None,
             robot_id: pulumi.Input[Optional[_builtins.str]] = None,
             secret: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
             secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None) -> 'RobotAccount':
         """
         Get an existing RobotAccount resource's state with the given name, id, and optional extra
@@ -484,6 +526,8 @@ class RobotAccount(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] level: Level of the robot account, currently either `system` or `project`.
         :param pulumi.Input[_builtins.str] name: The name of the project that will be created in harbor.
         :param pulumi.Input[_builtins.str] secret: The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+        :param pulumi.Input[_builtins.str] secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only alternative for `secret`. Must be used together with `secret_wo_version`.
         :param pulumi.Input[_builtins.int] secret_wo_version: Rotation trigger for write-only secret updates. Must be used together with `secret_wo`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -499,6 +543,7 @@ class RobotAccount(pulumi.CustomResource):
         __props__.__dict__["permissions"] = permissions
         __props__.__dict__["robot_id"] = robot_id
         __props__.__dict__["secret"] = secret
+        __props__.__dict__["secret_wo"] = secret_wo
         __props__.__dict__["secret_wo_version"] = secret_wo_version
         return RobotAccount(resource_name, opts=opts, __props__=__props__)
 
@@ -564,6 +609,15 @@ class RobotAccount(pulumi.CustomResource):
         The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
         """
         return pulumi.get(self, "secret")
+
+    @_builtins.property
+    @pulumi.getter(name="secretWo")
+    def secret_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only alternative for `secret`. Must be used together with `secret_wo_version`.
+        """
+        return pulumi.get(self, "secret_wo")
 
     @_builtins.property
     @pulumi.getter(name="secretWoVersion")

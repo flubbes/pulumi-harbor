@@ -44,7 +44,7 @@ namespace Pulumiverse.Harbor
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The notification type either `http` or `slack`.
+        /// The notification type either `Http` or `Slack`.
         /// </summary>
         [Output("notifyType")]
         public Output<string> NotifyType { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The notification type either `http` or `slack`.
+        /// The notification type either `Http` or `Slack`.
         /// </summary>
         [Input("notifyType", required: true)]
         public Input<string> NotifyType { get; set; } = null!;
@@ -201,7 +201,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The notification type either `http` or `slack`.
+        /// The notification type either `Http` or `Slack`.
         /// </summary>
         [Input("notifyType")]
         public Input<string>? NotifyType { get; set; }

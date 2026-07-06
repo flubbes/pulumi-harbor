@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import harbor:index/configSecurity:ConfigSecurity main "7"
  * ```
- *
  * Note that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records.
  */
 export class ConfigSecurity extends pulumi.CustomResource {

@@ -25,6 +25,7 @@ class UserArgs:
                  admin: pulumi.Input[Optional[_builtins.bool]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a User resource.
@@ -35,6 +36,8 @@ class UserArgs:
         :param pulumi.Input[_builtins.bool] admin: If the user will have admin rights within Harbor (Default: `false`)
         :param pulumi.Input[_builtins.str] comment: Any comments for that are need for the internal user.
         :param pulumi.Input[_builtins.str] password: The password for the internal user. Conflicts with `password_wo_version`.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only alternative for `password`. Must be used together with `password_wo_version`.
         :param pulumi.Input[_builtins.int] password_wo_version: Rotation trigger for write-only password updates. Must be used together with `password_wo`.
         """
         pulumi.set(__self__, "email", email)
@@ -46,6 +49,8 @@ class UserArgs:
             pulumi.set(__self__, "comment", comment)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
         if password_wo_version is not None:
             pulumi.set(__self__, "password_wo_version", password_wo_version)
 
@@ -122,6 +127,19 @@ class UserArgs:
         pulumi.set(self, "password", value)
 
     @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only alternative for `password`. Must be used together with `password_wo_version`.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @password_wo.setter
+    def password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password_wo", value)
+
+    @_builtins.property
     @pulumi.getter(name="passwordWoVersion")
     def password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -142,6 +160,7 @@ class _UserState:
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  full_name: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -152,6 +171,8 @@ class _UserState:
         :param pulumi.Input[_builtins.str] email: The email address of the internal user.
         :param pulumi.Input[_builtins.str] full_name: The Full Name of the internal user.
         :param pulumi.Input[_builtins.str] password: The password for the internal user. Conflicts with `password_wo_version`.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only alternative for `password`. Must be used together with `password_wo_version`.
         :param pulumi.Input[_builtins.int] password_wo_version: Rotation trigger for write-only password updates. Must be used together with `password_wo`.
         :param pulumi.Input[_builtins.str] username: The username of the internal user.
         """
@@ -165,6 +186,8 @@ class _UserState:
             pulumi.set(__self__, "full_name", full_name)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
         if password_wo_version is not None:
             pulumi.set(__self__, "password_wo_version", password_wo_version)
         if username is not None:
@@ -231,6 +254,19 @@ class _UserState:
         pulumi.set(self, "password", value)
 
     @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only alternative for `password`. Must be used together with `password_wo_version`.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @password_wo.setter
+    def password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password_wo", value)
+
+    @_builtins.property
     @pulumi.getter(name="passwordWoVersion")
     def password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -266,6 +302,7 @@ class User(pulumi.CustomResource):
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  full_name: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -290,6 +327,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] email: The email address of the internal user.
         :param pulumi.Input[_builtins.str] full_name: The Full Name of the internal user.
         :param pulumi.Input[_builtins.str] password: The password for the internal user. Conflicts with `password_wo_version`.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only alternative for `password`. Must be used together with `password_wo_version`.
         :param pulumi.Input[_builtins.int] password_wo_version: Rotation trigger for write-only password updates. Must be used together with `password_wo`.
         :param pulumi.Input[_builtins.str] username: The username of the internal user.
         """
@@ -333,6 +372,7 @@ class User(pulumi.CustomResource):
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  full_name: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -353,11 +393,12 @@ class User(pulumi.CustomResource):
                 raise TypeError("Missing required property 'full_name'")
             __props__.__dict__["full_name"] = full_name
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["password_wo"] = None if password_wo is None else pulumi.Output.secret(password_wo)
             __props__.__dict__["password_wo_version"] = password_wo_version
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "passwordWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(User, __self__).__init__(
             'harbor:index/user:User',
@@ -374,6 +415,7 @@ class User(pulumi.CustomResource):
             email: pulumi.Input[Optional[_builtins.str]] = None,
             full_name: pulumi.Input[Optional[_builtins.str]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo: pulumi.Input[Optional[_builtins.str]] = None,
             password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'User':
         """
@@ -388,6 +430,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] email: The email address of the internal user.
         :param pulumi.Input[_builtins.str] full_name: The Full Name of the internal user.
         :param pulumi.Input[_builtins.str] password: The password for the internal user. Conflicts with `password_wo_version`.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only alternative for `password`. Must be used together with `password_wo_version`.
         :param pulumi.Input[_builtins.int] password_wo_version: Rotation trigger for write-only password updates. Must be used together with `password_wo`.
         :param pulumi.Input[_builtins.str] username: The username of the internal user.
         """
@@ -400,6 +444,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["email"] = email
         __props__.__dict__["full_name"] = full_name
         __props__.__dict__["password"] = password
+        __props__.__dict__["password_wo"] = password_wo
         __props__.__dict__["password_wo_version"] = password_wo_version
         __props__.__dict__["username"] = username
         return User(resource_name, opts=opts, __props__=__props__)
@@ -443,6 +488,15 @@ class User(pulumi.CustomResource):
         The password for the internal user. Conflicts with `password_wo_version`.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only alternative for `password`. Must be used together with `password_wo_version`.
+        """
+        return pulumi.get(self, "password_wo")
 
     @_builtins.property
     @pulumi.getter(name="passwordWoVersion")

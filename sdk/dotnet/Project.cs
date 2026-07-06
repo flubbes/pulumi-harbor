@@ -27,7 +27,7 @@ namespace Pulumiverse.Harbor
     public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
+        /// Automatically generate SBOM for images pushed to this project. (Default: `False`) can only be used with Harbor version v2.11.0 and above
         /// </summary>
         [Output("autoSbomGeneration")]
         public Output<bool?> AutoSbomGeneration { get; private set; } = null!;
@@ -45,13 +45,13 @@ namespace Pulumiverse.Harbor
         public Output<string?> DeploymentSecurity { get; private set; } = null!;
 
         /// <summary>
-        /// Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
+        /// Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `False`).
         /// </summary>
         [Output("enableContentTrust")]
         public Output<bool?> EnableContentTrust { get; private set; } = null!;
 
         /// <summary>
-        /// Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
+        /// Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `False`)
         /// </summary>
         [Output("enableContentTrustCosign")]
         public Output<bool?> EnableContentTrustCosign { get; private set; } = null!;
@@ -78,7 +78,7 @@ namespace Pulumiverse.Harbor
         public Output<int?> ProxySpeedKb { get; private set; } = null!;
 
         /// <summary>
-        /// The project will be public accessibility.(Default: `false`)
+        /// The project will be public accessibility.(Default: `False`)
         /// </summary>
         [Output("public")]
         public Output<bool?> Public { get; private set; } = null!;
@@ -99,7 +99,7 @@ namespace Pulumiverse.Harbor
         public Output<string?> VulnerabilityScanner { get; private set; } = null!;
 
         /// <summary>
-        /// Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
+        /// Images will be scanned for vulnerabilities when push to harbor. (Default: `True`)
         /// </summary>
         [Output("vulnerabilityScanning")]
         public Output<bool?> VulnerabilityScanning { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumiverse.Harbor
     public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
+        /// Automatically generate SBOM for images pushed to this project. (Default: `False`) can only be used with Harbor version v2.11.0 and above
         /// </summary>
         [Input("autoSbomGeneration")]
         public Input<bool>? AutoSbomGeneration { get; set; }
@@ -176,13 +176,13 @@ namespace Pulumiverse.Harbor
         public Input<string>? DeploymentSecurity { get; set; }
 
         /// <summary>
-        /// Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
+        /// Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `False`).
         /// </summary>
         [Input("enableContentTrust")]
         public Input<bool>? EnableContentTrust { get; set; }
 
         /// <summary>
-        /// Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
+        /// Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `False`)
         /// </summary>
         [Input("enableContentTrustCosign")]
         public Input<bool>? EnableContentTrustCosign { get; set; }
@@ -206,7 +206,7 @@ namespace Pulumiverse.Harbor
         public Input<int>? ProxySpeedKb { get; set; }
 
         /// <summary>
-        /// The project will be public accessibility.(Default: `false`)
+        /// The project will be public accessibility.(Default: `False`)
         /// </summary>
         [Input("public")]
         public Input<bool>? Public { get; set; }
@@ -227,7 +227,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? VulnerabilityScanner { get; set; }
 
         /// <summary>
-        /// Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
+        /// Images will be scanned for vulnerabilities when push to harbor. (Default: `True`)
         /// </summary>
         [Input("vulnerabilityScanning")]
         public Input<bool>? VulnerabilityScanning { get; set; }
@@ -241,7 +241,7 @@ namespace Pulumiverse.Harbor
     public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
+        /// Automatically generate SBOM for images pushed to this project. (Default: `False`) can only be used with Harbor version v2.11.0 and above
         /// </summary>
         [Input("autoSbomGeneration")]
         public Input<bool>? AutoSbomGeneration { get; set; }
@@ -265,13 +265,13 @@ namespace Pulumiverse.Harbor
         public Input<string>? DeploymentSecurity { get; set; }
 
         /// <summary>
-        /// Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
+        /// Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `False`).
         /// </summary>
         [Input("enableContentTrust")]
         public Input<bool>? EnableContentTrust { get; set; }
 
         /// <summary>
-        /// Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
+        /// Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `False`)
         /// </summary>
         [Input("enableContentTrustCosign")]
         public Input<bool>? EnableContentTrustCosign { get; set; }
@@ -298,7 +298,7 @@ namespace Pulumiverse.Harbor
         public Input<int>? ProxySpeedKb { get; set; }
 
         /// <summary>
-        /// The project will be public accessibility.(Default: `false`)
+        /// The project will be public accessibility.(Default: `False`)
         /// </summary>
         [Input("public")]
         public Input<bool>? Public { get; set; }
@@ -319,7 +319,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? VulnerabilityScanner { get; set; }
 
         /// <summary>
-        /// Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
+        /// Images will be scanned for vulnerabilities when push to harbor. (Default: `True`)
         /// </summary>
         [Input("vulnerabilityScanning")]
         public Input<bool>? VulnerabilityScanning { get; set; }

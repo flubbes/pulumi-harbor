@@ -64,6 +64,10 @@ export class ConfigAuth extends pulumi.CustomResource {
     declare public readonly oidcAutoOnboard: pulumi.Output<boolean | undefined>;
     declare public readonly oidcClientId: pulumi.Output<string | undefined>;
     declare public readonly oidcClientSecret: pulumi.Output<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    declare public readonly oidcClientSecretWo: pulumi.Output<string | undefined>;
     declare public readonly oidcClientSecretWoVersion: pulumi.Output<number | undefined>;
     declare public readonly oidcEndpoint: pulumi.Output<string | undefined>;
     declare public readonly oidcGroupFilter: pulumi.Output<string | undefined>;
@@ -108,6 +112,7 @@ export class ConfigAuth extends pulumi.CustomResource {
             resourceInputs["oidcAutoOnboard"] = state?.oidcAutoOnboard;
             resourceInputs["oidcClientId"] = state?.oidcClientId;
             resourceInputs["oidcClientSecret"] = state?.oidcClientSecret;
+            resourceInputs["oidcClientSecretWo"] = state?.oidcClientSecretWo;
             resourceInputs["oidcClientSecretWoVersion"] = state?.oidcClientSecretWoVersion;
             resourceInputs["oidcEndpoint"] = state?.oidcEndpoint;
             resourceInputs["oidcGroupFilter"] = state?.oidcGroupFilter;
@@ -143,6 +148,7 @@ export class ConfigAuth extends pulumi.CustomResource {
             resourceInputs["oidcAutoOnboard"] = args?.oidcAutoOnboard;
             resourceInputs["oidcClientId"] = args?.oidcClientId;
             resourceInputs["oidcClientSecret"] = args?.oidcClientSecret ? pulumi.secret(args.oidcClientSecret) : undefined;
+            resourceInputs["oidcClientSecretWo"] = args?.oidcClientSecretWo ? pulumi.secret(args.oidcClientSecretWo) : undefined;
             resourceInputs["oidcClientSecretWoVersion"] = args?.oidcClientSecretWoVersion;
             resourceInputs["oidcEndpoint"] = args?.oidcEndpoint;
             resourceInputs["oidcGroupFilter"] = args?.oidcGroupFilter;
@@ -155,7 +161,7 @@ export class ConfigAuth extends pulumi.CustomResource {
             resourceInputs["primaryAuthMode"] = args?.primaryAuthMode;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["ldapSearchPassword", "oidcClientSecret"] };
+        const secretOpts = { additionalSecretOutputs: ["ldapSearchPassword", "oidcClientSecret", "oidcClientSecretWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(ConfigAuth.__pulumiType, name, resourceInputs, opts);
     }
@@ -188,6 +194,10 @@ export interface ConfigAuthState {
     oidcAutoOnboard?: pulumi.Input<boolean | undefined>;
     oidcClientId?: pulumi.Input<string | undefined>;
     oidcClientSecret?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    oidcClientSecretWo?: pulumi.Input<string | undefined>;
     oidcClientSecretWoVersion?: pulumi.Input<number | undefined>;
     oidcEndpoint?: pulumi.Input<string | undefined>;
     oidcGroupFilter?: pulumi.Input<string | undefined>;
@@ -227,6 +237,10 @@ export interface ConfigAuthArgs {
     oidcAutoOnboard?: pulumi.Input<boolean | undefined>;
     oidcClientId?: pulumi.Input<string | undefined>;
     oidcClientSecret?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    oidcClientSecretWo?: pulumi.Input<string | undefined>;
     oidcClientSecretWoVersion?: pulumi.Input<number | undefined>;
     oidcEndpoint?: pulumi.Input<string | undefined>;
     oidcGroupFilter?: pulumi.Input<string | undefined>;

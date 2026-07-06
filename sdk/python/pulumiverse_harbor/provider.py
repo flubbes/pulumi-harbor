@@ -31,8 +31,7 @@ class ProviderArgs:
         """
         The set of arguments for constructing a Provider resource.
 
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name.
-               Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name. Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
         """
         if api_version is None:
             api_version = 2
@@ -85,8 +84,7 @@ class ProviderArgs:
     @pulumi.getter
     def headers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name.
-        Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
+        A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name. Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
         """
         return pulumi.get(self, "headers")
 
@@ -174,8 +172,7 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name.
-               Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name. Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
         """
         ...
     @overload

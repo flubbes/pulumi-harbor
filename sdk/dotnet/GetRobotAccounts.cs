@@ -65,7 +65,7 @@ namespace Pulumiverse.Harbor
     public sealed class GetRobotAccountsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Level of the robot account, currently either `system` or `project`. Default is `system`.
+        /// Level of the robot account, currently either `System` or `Project`. Default is `System`.
         /// </summary>
         [Input("level")]
         public string? Level { get; set; }
@@ -91,7 +91,7 @@ namespace Pulumiverse.Harbor
     public sealed class GetRobotAccountsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Level of the robot account, currently either `system` or `project`. Default is `system`.
+        /// Level of the robot account, currently either `System` or `Project`. Default is `System`.
         /// </summary>
         [Input("level")]
         public Input<string>? Level { get; set; }
@@ -123,7 +123,7 @@ namespace Pulumiverse.Harbor
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Level of the robot account, currently either `system` or `project`. Default is `system`.
+        /// Level of the robot account, currently either `System` or `Project`. Default is `System`.
         /// </summary>
         public readonly string? Level;
         /// <summary>

@@ -66,6 +66,11 @@ export class User extends pulumi.CustomResource {
      */
     declare public readonly password: pulumi.Output<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative for `password`. Must be used together with `passwordWoVersion`.
+     */
+    declare public readonly passwordWo: pulumi.Output<string | undefined>;
+    /**
      * Rotation trigger for write-only password updates. Must be used together with `passwordWo`.
      */
     declare public readonly passwordWoVersion: pulumi.Output<number | undefined>;
@@ -92,6 +97,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["email"] = state?.email;
             resourceInputs["fullName"] = state?.fullName;
             resourceInputs["password"] = state?.password;
+            resourceInputs["passwordWo"] = state?.passwordWo;
             resourceInputs["passwordWoVersion"] = state?.passwordWoVersion;
             resourceInputs["username"] = state?.username;
         } else {
@@ -110,11 +116,12 @@ export class User extends pulumi.CustomResource {
             resourceInputs["email"] = args?.email;
             resourceInputs["fullName"] = args?.fullName;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["passwordWo"] = args?.passwordWo ? pulumi.secret(args.passwordWo) : undefined;
             resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
             resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["password"] };
+        const secretOpts = { additionalSecretOutputs: ["password", "passwordWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(User.__pulumiType, name, resourceInputs, opts);
     }
@@ -144,6 +151,11 @@ export interface UserState {
      * The password for the internal user. Conflicts with `passwordWoVersion`.
      */
     password?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative for `password`. Must be used together with `passwordWoVersion`.
+     */
+    passwordWo?: pulumi.Input<string | undefined>;
     /**
      * Rotation trigger for write-only password updates. Must be used together with `passwordWo`.
      */
@@ -178,6 +190,11 @@ export interface UserArgs {
      * The password for the internal user. Conflicts with `passwordWoVersion`.
      */
     password?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative for `password`. Must be used together with `passwordWoVersion`.
+     */
+    passwordWo?: pulumi.Input<string | undefined>;
     /**
      * Rotation trigger for write-only password updates. Must be used together with `passwordWo`.
      */

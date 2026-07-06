@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * The `harbor_preheat_instance` resource can be imported using the preheat instance ID.
+ * The `harbor.PreheatInstance` resource can be imported using the preheat instance ID.
  *
  * ```sh
  * $ pulumi import harbor:index/preheatInstance:PreheatInstance example /p2p/preheat/instances/example-preheat-instance

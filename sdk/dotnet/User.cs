@@ -27,7 +27,7 @@ namespace Pulumiverse.Harbor
     public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// If the user will have admin rights within Harbor (Default: `false`)
+        /// If the user will have admin rights within Harbor (Default: `False`)
         /// </summary>
         [Output("admin")]
         public Output<bool?> Admin { get; private set; } = null!;
@@ -51,13 +51,20 @@ namespace Pulumiverse.Harbor
         public Output<string> FullName { get; private set; } = null!;
 
         /// <summary>
-        /// The password for the internal user. Conflicts with `password_wo_version`.
+        /// The password for the internal user. Conflicts with `PasswordWoVersion`.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Rotation trigger for write-only password updates. Must be used together with `password_wo`.
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only alternative for `Password`. Must be used together with `PasswordWoVersion`.
+        /// </summary>
+        [Output("passwordWo")]
+        public Output<string?> PasswordWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Rotation trigger for write-only password updates. Must be used together with `PasswordWo`.
         /// </summary>
         [Output("passwordWoVersion")]
         public Output<int?> PasswordWoVersion { get; private set; } = null!;
@@ -95,6 +102,7 @@ namespace Pulumiverse.Harbor
                 AdditionalSecretOutputs =
                 {
                     "password",
+                    "passwordWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -120,7 +128,7 @@ namespace Pulumiverse.Harbor
     public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If the user will have admin rights within Harbor (Default: `false`)
+        /// If the user will have admin rights within Harbor (Default: `False`)
         /// </summary>
         [Input("admin")]
         public Input<bool>? Admin { get; set; }
@@ -147,7 +155,7 @@ namespace Pulumiverse.Harbor
         private Input<string>? _password;
 
         /// <summary>
-        /// The password for the internal user. Conflicts with `password_wo_version`.
+        /// The password for the internal user. Conflicts with `PasswordWoVersion`.
         /// </summary>
         public Input<string>? Password
         {
@@ -159,8 +167,25 @@ namespace Pulumiverse.Harbor
             }
         }
 
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
         /// <summary>
-        /// Rotation trigger for write-only password updates. Must be used together with `password_wo`.
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only alternative for `Password`. Must be used together with `PasswordWoVersion`.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Rotation trigger for write-only password updates. Must be used together with `PasswordWo`.
         /// </summary>
         [Input("passwordWoVersion")]
         public Input<int>? PasswordWoVersion { get; set; }
@@ -180,7 +205,7 @@ namespace Pulumiverse.Harbor
     public sealed class UserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If the user will have admin rights within Harbor (Default: `false`)
+        /// If the user will have admin rights within Harbor (Default: `False`)
         /// </summary>
         [Input("admin")]
         public Input<bool>? Admin { get; set; }
@@ -207,7 +232,7 @@ namespace Pulumiverse.Harbor
         private Input<string>? _password;
 
         /// <summary>
-        /// The password for the internal user. Conflicts with `password_wo_version`.
+        /// The password for the internal user. Conflicts with `PasswordWoVersion`.
         /// </summary>
         public Input<string>? Password
         {
@@ -219,8 +244,25 @@ namespace Pulumiverse.Harbor
             }
         }
 
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
         /// <summary>
-        /// Rotation trigger for write-only password updates. Must be used together with `password_wo`.
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only alternative for `Password`. Must be used together with `PasswordWoVersion`.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Rotation trigger for write-only password updates. Must be used together with `PasswordWo`.
         /// </summary>
         [Input("passwordWoVersion")]
         public Input<int>? PasswordWoVersion { get; set; }

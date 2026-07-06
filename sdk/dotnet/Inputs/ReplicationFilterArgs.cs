@@ -14,7 +14,7 @@ namespace Pulumiverse.Harbor.Inputs
     public sealed class ReplicationFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Matches or excludes the result. Can be one of the following. `matches`, `excludes`
+        /// Matches or excludes the result. Can be one of the following. `Matches`, `Excludes`
         /// </summary>
         [Input("decoration")]
         public Input<string>? Decoration { get; set; }
@@ -38,7 +38,7 @@ namespace Pulumiverse.Harbor.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Filter on the resource type. Can be one of the following types. `chart`, `artifact`
+        /// Filter on the resource type. Can be one of the following types. `Chart`, `Artifact`
         /// </summary>
         [Input("resource")]
         public Input<string>? Resource { get; set; }

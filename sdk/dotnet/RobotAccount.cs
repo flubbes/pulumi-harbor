@@ -52,7 +52,7 @@ namespace Pulumiverse.Harbor
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Disables the robot account when set to `true`.
+        /// Disables the robot account when set to `True`.
         /// </summary>
         [Output("disable")]
         public Output<bool?> Disable { get; private set; } = null!;
@@ -67,7 +67,7 @@ namespace Pulumiverse.Harbor
         public Output<string> FullName { get; private set; } = null!;
 
         /// <summary>
-        /// Level of the robot account, currently either `system` or `project`.
+        /// Level of the robot account, currently either `System` or `Project`.
         /// </summary>
         [Output("level")]
         public Output<string> Level { get; private set; } = null!;
@@ -91,7 +91,14 @@ namespace Pulumiverse.Harbor
         public Output<string> Secret { get; private set; } = null!;
 
         /// <summary>
-        /// Rotation trigger for write-only secret updates. Must be used together with `secret_wo`.
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only alternative for `Secret`. Must be used together with `SecretWoVersion`.
+        /// </summary>
+        [Output("secretWo")]
+        public Output<string?> SecretWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Rotation trigger for write-only secret updates. Must be used together with `SecretWo`.
         /// </summary>
         [Output("secretWoVersion")]
         public Output<int?> SecretWoVersion { get; private set; } = null!;
@@ -123,6 +130,7 @@ namespace Pulumiverse.Harbor
                 AdditionalSecretOutputs =
                 {
                     "secret",
+                    "secretWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -154,7 +162,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Disables the robot account when set to `true`.
+        /// Disables the robot account when set to `True`.
         /// </summary>
         [Input("disable")]
         public Input<bool>? Disable { get; set; }
@@ -166,7 +174,7 @@ namespace Pulumiverse.Harbor
         public Input<int>? Duration { get; set; }
 
         /// <summary>
-        /// Level of the robot account, currently either `system` or `project`.
+        /// Level of the robot account, currently either `System` or `Project`.
         /// </summary>
         [Input("level", required: true)]
         public Input<string> Level { get; set; } = null!;
@@ -201,8 +209,25 @@ namespace Pulumiverse.Harbor
             }
         }
 
+        [Input("secretWo")]
+        private Input<string>? _secretWo;
+
         /// <summary>
-        /// Rotation trigger for write-only secret updates. Must be used together with `secret_wo`.
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only alternative for `Secret`. Must be used together with `SecretWoVersion`.
+        /// </summary>
+        public Input<string>? SecretWo
+        {
+            get => _secretWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Rotation trigger for write-only secret updates. Must be used together with `SecretWo`.
         /// </summary>
         [Input("secretWoVersion")]
         public Input<int>? SecretWoVersion { get; set; }
@@ -222,7 +247,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Disables the robot account when set to `true`.
+        /// Disables the robot account when set to `True`.
         /// </summary>
         [Input("disable")]
         public Input<bool>? Disable { get; set; }
@@ -237,7 +262,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? FullName { get; set; }
 
         /// <summary>
-        /// Level of the robot account, currently either `system` or `project`.
+        /// Level of the robot account, currently either `System` or `Project`.
         /// </summary>
         [Input("level")]
         public Input<string>? Level { get; set; }
@@ -275,8 +300,25 @@ namespace Pulumiverse.Harbor
             }
         }
 
+        [Input("secretWo")]
+        private Input<string>? _secretWo;
+
         /// <summary>
-        /// Rotation trigger for write-only secret updates. Must be used together with `secret_wo`.
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only alternative for `Secret`. Must be used together with `SecretWoVersion`.
+        /// </summary>
+        public Input<string>? SecretWo
+        {
+            get => _secretWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Rotation trigger for write-only secret updates. Must be used together with `SecretWo`.
         /// </summary>
         [Input("secretWoVersion")]
         public Input<int>? SecretWoVersion { get; set; }

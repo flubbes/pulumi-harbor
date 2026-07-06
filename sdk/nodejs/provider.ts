@@ -76,8 +76,7 @@ export interface ProviderArgs {
     apiVersion?: pulumi.Input<number | undefined>;
     bearerToken?: pulumi.Input<string | undefined>;
     /**
-     * A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name.
-     * Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
+     * A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name. Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
      */
     headers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     insecure?: pulumi.Input<boolean | undefined>;

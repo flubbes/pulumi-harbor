@@ -20,8 +20,7 @@ bearerToken: Optional[str]
 
 headers: Optional[str]
 """
-A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name.
-Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
+A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name. Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
 """
 
 insecure: bool

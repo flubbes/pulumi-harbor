@@ -60,6 +60,9 @@ type RobotAccount struct {
 	RobotId     pulumi.StringOutput               `pulumi:"robotId"`
 	// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
 	Secret pulumi.StringOutput `pulumi:"secret"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only alternative for `secret`. Must be used together with `secretWoVersion`.
+	SecretWo pulumi.StringPtrOutput `pulumi:"secretWo"`
 	// Rotation trigger for write-only secret updates. Must be used together with `secretWo`.
 	SecretWoVersion pulumi.IntPtrOutput `pulumi:"secretWoVersion"`
 }
@@ -80,8 +83,12 @@ func NewRobotAccount(ctx *pulumi.Context,
 	if args.Secret != nil {
 		args.Secret = pulumi.ToSecret(args.Secret).(pulumi.StringPtrInput)
 	}
+	if args.SecretWo != nil {
+		args.SecretWo = pulumi.ToSecret(args.SecretWo).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"secret",
+		"secretWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -122,6 +129,9 @@ type robotAccountState struct {
 	RobotId     *string                  `pulumi:"robotId"`
 	// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
 	Secret *string `pulumi:"secret"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only alternative for `secret`. Must be used together with `secretWoVersion`.
+	SecretWo *string `pulumi:"secretWo"`
 	// Rotation trigger for write-only secret updates. Must be used together with `secretWo`.
 	SecretWoVersion *int `pulumi:"secretWoVersion"`
 }
@@ -142,6 +152,9 @@ type RobotAccountState struct {
 	RobotId     pulumi.StringPtrInput
 	// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
 	Secret pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only alternative for `secret`. Must be used together with `secretWoVersion`.
+	SecretWo pulumi.StringPtrInput
 	// Rotation trigger for write-only secret updates. Must be used together with `secretWo`.
 	SecretWoVersion pulumi.IntPtrInput
 }
@@ -164,6 +177,9 @@ type robotAccountArgs struct {
 	Permissions []RobotAccountPermission `pulumi:"permissions"`
 	// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
 	Secret *string `pulumi:"secret"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only alternative for `secret`. Must be used together with `secretWoVersion`.
+	SecretWo *string `pulumi:"secretWo"`
 	// Rotation trigger for write-only secret updates. Must be used together with `secretWo`.
 	SecretWoVersion *int `pulumi:"secretWoVersion"`
 }
@@ -183,6 +199,9 @@ type RobotAccountArgs struct {
 	Permissions RobotAccountPermissionArrayInput
 	// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
 	Secret pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only alternative for `secret`. Must be used together with `secretWoVersion`.
+	SecretWo pulumi.StringPtrInput
 	// Rotation trigger for write-only secret updates. Must be used together with `secretWo`.
 	SecretWoVersion pulumi.IntPtrInput
 }
@@ -314,6 +333,12 @@ func (o RobotAccountOutput) RobotId() pulumi.StringOutput {
 // The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
 func (o RobotAccountOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v *RobotAccount) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Write-only alternative for `secret`. Must be used together with `secretWoVersion`.
+func (o RobotAccountOutput) SecretWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RobotAccount) pulumi.StringPtrOutput { return v.SecretWo }).(pulumi.StringPtrOutput)
 }
 
 // Rotation trigger for write-only secret updates. Must be used together with `secretWo`.

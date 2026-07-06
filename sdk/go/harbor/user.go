@@ -36,6 +36,9 @@ type User struct {
 	FullName pulumi.StringOutput `pulumi:"fullName"`
 	// The password for the internal user. Conflicts with `passwordWoVersion`.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only alternative for `password`. Must be used together with `passwordWoVersion`.
+	PasswordWo pulumi.StringPtrOutput `pulumi:"passwordWo"`
 	// Rotation trigger for write-only password updates. Must be used together with `passwordWo`.
 	PasswordWoVersion pulumi.IntPtrOutput `pulumi:"passwordWoVersion"`
 	// The username of the internal user.
@@ -61,8 +64,12 @@ func NewUser(ctx *pulumi.Context,
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
+	if args.PasswordWo != nil {
+		args.PasswordWo = pulumi.ToSecret(args.PasswordWo).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"password",
+		"passwordWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -98,6 +105,9 @@ type userState struct {
 	FullName *string `pulumi:"fullName"`
 	// The password for the internal user. Conflicts with `passwordWoVersion`.
 	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only alternative for `password`. Must be used together with `passwordWoVersion`.
+	PasswordWo *string `pulumi:"passwordWo"`
 	// Rotation trigger for write-only password updates. Must be used together with `passwordWo`.
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
 	// The username of the internal user.
@@ -115,6 +125,9 @@ type UserState struct {
 	FullName pulumi.StringPtrInput
 	// The password for the internal user. Conflicts with `passwordWoVersion`.
 	Password pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only alternative for `password`. Must be used together with `passwordWoVersion`.
+	PasswordWo pulumi.StringPtrInput
 	// Rotation trigger for write-only password updates. Must be used together with `passwordWo`.
 	PasswordWoVersion pulumi.IntPtrInput
 	// The username of the internal user.
@@ -136,6 +149,9 @@ type userArgs struct {
 	FullName string `pulumi:"fullName"`
 	// The password for the internal user. Conflicts with `passwordWoVersion`.
 	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only alternative for `password`. Must be used together with `passwordWoVersion`.
+	PasswordWo *string `pulumi:"passwordWo"`
 	// Rotation trigger for write-only password updates. Must be used together with `passwordWo`.
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
 	// The username of the internal user.
@@ -154,6 +170,9 @@ type UserArgs struct {
 	FullName pulumi.StringInput
 	// The password for the internal user. Conflicts with `passwordWoVersion`.
 	Password pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only alternative for `password`. Must be used together with `passwordWoVersion`.
+	PasswordWo pulumi.StringPtrInput
 	// Rotation trigger for write-only password updates. Must be used together with `passwordWo`.
 	PasswordWoVersion pulumi.IntPtrInput
 	// The username of the internal user.
@@ -270,6 +289,12 @@ func (o UserOutput) FullName() pulumi.StringOutput {
 // The password for the internal user. Conflicts with `passwordWoVersion`.
 func (o UserOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Write-only alternative for `password`. Must be used together with `passwordWoVersion`.
+func (o UserOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.PasswordWo }).(pulumi.StringPtrOutput)
 }
 
 // Rotation trigger for write-only password updates. Must be used together with `passwordWo`.
