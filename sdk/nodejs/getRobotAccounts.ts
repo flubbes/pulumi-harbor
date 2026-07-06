@@ -79,13 +79,13 @@ export interface GetRobotAccountsOutputArgs {
     /**
      * Level of the robot account, currently either `system` or `project`. Default is `system`.
      */
-    level?: pulumi.Input<string>;
+    level?: pulumi.Input<string | undefined>;
     /**
      * The name of the robot account to filter by.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The id of the project within harbor.
      */
-    projectId?: pulumi.Input<number>;
+    projectId?: pulumi.Input<number | undefined>;
 }

@@ -41,22 +41,22 @@ export class ProjectMemberGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === ProjectMemberGroup.__pulumiType;
     }
 
-    public readonly groupId!: pulumi.Output<number | undefined>;
-    public readonly groupName!: pulumi.Output<string | undefined>;
-    public readonly ldapGroupDn!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly memberId!: pulumi.Output<number>;
+    declare public readonly groupId: pulumi.Output<number | undefined>;
+    declare public readonly groupName: pulumi.Output<string | undefined>;
+    declare public readonly ldapGroupDn: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly memberId: pulumi.Output<number>;
     /**
      * The project id of the project that the entity will have access to.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The permissions that the entity will be granted.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
     /**
      * The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a ProjectMemberGroup resource with the given unique name, arguments, and options.
@@ -71,30 +71,30 @@ export class ProjectMemberGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectMemberGroupState | undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["ldapGroupDn"] = state ? state.ldapGroupDn : undefined;
-            resourceInputs["memberId"] = state ? state.memberId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["ldapGroupDn"] = state?.ldapGroupDn;
+            resourceInputs["memberId"] = state?.memberId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ProjectMemberGroupArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
-            resourceInputs["ldapGroupDn"] = args ? args.ldapGroupDn : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["ldapGroupDn"] = args?.ldapGroupDn;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["type"] = args?.type;
             resourceInputs["memberId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -106,31 +106,31 @@ export class ProjectMemberGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProjectMemberGroup resources.
  */
 export interface ProjectMemberGroupState {
-    groupId?: pulumi.Input<number>;
-    groupName?: pulumi.Input<string>;
-    ldapGroupDn?: pulumi.Input<string>;
-    memberId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
+    groupName?: pulumi.Input<string | undefined>;
+    ldapGroupDn?: pulumi.Input<string | undefined>;
+    memberId?: pulumi.Input<number | undefined>;
     /**
      * The project id of the project that the entity will have access to.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The permissions that the entity will be granted.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ProjectMemberGroup resource.
  */
 export interface ProjectMemberGroupArgs {
-    groupId?: pulumi.Input<number>;
-    groupName?: pulumi.Input<string>;
-    ldapGroupDn?: pulumi.Input<string>;
+    groupId?: pulumi.Input<number | undefined>;
+    groupName?: pulumi.Input<string | undefined>;
+    ldapGroupDn?: pulumi.Input<string | undefined>;
     /**
      * The project id of the project that the entity will have access to.
      */

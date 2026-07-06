@@ -89,17 +89,17 @@ export interface GetProjectsOutputArgs {
     /**
      * The name of the project.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * If the project has public accessibility.
      */
-    public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean | undefined>;
     /**
      * The type of the project : Project or ProxyCache.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * If the images will be scanned for vulnerabilities when push to harbor.
      */
-    vulnerabilityScanning?: pulumi.Input<boolean>;
+    vulnerabilityScanning?: pulumi.Input<boolean | undefined>;
 }

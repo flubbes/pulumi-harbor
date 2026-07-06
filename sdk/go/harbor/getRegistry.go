@@ -30,6 +30,8 @@ type LookupRegistryArgs struct {
 
 // A collection of values returned by getRegistry.
 type LookupRegistryResult struct {
+	// The PEM-encoded CA certificate trusting the registry
+	CaCertificate string `pulumi:"caCertificate"`
 	// The description of the external container register.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
@@ -38,13 +40,13 @@ type LookupRegistryResult struct {
 	Insecure bool `pulumi:"insecure"`
 	// The name of the register.
 	Name string `pulumi:"name"`
-	// The id of the register within harbor.
+	// The ID of the register within harbor.
 	RegistryId int `pulumi:"registryId"`
 	// The health status of the external container register
 	Status string `pulumi:"status"`
 	// The type of the provider type.
 	Type string `pulumi:"type"`
-	// The url endpoint for the external container register
+	// The URL endpoint for the external container register
 	Url string `pulumi:"url"`
 }
 
@@ -82,6 +84,11 @@ func (o LookupRegistryResultOutput) ToLookupRegistryResultOutputWithContext(ctx 
 	return o
 }
 
+// The PEM-encoded CA certificate trusting the registry
+func (o LookupRegistryResultOutput) CaCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryResult) string { return v.CaCertificate }).(pulumi.StringOutput)
+}
+
 // The description of the external container register.
 func (o LookupRegistryResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistryResult) string { return v.Description }).(pulumi.StringOutput)
@@ -102,7 +109,7 @@ func (o LookupRegistryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistryResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The id of the register within harbor.
+// The ID of the register within harbor.
 func (o LookupRegistryResultOutput) RegistryId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRegistryResult) int { return v.RegistryId }).(pulumi.IntOutput)
 }
@@ -117,7 +124,7 @@ func (o LookupRegistryResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistryResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The url endpoint for the external container register
+// The URL endpoint for the external container register
 func (o LookupRegistryResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistryResult) string { return v.Url }).(pulumi.StringOutput)
 }

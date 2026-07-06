@@ -26,7 +26,8 @@ type ProjectWebhook struct {
 	// The name of the webhook that will be created in harbor.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The notification type either `http` or `slack`.
-	NotifyType pulumi.StringOutput `pulumi:"notifyType"`
+	NotifyType    pulumi.StringOutput    `pulumi:"notifyType"`
+	PayloadFormat pulumi.StringPtrOutput `pulumi:"payloadFormat"`
 	// The project id of the harbor that webhook related to.
 	ProjectId      pulumi.StringOutput  `pulumi:"projectId"`
 	SkipCertVerify pulumi.BoolPtrOutput `pulumi:"skipCertVerify"`
@@ -84,7 +85,8 @@ type projectWebhookState struct {
 	// The name of the webhook that will be created in harbor.
 	Name *string `pulumi:"name"`
 	// The notification type either `http` or `slack`.
-	NotifyType *string `pulumi:"notifyType"`
+	NotifyType    *string `pulumi:"notifyType"`
+	PayloadFormat *string `pulumi:"payloadFormat"`
 	// The project id of the harbor that webhook related to.
 	ProjectId      *string `pulumi:"projectId"`
 	SkipCertVerify *bool   `pulumi:"skipCertVerify"`
@@ -101,7 +103,8 @@ type ProjectWebhookState struct {
 	// The name of the webhook that will be created in harbor.
 	Name pulumi.StringPtrInput
 	// The notification type either `http` or `slack`.
-	NotifyType pulumi.StringPtrInput
+	NotifyType    pulumi.StringPtrInput
+	PayloadFormat pulumi.StringPtrInput
 	// The project id of the harbor that webhook related to.
 	ProjectId      pulumi.StringPtrInput
 	SkipCertVerify pulumi.BoolPtrInput
@@ -122,7 +125,8 @@ type projectWebhookArgs struct {
 	// The name of the webhook that will be created in harbor.
 	Name *string `pulumi:"name"`
 	// The notification type either `http` or `slack`.
-	NotifyType string `pulumi:"notifyType"`
+	NotifyType    string  `pulumi:"notifyType"`
+	PayloadFormat *string `pulumi:"payloadFormat"`
 	// The project id of the harbor that webhook related to.
 	ProjectId      string `pulumi:"projectId"`
 	SkipCertVerify *bool  `pulumi:"skipCertVerify"`
@@ -140,7 +144,8 @@ type ProjectWebhookArgs struct {
 	// The name of the webhook that will be created in harbor.
 	Name pulumi.StringPtrInput
 	// The notification type either `http` or `slack`.
-	NotifyType pulumi.StringInput
+	NotifyType    pulumi.StringInput
+	PayloadFormat pulumi.StringPtrInput
 	// The project id of the harbor that webhook related to.
 	ProjectId      pulumi.StringInput
 	SkipCertVerify pulumi.BoolPtrInput
@@ -263,6 +268,10 @@ func (o ProjectWebhookOutput) Name() pulumi.StringOutput {
 // The notification type either `http` or `slack`.
 func (o ProjectWebhookOutput) NotifyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectWebhook) pulumi.StringOutput { return v.NotifyType }).(pulumi.StringOutput)
+}
+
+func (o ProjectWebhookOutput) PayloadFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectWebhook) pulumi.StringPtrOutput { return v.PayloadFormat }).(pulumi.StringPtrOutput)
 }
 
 // The project id of the harbor that webhook related to.

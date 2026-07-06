@@ -46,6 +46,17 @@ namespace Pulumiverse.Harbor
             set => _bearerToken.Set(value);
         }
 
+        private static readonly __Value<ImmutableDictionary<string, string>?> _headers = new __Value<ImmutableDictionary<string, string>?>(() => __config.GetObject<ImmutableDictionary<string, string>>("headers"));
+        /// <summary>
+        /// A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name.
+        /// Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
+        /// </summary>
+        public static ImmutableDictionary<string, string>? Headers
+        {
+            get => _headers.Get();
+            set => _headers.Set(value);
+        }
+
         private static readonly __Value<bool?> _insecure = new __Value<bool?>(() => __config.GetBoolean("insecure") ?? Utilities.GetEnvBoolean("HARBOR_IGNORE_CERT") ?? true);
         public static bool? Insecure
         {

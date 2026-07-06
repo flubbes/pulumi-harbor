@@ -44,19 +44,19 @@ export class ProjectMemberUser extends pulumi.CustomResource {
     /**
      * The member id of the member.
      */
-    public /*out*/ readonly memberId!: pulumi.Output<number>;
+    declare public /*out*/ readonly memberId: pulumi.Output<number>;
     /**
      * The project id of the project that the entity will have access to.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The permissions that the entity will be granted.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
     /**
      * The name of the member entity.
      */
-    public readonly userName!: pulumi.Output<string>;
+    declare public readonly userName: pulumi.Output<string>;
 
     /**
      * Create a ProjectMemberUser resource with the given unique name, arguments, and options.
@@ -71,24 +71,24 @@ export class ProjectMemberUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectMemberUserState | undefined;
-            resourceInputs["memberId"] = state ? state.memberId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["memberId"] = state?.memberId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["userName"] = state?.userName;
         } else {
             const args = argsOrState as ProjectMemberUserArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.userName === undefined) && !opts.urn) {
+            if (args?.userName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["userName"] = args?.userName;
             resourceInputs["memberId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -103,19 +103,19 @@ export interface ProjectMemberUserState {
     /**
      * The member id of the member.
      */
-    memberId?: pulumi.Input<number>;
+    memberId?: pulumi.Input<number | undefined>;
     /**
      * The project id of the project that the entity will have access to.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The permissions that the entity will be granted.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * The name of the member entity.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**

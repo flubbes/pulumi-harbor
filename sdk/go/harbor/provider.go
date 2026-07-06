@@ -56,6 +56,9 @@ func NewProvider(ctx *pulumi.Context,
 			args.Username = pulumi.StringPtr(d.(string))
 		}
 	}
+	if args.Headers != nil {
+		args.Headers = pulumi.ToSecret(args.Headers).(pulumi.StringMapInput)
+	}
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
@@ -75,18 +78,24 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	ApiVersion  *int    `pulumi:"apiVersion"`
 	BearerToken *string `pulumi:"bearerToken"`
-	Insecure    *bool   `pulumi:"insecure"`
-	Password    *string `pulumi:"password"`
-	RobotPrefix *string `pulumi:"robotPrefix"`
-	SessionId   *string `pulumi:"sessionId"`
-	Url         *string `pulumi:"url"`
-	Username    *string `pulumi:"username"`
+	// A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name.
+	// Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
+	Headers     map[string]string `pulumi:"headers"`
+	Insecure    *bool             `pulumi:"insecure"`
+	Password    *string           `pulumi:"password"`
+	RobotPrefix *string           `pulumi:"robotPrefix"`
+	SessionId   *string           `pulumi:"sessionId"`
+	Url         *string           `pulumi:"url"`
+	Username    *string           `pulumi:"username"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
 	ApiVersion  pulumi.IntPtrInput
 	BearerToken pulumi.StringPtrInput
+	// A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name.
+	// Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
+	Headers     pulumi.StringMapInput
 	Insecure    pulumi.BoolPtrInput
 	Password    pulumi.StringPtrInput
 	RobotPrefix pulumi.StringPtrInput

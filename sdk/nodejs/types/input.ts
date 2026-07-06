@@ -9,11 +9,11 @@ export interface ConfigSystemBannerMessage {
     /**
      * Whether or not the banner message is closable.
      */
-    closable?: pulumi.Input<boolean>;
+    closable?: pulumi.Input<boolean | undefined>;
     /**
      * The date the banner message will start displaying. (Format: `MM/DD/YYYY`)
      */
-    fromDate?: pulumi.Input<string>;
+    fromDate?: pulumi.Input<string | undefined>;
     /**
      * The message to display in the banner.
      */
@@ -21,48 +21,48 @@ export interface ConfigSystemBannerMessage {
     /**
      * The date the banner message will stop displaying. (Format: `MM/DD/YYYY`)
      */
-    toDate?: pulumi.Input<string>;
+    toDate?: pulumi.Input<string | undefined>;
     /**
      * The type of banner message. Can be `"info"`, `"warning"`, `"success"` or `"danger"`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface ReplicationFilter {
     /**
      * Matches or excludes the result. Can be one of the following. `matches`, `excludes`
      */
-    decoration?: pulumi.Input<string>;
+    decoration?: pulumi.Input<string | undefined>;
     /**
      * Filter on the resource according to labels.
      */
-    labels?: pulumi.Input<pulumi.Input<string>[]>;
+    labels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Filter on the name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Filter on the resource type. Can be one of the following types. `chart`, `artifact`
      */
-    resource?: pulumi.Input<string>;
+    resource?: pulumi.Input<string | undefined>;
     /**
      * Filter on the tag/version of the resource.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
 }
 
 export interface RetentionPolicyRule {
-    alwaysRetain?: pulumi.Input<boolean>;
-    disabled?: pulumi.Input<boolean>;
-    mostRecentlyPulled?: pulumi.Input<number>;
-    mostRecentlyPushed?: pulumi.Input<number>;
-    nDaysSinceLastPull?: pulumi.Input<number>;
-    nDaysSinceLastPush?: pulumi.Input<number>;
-    repoExcluding?: pulumi.Input<string>;
-    repoMatching?: pulumi.Input<string>;
-    tagExcluding?: pulumi.Input<string>;
-    tagMatching?: pulumi.Input<string>;
-    untaggedArtifacts?: pulumi.Input<boolean>;
+    alwaysRetain?: pulumi.Input<boolean | undefined>;
+    disabled?: pulumi.Input<boolean | undefined>;
+    mostRecentlyPulled?: pulumi.Input<number | undefined>;
+    mostRecentlyPushed?: pulumi.Input<number | undefined>;
+    nDaysSinceLastPull?: pulumi.Input<number | undefined>;
+    nDaysSinceLastPush?: pulumi.Input<number | undefined>;
+    repoExcluding?: pulumi.Input<string | undefined>;
+    repoMatching?: pulumi.Input<string | undefined>;
+    tagExcluding?: pulumi.Input<string | undefined>;
+    tagMatching?: pulumi.Input<string | undefined>;
+    untaggedArtifacts?: pulumi.Input<boolean | undefined>;
 }
 
 export interface RobotAccountPermission {
@@ -85,7 +85,7 @@ export interface RobotAccountPermissionAccess {
     /**
      * Either `allow` or `deny`. Defaults to `allow`.
      */
-    effect?: pulumi.Input<string>;
+    effect?: pulumi.Input<string | undefined>;
     /**
      * Eg. `repository`, `labels`, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
      */

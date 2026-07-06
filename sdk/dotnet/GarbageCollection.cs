@@ -29,7 +29,7 @@ namespace Pulumiverse.Harbor
         public Output<string> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// Number of workers to run the garbage collection, value must be between 1 and 5.
+        /// Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.
         /// </summary>
         [Output("workers")]
         public Output<int?> Workers { get; private set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumiverse.Harbor
         public Input<string> Schedule { get; set; } = null!;
 
         /// <summary>
-        /// Number of workers to run the garbage collection, value must be between 1 and 5.
+        /// Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.
         /// </summary>
         [Input("workers")]
         public Input<int>? Workers { get; set; }
@@ -120,7 +120,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? Schedule { get; set; }
 
         /// <summary>
-        /// Number of workers to run the garbage collection, value must be between 1 and 5.
+        /// Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.
         /// </summary>
         [Input("workers")]
         public Input<int>? Workers { get; set; }

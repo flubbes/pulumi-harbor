@@ -49,6 +49,10 @@ export interface GetProjectResult {
      */
     readonly type: string;
     /**
+     * The name of the vulnerability scanner assigned to the project.
+     */
+    readonly vulnerabilityScanner: string;
+    /**
      * If the images is scanned for vulnerabilities when push to harbor.
      */
     readonly vulnerabilityScanning: boolean;

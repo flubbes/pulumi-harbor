@@ -41,18 +41,9 @@ export class Group extends pulumi.CustomResource {
         return obj['__pulumiType'] === Group.__pulumiType;
     }
 
-    /**
-     * The name of the group.
-     */
-    public readonly groupName!: pulumi.Output<string>;
-    /**
-     * 3. Note: group type 3 is OIDC group.
-     */
-    public readonly groupType!: pulumi.Output<number>;
-    /**
-     * The distinguished name of the group within AD/LDAP.
-     */
-    public readonly ldapGroupDn!: pulumi.Output<string | undefined>;
+    declare public readonly groupName: pulumi.Output<string>;
+    declare public readonly groupType: pulumi.Output<number>;
+    declare public readonly ldapGroupDn: pulumi.Output<string | undefined>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -67,20 +58,20 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["groupType"] = state ? state.groupType : undefined;
-            resourceInputs["ldapGroupDn"] = state ? state.ldapGroupDn : undefined;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["groupType"] = state?.groupType;
+            resourceInputs["ldapGroupDn"] = state?.ldapGroupDn;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if ((!args || args.groupName === undefined) && !opts.urn) {
+            if (args?.groupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupName'");
             }
-            if ((!args || args.groupType === undefined) && !opts.urn) {
+            if (args?.groupType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupType'");
             }
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
-            resourceInputs["groupType"] = args ? args.groupType : undefined;
-            resourceInputs["ldapGroupDn"] = args ? args.ldapGroupDn : undefined;
+            resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["groupType"] = args?.groupType;
+            resourceInputs["ldapGroupDn"] = args?.ldapGroupDn;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Group.__pulumiType, name, resourceInputs, opts);
@@ -91,34 +82,16 @@ export class Group extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Group resources.
  */
 export interface GroupState {
-    /**
-     * The name of the group.
-     */
-    groupName?: pulumi.Input<string>;
-    /**
-     * 3. Note: group type 3 is OIDC group.
-     */
-    groupType?: pulumi.Input<number>;
-    /**
-     * The distinguished name of the group within AD/LDAP.
-     */
-    ldapGroupDn?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
+    groupType?: pulumi.Input<number | undefined>;
+    ldapGroupDn?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Group resource.
  */
 export interface GroupArgs {
-    /**
-     * The name of the group.
-     */
     groupName: pulumi.Input<string>;
-    /**
-     * 3. Note: group type 3 is OIDC group.
-     */
     groupType: pulumi.Input<number>;
-    /**
-     * The distinguished name of the group within AD/LDAP.
-     */
-    ldapGroupDn?: pulumi.Input<string>;
+    ldapGroupDn?: pulumi.Input<string | undefined>;
 }

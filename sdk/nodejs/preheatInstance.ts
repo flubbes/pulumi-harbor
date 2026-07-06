@@ -50,47 +50,47 @@ export class PreheatInstance extends pulumi.CustomResource {
     /**
      * The authentication mode for the preheat instance. Must be either "NONE", "BASIC", or "OAUTH". Defaults to "NONE".
      */
-    public readonly authMode!: pulumi.Output<string | undefined>;
+    declare public readonly authMode: pulumi.Output<string | undefined>;
     /**
      * Whether the preheat instance is the default instance. Defaults to false.
      */
-    public readonly default!: pulumi.Output<boolean | undefined>;
+    declare public readonly default: pulumi.Output<boolean | undefined>;
     /**
      * The description of the preheat instance. Defaults to an empty string.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the preheat instance is enabled. Defaults to true.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * The endpoint of the preheat instance.
      */
-    public readonly endpoint!: pulumi.Output<string>;
+    declare public readonly endpoint: pulumi.Output<string>;
     /**
      * Whether to allow insecure connections to the preheat instance. Defaults to false.
      */
-    public readonly insecure!: pulumi.Output<boolean | undefined>;
+    declare public readonly insecure: pulumi.Output<boolean | undefined>;
     /**
      * The name of the preheat instance.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The password for the preheat instance. Required if `authMode` is "BASIC". Defaults to an empty string.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The token for the preheat instance. Required if `authMode` is "OAUTH". Defaults to an empty string.
      */
-    public readonly token!: pulumi.Output<string | undefined>;
+    declare public readonly token: pulumi.Output<string | undefined>;
     /**
      * The username for the preheat instance. Required if `authMode` is "BASIC". Defaults to an empty string.
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
     /**
      * The vendor of the preheat instance. Must be either "dragonfly" or "kraken".
      */
-    public readonly vendor!: pulumi.Output<string>;
+    declare public readonly vendor: pulumi.Output<string>;
 
     /**
      * Create a PreheatInstance resource with the given unique name, arguments, and options.
@@ -105,36 +105,36 @@ export class PreheatInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PreheatInstanceState | undefined;
-            resourceInputs["authMode"] = state ? state.authMode : undefined;
-            resourceInputs["default"] = state ? state.default : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["insecure"] = state ? state.insecure : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
-            resourceInputs["vendor"] = state ? state.vendor : undefined;
+            resourceInputs["authMode"] = state?.authMode;
+            resourceInputs["default"] = state?.default;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["insecure"] = state?.insecure;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["username"] = state?.username;
+            resourceInputs["vendor"] = state?.vendor;
         } else {
             const args = argsOrState as PreheatInstanceArgs | undefined;
-            if ((!args || args.endpoint === undefined) && !opts.urn) {
+            if (args?.endpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpoint'");
             }
-            if ((!args || args.vendor === undefined) && !opts.urn) {
+            if (args?.vendor === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vendor'");
             }
-            resourceInputs["authMode"] = args ? args.authMode : undefined;
-            resourceInputs["default"] = args ? args.default : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
-            resourceInputs["insecure"] = args ? args.insecure : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["authMode"] = args?.authMode;
+            resourceInputs["default"] = args?.default;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["endpoint"] = args?.endpoint;
+            resourceInputs["insecure"] = args?.insecure;
+            resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
-            resourceInputs["vendor"] = args ? args.vendor : undefined;
+            resourceInputs["username"] = args?.username;
+            resourceInputs["vendor"] = args?.vendor;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password", "token"] };
@@ -150,47 +150,47 @@ export interface PreheatInstanceState {
     /**
      * The authentication mode for the preheat instance. Must be either "NONE", "BASIC", or "OAUTH". Defaults to "NONE".
      */
-    authMode?: pulumi.Input<string>;
+    authMode?: pulumi.Input<string | undefined>;
     /**
      * Whether the preheat instance is the default instance. Defaults to false.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the preheat instance. Defaults to an empty string.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the preheat instance is enabled. Defaults to true.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The endpoint of the preheat instance.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * Whether to allow insecure connections to the preheat instance. Defaults to false.
      */
-    insecure?: pulumi.Input<boolean>;
+    insecure?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the preheat instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The password for the preheat instance. Required if `authMode` is "BASIC". Defaults to an empty string.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The token for the preheat instance. Required if `authMode` is "OAUTH". Defaults to an empty string.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The username for the preheat instance. Required if `authMode` is "BASIC". Defaults to an empty string.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * The vendor of the preheat instance. Must be either "dragonfly" or "kraken".
      */
-    vendor?: pulumi.Input<string>;
+    vendor?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -200,19 +200,19 @@ export interface PreheatInstanceArgs {
     /**
      * The authentication mode for the preheat instance. Must be either "NONE", "BASIC", or "OAUTH". Defaults to "NONE".
      */
-    authMode?: pulumi.Input<string>;
+    authMode?: pulumi.Input<string | undefined>;
     /**
      * Whether the preheat instance is the default instance. Defaults to false.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the preheat instance. Defaults to an empty string.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the preheat instance is enabled. Defaults to true.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The endpoint of the preheat instance.
      */
@@ -220,23 +220,23 @@ export interface PreheatInstanceArgs {
     /**
      * Whether to allow insecure connections to the preheat instance. Defaults to false.
      */
-    insecure?: pulumi.Input<boolean>;
+    insecure?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the preheat instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The password for the preheat instance. Required if `authMode` is "BASIC". Defaults to an empty string.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The token for the preheat instance. Required if `authMode` is "OAUTH". Defaults to an empty string.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The username for the preheat instance. Required if `authMode` is "BASIC". Defaults to an empty string.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * The vendor of the preheat instance. Must be either "dragonfly" or "kraken".
      */

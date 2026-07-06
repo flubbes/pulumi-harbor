@@ -43,15 +43,15 @@ export class RetentionPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === RetentionPolicy.__pulumiType;
     }
 
-    public readonly rules!: pulumi.Output<outputs.RetentionPolicyRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.RetentionPolicyRule[]>;
     /**
      * The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
      */
-    public readonly schedule!: pulumi.Output<string | undefined>;
+    declare public readonly schedule: pulumi.Output<string | undefined>;
     /**
      * The project id of which you would like to apply this policy.
      */
-    public readonly scope!: pulumi.Output<string>;
+    declare public readonly scope: pulumi.Output<string>;
 
     /**
      * Create a RetentionPolicy resource with the given unique name, arguments, and options.
@@ -66,20 +66,20 @@ export class RetentionPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RetentionPolicyState | undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["scope"] = state?.scope;
         } else {
             const args = argsOrState as RetentionPolicyArgs | undefined;
-            if ((!args || args.rules === undefined) && !opts.urn) {
+            if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            if ((!args || args.scope === undefined) && !opts.urn) {
+            if (args?.scope === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scope'");
             }
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["scope"] = args?.scope;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RetentionPolicy.__pulumiType, name, resourceInputs, opts);
@@ -90,15 +90,15 @@ export class RetentionPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RetentionPolicy resources.
  */
 export interface RetentionPolicyState {
-    rules?: pulumi.Input<pulumi.Input<inputs.RetentionPolicyRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.RetentionPolicyRule>[] | undefined>;
     /**
      * The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * The project id of which you would like to apply this policy.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -109,7 +109,7 @@ export interface RetentionPolicyArgs {
     /**
      * The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * The project id of which you would like to apply this policy.
      */

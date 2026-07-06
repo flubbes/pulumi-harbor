@@ -29,6 +29,10 @@ import (
 // Other than system level robot accounts, project level robot accounts can interact on project level only.
 // The [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.
 //
+// ### Project with Write-only Secret
+//
+// ### Project with Write-only Secret from Ephemeral Random Secret
+//
 // The above example creates a project level robot account with permissions to
 // - pull repository on project "main"
 // - push repository on project "main"
@@ -56,6 +60,8 @@ type RobotAccount struct {
 	RobotId     pulumi.StringOutput               `pulumi:"robotId"`
 	// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
 	Secret pulumi.StringOutput `pulumi:"secret"`
+	// Rotation trigger for write-only secret updates. Must be used together with `secretWo`.
+	SecretWoVersion pulumi.IntPtrOutput `pulumi:"secretWoVersion"`
 }
 
 // NewRobotAccount registers a new resource with the given unique name, arguments, and options.
@@ -116,6 +122,8 @@ type robotAccountState struct {
 	RobotId     *string                  `pulumi:"robotId"`
 	// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
 	Secret *string `pulumi:"secret"`
+	// Rotation trigger for write-only secret updates. Must be used together with `secretWo`.
+	SecretWoVersion *int `pulumi:"secretWoVersion"`
 }
 
 type RobotAccountState struct {
@@ -134,6 +142,8 @@ type RobotAccountState struct {
 	RobotId     pulumi.StringPtrInput
 	// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
 	Secret pulumi.StringPtrInput
+	// Rotation trigger for write-only secret updates. Must be used together with `secretWo`.
+	SecretWoVersion pulumi.IntPtrInput
 }
 
 func (RobotAccountState) ElementType() reflect.Type {
@@ -154,6 +164,8 @@ type robotAccountArgs struct {
 	Permissions []RobotAccountPermission `pulumi:"permissions"`
 	// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
 	Secret *string `pulumi:"secret"`
+	// Rotation trigger for write-only secret updates. Must be used together with `secretWo`.
+	SecretWoVersion *int `pulumi:"secretWoVersion"`
 }
 
 // The set of arguments for constructing a RobotAccount resource.
@@ -171,6 +183,8 @@ type RobotAccountArgs struct {
 	Permissions RobotAccountPermissionArrayInput
 	// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
 	Secret pulumi.StringPtrInput
+	// Rotation trigger for write-only secret updates. Must be used together with `secretWo`.
+	SecretWoVersion pulumi.IntPtrInput
 }
 
 func (RobotAccountArgs) ElementType() reflect.Type {
@@ -300,6 +314,11 @@ func (o RobotAccountOutput) RobotId() pulumi.StringOutput {
 // The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
 func (o RobotAccountOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v *RobotAccount) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
+}
+
+// Rotation trigger for write-only secret updates. Must be used together with `secretWo`.
+func (o RobotAccountOutput) SecretWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RobotAccount) pulumi.IntPtrOutput { return v.SecretWoVersion }).(pulumi.IntPtrOutput)
 }
 
 type RobotAccountArrayOutput struct{ *pulumi.OutputState }

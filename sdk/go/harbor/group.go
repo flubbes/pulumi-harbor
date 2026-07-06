@@ -22,11 +22,8 @@ import (
 type Group struct {
 	pulumi.CustomResourceState
 
-	// The name of the group.
-	GroupName pulumi.StringOutput `pulumi:"groupName"`
-	// 3. Note: group type 3 is OIDC group.
-	GroupType pulumi.IntOutput `pulumi:"groupType"`
-	// The distinguished name of the group within AD/LDAP.
+	GroupName   pulumi.StringOutput    `pulumi:"groupName"`
+	GroupType   pulumi.IntOutput       `pulumi:"groupType"`
 	LdapGroupDn pulumi.StringPtrOutput `pulumi:"ldapGroupDn"`
 }
 
@@ -66,20 +63,14 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
-	// The name of the group.
-	GroupName *string `pulumi:"groupName"`
-	// 3. Note: group type 3 is OIDC group.
-	GroupType *int `pulumi:"groupType"`
-	// The distinguished name of the group within AD/LDAP.
+	GroupName   *string `pulumi:"groupName"`
+	GroupType   *int    `pulumi:"groupType"`
 	LdapGroupDn *string `pulumi:"ldapGroupDn"`
 }
 
 type GroupState struct {
-	// The name of the group.
-	GroupName pulumi.StringPtrInput
-	// 3. Note: group type 3 is OIDC group.
-	GroupType pulumi.IntPtrInput
-	// The distinguished name of the group within AD/LDAP.
+	GroupName   pulumi.StringPtrInput
+	GroupType   pulumi.IntPtrInput
 	LdapGroupDn pulumi.StringPtrInput
 }
 
@@ -88,21 +79,15 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
-	// The name of the group.
-	GroupName string `pulumi:"groupName"`
-	// 3. Note: group type 3 is OIDC group.
-	GroupType int `pulumi:"groupType"`
-	// The distinguished name of the group within AD/LDAP.
+	GroupName   string  `pulumi:"groupName"`
+	GroupType   int     `pulumi:"groupType"`
 	LdapGroupDn *string `pulumi:"ldapGroupDn"`
 }
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
-	// The name of the group.
-	GroupName pulumi.StringInput
-	// 3. Note: group type 3 is OIDC group.
-	GroupType pulumi.IntInput
-	// The distinguished name of the group within AD/LDAP.
+	GroupName   pulumi.StringInput
+	GroupType   pulumi.IntInput
 	LdapGroupDn pulumi.StringPtrInput
 }
 
@@ -193,17 +178,14 @@ func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
 }
 
-// The name of the group.
 func (o GroupOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// 3. Note: group type 3 is OIDC group.
 func (o GroupOutput) GroupType() pulumi.IntOutput {
 	return o.ApplyT(func(v *Group) pulumi.IntOutput { return v.GroupType }).(pulumi.IntOutput)
 }
 
-// The distinguished name of the group within AD/LDAP.
 func (o GroupOutput) LdapGroupDn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.LdapGroupDn }).(pulumi.StringPtrOutput)
 }

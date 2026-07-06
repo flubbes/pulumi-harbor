@@ -82,6 +82,23 @@ namespace Pulumiverse.Harbor
         [Input("bearerToken")]
         public Input<string>? BearerToken { get; set; }
 
+        [Input("headers", json: true)]
+        private InputMap<string>? _headers;
+
+        /// <summary>
+        /// A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name.
+        /// Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
+        /// </summary>
+        public InputMap<string> Headers
+        {
+            get => _headers ?? (_headers = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _headers = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         [Input("insecure", json: true)]
         public Input<bool>? Insecure { get; set; }
 

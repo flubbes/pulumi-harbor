@@ -38,27 +38,28 @@ export class ProjectWebhook extends pulumi.CustomResource {
     /**
      * The address of the webhook.
      */
-    public readonly address!: pulumi.Output<string>;
-    public readonly authHeader!: pulumi.Output<string | undefined>;
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly address: pulumi.Output<string>;
+    declare public readonly authHeader: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * The type events you want to subscript to can be
      */
-    public readonly eventsTypes!: pulumi.Output<string[]>;
+    declare public readonly eventsTypes: pulumi.Output<string[]>;
     /**
      * The name of the webhook that will be created in harbor.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The notification type either `http` or `slack`.
      */
-    public readonly notifyType!: pulumi.Output<string>;
+    declare public readonly notifyType: pulumi.Output<string>;
+    declare public readonly payloadFormat: pulumi.Output<string | undefined>;
     /**
      * The project id of the harbor that webhook related to.
      */
-    public readonly projectId!: pulumi.Output<string>;
-    public readonly skipCertVerify!: pulumi.Output<boolean | undefined>;
+    declare public readonly projectId: pulumi.Output<string>;
+    declare public readonly skipCertVerify: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ProjectWebhook resource with the given unique name, arguments, and options.
@@ -73,38 +74,40 @@ export class ProjectWebhook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectWebhookState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["authHeader"] = state ? state.authHeader : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["eventsTypes"] = state ? state.eventsTypes : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notifyType"] = state ? state.notifyType : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["skipCertVerify"] = state ? state.skipCertVerify : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["authHeader"] = state?.authHeader;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["eventsTypes"] = state?.eventsTypes;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notifyType"] = state?.notifyType;
+            resourceInputs["payloadFormat"] = state?.payloadFormat;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["skipCertVerify"] = state?.skipCertVerify;
         } else {
             const args = argsOrState as ProjectWebhookArgs | undefined;
-            if ((!args || args.address === undefined) && !opts.urn) {
+            if (args?.address === undefined && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            if ((!args || args.eventsTypes === undefined) && !opts.urn) {
+            if (args?.eventsTypes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'eventsTypes'");
             }
-            if ((!args || args.notifyType === undefined) && !opts.urn) {
+            if (args?.notifyType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'notifyType'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["authHeader"] = args ? args.authHeader : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["eventsTypes"] = args ? args.eventsTypes : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notifyType"] = args ? args.notifyType : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["skipCertVerify"] = args ? args.skipCertVerify : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["authHeader"] = args?.authHeader;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["eventsTypes"] = args?.eventsTypes;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notifyType"] = args?.notifyType;
+            resourceInputs["payloadFormat"] = args?.payloadFormat;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["skipCertVerify"] = args?.skipCertVerify;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectWebhook.__pulumiType, name, resourceInputs, opts);
@@ -118,27 +121,28 @@ export interface ProjectWebhookState {
     /**
      * The address of the webhook.
      */
-    address?: pulumi.Input<string>;
-    authHeader?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
+    address?: pulumi.Input<string | undefined>;
+    authHeader?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The type events you want to subscript to can be
      */
-    eventsTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    eventsTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the webhook that will be created in harbor.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The notification type either `http` or `slack`.
      */
-    notifyType?: pulumi.Input<string>;
+    notifyType?: pulumi.Input<string | undefined>;
+    payloadFormat?: pulumi.Input<string | undefined>;
     /**
      * The project id of the harbor that webhook related to.
      */
-    projectId?: pulumi.Input<string>;
-    skipCertVerify?: pulumi.Input<boolean>;
+    projectId?: pulumi.Input<string | undefined>;
+    skipCertVerify?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -149,9 +153,9 @@ export interface ProjectWebhookArgs {
      * The address of the webhook.
      */
     address: pulumi.Input<string>;
-    authHeader?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
+    authHeader?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The type events you want to subscript to can be
      */
@@ -159,14 +163,15 @@ export interface ProjectWebhookArgs {
     /**
      * The name of the webhook that will be created in harbor.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The notification type either `http` or `slack`.
      */
     notifyType: pulumi.Input<string>;
+    payloadFormat?: pulumi.Input<string | undefined>;
     /**
      * The project id of the harbor that webhook related to.
      */
     projectId: pulumi.Input<string>;
-    skipCertVerify?: pulumi.Input<boolean>;
+    skipCertVerify?: pulumi.Input<boolean | undefined>;
 }

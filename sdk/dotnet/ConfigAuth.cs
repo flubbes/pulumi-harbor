@@ -15,6 +15,8 @@ namespace Pulumiverse.Harbor
     /// 
     /// ### OIDC
     /// 
+    /// ### OIDC with Write-only Client Secret
+    /// 
     /// ### LDAP
     /// </summary>
     [HarborResourceType("harbor:index/configAuth:ConfigAuth")]
@@ -83,6 +85,9 @@ namespace Pulumiverse.Harbor
         [Output("oidcClientSecret")]
         public Output<string?> OidcClientSecret { get; private set; } = null!;
 
+        [Output("oidcClientSecretWoVersion")]
+        public Output<int?> OidcClientSecretWoVersion { get; private set; } = null!;
+
         [Output("oidcEndpoint")]
         public Output<string?> OidcEndpoint { get; private set; } = null!;
 
@@ -91,6 +96,9 @@ namespace Pulumiverse.Harbor
 
         [Output("oidcGroupsClaim")]
         public Output<string?> OidcGroupsClaim { get; private set; } = null!;
+
+        [Output("oidcLogout")]
+        public Output<bool?> OidcLogout { get; private set; } = null!;
 
         [Output("oidcName")]
         public Output<string?> OidcName { get; private set; } = null!;
@@ -240,6 +248,9 @@ namespace Pulumiverse.Harbor
             }
         }
 
+        [Input("oidcClientSecretWoVersion")]
+        public Input<int>? OidcClientSecretWoVersion { get; set; }
+
         [Input("oidcEndpoint")]
         public Input<string>? OidcEndpoint { get; set; }
 
@@ -248,6 +259,9 @@ namespace Pulumiverse.Harbor
 
         [Input("oidcGroupsClaim")]
         public Input<string>? OidcGroupsClaim { get; set; }
+
+        [Input("oidcLogout")]
+        public Input<bool>? OidcLogout { get; set; }
 
         [Input("oidcName")]
         public Input<string>? OidcName { get; set; }
@@ -353,6 +367,9 @@ namespace Pulumiverse.Harbor
             }
         }
 
+        [Input("oidcClientSecretWoVersion")]
+        public Input<int>? OidcClientSecretWoVersion { get; set; }
+
         [Input("oidcEndpoint")]
         public Input<string>? OidcEndpoint { get; set; }
 
@@ -361,6 +378,9 @@ namespace Pulumiverse.Harbor
 
         [Input("oidcGroupsClaim")]
         public Input<string>? OidcGroupsClaim { get; set; }
+
+        [Input("oidcLogout")]
+        public Input<bool>? OidcLogout { get; set; }
 
         [Input("oidcName")]
         public Input<string>? OidcName { get; set; }

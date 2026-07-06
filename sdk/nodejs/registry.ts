@@ -41,24 +41,25 @@ export class Registry extends pulumi.CustomResource {
         return obj['__pulumiType'] === Registry.__pulumiType;
     }
 
-    public readonly accessId!: pulumi.Output<string | undefined>;
-    public readonly accessSecret!: pulumi.Output<string | undefined>;
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly accessId: pulumi.Output<string | undefined>;
+    declare public readonly accessSecret: pulumi.Output<string | undefined>;
+    declare public readonly caCertificate: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The url endpoint for the external container register ie `"https://hub.docker.com"`
+     * The URL endpoint for the external container register i.e. `"https://hub.docker.com"`
      */
-    public readonly endpointUrl!: pulumi.Output<string>;
-    public readonly insecure!: pulumi.Output<boolean | undefined>;
+    declare public readonly endpointUrl: pulumi.Output<string>;
+    declare public readonly insecure: pulumi.Output<boolean | undefined>;
     /**
      * The name of the register.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the provider.
      */
-    public readonly providerName!: pulumi.Output<string>;
-    public /*out*/ readonly registryId!: pulumi.Output<number>;
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public readonly providerName: pulumi.Output<string>;
+    declare public /*out*/ readonly registryId: pulumi.Output<number>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Registry resource with the given unique name, arguments, and options.
@@ -73,30 +74,32 @@ export class Registry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegistryState | undefined;
-            resourceInputs["accessId"] = state ? state.accessId : undefined;
-            resourceInputs["accessSecret"] = state ? state.accessSecret : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["endpointUrl"] = state ? state.endpointUrl : undefined;
-            resourceInputs["insecure"] = state ? state.insecure : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["providerName"] = state ? state.providerName : undefined;
-            resourceInputs["registryId"] = state ? state.registryId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["accessId"] = state?.accessId;
+            resourceInputs["accessSecret"] = state?.accessSecret;
+            resourceInputs["caCertificate"] = state?.caCertificate;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["endpointUrl"] = state?.endpointUrl;
+            resourceInputs["insecure"] = state?.insecure;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["providerName"] = state?.providerName;
+            resourceInputs["registryId"] = state?.registryId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as RegistryArgs | undefined;
-            if ((!args || args.endpointUrl === undefined) && !opts.urn) {
+            if (args?.endpointUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointUrl'");
             }
-            if ((!args || args.providerName === undefined) && !opts.urn) {
+            if (args?.providerName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'providerName'");
             }
-            resourceInputs["accessId"] = args ? args.accessId : undefined;
+            resourceInputs["accessId"] = args?.accessId;
             resourceInputs["accessSecret"] = args?.accessSecret ? pulumi.secret(args.accessSecret) : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["endpointUrl"] = args ? args.endpointUrl : undefined;
-            resourceInputs["insecure"] = args ? args.insecure : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["providerName"] = args ? args.providerName : undefined;
+            resourceInputs["caCertificate"] = args?.caCertificate;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["endpointUrl"] = args?.endpointUrl;
+            resourceInputs["insecure"] = args?.insecure;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["providerName"] = args?.providerName;
             resourceInputs["registryId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -111,42 +114,44 @@ export class Registry extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Registry resources.
  */
 export interface RegistryState {
-    accessId?: pulumi.Input<string>;
-    accessSecret?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
+    accessId?: pulumi.Input<string | undefined>;
+    accessSecret?: pulumi.Input<string | undefined>;
+    caCertificate?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
     /**
-     * The url endpoint for the external container register ie `"https://hub.docker.com"`
+     * The URL endpoint for the external container register i.e. `"https://hub.docker.com"`
      */
-    endpointUrl?: pulumi.Input<string>;
-    insecure?: pulumi.Input<boolean>;
+    endpointUrl?: pulumi.Input<string | undefined>;
+    insecure?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the register.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the provider.
      */
-    providerName?: pulumi.Input<string>;
-    registryId?: pulumi.Input<number>;
-    status?: pulumi.Input<string>;
+    providerName?: pulumi.Input<string | undefined>;
+    registryId?: pulumi.Input<number | undefined>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Registry resource.
  */
 export interface RegistryArgs {
-    accessId?: pulumi.Input<string>;
-    accessSecret?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
+    accessId?: pulumi.Input<string | undefined>;
+    accessSecret?: pulumi.Input<string | undefined>;
+    caCertificate?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
     /**
-     * The url endpoint for the external container register ie `"https://hub.docker.com"`
+     * The URL endpoint for the external container register i.e. `"https://hub.docker.com"`
      */
     endpointUrl: pulumi.Input<string>;
-    insecure?: pulumi.Input<boolean>;
+    insecure?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the register.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the provider.
      */

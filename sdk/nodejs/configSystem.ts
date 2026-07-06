@@ -40,36 +40,40 @@ export class ConfigSystem extends pulumi.CustomResource {
     /**
      * The endpoint to forward audit logs to.
      */
-    public readonly auditLogForwardEndpoint!: pulumi.Output<string | undefined>;
-    public readonly bannerMessage!: pulumi.Output<outputs.ConfigSystemBannerMessage | undefined>;
+    declare public readonly auditLogForwardEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly bannerMessage: pulumi.Output<outputs.ConfigSystemBannerMessage | undefined>;
+    /**
+     * Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.
+     */
+    declare public readonly notificationEnable: pulumi.Output<boolean | undefined>;
     /**
      * Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
      */
-    public readonly projectCreationRestriction!: pulumi.Output<string | undefined>;
+    declare public readonly projectCreationRestriction: pulumi.Output<string | undefined>;
     /**
      * Whether or not the system is in read only mode.
      */
-    public readonly readOnly!: pulumi.Output<boolean | undefined>;
+    declare public readonly readOnly: pulumi.Output<boolean | undefined>;
     /**
      * Robot account prefix.
      */
-    public readonly robotNamePrefix!: pulumi.Output<string | undefined>;
+    declare public readonly robotNamePrefix: pulumi.Output<string | undefined>;
     /**
      * The amount of time in days a robot account will expire.
      */
-    public readonly robotTokenExpiration!: pulumi.Output<number | undefined>;
+    declare public readonly robotTokenExpiration: pulumi.Output<number | undefined>;
     /**
      * Whether or not to skip update pull time for scanner.
      */
-    public readonly scannerSkipUpdatePulltime!: pulumi.Output<boolean | undefined>;
+    declare public readonly scannerSkipUpdatePulltime: pulumi.Output<boolean | undefined>;
     /**
      * Whether or not to skip audit log database.
      */
-    public readonly skipAuditLogDatabase!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipAuditLogDatabase: pulumi.Output<boolean | undefined>;
     /**
      * Default quota space per project in GIB. Default is -1 (unlimited).
      */
-    public readonly storagePerProject!: pulumi.Output<number | undefined>;
+    declare public readonly storagePerProject: pulumi.Output<number | undefined>;
 
     /**
      * Create a ConfigSystem resource with the given unique name, arguments, and options.
@@ -84,26 +88,28 @@ export class ConfigSystem extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigSystemState | undefined;
-            resourceInputs["auditLogForwardEndpoint"] = state ? state.auditLogForwardEndpoint : undefined;
-            resourceInputs["bannerMessage"] = state ? state.bannerMessage : undefined;
-            resourceInputs["projectCreationRestriction"] = state ? state.projectCreationRestriction : undefined;
-            resourceInputs["readOnly"] = state ? state.readOnly : undefined;
-            resourceInputs["robotNamePrefix"] = state ? state.robotNamePrefix : undefined;
-            resourceInputs["robotTokenExpiration"] = state ? state.robotTokenExpiration : undefined;
-            resourceInputs["scannerSkipUpdatePulltime"] = state ? state.scannerSkipUpdatePulltime : undefined;
-            resourceInputs["skipAuditLogDatabase"] = state ? state.skipAuditLogDatabase : undefined;
-            resourceInputs["storagePerProject"] = state ? state.storagePerProject : undefined;
+            resourceInputs["auditLogForwardEndpoint"] = state?.auditLogForwardEndpoint;
+            resourceInputs["bannerMessage"] = state?.bannerMessage;
+            resourceInputs["notificationEnable"] = state?.notificationEnable;
+            resourceInputs["projectCreationRestriction"] = state?.projectCreationRestriction;
+            resourceInputs["readOnly"] = state?.readOnly;
+            resourceInputs["robotNamePrefix"] = state?.robotNamePrefix;
+            resourceInputs["robotTokenExpiration"] = state?.robotTokenExpiration;
+            resourceInputs["scannerSkipUpdatePulltime"] = state?.scannerSkipUpdatePulltime;
+            resourceInputs["skipAuditLogDatabase"] = state?.skipAuditLogDatabase;
+            resourceInputs["storagePerProject"] = state?.storagePerProject;
         } else {
             const args = argsOrState as ConfigSystemArgs | undefined;
-            resourceInputs["auditLogForwardEndpoint"] = args ? args.auditLogForwardEndpoint : undefined;
-            resourceInputs["bannerMessage"] = args ? args.bannerMessage : undefined;
-            resourceInputs["projectCreationRestriction"] = args ? args.projectCreationRestriction : undefined;
-            resourceInputs["readOnly"] = args ? args.readOnly : undefined;
-            resourceInputs["robotNamePrefix"] = args ? args.robotNamePrefix : undefined;
-            resourceInputs["robotTokenExpiration"] = args ? args.robotTokenExpiration : undefined;
-            resourceInputs["scannerSkipUpdatePulltime"] = args ? args.scannerSkipUpdatePulltime : undefined;
-            resourceInputs["skipAuditLogDatabase"] = args ? args.skipAuditLogDatabase : undefined;
-            resourceInputs["storagePerProject"] = args ? args.storagePerProject : undefined;
+            resourceInputs["auditLogForwardEndpoint"] = args?.auditLogForwardEndpoint;
+            resourceInputs["bannerMessage"] = args?.bannerMessage;
+            resourceInputs["notificationEnable"] = args?.notificationEnable;
+            resourceInputs["projectCreationRestriction"] = args?.projectCreationRestriction;
+            resourceInputs["readOnly"] = args?.readOnly;
+            resourceInputs["robotNamePrefix"] = args?.robotNamePrefix;
+            resourceInputs["robotTokenExpiration"] = args?.robotTokenExpiration;
+            resourceInputs["scannerSkipUpdatePulltime"] = args?.scannerSkipUpdatePulltime;
+            resourceInputs["skipAuditLogDatabase"] = args?.skipAuditLogDatabase;
+            resourceInputs["storagePerProject"] = args?.storagePerProject;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConfigSystem.__pulumiType, name, resourceInputs, opts);
@@ -117,36 +123,40 @@ export interface ConfigSystemState {
     /**
      * The endpoint to forward audit logs to.
      */
-    auditLogForwardEndpoint?: pulumi.Input<string>;
-    bannerMessage?: pulumi.Input<inputs.ConfigSystemBannerMessage>;
+    auditLogForwardEndpoint?: pulumi.Input<string | undefined>;
+    bannerMessage?: pulumi.Input<inputs.ConfigSystemBannerMessage | undefined>;
+    /**
+     * Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.
+     */
+    notificationEnable?: pulumi.Input<boolean | undefined>;
     /**
      * Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
      */
-    projectCreationRestriction?: pulumi.Input<string>;
+    projectCreationRestriction?: pulumi.Input<string | undefined>;
     /**
      * Whether or not the system is in read only mode.
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Robot account prefix.
      */
-    robotNamePrefix?: pulumi.Input<string>;
+    robotNamePrefix?: pulumi.Input<string | undefined>;
     /**
      * The amount of time in days a robot account will expire.
      */
-    robotTokenExpiration?: pulumi.Input<number>;
+    robotTokenExpiration?: pulumi.Input<number | undefined>;
     /**
      * Whether or not to skip update pull time for scanner.
      */
-    scannerSkipUpdatePulltime?: pulumi.Input<boolean>;
+    scannerSkipUpdatePulltime?: pulumi.Input<boolean | undefined>;
     /**
      * Whether or not to skip audit log database.
      */
-    skipAuditLogDatabase?: pulumi.Input<boolean>;
+    skipAuditLogDatabase?: pulumi.Input<boolean | undefined>;
     /**
      * Default quota space per project in GIB. Default is -1 (unlimited).
      */
-    storagePerProject?: pulumi.Input<number>;
+    storagePerProject?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -156,34 +166,38 @@ export interface ConfigSystemArgs {
     /**
      * The endpoint to forward audit logs to.
      */
-    auditLogForwardEndpoint?: pulumi.Input<string>;
-    bannerMessage?: pulumi.Input<inputs.ConfigSystemBannerMessage>;
+    auditLogForwardEndpoint?: pulumi.Input<string | undefined>;
+    bannerMessage?: pulumi.Input<inputs.ConfigSystemBannerMessage | undefined>;
+    /**
+     * Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.
+     */
+    notificationEnable?: pulumi.Input<boolean | undefined>;
     /**
      * Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
      */
-    projectCreationRestriction?: pulumi.Input<string>;
+    projectCreationRestriction?: pulumi.Input<string | undefined>;
     /**
      * Whether or not the system is in read only mode.
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Robot account prefix.
      */
-    robotNamePrefix?: pulumi.Input<string>;
+    robotNamePrefix?: pulumi.Input<string | undefined>;
     /**
      * The amount of time in days a robot account will expire.
      */
-    robotTokenExpiration?: pulumi.Input<number>;
+    robotTokenExpiration?: pulumi.Input<number | undefined>;
     /**
      * Whether or not to skip update pull time for scanner.
      */
-    scannerSkipUpdatePulltime?: pulumi.Input<boolean>;
+    scannerSkipUpdatePulltime?: pulumi.Input<boolean | undefined>;
     /**
      * Whether or not to skip audit log database.
      */
-    skipAuditLogDatabase?: pulumi.Input<boolean>;
+    skipAuditLogDatabase?: pulumi.Input<boolean | undefined>;
     /**
      * Default quota space per project in GIB. Default is -1 (unlimited).
      */
-    storagePerProject?: pulumi.Input<number>;
+    storagePerProject?: pulumi.Input<number | undefined>;
 }

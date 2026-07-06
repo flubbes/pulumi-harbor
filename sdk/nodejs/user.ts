@@ -7,6 +7,10 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ### Write-only Password
+ *
+ * ### Write-only Password from Ephemeral Random Secret
+ *
  * ## Import
  *
  * ```sh
@@ -44,27 +48,31 @@ export class User extends pulumi.CustomResource {
     /**
      * If the user will have admin rights within Harbor (Default: `false`)
      */
-    public readonly admin!: pulumi.Output<boolean | undefined>;
+    declare public readonly admin: pulumi.Output<boolean | undefined>;
     /**
      * Any comments for that are need for the internal user.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * The email address of the internal user.
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * The Full Name of the internal user.
      */
-    public readonly fullName!: pulumi.Output<string>;
+    declare public readonly fullName: pulumi.Output<string>;
     /**
-     * The password for the internal user.
+     * The password for the internal user. Conflicts with `passwordWoVersion`.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string | undefined>;
+    /**
+     * Rotation trigger for write-only password updates. Must be used together with `passwordWo`.
+     */
+    declare public readonly passwordWoVersion: pulumi.Output<number | undefined>;
     /**
      * The username of the internal user.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -79,32 +87,31 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["admin"] = state ? state.admin : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["fullName"] = state ? state.fullName : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["admin"] = state?.admin;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["fullName"] = state?.fullName;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["passwordWoVersion"] = state?.passwordWoVersion;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            if ((!args || args.fullName === undefined) && !opts.urn) {
+            if (args?.fullName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fullName'");
             }
-            if ((!args || args.password === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'password'");
-            }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["admin"] = args ? args.admin : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["fullName"] = args ? args.fullName : undefined;
+            resourceInputs["admin"] = args?.admin;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["fullName"] = args?.fullName;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };
@@ -120,27 +127,31 @@ export interface UserState {
     /**
      * If the user will have admin rights within Harbor (Default: `false`)
      */
-    admin?: pulumi.Input<boolean>;
+    admin?: pulumi.Input<boolean | undefined>;
     /**
      * Any comments for that are need for the internal user.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The email address of the internal user.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The Full Name of the internal user.
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
-     * The password for the internal user.
+     * The password for the internal user. Conflicts with `passwordWoVersion`.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
+    /**
+     * Rotation trigger for write-only password updates. Must be used together with `passwordWo`.
+     */
+    passwordWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The username of the internal user.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -150,11 +161,11 @@ export interface UserArgs {
     /**
      * If the user will have admin rights within Harbor (Default: `false`)
      */
-    admin?: pulumi.Input<boolean>;
+    admin?: pulumi.Input<boolean | undefined>;
     /**
      * Any comments for that are need for the internal user.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The email address of the internal user.
      */
@@ -164,9 +175,13 @@ export interface UserArgs {
      */
     fullName: pulumi.Input<string>;
     /**
-     * The password for the internal user.
+     * The password for the internal user. Conflicts with `passwordWoVersion`.
      */
-    password: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
+    /**
+     * Rotation trigger for write-only password updates. Must be used together with `passwordWo`.
+     */
+    passwordWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The username of the internal user.
      */

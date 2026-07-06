@@ -38,15 +38,15 @@ export class GarbageCollection extends pulumi.CustomResource {
     /**
      * Allow garbage collection on untagged artifacts.
      */
-    public readonly deleteUntagged!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteUntagged: pulumi.Output<boolean | undefined>;
     /**
      * Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
      */
-    public readonly schedule!: pulumi.Output<string>;
+    declare public readonly schedule: pulumi.Output<string>;
     /**
-     * Number of workers to run the garbage collection, value must be between 1 and 5.
+     * Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.
      */
-    public readonly workers!: pulumi.Output<number | undefined>;
+    declare public readonly workers: pulumi.Output<number | undefined>;
 
     /**
      * Create a GarbageCollection resource with the given unique name, arguments, and options.
@@ -61,17 +61,17 @@ export class GarbageCollection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GarbageCollectionState | undefined;
-            resourceInputs["deleteUntagged"] = state ? state.deleteUntagged : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["workers"] = state ? state.workers : undefined;
+            resourceInputs["deleteUntagged"] = state?.deleteUntagged;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["workers"] = state?.workers;
         } else {
             const args = argsOrState as GarbageCollectionArgs | undefined;
-            if ((!args || args.schedule === undefined) && !opts.urn) {
+            if (args?.schedule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schedule'");
             }
-            resourceInputs["deleteUntagged"] = args ? args.deleteUntagged : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["workers"] = args ? args.workers : undefined;
+            resourceInputs["deleteUntagged"] = args?.deleteUntagged;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["workers"] = args?.workers;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GarbageCollection.__pulumiType, name, resourceInputs, opts);
@@ -85,15 +85,15 @@ export interface GarbageCollectionState {
     /**
      * Allow garbage collection on untagged artifacts.
      */
-    deleteUntagged?: pulumi.Input<boolean>;
+    deleteUntagged?: pulumi.Input<boolean | undefined>;
     /**
      * Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
-     * Number of workers to run the garbage collection, value must be between 1 and 5.
+     * Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.
      */
-    workers?: pulumi.Input<number>;
+    workers?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -103,13 +103,13 @@ export interface GarbageCollectionArgs {
     /**
      * Allow garbage collection on untagged artifacts.
      */
-    deleteUntagged?: pulumi.Input<boolean>;
+    deleteUntagged?: pulumi.Input<boolean | undefined>;
     /**
      * Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
      */
     schedule: pulumi.Input<string>;
     /**
-     * Number of workers to run the garbage collection, value must be between 1 and 5.
+     * Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.
      */
-    workers?: pulumi.Input<number>;
+    workers?: pulumi.Input<number | undefined>;
 }

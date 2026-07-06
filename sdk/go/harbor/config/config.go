@@ -23,6 +23,12 @@ func GetApiVersion(ctx *pulumi.Context) int {
 func GetBearerToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "harbor:bearerToken")
 }
+
+// A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name.
+// Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
+func GetHeaders(ctx *pulumi.Context) string {
+	return config.Get(ctx, "harbor:headers")
+}
 func GetInsecure(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "harbor:insecure")
 	if err == nil {

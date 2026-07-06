@@ -26,6 +26,12 @@ namespace Pulumiverse.Harbor
         public Output<Outputs.ConfigSystemBannerMessage?> BannerMessage { get; private set; } = null!;
 
         /// <summary>
+        /// Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.
+        /// </summary>
+        [Output("notificationEnable")]
+        public Output<bool?> NotificationEnable { get; private set; } = null!;
+
+        /// <summary>
         /// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
         /// </summary>
         [Output("projectCreationRestriction")]
@@ -124,6 +130,12 @@ namespace Pulumiverse.Harbor
         public Input<Inputs.ConfigSystemBannerMessageArgs>? BannerMessage { get; set; }
 
         /// <summary>
+        /// Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.
+        /// </summary>
+        [Input("notificationEnable")]
+        public Input<bool>? NotificationEnable { get; set; }
+
+        /// <summary>
         /// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
         /// </summary>
         [Input("projectCreationRestriction")]
@@ -181,6 +193,12 @@ namespace Pulumiverse.Harbor
 
         [Input("bannerMessage")]
         public Input<Inputs.ConfigSystemBannerMessageGetArgs>? BannerMessage { get; set; }
+
+        /// <summary>
+        /// Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.
+        /// </summary>
+        [Input("notificationEnable")]
+        public Input<bool>? NotificationEnable { get; set; }
 
         /// <summary>
         /// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`

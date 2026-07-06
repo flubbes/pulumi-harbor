@@ -16,39 +16,43 @@ import (
 //
 // ### OIDC
 //
+// ### OIDC with Write-only Client Secret
+//
 // ### LDAP
 type ConfigAuth struct {
 	pulumi.CustomResourceState
 
 	// Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
-	AuthMode            pulumi.StringOutput    `pulumi:"authMode"`
-	LdapBaseDn          pulumi.StringPtrOutput `pulumi:"ldapBaseDn"`
-	LdapFilter          pulumi.StringPtrOutput `pulumi:"ldapFilter"`
-	LdapGroupAdminDn    pulumi.StringPtrOutput `pulumi:"ldapGroupAdminDn"`
-	LdapGroupBaseDn     pulumi.StringPtrOutput `pulumi:"ldapGroupBaseDn"`
-	LdapGroupFilter     pulumi.StringPtrOutput `pulumi:"ldapGroupFilter"`
-	LdapGroupGid        pulumi.StringPtrOutput `pulumi:"ldapGroupGid"`
-	LdapGroupMembership pulumi.StringPtrOutput `pulumi:"ldapGroupMembership"`
-	LdapGroupScope      pulumi.StringPtrOutput `pulumi:"ldapGroupScope"`
-	LdapGroupUid        pulumi.StringPtrOutput `pulumi:"ldapGroupUid"`
-	LdapScope           pulumi.StringPtrOutput `pulumi:"ldapScope"`
-	LdapSearchDn        pulumi.StringPtrOutput `pulumi:"ldapSearchDn"`
-	LdapSearchPassword  pulumi.StringPtrOutput `pulumi:"ldapSearchPassword"`
-	LdapUid             pulumi.StringPtrOutput `pulumi:"ldapUid"`
-	LdapUrl             pulumi.StringPtrOutput `pulumi:"ldapUrl"`
-	LdapVerifyCert      pulumi.BoolPtrOutput   `pulumi:"ldapVerifyCert"`
-	OidcAdminGroup      pulumi.StringPtrOutput `pulumi:"oidcAdminGroup"`
-	OidcAutoOnboard     pulumi.BoolPtrOutput   `pulumi:"oidcAutoOnboard"`
-	OidcClientId        pulumi.StringPtrOutput `pulumi:"oidcClientId"`
-	OidcClientSecret    pulumi.StringPtrOutput `pulumi:"oidcClientSecret"`
-	OidcEndpoint        pulumi.StringPtrOutput `pulumi:"oidcEndpoint"`
-	OidcGroupFilter     pulumi.StringPtrOutput `pulumi:"oidcGroupFilter"`
-	OidcGroupsClaim     pulumi.StringPtrOutput `pulumi:"oidcGroupsClaim"`
-	OidcName            pulumi.StringPtrOutput `pulumi:"oidcName"`
-	OidcScope           pulumi.StringPtrOutput `pulumi:"oidcScope"`
-	OidcUserClaim       pulumi.StringPtrOutput `pulumi:"oidcUserClaim"`
-	OidcVerifyCert      pulumi.BoolPtrOutput   `pulumi:"oidcVerifyCert"`
-	PrimaryAuthMode     pulumi.BoolPtrOutput   `pulumi:"primaryAuthMode"`
+	AuthMode                  pulumi.StringOutput    `pulumi:"authMode"`
+	LdapBaseDn                pulumi.StringPtrOutput `pulumi:"ldapBaseDn"`
+	LdapFilter                pulumi.StringPtrOutput `pulumi:"ldapFilter"`
+	LdapGroupAdminDn          pulumi.StringPtrOutput `pulumi:"ldapGroupAdminDn"`
+	LdapGroupBaseDn           pulumi.StringPtrOutput `pulumi:"ldapGroupBaseDn"`
+	LdapGroupFilter           pulumi.StringPtrOutput `pulumi:"ldapGroupFilter"`
+	LdapGroupGid              pulumi.StringPtrOutput `pulumi:"ldapGroupGid"`
+	LdapGroupMembership       pulumi.StringPtrOutput `pulumi:"ldapGroupMembership"`
+	LdapGroupScope            pulumi.StringPtrOutput `pulumi:"ldapGroupScope"`
+	LdapGroupUid              pulumi.StringPtrOutput `pulumi:"ldapGroupUid"`
+	LdapScope                 pulumi.StringPtrOutput `pulumi:"ldapScope"`
+	LdapSearchDn              pulumi.StringPtrOutput `pulumi:"ldapSearchDn"`
+	LdapSearchPassword        pulumi.StringPtrOutput `pulumi:"ldapSearchPassword"`
+	LdapUid                   pulumi.StringPtrOutput `pulumi:"ldapUid"`
+	LdapUrl                   pulumi.StringPtrOutput `pulumi:"ldapUrl"`
+	LdapVerifyCert            pulumi.BoolPtrOutput   `pulumi:"ldapVerifyCert"`
+	OidcAdminGroup            pulumi.StringPtrOutput `pulumi:"oidcAdminGroup"`
+	OidcAutoOnboard           pulumi.BoolPtrOutput   `pulumi:"oidcAutoOnboard"`
+	OidcClientId              pulumi.StringPtrOutput `pulumi:"oidcClientId"`
+	OidcClientSecret          pulumi.StringPtrOutput `pulumi:"oidcClientSecret"`
+	OidcClientSecretWoVersion pulumi.IntPtrOutput    `pulumi:"oidcClientSecretWoVersion"`
+	OidcEndpoint              pulumi.StringPtrOutput `pulumi:"oidcEndpoint"`
+	OidcGroupFilter           pulumi.StringPtrOutput `pulumi:"oidcGroupFilter"`
+	OidcGroupsClaim           pulumi.StringPtrOutput `pulumi:"oidcGroupsClaim"`
+	OidcLogout                pulumi.BoolPtrOutput   `pulumi:"oidcLogout"`
+	OidcName                  pulumi.StringPtrOutput `pulumi:"oidcName"`
+	OidcScope                 pulumi.StringPtrOutput `pulumi:"oidcScope"`
+	OidcUserClaim             pulumi.StringPtrOutput `pulumi:"oidcUserClaim"`
+	OidcVerifyCert            pulumi.BoolPtrOutput   `pulumi:"oidcVerifyCert"`
+	PrimaryAuthMode           pulumi.BoolPtrOutput   `pulumi:"primaryAuthMode"`
 }
 
 // NewConfigAuth registers a new resource with the given unique name, arguments, and options.
@@ -96,66 +100,70 @@ func GetConfigAuth(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ConfigAuth resources.
 type configAuthState struct {
 	// Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
-	AuthMode            *string `pulumi:"authMode"`
-	LdapBaseDn          *string `pulumi:"ldapBaseDn"`
-	LdapFilter          *string `pulumi:"ldapFilter"`
-	LdapGroupAdminDn    *string `pulumi:"ldapGroupAdminDn"`
-	LdapGroupBaseDn     *string `pulumi:"ldapGroupBaseDn"`
-	LdapGroupFilter     *string `pulumi:"ldapGroupFilter"`
-	LdapGroupGid        *string `pulumi:"ldapGroupGid"`
-	LdapGroupMembership *string `pulumi:"ldapGroupMembership"`
-	LdapGroupScope      *string `pulumi:"ldapGroupScope"`
-	LdapGroupUid        *string `pulumi:"ldapGroupUid"`
-	LdapScope           *string `pulumi:"ldapScope"`
-	LdapSearchDn        *string `pulumi:"ldapSearchDn"`
-	LdapSearchPassword  *string `pulumi:"ldapSearchPassword"`
-	LdapUid             *string `pulumi:"ldapUid"`
-	LdapUrl             *string `pulumi:"ldapUrl"`
-	LdapVerifyCert      *bool   `pulumi:"ldapVerifyCert"`
-	OidcAdminGroup      *string `pulumi:"oidcAdminGroup"`
-	OidcAutoOnboard     *bool   `pulumi:"oidcAutoOnboard"`
-	OidcClientId        *string `pulumi:"oidcClientId"`
-	OidcClientSecret    *string `pulumi:"oidcClientSecret"`
-	OidcEndpoint        *string `pulumi:"oidcEndpoint"`
-	OidcGroupFilter     *string `pulumi:"oidcGroupFilter"`
-	OidcGroupsClaim     *string `pulumi:"oidcGroupsClaim"`
-	OidcName            *string `pulumi:"oidcName"`
-	OidcScope           *string `pulumi:"oidcScope"`
-	OidcUserClaim       *string `pulumi:"oidcUserClaim"`
-	OidcVerifyCert      *bool   `pulumi:"oidcVerifyCert"`
-	PrimaryAuthMode     *bool   `pulumi:"primaryAuthMode"`
+	AuthMode                  *string `pulumi:"authMode"`
+	LdapBaseDn                *string `pulumi:"ldapBaseDn"`
+	LdapFilter                *string `pulumi:"ldapFilter"`
+	LdapGroupAdminDn          *string `pulumi:"ldapGroupAdminDn"`
+	LdapGroupBaseDn           *string `pulumi:"ldapGroupBaseDn"`
+	LdapGroupFilter           *string `pulumi:"ldapGroupFilter"`
+	LdapGroupGid              *string `pulumi:"ldapGroupGid"`
+	LdapGroupMembership       *string `pulumi:"ldapGroupMembership"`
+	LdapGroupScope            *string `pulumi:"ldapGroupScope"`
+	LdapGroupUid              *string `pulumi:"ldapGroupUid"`
+	LdapScope                 *string `pulumi:"ldapScope"`
+	LdapSearchDn              *string `pulumi:"ldapSearchDn"`
+	LdapSearchPassword        *string `pulumi:"ldapSearchPassword"`
+	LdapUid                   *string `pulumi:"ldapUid"`
+	LdapUrl                   *string `pulumi:"ldapUrl"`
+	LdapVerifyCert            *bool   `pulumi:"ldapVerifyCert"`
+	OidcAdminGroup            *string `pulumi:"oidcAdminGroup"`
+	OidcAutoOnboard           *bool   `pulumi:"oidcAutoOnboard"`
+	OidcClientId              *string `pulumi:"oidcClientId"`
+	OidcClientSecret          *string `pulumi:"oidcClientSecret"`
+	OidcClientSecretWoVersion *int    `pulumi:"oidcClientSecretWoVersion"`
+	OidcEndpoint              *string `pulumi:"oidcEndpoint"`
+	OidcGroupFilter           *string `pulumi:"oidcGroupFilter"`
+	OidcGroupsClaim           *string `pulumi:"oidcGroupsClaim"`
+	OidcLogout                *bool   `pulumi:"oidcLogout"`
+	OidcName                  *string `pulumi:"oidcName"`
+	OidcScope                 *string `pulumi:"oidcScope"`
+	OidcUserClaim             *string `pulumi:"oidcUserClaim"`
+	OidcVerifyCert            *bool   `pulumi:"oidcVerifyCert"`
+	PrimaryAuthMode           *bool   `pulumi:"primaryAuthMode"`
 }
 
 type ConfigAuthState struct {
 	// Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
-	AuthMode            pulumi.StringPtrInput
-	LdapBaseDn          pulumi.StringPtrInput
-	LdapFilter          pulumi.StringPtrInput
-	LdapGroupAdminDn    pulumi.StringPtrInput
-	LdapGroupBaseDn     pulumi.StringPtrInput
-	LdapGroupFilter     pulumi.StringPtrInput
-	LdapGroupGid        pulumi.StringPtrInput
-	LdapGroupMembership pulumi.StringPtrInput
-	LdapGroupScope      pulumi.StringPtrInput
-	LdapGroupUid        pulumi.StringPtrInput
-	LdapScope           pulumi.StringPtrInput
-	LdapSearchDn        pulumi.StringPtrInput
-	LdapSearchPassword  pulumi.StringPtrInput
-	LdapUid             pulumi.StringPtrInput
-	LdapUrl             pulumi.StringPtrInput
-	LdapVerifyCert      pulumi.BoolPtrInput
-	OidcAdminGroup      pulumi.StringPtrInput
-	OidcAutoOnboard     pulumi.BoolPtrInput
-	OidcClientId        pulumi.StringPtrInput
-	OidcClientSecret    pulumi.StringPtrInput
-	OidcEndpoint        pulumi.StringPtrInput
-	OidcGroupFilter     pulumi.StringPtrInput
-	OidcGroupsClaim     pulumi.StringPtrInput
-	OidcName            pulumi.StringPtrInput
-	OidcScope           pulumi.StringPtrInput
-	OidcUserClaim       pulumi.StringPtrInput
-	OidcVerifyCert      pulumi.BoolPtrInput
-	PrimaryAuthMode     pulumi.BoolPtrInput
+	AuthMode                  pulumi.StringPtrInput
+	LdapBaseDn                pulumi.StringPtrInput
+	LdapFilter                pulumi.StringPtrInput
+	LdapGroupAdminDn          pulumi.StringPtrInput
+	LdapGroupBaseDn           pulumi.StringPtrInput
+	LdapGroupFilter           pulumi.StringPtrInput
+	LdapGroupGid              pulumi.StringPtrInput
+	LdapGroupMembership       pulumi.StringPtrInput
+	LdapGroupScope            pulumi.StringPtrInput
+	LdapGroupUid              pulumi.StringPtrInput
+	LdapScope                 pulumi.StringPtrInput
+	LdapSearchDn              pulumi.StringPtrInput
+	LdapSearchPassword        pulumi.StringPtrInput
+	LdapUid                   pulumi.StringPtrInput
+	LdapUrl                   pulumi.StringPtrInput
+	LdapVerifyCert            pulumi.BoolPtrInput
+	OidcAdminGroup            pulumi.StringPtrInput
+	OidcAutoOnboard           pulumi.BoolPtrInput
+	OidcClientId              pulumi.StringPtrInput
+	OidcClientSecret          pulumi.StringPtrInput
+	OidcClientSecretWoVersion pulumi.IntPtrInput
+	OidcEndpoint              pulumi.StringPtrInput
+	OidcGroupFilter           pulumi.StringPtrInput
+	OidcGroupsClaim           pulumi.StringPtrInput
+	OidcLogout                pulumi.BoolPtrInput
+	OidcName                  pulumi.StringPtrInput
+	OidcScope                 pulumi.StringPtrInput
+	OidcUserClaim             pulumi.StringPtrInput
+	OidcVerifyCert            pulumi.BoolPtrInput
+	PrimaryAuthMode           pulumi.BoolPtrInput
 }
 
 func (ConfigAuthState) ElementType() reflect.Type {
@@ -164,67 +172,71 @@ func (ConfigAuthState) ElementType() reflect.Type {
 
 type configAuthArgs struct {
 	// Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
-	AuthMode            string  `pulumi:"authMode"`
-	LdapBaseDn          *string `pulumi:"ldapBaseDn"`
-	LdapFilter          *string `pulumi:"ldapFilter"`
-	LdapGroupAdminDn    *string `pulumi:"ldapGroupAdminDn"`
-	LdapGroupBaseDn     *string `pulumi:"ldapGroupBaseDn"`
-	LdapGroupFilter     *string `pulumi:"ldapGroupFilter"`
-	LdapGroupGid        *string `pulumi:"ldapGroupGid"`
-	LdapGroupMembership *string `pulumi:"ldapGroupMembership"`
-	LdapGroupScope      *string `pulumi:"ldapGroupScope"`
-	LdapGroupUid        *string `pulumi:"ldapGroupUid"`
-	LdapScope           *string `pulumi:"ldapScope"`
-	LdapSearchDn        *string `pulumi:"ldapSearchDn"`
-	LdapSearchPassword  *string `pulumi:"ldapSearchPassword"`
-	LdapUid             *string `pulumi:"ldapUid"`
-	LdapUrl             *string `pulumi:"ldapUrl"`
-	LdapVerifyCert      *bool   `pulumi:"ldapVerifyCert"`
-	OidcAdminGroup      *string `pulumi:"oidcAdminGroup"`
-	OidcAutoOnboard     *bool   `pulumi:"oidcAutoOnboard"`
-	OidcClientId        *string `pulumi:"oidcClientId"`
-	OidcClientSecret    *string `pulumi:"oidcClientSecret"`
-	OidcEndpoint        *string `pulumi:"oidcEndpoint"`
-	OidcGroupFilter     *string `pulumi:"oidcGroupFilter"`
-	OidcGroupsClaim     *string `pulumi:"oidcGroupsClaim"`
-	OidcName            *string `pulumi:"oidcName"`
-	OidcScope           *string `pulumi:"oidcScope"`
-	OidcUserClaim       *string `pulumi:"oidcUserClaim"`
-	OidcVerifyCert      *bool   `pulumi:"oidcVerifyCert"`
-	PrimaryAuthMode     *bool   `pulumi:"primaryAuthMode"`
+	AuthMode                  string  `pulumi:"authMode"`
+	LdapBaseDn                *string `pulumi:"ldapBaseDn"`
+	LdapFilter                *string `pulumi:"ldapFilter"`
+	LdapGroupAdminDn          *string `pulumi:"ldapGroupAdminDn"`
+	LdapGroupBaseDn           *string `pulumi:"ldapGroupBaseDn"`
+	LdapGroupFilter           *string `pulumi:"ldapGroupFilter"`
+	LdapGroupGid              *string `pulumi:"ldapGroupGid"`
+	LdapGroupMembership       *string `pulumi:"ldapGroupMembership"`
+	LdapGroupScope            *string `pulumi:"ldapGroupScope"`
+	LdapGroupUid              *string `pulumi:"ldapGroupUid"`
+	LdapScope                 *string `pulumi:"ldapScope"`
+	LdapSearchDn              *string `pulumi:"ldapSearchDn"`
+	LdapSearchPassword        *string `pulumi:"ldapSearchPassword"`
+	LdapUid                   *string `pulumi:"ldapUid"`
+	LdapUrl                   *string `pulumi:"ldapUrl"`
+	LdapVerifyCert            *bool   `pulumi:"ldapVerifyCert"`
+	OidcAdminGroup            *string `pulumi:"oidcAdminGroup"`
+	OidcAutoOnboard           *bool   `pulumi:"oidcAutoOnboard"`
+	OidcClientId              *string `pulumi:"oidcClientId"`
+	OidcClientSecret          *string `pulumi:"oidcClientSecret"`
+	OidcClientSecretWoVersion *int    `pulumi:"oidcClientSecretWoVersion"`
+	OidcEndpoint              *string `pulumi:"oidcEndpoint"`
+	OidcGroupFilter           *string `pulumi:"oidcGroupFilter"`
+	OidcGroupsClaim           *string `pulumi:"oidcGroupsClaim"`
+	OidcLogout                *bool   `pulumi:"oidcLogout"`
+	OidcName                  *string `pulumi:"oidcName"`
+	OidcScope                 *string `pulumi:"oidcScope"`
+	OidcUserClaim             *string `pulumi:"oidcUserClaim"`
+	OidcVerifyCert            *bool   `pulumi:"oidcVerifyCert"`
+	PrimaryAuthMode           *bool   `pulumi:"primaryAuthMode"`
 }
 
 // The set of arguments for constructing a ConfigAuth resource.
 type ConfigAuthArgs struct {
 	// Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
-	AuthMode            pulumi.StringInput
-	LdapBaseDn          pulumi.StringPtrInput
-	LdapFilter          pulumi.StringPtrInput
-	LdapGroupAdminDn    pulumi.StringPtrInput
-	LdapGroupBaseDn     pulumi.StringPtrInput
-	LdapGroupFilter     pulumi.StringPtrInput
-	LdapGroupGid        pulumi.StringPtrInput
-	LdapGroupMembership pulumi.StringPtrInput
-	LdapGroupScope      pulumi.StringPtrInput
-	LdapGroupUid        pulumi.StringPtrInput
-	LdapScope           pulumi.StringPtrInput
-	LdapSearchDn        pulumi.StringPtrInput
-	LdapSearchPassword  pulumi.StringPtrInput
-	LdapUid             pulumi.StringPtrInput
-	LdapUrl             pulumi.StringPtrInput
-	LdapVerifyCert      pulumi.BoolPtrInput
-	OidcAdminGroup      pulumi.StringPtrInput
-	OidcAutoOnboard     pulumi.BoolPtrInput
-	OidcClientId        pulumi.StringPtrInput
-	OidcClientSecret    pulumi.StringPtrInput
-	OidcEndpoint        pulumi.StringPtrInput
-	OidcGroupFilter     pulumi.StringPtrInput
-	OidcGroupsClaim     pulumi.StringPtrInput
-	OidcName            pulumi.StringPtrInput
-	OidcScope           pulumi.StringPtrInput
-	OidcUserClaim       pulumi.StringPtrInput
-	OidcVerifyCert      pulumi.BoolPtrInput
-	PrimaryAuthMode     pulumi.BoolPtrInput
+	AuthMode                  pulumi.StringInput
+	LdapBaseDn                pulumi.StringPtrInput
+	LdapFilter                pulumi.StringPtrInput
+	LdapGroupAdminDn          pulumi.StringPtrInput
+	LdapGroupBaseDn           pulumi.StringPtrInput
+	LdapGroupFilter           pulumi.StringPtrInput
+	LdapGroupGid              pulumi.StringPtrInput
+	LdapGroupMembership       pulumi.StringPtrInput
+	LdapGroupScope            pulumi.StringPtrInput
+	LdapGroupUid              pulumi.StringPtrInput
+	LdapScope                 pulumi.StringPtrInput
+	LdapSearchDn              pulumi.StringPtrInput
+	LdapSearchPassword        pulumi.StringPtrInput
+	LdapUid                   pulumi.StringPtrInput
+	LdapUrl                   pulumi.StringPtrInput
+	LdapVerifyCert            pulumi.BoolPtrInput
+	OidcAdminGroup            pulumi.StringPtrInput
+	OidcAutoOnboard           pulumi.BoolPtrInput
+	OidcClientId              pulumi.StringPtrInput
+	OidcClientSecret          pulumi.StringPtrInput
+	OidcClientSecretWoVersion pulumi.IntPtrInput
+	OidcEndpoint              pulumi.StringPtrInput
+	OidcGroupFilter           pulumi.StringPtrInput
+	OidcGroupsClaim           pulumi.StringPtrInput
+	OidcLogout                pulumi.BoolPtrInput
+	OidcName                  pulumi.StringPtrInput
+	OidcScope                 pulumi.StringPtrInput
+	OidcUserClaim             pulumi.StringPtrInput
+	OidcVerifyCert            pulumi.BoolPtrInput
+	PrimaryAuthMode           pulumi.BoolPtrInput
 }
 
 func (ConfigAuthArgs) ElementType() reflect.Type {
@@ -395,6 +407,10 @@ func (o ConfigAuthOutput) OidcClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigAuth) pulumi.StringPtrOutput { return v.OidcClientSecret }).(pulumi.StringPtrOutput)
 }
 
+func (o ConfigAuthOutput) OidcClientSecretWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConfigAuth) pulumi.IntPtrOutput { return v.OidcClientSecretWoVersion }).(pulumi.IntPtrOutput)
+}
+
 func (o ConfigAuthOutput) OidcEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigAuth) pulumi.StringPtrOutput { return v.OidcEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -405,6 +421,10 @@ func (o ConfigAuthOutput) OidcGroupFilter() pulumi.StringPtrOutput {
 
 func (o ConfigAuthOutput) OidcGroupsClaim() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigAuth) pulumi.StringPtrOutput { return v.OidcGroupsClaim }).(pulumi.StringPtrOutput)
+}
+
+func (o ConfigAuthOutput) OidcLogout() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigAuth) pulumi.BoolPtrOutput { return v.OidcLogout }).(pulumi.BoolPtrOutput)
 }
 
 func (o ConfigAuthOutput) OidcName() pulumi.StringPtrOutput {

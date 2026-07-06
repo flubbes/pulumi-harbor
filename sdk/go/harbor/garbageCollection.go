@@ -20,7 +20,7 @@ type GarbageCollection struct {
 	DeleteUntagged pulumi.BoolPtrOutput `pulumi:"deleteUntagged"`
 	// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
 	Schedule pulumi.StringOutput `pulumi:"schedule"`
-	// Number of workers to run the garbage collection, value must be between 1 and 5.
+	// Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.
 	Workers pulumi.IntPtrOutput `pulumi:"workers"`
 }
 
@@ -61,7 +61,7 @@ type garbageCollectionState struct {
 	DeleteUntagged *bool `pulumi:"deleteUntagged"`
 	// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
 	Schedule *string `pulumi:"schedule"`
-	// Number of workers to run the garbage collection, value must be between 1 and 5.
+	// Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.
 	Workers *int `pulumi:"workers"`
 }
 
@@ -70,7 +70,7 @@ type GarbageCollectionState struct {
 	DeleteUntagged pulumi.BoolPtrInput
 	// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
 	Schedule pulumi.StringPtrInput
-	// Number of workers to run the garbage collection, value must be between 1 and 5.
+	// Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.
 	Workers pulumi.IntPtrInput
 }
 
@@ -83,7 +83,7 @@ type garbageCollectionArgs struct {
 	DeleteUntagged *bool `pulumi:"deleteUntagged"`
 	// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
 	Schedule string `pulumi:"schedule"`
-	// Number of workers to run the garbage collection, value must be between 1 and 5.
+	// Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.
 	Workers *int `pulumi:"workers"`
 }
 
@@ -93,7 +93,7 @@ type GarbageCollectionArgs struct {
 	DeleteUntagged pulumi.BoolPtrInput
 	// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
 	Schedule pulumi.StringInput
-	// Number of workers to run the garbage collection, value must be between 1 and 5.
+	// Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.
 	Workers pulumi.IntPtrInput
 }
 
@@ -194,7 +194,7 @@ func (o GarbageCollectionOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v *GarbageCollection) pulumi.StringOutput { return v.Schedule }).(pulumi.StringOutput)
 }
 
-// Number of workers to run the garbage collection, value must be between 1 and 5.
+// Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.
 func (o GarbageCollectionOutput) Workers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GarbageCollection) pulumi.IntPtrOutput { return v.Workers }).(pulumi.IntPtrOutput)
 }

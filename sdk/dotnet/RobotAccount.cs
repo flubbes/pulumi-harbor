@@ -28,6 +28,10 @@ namespace Pulumiverse.Harbor
     /// Other than system level robot accounts, project level robot accounts can interact on project level only.
     /// The [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.
     /// 
+    /// ### Project with Write-only Secret
+    /// 
+    /// ### Project with Write-only Secret from Ephemeral Random Secret
+    /// 
     /// The above example creates a project level robot account with permissions to
     /// - pull repository on project "main"
     /// - push repository on project "main"
@@ -85,6 +89,12 @@ namespace Pulumiverse.Harbor
         /// </summary>
         [Output("secret")]
         public Output<string> Secret { get; private set; } = null!;
+
+        /// <summary>
+        /// Rotation trigger for write-only secret updates. Must be used together with `secret_wo`.
+        /// </summary>
+        [Output("secretWoVersion")]
+        public Output<int?> SecretWoVersion { get; private set; } = null!;
 
 
         /// <summary>
@@ -191,6 +201,12 @@ namespace Pulumiverse.Harbor
             }
         }
 
+        /// <summary>
+        /// Rotation trigger for write-only secret updates. Must be used together with `secret_wo`.
+        /// </summary>
+        [Input("secretWoVersion")]
+        public Input<int>? SecretWoVersion { get; set; }
+
         public RobotAccountArgs()
         {
         }
@@ -258,6 +274,12 @@ namespace Pulumiverse.Harbor
                 _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// Rotation trigger for write-only secret updates. Must be used together with `secret_wo`.
+        /// </summary>
+        [Input("secretWoVersion")]
+        public Input<int>? SecretWoVersion { get; set; }
 
         public RobotAccountState()
         {

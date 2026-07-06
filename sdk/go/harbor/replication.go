@@ -31,7 +31,7 @@ type Replication struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
 	DestNamespace pulumi.StringPtrOutput `pulumi:"destNamespace"`
-	// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+	// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `0`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
 	DestNamespaceReplace pulumi.IntPtrOutput `pulumi:"destNamespaceReplace"`
 	// Specify whether the replication is enabled. (Default: `true`)
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
@@ -47,6 +47,8 @@ type Replication struct {
 	ReplicationPolicyId pulumi.IntOutput `pulumi:"replicationPolicyId"`
 	// The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `eventBased`, `manual`, `cron format` (Default: `manual`)
 	Schedule pulumi.StringPtrOutput `pulumi:"schedule"`
+	// , prevent parallel runs under the same replication. (Default: `false`)
+	SingleActiveReplication pulumi.BoolPtrOutput `pulumi:"singleActiveReplication"`
 	// The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
 	Speed pulumi.IntPtrOutput `pulumi:"speed"`
 }
@@ -96,7 +98,7 @@ type replicationState struct {
 	Description *string `pulumi:"description"`
 	// Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
 	DestNamespace *string `pulumi:"destNamespace"`
-	// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+	// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `0`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
 	DestNamespaceReplace *int `pulumi:"destNamespaceReplace"`
 	// Specify whether the replication is enabled. (Default: `true`)
 	Enabled *bool `pulumi:"enabled"`
@@ -112,6 +114,8 @@ type replicationState struct {
 	ReplicationPolicyId *int `pulumi:"replicationPolicyId"`
 	// The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `eventBased`, `manual`, `cron format` (Default: `manual`)
 	Schedule *string `pulumi:"schedule"`
+	// , prevent parallel runs under the same replication. (Default: `false`)
+	SingleActiveReplication *bool `pulumi:"singleActiveReplication"`
 	// The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
 	Speed *int `pulumi:"speed"`
 }
@@ -126,7 +130,7 @@ type ReplicationState struct {
 	Description pulumi.StringPtrInput
 	// Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
 	DestNamespace pulumi.StringPtrInput
-	// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+	// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `0`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
 	DestNamespaceReplace pulumi.IntPtrInput
 	// Specify whether the replication is enabled. (Default: `true`)
 	Enabled pulumi.BoolPtrInput
@@ -142,6 +146,8 @@ type ReplicationState struct {
 	ReplicationPolicyId pulumi.IntPtrInput
 	// The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `eventBased`, `manual`, `cron format` (Default: `manual`)
 	Schedule pulumi.StringPtrInput
+	// , prevent parallel runs under the same replication. (Default: `false`)
+	SingleActiveReplication pulumi.BoolPtrInput
 	// The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
 	Speed pulumi.IntPtrInput
 }
@@ -160,7 +166,7 @@ type replicationArgs struct {
 	Description *string `pulumi:"description"`
 	// Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
 	DestNamespace *string `pulumi:"destNamespace"`
-	// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+	// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `0`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
 	DestNamespaceReplace *int `pulumi:"destNamespaceReplace"`
 	// Specify whether the replication is enabled. (Default: `true`)
 	Enabled *bool `pulumi:"enabled"`
@@ -175,6 +181,8 @@ type replicationArgs struct {
 	RegistryId int `pulumi:"registryId"`
 	// The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `eventBased`, `manual`, `cron format` (Default: `manual`)
 	Schedule *string `pulumi:"schedule"`
+	// , prevent parallel runs under the same replication. (Default: `false`)
+	SingleActiveReplication *bool `pulumi:"singleActiveReplication"`
 	// The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
 	Speed *int `pulumi:"speed"`
 }
@@ -190,7 +198,7 @@ type ReplicationArgs struct {
 	Description pulumi.StringPtrInput
 	// Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
 	DestNamespace pulumi.StringPtrInput
-	// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+	// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `0`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
 	DestNamespaceReplace pulumi.IntPtrInput
 	// Specify whether the replication is enabled. (Default: `true`)
 	Enabled pulumi.BoolPtrInput
@@ -205,6 +213,8 @@ type ReplicationArgs struct {
 	RegistryId pulumi.IntInput
 	// The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `eventBased`, `manual`, `cron format` (Default: `manual`)
 	Schedule pulumi.StringPtrInput
+	// , prevent parallel runs under the same replication. (Default: `false`)
+	SingleActiveReplication pulumi.BoolPtrInput
 	// The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
 	Speed pulumi.IntPtrInput
 }
@@ -320,7 +330,7 @@ func (o ReplicationOutput) DestNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Replication) pulumi.StringPtrOutput { return v.DestNamespace }).(pulumi.StringPtrOutput)
 }
 
-// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `0`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
 func (o ReplicationOutput) DestNamespaceReplace() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Replication) pulumi.IntPtrOutput { return v.DestNamespaceReplace }).(pulumi.IntPtrOutput)
 }
@@ -361,6 +371,11 @@ func (o ReplicationOutput) ReplicationPolicyId() pulumi.IntOutput {
 // The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `eventBased`, `manual`, `cron format` (Default: `manual`)
 func (o ReplicationOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Replication) pulumi.StringPtrOutput { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+// , prevent parallel runs under the same replication. (Default: `false`)
+func (o ReplicationOutput) SingleActiveReplication() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Replication) pulumi.BoolPtrOutput { return v.SingleActiveReplication }).(pulumi.BoolPtrOutput)
 }
 
 // The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).

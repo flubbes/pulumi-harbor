@@ -95,6 +95,10 @@ namespace Pulumiverse.Harbor
     public sealed class GetRegistryResult
     {
         /// <summary>
+        /// The PEM-encoded CA certificate trusting the registry
+        /// </summary>
+        public readonly string CaCertificate;
+        /// <summary>
         /// The description of the external container register.
         /// </summary>
         public readonly string Description;
@@ -111,7 +115,7 @@ namespace Pulumiverse.Harbor
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The id of the register within harbor.
+        /// The ID of the register within harbor.
         /// </summary>
         public readonly int RegistryId;
         /// <summary>
@@ -123,12 +127,14 @@ namespace Pulumiverse.Harbor
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The url endpoint for the external container register
+        /// The URL endpoint for the external container register
         /// </summary>
         public readonly string Url;
 
         [OutputConstructor]
         private GetRegistryResult(
+            string caCertificate,
+
             string description,
 
             string id,
@@ -145,6 +151,7 @@ namespace Pulumiverse.Harbor
 
             string url)
         {
+            CaCertificate = caCertificate;
             Description = description;
             Id = id;
             Insecure = insecure;

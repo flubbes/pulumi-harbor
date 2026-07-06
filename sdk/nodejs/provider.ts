@@ -25,12 +25,12 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === "pulumi:providers:" + Provider.__pulumiType;
     }
 
-    public readonly bearerToken!: pulumi.Output<string | undefined>;
-    public readonly password!: pulumi.Output<string | undefined>;
-    public readonly robotPrefix!: pulumi.Output<string | undefined>;
-    public readonly sessionId!: pulumi.Output<string | undefined>;
-    public readonly url!: pulumi.Output<string | undefined>;
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly bearerToken: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
+    declare public readonly robotPrefix: pulumi.Output<string | undefined>;
+    declare public readonly sessionId: pulumi.Output<string | undefined>;
+    declare public readonly url: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -43,14 +43,15 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["apiVersion"] = pulumi.output((args ? args.apiVersion : undefined) ?? 2).apply(JSON.stringify);
-            resourceInputs["bearerToken"] = args ? args.bearerToken : undefined;
-            resourceInputs["insecure"] = pulumi.output((args ? args.insecure : undefined) ?? (utilities.getEnvBoolean("HARBOR_IGNORE_CERT") || true)).apply(JSON.stringify);
+            resourceInputs["apiVersion"] = pulumi.output((args?.apiVersion) ?? 2).apply(JSON.stringify);
+            resourceInputs["bearerToken"] = args?.bearerToken;
+            resourceInputs["headers"] = pulumi.output(args?.headers ? pulumi.secret(args.headers) : undefined).apply(JSON.stringify);
+            resourceInputs["insecure"] = pulumi.output((args?.insecure) ?? (utilities.getEnvBoolean("HARBOR_IGNORE_CERT") || true)).apply(JSON.stringify);
             resourceInputs["password"] = (args?.password ? pulumi.secret(args.password) : undefined) ?? utilities.getEnv("HARBOR_PASSWORD");
-            resourceInputs["robotPrefix"] = args ? args.robotPrefix : undefined;
-            resourceInputs["sessionId"] = args ? args.sessionId : undefined;
-            resourceInputs["url"] = (args ? args.url : undefined) ?? utilities.getEnv("HARBOR_URL");
-            resourceInputs["username"] = (args ? args.username : undefined) ?? utilities.getEnv("HARBOR_USERNAME");
+            resourceInputs["robotPrefix"] = args?.robotPrefix;
+            resourceInputs["sessionId"] = args?.sessionId;
+            resourceInputs["url"] = (args?.url) ?? utilities.getEnv("HARBOR_URL");
+            resourceInputs["username"] = (args?.username) ?? utilities.getEnv("HARBOR_USERNAME");
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };
@@ -72,14 +73,19 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    apiVersion?: pulumi.Input<number>;
-    bearerToken?: pulumi.Input<string>;
-    insecure?: pulumi.Input<boolean>;
-    password?: pulumi.Input<string>;
-    robotPrefix?: pulumi.Input<string>;
-    sessionId?: pulumi.Input<string>;
-    url?: pulumi.Input<string>;
-    username?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<number | undefined>;
+    bearerToken?: pulumi.Input<string | undefined>;
+    /**
+     * A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name.
+     * Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
+     */
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    insecure?: pulumi.Input<boolean | undefined>;
+    password?: pulumi.Input<string | undefined>;
+    robotPrefix?: pulumi.Input<string | undefined>;
+    sessionId?: pulumi.Input<string | undefined>;
+    url?: pulumi.Input<string | undefined>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

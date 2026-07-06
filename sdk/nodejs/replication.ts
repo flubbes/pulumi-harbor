@@ -43,57 +43,61 @@ export class Replication extends pulumi.CustomResource {
         return obj['__pulumiType'] === Replication.__pulumiType;
     }
 
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
      */
-    public readonly copyByChunk!: pulumi.Output<boolean | undefined>;
+    declare public readonly copyByChunk: pulumi.Output<boolean | undefined>;
     /**
      * Specify whether to delete the remote resources when locally deleted. (Default: `false`)
      */
-    public readonly deletion!: pulumi.Output<boolean | undefined>;
+    declare public readonly deletion: pulumi.Output<boolean | undefined>;
     /**
      * Description of the replication policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
      */
-    public readonly destNamespace!: pulumi.Output<string | undefined>;
+    declare public readonly destNamespace: pulumi.Output<string | undefined>;
     /**
-     * Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+     * Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `0`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
      */
-    public readonly destNamespaceReplace!: pulumi.Output<number | undefined>;
+    declare public readonly destNamespaceReplace: pulumi.Output<number | undefined>;
     /**
      * Specify whether the replication is enabled. (Default: `true`)
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Specify whether to execute the replication rule if new or modified. (Default: `false`)
      */
-    public readonly executeOnChanged!: pulumi.Output<boolean | undefined>;
-    public readonly filters!: pulumi.Output<outputs.ReplicationFilter[] | undefined>;
+    declare public readonly executeOnChanged: pulumi.Output<boolean | undefined>;
+    declare public readonly filters: pulumi.Output<outputs.ReplicationFilter[] | undefined>;
     /**
      * The name of the replication.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)
      */
-    public readonly override!: pulumi.Output<boolean | undefined>;
+    declare public readonly override: pulumi.Output<boolean | undefined>;
     /**
      * The registry ID of the Registry Endpoint.
      */
-    public readonly registryId!: pulumi.Output<number>;
-    public /*out*/ readonly replicationPolicyId!: pulumi.Output<number>;
+    declare public readonly registryId: pulumi.Output<number>;
+    declare public /*out*/ readonly replicationPolicyId: pulumi.Output<number>;
     /**
      * The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `eventBased`, `manual`, `cron format` (Default: `manual`)
      */
-    public readonly schedule!: pulumi.Output<string | undefined>;
+    declare public readonly schedule: pulumi.Output<string | undefined>;
+    /**
+     * , prevent parallel runs under the same replication. (Default: `false`)
+     */
+    declare public readonly singleActiveReplication: pulumi.Output<boolean | undefined>;
     /**
      * The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
      */
-    public readonly speed!: pulumi.Output<number | undefined>;
+    declare public readonly speed: pulumi.Output<number | undefined>;
 
     /**
      * Create a Replication resource with the given unique name, arguments, and options.
@@ -108,43 +112,45 @@ export class Replication extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReplicationState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["copyByChunk"] = state ? state.copyByChunk : undefined;
-            resourceInputs["deletion"] = state ? state.deletion : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destNamespace"] = state ? state.destNamespace : undefined;
-            resourceInputs["destNamespaceReplace"] = state ? state.destNamespaceReplace : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["executeOnChanged"] = state ? state.executeOnChanged : undefined;
-            resourceInputs["filters"] = state ? state.filters : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["override"] = state ? state.override : undefined;
-            resourceInputs["registryId"] = state ? state.registryId : undefined;
-            resourceInputs["replicationPolicyId"] = state ? state.replicationPolicyId : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["speed"] = state ? state.speed : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["copyByChunk"] = state?.copyByChunk;
+            resourceInputs["deletion"] = state?.deletion;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destNamespace"] = state?.destNamespace;
+            resourceInputs["destNamespaceReplace"] = state?.destNamespaceReplace;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["executeOnChanged"] = state?.executeOnChanged;
+            resourceInputs["filters"] = state?.filters;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["override"] = state?.override;
+            resourceInputs["registryId"] = state?.registryId;
+            resourceInputs["replicationPolicyId"] = state?.replicationPolicyId;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["singleActiveReplication"] = state?.singleActiveReplication;
+            resourceInputs["speed"] = state?.speed;
         } else {
             const args = argsOrState as ReplicationArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.registryId === undefined) && !opts.urn) {
+            if (args?.registryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'registryId'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["copyByChunk"] = args ? args.copyByChunk : undefined;
-            resourceInputs["deletion"] = args ? args.deletion : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destNamespace"] = args ? args.destNamespace : undefined;
-            resourceInputs["destNamespaceReplace"] = args ? args.destNamespaceReplace : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["executeOnChanged"] = args ? args.executeOnChanged : undefined;
-            resourceInputs["filters"] = args ? args.filters : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["override"] = args ? args.override : undefined;
-            resourceInputs["registryId"] = args ? args.registryId : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["speed"] = args ? args.speed : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["copyByChunk"] = args?.copyByChunk;
+            resourceInputs["deletion"] = args?.deletion;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destNamespace"] = args?.destNamespace;
+            resourceInputs["destNamespaceReplace"] = args?.destNamespaceReplace;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["executeOnChanged"] = args?.executeOnChanged;
+            resourceInputs["filters"] = args?.filters;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["override"] = args?.override;
+            resourceInputs["registryId"] = args?.registryId;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["singleActiveReplication"] = args?.singleActiveReplication;
+            resourceInputs["speed"] = args?.speed;
             resourceInputs["replicationPolicyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -156,57 +162,61 @@ export class Replication extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Replication resources.
  */
 export interface ReplicationState {
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
      */
-    copyByChunk?: pulumi.Input<boolean>;
+    copyByChunk?: pulumi.Input<boolean | undefined>;
     /**
      * Specify whether to delete the remote resources when locally deleted. (Default: `false`)
      */
-    deletion?: pulumi.Input<boolean>;
+    deletion?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the replication policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
      */
-    destNamespace?: pulumi.Input<string>;
+    destNamespace?: pulumi.Input<string | undefined>;
     /**
-     * Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+     * Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `0`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
      */
-    destNamespaceReplace?: pulumi.Input<number>;
+    destNamespaceReplace?: pulumi.Input<number | undefined>;
     /**
      * Specify whether the replication is enabled. (Default: `true`)
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specify whether to execute the replication rule if new or modified. (Default: `false`)
      */
-    executeOnChanged?: pulumi.Input<boolean>;
-    filters?: pulumi.Input<pulumi.Input<inputs.ReplicationFilter>[]>;
+    executeOnChanged?: pulumi.Input<boolean | undefined>;
+    filters?: pulumi.Input<pulumi.Input<inputs.ReplicationFilter>[] | undefined>;
     /**
      * The name of the replication.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)
      */
-    override?: pulumi.Input<boolean>;
+    override?: pulumi.Input<boolean | undefined>;
     /**
      * The registry ID of the Registry Endpoint.
      */
-    registryId?: pulumi.Input<number>;
-    replicationPolicyId?: pulumi.Input<number>;
+    registryId?: pulumi.Input<number | undefined>;
+    replicationPolicyId?: pulumi.Input<number | undefined>;
     /**
      * The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `eventBased`, `manual`, `cron format` (Default: `manual`)
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
+    /**
+     * , prevent parallel runs under the same replication. (Default: `false`)
+     */
+    singleActiveReplication?: pulumi.Input<boolean | undefined>;
     /**
      * The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
      */
-    speed?: pulumi.Input<number>;
+    speed?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -217,40 +227,40 @@ export interface ReplicationArgs {
     /**
      * Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
      */
-    copyByChunk?: pulumi.Input<boolean>;
+    copyByChunk?: pulumi.Input<boolean | undefined>;
     /**
      * Specify whether to delete the remote resources when locally deleted. (Default: `false`)
      */
-    deletion?: pulumi.Input<boolean>;
+    deletion?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the replication policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
      */
-    destNamespace?: pulumi.Input<string>;
+    destNamespace?: pulumi.Input<string | undefined>;
     /**
-     * Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+     * Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `0`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
      */
-    destNamespaceReplace?: pulumi.Input<number>;
+    destNamespaceReplace?: pulumi.Input<number | undefined>;
     /**
      * Specify whether the replication is enabled. (Default: `true`)
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specify whether to execute the replication rule if new or modified. (Default: `false`)
      */
-    executeOnChanged?: pulumi.Input<boolean>;
-    filters?: pulumi.Input<pulumi.Input<inputs.ReplicationFilter>[]>;
+    executeOnChanged?: pulumi.Input<boolean | undefined>;
+    filters?: pulumi.Input<pulumi.Input<inputs.ReplicationFilter>[] | undefined>;
     /**
      * The name of the replication.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)
      */
-    override?: pulumi.Input<boolean>;
+    override?: pulumi.Input<boolean | undefined>;
     /**
      * The registry ID of the Registry Endpoint.
      */
@@ -258,9 +268,13 @@ export interface ReplicationArgs {
     /**
      * The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `eventBased`, `manual`, `cron format` (Default: `manual`)
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
+    /**
+     * , prevent parallel runs under the same replication. (Default: `false`)
+     */
+    singleActiveReplication?: pulumi.Input<boolean | undefined>;
     /**
      * The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
      */
-    speed?: pulumi.Input<number>;
+    speed?: pulumi.Input<number | undefined>;
 }

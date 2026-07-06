@@ -28,11 +28,14 @@ namespace Pulumiverse.Harbor
         [Output("accessSecret")]
         public Output<string?> AccessSecret { get; private set; } = null!;
 
+        [Output("caCertificate")]
+        public Output<string?> CaCertificate { get; private set; } = null!;
+
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The url endpoint for the external container register ie `"https://hub.docker.com"`
+        /// The URL endpoint for the external container register i.e. `"https://hub.docker.com"`
         /// </summary>
         [Output("endpointUrl")]
         public Output<string> EndpointUrl { get; private set; } = null!;
@@ -124,11 +127,14 @@ namespace Pulumiverse.Harbor
             }
         }
 
+        [Input("caCertificate")]
+        public Input<string>? CaCertificate { get; set; }
+
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The url endpoint for the external container register ie `"https://hub.docker.com"`
+        /// The URL endpoint for the external container register i.e. `"https://hub.docker.com"`
         /// </summary>
         [Input("endpointUrl", required: true)]
         public Input<string> EndpointUrl { get; set; } = null!;
@@ -171,11 +177,14 @@ namespace Pulumiverse.Harbor
             }
         }
 
+        [Input("caCertificate")]
+        public Input<string>? CaCertificate { get; set; }
+
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The url endpoint for the external container register ie `"https://hub.docker.com"`
+        /// The URL endpoint for the external container register i.e. `"https://hub.docker.com"`
         /// </summary>
         [Input("endpointUrl")]
         public Input<string>? EndpointUrl { get; set; }

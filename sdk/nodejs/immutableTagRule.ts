@@ -44,27 +44,27 @@ export class ImmutableTagRule extends pulumi.CustomResource {
     /**
      * Specify if the rule is disable or not. Defaults to `false`
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * The project id of which you would like to apply this policy.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * For the repositories excluding.
      */
-    public readonly repoExcluding!: pulumi.Output<string | undefined>;
+    declare public readonly repoExcluding: pulumi.Output<string | undefined>;
     /**
      * For the repositories matching.
      */
-    public readonly repoMatching!: pulumi.Output<string | undefined>;
+    declare public readonly repoMatching: pulumi.Output<string | undefined>;
     /**
      * For the tag excluding.
      */
-    public readonly tagExcluding!: pulumi.Output<string | undefined>;
+    declare public readonly tagExcluding: pulumi.Output<string | undefined>;
     /**
      * For the tag matching.
      */
-    public readonly tagMatching!: pulumi.Output<string | undefined>;
+    declare public readonly tagMatching: pulumi.Output<string | undefined>;
 
     /**
      * Create a ImmutableTagRule resource with the given unique name, arguments, and options.
@@ -79,23 +79,23 @@ export class ImmutableTagRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImmutableTagRuleState | undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["repoExcluding"] = state ? state.repoExcluding : undefined;
-            resourceInputs["repoMatching"] = state ? state.repoMatching : undefined;
-            resourceInputs["tagExcluding"] = state ? state.tagExcluding : undefined;
-            resourceInputs["tagMatching"] = state ? state.tagMatching : undefined;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["repoExcluding"] = state?.repoExcluding;
+            resourceInputs["repoMatching"] = state?.repoMatching;
+            resourceInputs["tagExcluding"] = state?.tagExcluding;
+            resourceInputs["tagMatching"] = state?.tagMatching;
         } else {
             const args = argsOrState as ImmutableTagRuleArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["repoExcluding"] = args ? args.repoExcluding : undefined;
-            resourceInputs["repoMatching"] = args ? args.repoMatching : undefined;
-            resourceInputs["tagExcluding"] = args ? args.tagExcluding : undefined;
-            resourceInputs["tagMatching"] = args ? args.tagMatching : undefined;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["repoExcluding"] = args?.repoExcluding;
+            resourceInputs["repoMatching"] = args?.repoMatching;
+            resourceInputs["tagExcluding"] = args?.tagExcluding;
+            resourceInputs["tagMatching"] = args?.tagMatching;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ImmutableTagRule.__pulumiType, name, resourceInputs, opts);
@@ -109,27 +109,27 @@ export interface ImmutableTagRuleState {
     /**
      * Specify if the rule is disable or not. Defaults to `false`
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The project id of which you would like to apply this policy.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * For the repositories excluding.
      */
-    repoExcluding?: pulumi.Input<string>;
+    repoExcluding?: pulumi.Input<string | undefined>;
     /**
      * For the repositories matching.
      */
-    repoMatching?: pulumi.Input<string>;
+    repoMatching?: pulumi.Input<string | undefined>;
     /**
      * For the tag excluding.
      */
-    tagExcluding?: pulumi.Input<string>;
+    tagExcluding?: pulumi.Input<string | undefined>;
     /**
      * For the tag matching.
      */
-    tagMatching?: pulumi.Input<string>;
+    tagMatching?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -139,7 +139,7 @@ export interface ImmutableTagRuleArgs {
     /**
      * Specify if the rule is disable or not. Defaults to `false`
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The project id of which you would like to apply this policy.
      */
@@ -147,17 +147,17 @@ export interface ImmutableTagRuleArgs {
     /**
      * For the repositories excluding.
      */
-    repoExcluding?: pulumi.Input<string>;
+    repoExcluding?: pulumi.Input<string | undefined>;
     /**
      * For the repositories matching.
      */
-    repoMatching?: pulumi.Input<string>;
+    repoMatching?: pulumi.Input<string | undefined>;
     /**
      * For the tag excluding.
      */
-    tagExcluding?: pulumi.Input<string>;
+    tagExcluding?: pulumi.Input<string | undefined>;
     /**
      * For the tag matching.
      */
-    tagMatching?: pulumi.Input<string>;
+    tagMatching?: pulumi.Input<string | undefined>;
 }

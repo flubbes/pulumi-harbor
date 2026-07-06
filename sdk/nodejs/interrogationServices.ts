@@ -38,11 +38,11 @@ export class InterrogationServices extends pulumi.CustomResource {
     /**
      * Sets the default interrogation service `"Clair"`
      */
-    public readonly defaultScanner!: pulumi.Output<string | undefined>;
+    declare public readonly defaultScanner: pulumi.Output<string | undefined>;
     /**
      * The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
      */
-    public readonly vulnerabilityScanPolicy!: pulumi.Output<string>;
+    declare public readonly vulnerabilityScanPolicy: pulumi.Output<string>;
 
     /**
      * Create a InterrogationServices resource with the given unique name, arguments, and options.
@@ -57,15 +57,15 @@ export class InterrogationServices extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InterrogationServicesState | undefined;
-            resourceInputs["defaultScanner"] = state ? state.defaultScanner : undefined;
-            resourceInputs["vulnerabilityScanPolicy"] = state ? state.vulnerabilityScanPolicy : undefined;
+            resourceInputs["defaultScanner"] = state?.defaultScanner;
+            resourceInputs["vulnerabilityScanPolicy"] = state?.vulnerabilityScanPolicy;
         } else {
             const args = argsOrState as InterrogationServicesArgs | undefined;
-            if ((!args || args.vulnerabilityScanPolicy === undefined) && !opts.urn) {
+            if (args?.vulnerabilityScanPolicy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vulnerabilityScanPolicy'");
             }
-            resourceInputs["defaultScanner"] = args ? args.defaultScanner : undefined;
-            resourceInputs["vulnerabilityScanPolicy"] = args ? args.vulnerabilityScanPolicy : undefined;
+            resourceInputs["defaultScanner"] = args?.defaultScanner;
+            resourceInputs["vulnerabilityScanPolicy"] = args?.vulnerabilityScanPolicy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InterrogationServices.__pulumiType, name, resourceInputs, opts);
@@ -79,11 +79,11 @@ export interface InterrogationServicesState {
     /**
      * Sets the default interrogation service `"Clair"`
      */
-    defaultScanner?: pulumi.Input<string>;
+    defaultScanner?: pulumi.Input<string | undefined>;
     /**
      * The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
      */
-    vulnerabilityScanPolicy?: pulumi.Input<string>;
+    vulnerabilityScanPolicy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -93,7 +93,7 @@ export interface InterrogationServicesArgs {
     /**
      * Sets the default interrogation service `"Clair"`
      */
-    defaultScanner?: pulumi.Input<string>;
+    defaultScanner?: pulumi.Input<string | undefined>;
     /**
      * The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
      */

@@ -22,21 +22,12 @@ namespace Pulumiverse.Harbor
     [HarborResourceType("harbor:index/group:Group")]
     public partial class Group : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The name of the group.
-        /// </summary>
         [Output("groupName")]
         public Output<string> GroupName { get; private set; } = null!;
 
-        /// <summary>
-        /// 3. Note: group type 3 is OIDC group.
-        /// </summary>
         [Output("groupType")]
         public Output<int> GroupType { get; private set; } = null!;
 
-        /// <summary>
-        /// The distinguished name of the group within AD/LDAP.
-        /// </summary>
         [Output("ldapGroupDn")]
         public Output<string?> LdapGroupDn { get; private set; } = null!;
 
@@ -87,21 +78,12 @@ namespace Pulumiverse.Harbor
 
     public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the group.
-        /// </summary>
         [Input("groupName", required: true)]
         public Input<string> GroupName { get; set; } = null!;
 
-        /// <summary>
-        /// 3. Note: group type 3 is OIDC group.
-        /// </summary>
         [Input("groupType", required: true)]
         public Input<int> GroupType { get; set; } = null!;
 
-        /// <summary>
-        /// The distinguished name of the group within AD/LDAP.
-        /// </summary>
         [Input("ldapGroupDn")]
         public Input<string>? LdapGroupDn { get; set; }
 
@@ -113,21 +95,12 @@ namespace Pulumiverse.Harbor
 
     public sealed class GroupState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the group.
-        /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
 
-        /// <summary>
-        /// 3. Note: group type 3 is OIDC group.
-        /// </summary>
         [Input("groupType")]
         public Input<int>? GroupType { get; set; }
 
-        /// <summary>
-        /// The distinguished name of the group within AD/LDAP.
-        /// </summary>
         [Input("ldapGroupDn")]
         public Input<string>? LdapGroupDn { get; set; }
 

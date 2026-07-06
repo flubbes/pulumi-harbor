@@ -13,6 +13,10 @@ namespace Pulumiverse.Harbor
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ### Write-only Password
+    /// 
+    /// ### Write-only Password from Ephemeral Random Secret
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -47,10 +51,16 @@ namespace Pulumiverse.Harbor
         public Output<string> FullName { get; private set; } = null!;
 
         /// <summary>
-        /// The password for the internal user.
+        /// The password for the internal user. Conflicts with `password_wo_version`.
         /// </summary>
         [Output("password")]
-        public Output<string> Password { get; private set; } = null!;
+        public Output<string?> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// Rotation trigger for write-only password updates. Must be used together with `password_wo`.
+        /// </summary>
+        [Output("passwordWoVersion")]
+        public Output<int?> PasswordWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// The username of the internal user.
@@ -133,11 +143,11 @@ namespace Pulumiverse.Harbor
         [Input("fullName", required: true)]
         public Input<string> FullName { get; set; } = null!;
 
-        [Input("password", required: true)]
+        [Input("password")]
         private Input<string>? _password;
 
         /// <summary>
-        /// The password for the internal user.
+        /// The password for the internal user. Conflicts with `password_wo_version`.
         /// </summary>
         public Input<string>? Password
         {
@@ -148,6 +158,12 @@ namespace Pulumiverse.Harbor
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// Rotation trigger for write-only password updates. Must be used together with `password_wo`.
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<int>? PasswordWoVersion { get; set; }
 
         /// <summary>
         /// The username of the internal user.
@@ -191,7 +207,7 @@ namespace Pulumiverse.Harbor
         private Input<string>? _password;
 
         /// <summary>
-        /// The password for the internal user.
+        /// The password for the internal user. Conflicts with `password_wo_version`.
         /// </summary>
         public Input<string>? Password
         {
@@ -202,6 +218,12 @@ namespace Pulumiverse.Harbor
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// Rotation trigger for write-only password updates. Must be used together with `password_wo`.
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<int>? PasswordWoVersion { get; set; }
 
         /// <summary>
         /// The username of the internal user.

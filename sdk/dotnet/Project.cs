@@ -39,7 +39,7 @@ namespace Pulumiverse.Harbor
         public Output<ImmutableArray<string>> CveAllowlists { get; private set; } = null!;
 
         /// <summary>
-        /// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
+        /// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: null)
         /// </summary>
         [Output("deploymentSecurity")]
         public Output<string?> DeploymentSecurity { get; private set; } = null!;
@@ -68,11 +68,14 @@ namespace Pulumiverse.Harbor
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The project id of this resource.
-        /// </summary>
         [Output("projectId")]
         public Output<int> ProjectId { get; private set; } = null!;
+
+        [Output("proxyCacheLocalOnNotFound")]
+        public Output<bool?> ProxyCacheLocalOnNotFound { get; private set; } = null!;
+
+        [Output("proxySpeedKb")]
+        public Output<int?> ProxySpeedKb { get; private set; } = null!;
 
         /// <summary>
         /// The project will be public accessibility.(Default: `false`)
@@ -80,9 +83,6 @@ namespace Pulumiverse.Harbor
         [Output("public")]
         public Output<bool?> Public { get; private set; } = null!;
 
-        /// <summary>
-        /// To enable project as Proxy Cache.
-        /// </summary>
         [Output("registryId")]
         public Output<int> RegistryId { get; private set; } = null!;
 
@@ -91,6 +91,12 @@ namespace Pulumiverse.Harbor
         /// </summary>
         [Output("storageQuota")]
         public Output<int?> StorageQuota { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via `harbor.InterrogationServices`.
+        /// </summary>
+        [Output("vulnerabilityScanner")]
+        public Output<string?> VulnerabilityScanner { get; private set; } = null!;
 
         /// <summary>
         /// Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
@@ -164,7 +170,7 @@ namespace Pulumiverse.Harbor
         }
 
         /// <summary>
-        /// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
+        /// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: null)
         /// </summary>
         [Input("deploymentSecurity")]
         public Input<string>? DeploymentSecurity { get; set; }
@@ -193,15 +199,18 @@ namespace Pulumiverse.Harbor
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("proxyCacheLocalOnNotFound")]
+        public Input<bool>? ProxyCacheLocalOnNotFound { get; set; }
+
+        [Input("proxySpeedKb")]
+        public Input<int>? ProxySpeedKb { get; set; }
+
         /// <summary>
         /// The project will be public accessibility.(Default: `false`)
         /// </summary>
         [Input("public")]
         public Input<bool>? Public { get; set; }
 
-        /// <summary>
-        /// To enable project as Proxy Cache.
-        /// </summary>
         [Input("registryId")]
         public Input<int>? RegistryId { get; set; }
 
@@ -210,6 +219,12 @@ namespace Pulumiverse.Harbor
         /// </summary>
         [Input("storageQuota")]
         public Input<int>? StorageQuota { get; set; }
+
+        /// <summary>
+        /// The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via `harbor.InterrogationServices`.
+        /// </summary>
+        [Input("vulnerabilityScanner")]
+        public Input<string>? VulnerabilityScanner { get; set; }
 
         /// <summary>
         /// Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
@@ -244,7 +259,7 @@ namespace Pulumiverse.Harbor
         }
 
         /// <summary>
-        /// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
+        /// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: null)
         /// </summary>
         [Input("deploymentSecurity")]
         public Input<string>? DeploymentSecurity { get; set; }
@@ -273,11 +288,14 @@ namespace Pulumiverse.Harbor
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The project id of this resource.
-        /// </summary>
         [Input("projectId")]
         public Input<int>? ProjectId { get; set; }
+
+        [Input("proxyCacheLocalOnNotFound")]
+        public Input<bool>? ProxyCacheLocalOnNotFound { get; set; }
+
+        [Input("proxySpeedKb")]
+        public Input<int>? ProxySpeedKb { get; set; }
 
         /// <summary>
         /// The project will be public accessibility.(Default: `false`)
@@ -285,9 +303,6 @@ namespace Pulumiverse.Harbor
         [Input("public")]
         public Input<bool>? Public { get; set; }
 
-        /// <summary>
-        /// To enable project as Proxy Cache.
-        /// </summary>
         [Input("registryId")]
         public Input<int>? RegistryId { get; set; }
 
@@ -296,6 +311,12 @@ namespace Pulumiverse.Harbor
         /// </summary>
         [Input("storageQuota")]
         public Input<int>? StorageQuota { get; set; }
+
+        /// <summary>
+        /// The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via `harbor.InterrogationServices`.
+        /// </summary>
+        [Input("vulnerabilityScanner")]
+        public Input<string>? VulnerabilityScanner { get; set; }
 
         /// <summary>
         /// Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)

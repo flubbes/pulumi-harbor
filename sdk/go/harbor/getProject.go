@@ -40,6 +40,8 @@ type LookupProjectResult struct {
 	Public bool `pulumi:"public"`
 	// The type of the project : Project or ProxyCache.
 	Type string `pulumi:"type"`
+	// The name of the vulnerability scanner assigned to the project.
+	VulnerabilityScanner string `pulumi:"vulnerabilityScanner"`
 	// If the images is scanned for vulnerabilities when push to harbor.
 	VulnerabilityScanning bool `pulumi:"vulnerabilityScanning"`
 }
@@ -101,6 +103,11 @@ func (o LookupProjectResultOutput) Public() pulumi.BoolOutput {
 // The type of the project : Project or ProxyCache.
 func (o LookupProjectResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The name of the vulnerability scanner assigned to the project.
+func (o LookupProjectResultOutput) VulnerabilityScanner() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.VulnerabilityScanner }).(pulumi.StringOutput)
 }
 
 // If the images is scanned for vulnerabilities when push to harbor.

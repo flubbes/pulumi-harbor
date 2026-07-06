@@ -115,6 +115,10 @@ namespace Pulumiverse.Harbor
         /// </summary>
         public readonly string Type;
         /// <summary>
+        /// The name of the vulnerability scanner assigned to the project.
+        /// </summary>
+        public readonly string VulnerabilityScanner;
+        /// <summary>
         /// If the images is scanned for vulnerabilities when push to harbor.
         /// </summary>
         public readonly bool VulnerabilityScanning;
@@ -131,6 +135,8 @@ namespace Pulumiverse.Harbor
 
             string type,
 
+            string vulnerabilityScanner,
+
             bool vulnerabilityScanning)
         {
             Id = id;
@@ -138,6 +144,7 @@ namespace Pulumiverse.Harbor
             ProjectId = projectId;
             Public = @public;
             Type = type;
+            VulnerabilityScanner = vulnerabilityScanner;
             VulnerabilityScanning = vulnerabilityScanning;
         }
     }

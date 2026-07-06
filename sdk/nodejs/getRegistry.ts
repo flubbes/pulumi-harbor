@@ -29,6 +29,10 @@ export interface GetRegistryArgs {
  */
 export interface GetRegistryResult {
     /**
+     * The PEM-encoded CA certificate trusting the registry
+     */
+    readonly caCertificate: string;
+    /**
      * The description of the external container register.
      */
     readonly description: string;
@@ -45,7 +49,7 @@ export interface GetRegistryResult {
      */
     readonly name: string;
     /**
-     * The id of the register within harbor.
+     * The ID of the register within harbor.
      */
     readonly registryId: number;
     /**
@@ -57,7 +61,7 @@ export interface GetRegistryResult {
      */
     readonly type: string;
     /**
-     * The url endpoint for the external container register
+     * The URL endpoint for the external container register
      */
     readonly url: string;
 }

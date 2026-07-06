@@ -69,9 +69,9 @@ export interface GetUsersOutputArgs {
     /**
      * The email of the user to filter by.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The name of the user to filter by.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

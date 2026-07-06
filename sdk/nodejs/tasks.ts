@@ -38,7 +38,7 @@ export class Tasks extends pulumi.CustomResource {
     /**
      * The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
      */
-    public readonly vulnerabilityScanPolicy!: pulumi.Output<string>;
+    declare public readonly vulnerabilityScanPolicy: pulumi.Output<string>;
 
     /**
      * Create a Tasks resource with the given unique name, arguments, and options.
@@ -53,13 +53,13 @@ export class Tasks extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TasksState | undefined;
-            resourceInputs["vulnerabilityScanPolicy"] = state ? state.vulnerabilityScanPolicy : undefined;
+            resourceInputs["vulnerabilityScanPolicy"] = state?.vulnerabilityScanPolicy;
         } else {
             const args = argsOrState as TasksArgs | undefined;
-            if ((!args || args.vulnerabilityScanPolicy === undefined) && !opts.urn) {
+            if (args?.vulnerabilityScanPolicy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vulnerabilityScanPolicy'");
             }
-            resourceInputs["vulnerabilityScanPolicy"] = args ? args.vulnerabilityScanPolicy : undefined;
+            resourceInputs["vulnerabilityScanPolicy"] = args?.vulnerabilityScanPolicy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Tasks.__pulumiType, name, resourceInputs, opts);
@@ -73,7 +73,7 @@ export interface TasksState {
     /**
      * The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
      */
-    vulnerabilityScanPolicy?: pulumi.Input<string>;
+    vulnerabilityScanPolicy?: pulumi.Input<string | undefined>;
 }
 
 /**

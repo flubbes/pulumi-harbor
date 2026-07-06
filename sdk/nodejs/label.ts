@@ -48,20 +48,20 @@ export class Label extends pulumi.CustomResource {
     /**
      * The color of the label within harbor (Default: #FFFFF)
      */
-    public readonly color!: pulumi.Output<string | undefined>;
+    declare public readonly color: pulumi.Output<string | undefined>;
     /**
      * The Description of the label within harbor
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The of name of the label within harbor.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The id of the project with harbor.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly scope!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly scope: pulumi.Output<string>;
 
     /**
      * Create a Label resource with the given unique name, arguments, and options.
@@ -76,17 +76,17 @@ export class Label extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LabelState | undefined;
-            resourceInputs["color"] = state ? state.color : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
+            resourceInputs["color"] = state?.color;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["scope"] = state?.scope;
         } else {
             const args = argsOrState as LabelArgs | undefined;
-            resourceInputs["color"] = args ? args.color : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["color"] = args?.color;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["scope"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -101,20 +101,20 @@ export interface LabelState {
     /**
      * The color of the label within harbor (Default: #FFFFF)
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * The Description of the label within harbor
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The of name of the label within harbor.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The id of the project with harbor.
      */
-    projectId?: pulumi.Input<string>;
-    scope?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
+    scope?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -124,17 +124,17 @@ export interface LabelArgs {
     /**
      * The color of the label within harbor (Default: #FFFFF)
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * The Description of the label within harbor
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The of name of the label within harbor.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The id of the project with harbor.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

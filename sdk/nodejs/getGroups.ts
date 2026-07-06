@@ -69,9 +69,9 @@ export interface GetGroupsOutputArgs {
     /**
      * The name of the group to filter by.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * The LDAP group DN to filter by.
      */
-    ldapGroupDn?: pulumi.Input<string>;
+    ldapGroupDn?: pulumi.Input<string | undefined>;
 }

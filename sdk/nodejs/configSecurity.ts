@@ -48,19 +48,19 @@ export class ConfigSecurity extends pulumi.CustomResource {
     /**
      * Time of creation of the list.
      */
-    public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTime: pulumi.Output<string>;
     /**
      * System allowlist. Vulnerabilities in this list will be ignored when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
      */
-    public readonly cveAllowlists!: pulumi.Output<string[]>;
+    declare public readonly cveAllowlists: pulumi.Output<string[]>;
     /**
      * The time for expiration of the allowlist, in the form of seconds since epoch. This is an optional attribute, if it's not set the CVE allowlist does not expire.
      */
-    public readonly expiresAt!: pulumi.Output<number | undefined>;
+    declare public readonly expiresAt: pulumi.Output<number | undefined>;
     /**
      * Time of update of the list.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a ConfigSecurity resource with the given unique name, arguments, and options.
@@ -75,17 +75,17 @@ export class ConfigSecurity extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigSecurityState | undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["cveAllowlists"] = state ? state.cveAllowlists : undefined;
-            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["cveAllowlists"] = state?.cveAllowlists;
+            resourceInputs["expiresAt"] = state?.expiresAt;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ConfigSecurityArgs | undefined;
-            if ((!args || args.cveAllowlists === undefined) && !opts.urn) {
+            if (args?.cveAllowlists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cveAllowlists'");
             }
-            resourceInputs["cveAllowlists"] = args ? args.cveAllowlists : undefined;
-            resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
+            resourceInputs["cveAllowlists"] = args?.cveAllowlists;
+            resourceInputs["expiresAt"] = args?.expiresAt;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -101,19 +101,19 @@ export interface ConfigSecurityState {
     /**
      * Time of creation of the list.
      */
-    creationTime?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string | undefined>;
     /**
      * System allowlist. Vulnerabilities in this list will be ignored when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
      */
-    cveAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    cveAllowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The time for expiration of the allowlist, in the form of seconds since epoch. This is an optional attribute, if it's not set the CVE allowlist does not expire.
      */
-    expiresAt?: pulumi.Input<number>;
+    expiresAt?: pulumi.Input<number | undefined>;
     /**
      * Time of update of the list.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -127,5 +127,5 @@ export interface ConfigSecurityArgs {
     /**
      * The time for expiration of the allowlist, in the form of seconds since epoch. This is an optional attribute, if it's not set the CVE allowlist does not expire.
      */
-    expiresAt?: pulumi.Input<number>;
+    expiresAt?: pulumi.Input<number | undefined>;
 }

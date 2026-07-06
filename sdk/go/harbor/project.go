@@ -29,7 +29,7 @@ type Project struct {
 	AutoSbomGeneration pulumi.BoolPtrOutput `pulumi:"autoSbomGeneration"`
 	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists pulumi.StringArrayOutput `pulumi:"cveAllowlists"`
-	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
+	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: null)
 	DeploymentSecurity pulumi.StringPtrOutput `pulumi:"deploymentSecurity"`
 	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
 	EnableContentTrust pulumi.BoolPtrOutput `pulumi:"enableContentTrust"`
@@ -38,15 +38,17 @@ type Project struct {
 	// A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// The name of the project that will be created in harbor.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The project id of this resource.
-	ProjectId pulumi.IntOutput `pulumi:"projectId"`
+	Name                      pulumi.StringOutput  `pulumi:"name"`
+	ProjectId                 pulumi.IntOutput     `pulumi:"projectId"`
+	ProxyCacheLocalOnNotFound pulumi.BoolPtrOutput `pulumi:"proxyCacheLocalOnNotFound"`
+	ProxySpeedKb              pulumi.IntPtrOutput  `pulumi:"proxySpeedKb"`
 	// The project will be public accessibility.(Default: `false`)
-	Public pulumi.BoolPtrOutput `pulumi:"public"`
-	// To enable project as Proxy Cache.
-	RegistryId pulumi.IntOutput `pulumi:"registryId"`
+	Public     pulumi.BoolPtrOutput `pulumi:"public"`
+	RegistryId pulumi.IntOutput     `pulumi:"registryId"`
 	// The storage quota of the project in GB's.
 	StorageQuota pulumi.IntPtrOutput `pulumi:"storageQuota"`
+	// The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via `InterrogationServices`.
+	VulnerabilityScanner pulumi.StringPtrOutput `pulumi:"vulnerabilityScanner"`
 	// Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
 	VulnerabilityScanning pulumi.BoolPtrOutput `pulumi:"vulnerabilityScanning"`
 }
@@ -85,7 +87,7 @@ type projectState struct {
 	AutoSbomGeneration *bool `pulumi:"autoSbomGeneration"`
 	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists []string `pulumi:"cveAllowlists"`
-	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
+	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: null)
 	DeploymentSecurity *string `pulumi:"deploymentSecurity"`
 	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
 	EnableContentTrust *bool `pulumi:"enableContentTrust"`
@@ -94,15 +96,17 @@ type projectState struct {
 	// A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The name of the project that will be created in harbor.
-	Name *string `pulumi:"name"`
-	// The project id of this resource.
-	ProjectId *int `pulumi:"projectId"`
+	Name                      *string `pulumi:"name"`
+	ProjectId                 *int    `pulumi:"projectId"`
+	ProxyCacheLocalOnNotFound *bool   `pulumi:"proxyCacheLocalOnNotFound"`
+	ProxySpeedKb              *int    `pulumi:"proxySpeedKb"`
 	// The project will be public accessibility.(Default: `false`)
-	Public *bool `pulumi:"public"`
-	// To enable project as Proxy Cache.
-	RegistryId *int `pulumi:"registryId"`
+	Public     *bool `pulumi:"public"`
+	RegistryId *int  `pulumi:"registryId"`
 	// The storage quota of the project in GB's.
 	StorageQuota *int `pulumi:"storageQuota"`
+	// The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via `InterrogationServices`.
+	VulnerabilityScanner *string `pulumi:"vulnerabilityScanner"`
 	// Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
 	VulnerabilityScanning *bool `pulumi:"vulnerabilityScanning"`
 }
@@ -112,7 +116,7 @@ type ProjectState struct {
 	AutoSbomGeneration pulumi.BoolPtrInput
 	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists pulumi.StringArrayInput
-	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
+	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: null)
 	DeploymentSecurity pulumi.StringPtrInput
 	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
 	EnableContentTrust pulumi.BoolPtrInput
@@ -121,15 +125,17 @@ type ProjectState struct {
 	// A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
 	ForceDestroy pulumi.BoolPtrInput
 	// The name of the project that will be created in harbor.
-	Name pulumi.StringPtrInput
-	// The project id of this resource.
-	ProjectId pulumi.IntPtrInput
+	Name                      pulumi.StringPtrInput
+	ProjectId                 pulumi.IntPtrInput
+	ProxyCacheLocalOnNotFound pulumi.BoolPtrInput
+	ProxySpeedKb              pulumi.IntPtrInput
 	// The project will be public accessibility.(Default: `false`)
-	Public pulumi.BoolPtrInput
-	// To enable project as Proxy Cache.
+	Public     pulumi.BoolPtrInput
 	RegistryId pulumi.IntPtrInput
 	// The storage quota of the project in GB's.
 	StorageQuota pulumi.IntPtrInput
+	// The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via `InterrogationServices`.
+	VulnerabilityScanner pulumi.StringPtrInput
 	// Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
 	VulnerabilityScanning pulumi.BoolPtrInput
 }
@@ -143,7 +149,7 @@ type projectArgs struct {
 	AutoSbomGeneration *bool `pulumi:"autoSbomGeneration"`
 	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists []string `pulumi:"cveAllowlists"`
-	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
+	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: null)
 	DeploymentSecurity *string `pulumi:"deploymentSecurity"`
 	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
 	EnableContentTrust *bool `pulumi:"enableContentTrust"`
@@ -152,13 +158,16 @@ type projectArgs struct {
 	// A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The name of the project that will be created in harbor.
-	Name *string `pulumi:"name"`
+	Name                      *string `pulumi:"name"`
+	ProxyCacheLocalOnNotFound *bool   `pulumi:"proxyCacheLocalOnNotFound"`
+	ProxySpeedKb              *int    `pulumi:"proxySpeedKb"`
 	// The project will be public accessibility.(Default: `false`)
-	Public *bool `pulumi:"public"`
-	// To enable project as Proxy Cache.
-	RegistryId *int `pulumi:"registryId"`
+	Public     *bool `pulumi:"public"`
+	RegistryId *int  `pulumi:"registryId"`
 	// The storage quota of the project in GB's.
 	StorageQuota *int `pulumi:"storageQuota"`
+	// The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via `InterrogationServices`.
+	VulnerabilityScanner *string `pulumi:"vulnerabilityScanner"`
 	// Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
 	VulnerabilityScanning *bool `pulumi:"vulnerabilityScanning"`
 }
@@ -169,7 +178,7 @@ type ProjectArgs struct {
 	AutoSbomGeneration pulumi.BoolPtrInput
 	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists pulumi.StringArrayInput
-	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
+	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: null)
 	DeploymentSecurity pulumi.StringPtrInput
 	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
 	EnableContentTrust pulumi.BoolPtrInput
@@ -178,13 +187,16 @@ type ProjectArgs struct {
 	// A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
 	ForceDestroy pulumi.BoolPtrInput
 	// The name of the project that will be created in harbor.
-	Name pulumi.StringPtrInput
+	Name                      pulumi.StringPtrInput
+	ProxyCacheLocalOnNotFound pulumi.BoolPtrInput
+	ProxySpeedKb              pulumi.IntPtrInput
 	// The project will be public accessibility.(Default: `false`)
-	Public pulumi.BoolPtrInput
-	// To enable project as Proxy Cache.
+	Public     pulumi.BoolPtrInput
 	RegistryId pulumi.IntPtrInput
 	// The storage quota of the project in GB's.
 	StorageQuota pulumi.IntPtrInput
+	// The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via `InterrogationServices`.
+	VulnerabilityScanner pulumi.StringPtrInput
 	// Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
 	VulnerabilityScanning pulumi.BoolPtrInput
 }
@@ -286,7 +298,7 @@ func (o ProjectOutput) CveAllowlists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringArrayOutput { return v.CveAllowlists }).(pulumi.StringArrayOutput)
 }
 
-// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
+// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: null)
 func (o ProjectOutput) DeploymentSecurity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.DeploymentSecurity }).(pulumi.StringPtrOutput)
 }
@@ -311,9 +323,16 @@ func (o ProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The project id of this resource.
 func (o ProjectOutput) ProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Project) pulumi.IntOutput { return v.ProjectId }).(pulumi.IntOutput)
+}
+
+func (o ProjectOutput) ProxyCacheLocalOnNotFound() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.ProxyCacheLocalOnNotFound }).(pulumi.BoolPtrOutput)
+}
+
+func (o ProjectOutput) ProxySpeedKb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.IntPtrOutput { return v.ProxySpeedKb }).(pulumi.IntPtrOutput)
 }
 
 // The project will be public accessibility.(Default: `false`)
@@ -321,7 +340,6 @@ func (o ProjectOutput) Public() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.Public }).(pulumi.BoolPtrOutput)
 }
 
-// To enable project as Proxy Cache.
 func (o ProjectOutput) RegistryId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Project) pulumi.IntOutput { return v.RegistryId }).(pulumi.IntOutput)
 }
@@ -329,6 +347,11 @@ func (o ProjectOutput) RegistryId() pulumi.IntOutput {
 // The storage quota of the project in GB's.
 func (o ProjectOutput) StorageQuota() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.IntPtrOutput { return v.StorageQuota }).(pulumi.IntPtrOutput)
+}
+
+// The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via `InterrogationServices`.
+func (o ProjectOutput) VulnerabilityScanner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.VulnerabilityScanner }).(pulumi.StringPtrOutput)
 }
 
 // Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)

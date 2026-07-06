@@ -48,51 +48,51 @@ export class Project extends pulumi.CustomResource {
     /**
      * Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
      */
-    public readonly autoSbomGeneration!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoSbomGeneration: pulumi.Output<boolean | undefined>;
     /**
      * Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
      */
-    public readonly cveAllowlists!: pulumi.Output<string[] | undefined>;
+    declare public readonly cveAllowlists: pulumi.Output<string[] | undefined>;
     /**
-     * Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
+     * Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: null)
      */
-    public readonly deploymentSecurity!: pulumi.Output<string | undefined>;
+    declare public readonly deploymentSecurity: pulumi.Output<string | undefined>;
     /**
      * Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
      */
-    public readonly enableContentTrust!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableContentTrust: pulumi.Output<boolean | undefined>;
     /**
      * Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
      */
-    public readonly enableContentTrustCosign!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableContentTrustCosign: pulumi.Output<boolean | undefined>;
     /**
      * A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
      */
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
     /**
      * The name of the project that will be created in harbor.
      */
-    public readonly name!: pulumi.Output<string>;
-    /**
-     * The project id of this resource.
-     */
-    public /*out*/ readonly projectId!: pulumi.Output<number>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly projectId: pulumi.Output<number>;
+    declare public readonly proxyCacheLocalOnNotFound: pulumi.Output<boolean | undefined>;
+    declare public readonly proxySpeedKb: pulumi.Output<number | undefined>;
     /**
      * The project will be public accessibility.(Default: `false`)
      */
-    public readonly public!: pulumi.Output<boolean | undefined>;
-    /**
-     * To enable project as Proxy Cache.
-     */
-    public readonly registryId!: pulumi.Output<number>;
+    declare public readonly public: pulumi.Output<boolean | undefined>;
+    declare public readonly registryId: pulumi.Output<number>;
     /**
      * The storage quota of the project in GB's.
      */
-    public readonly storageQuota!: pulumi.Output<number | undefined>;
+    declare public readonly storageQuota: pulumi.Output<number | undefined>;
+    /**
+     * The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via `harbor.InterrogationServices`.
+     */
+    declare public readonly vulnerabilityScanner: pulumi.Output<string | undefined>;
     /**
      * Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
      */
-    public readonly vulnerabilityScanning!: pulumi.Output<boolean | undefined>;
+    declare public readonly vulnerabilityScanning: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -107,31 +107,37 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["autoSbomGeneration"] = state ? state.autoSbomGeneration : undefined;
-            resourceInputs["cveAllowlists"] = state ? state.cveAllowlists : undefined;
-            resourceInputs["deploymentSecurity"] = state ? state.deploymentSecurity : undefined;
-            resourceInputs["enableContentTrust"] = state ? state.enableContentTrust : undefined;
-            resourceInputs["enableContentTrustCosign"] = state ? state.enableContentTrustCosign : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["public"] = state ? state.public : undefined;
-            resourceInputs["registryId"] = state ? state.registryId : undefined;
-            resourceInputs["storageQuota"] = state ? state.storageQuota : undefined;
-            resourceInputs["vulnerabilityScanning"] = state ? state.vulnerabilityScanning : undefined;
+            resourceInputs["autoSbomGeneration"] = state?.autoSbomGeneration;
+            resourceInputs["cveAllowlists"] = state?.cveAllowlists;
+            resourceInputs["deploymentSecurity"] = state?.deploymentSecurity;
+            resourceInputs["enableContentTrust"] = state?.enableContentTrust;
+            resourceInputs["enableContentTrustCosign"] = state?.enableContentTrustCosign;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["proxyCacheLocalOnNotFound"] = state?.proxyCacheLocalOnNotFound;
+            resourceInputs["proxySpeedKb"] = state?.proxySpeedKb;
+            resourceInputs["public"] = state?.public;
+            resourceInputs["registryId"] = state?.registryId;
+            resourceInputs["storageQuota"] = state?.storageQuota;
+            resourceInputs["vulnerabilityScanner"] = state?.vulnerabilityScanner;
+            resourceInputs["vulnerabilityScanning"] = state?.vulnerabilityScanning;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            resourceInputs["autoSbomGeneration"] = args ? args.autoSbomGeneration : undefined;
-            resourceInputs["cveAllowlists"] = args ? args.cveAllowlists : undefined;
-            resourceInputs["deploymentSecurity"] = args ? args.deploymentSecurity : undefined;
-            resourceInputs["enableContentTrust"] = args ? args.enableContentTrust : undefined;
-            resourceInputs["enableContentTrustCosign"] = args ? args.enableContentTrustCosign : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["public"] = args ? args.public : undefined;
-            resourceInputs["registryId"] = args ? args.registryId : undefined;
-            resourceInputs["storageQuota"] = args ? args.storageQuota : undefined;
-            resourceInputs["vulnerabilityScanning"] = args ? args.vulnerabilityScanning : undefined;
+            resourceInputs["autoSbomGeneration"] = args?.autoSbomGeneration;
+            resourceInputs["cveAllowlists"] = args?.cveAllowlists;
+            resourceInputs["deploymentSecurity"] = args?.deploymentSecurity;
+            resourceInputs["enableContentTrust"] = args?.enableContentTrust;
+            resourceInputs["enableContentTrustCosign"] = args?.enableContentTrustCosign;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["proxyCacheLocalOnNotFound"] = args?.proxyCacheLocalOnNotFound;
+            resourceInputs["proxySpeedKb"] = args?.proxySpeedKb;
+            resourceInputs["public"] = args?.public;
+            resourceInputs["registryId"] = args?.registryId;
+            resourceInputs["storageQuota"] = args?.storageQuota;
+            resourceInputs["vulnerabilityScanner"] = args?.vulnerabilityScanner;
+            resourceInputs["vulnerabilityScanning"] = args?.vulnerabilityScanning;
             resourceInputs["projectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -146,51 +152,51 @@ export interface ProjectState {
     /**
      * Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
      */
-    autoSbomGeneration?: pulumi.Input<boolean>;
+    autoSbomGeneration?: pulumi.Input<boolean | undefined>;
     /**
      * Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
      */
-    cveAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    cveAllowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
+     * Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: null)
      */
-    deploymentSecurity?: pulumi.Input<string>;
+    deploymentSecurity?: pulumi.Input<string | undefined>;
     /**
      * Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
      */
-    enableContentTrust?: pulumi.Input<boolean>;
+    enableContentTrust?: pulumi.Input<boolean | undefined>;
     /**
      * Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
      */
-    enableContentTrustCosign?: pulumi.Input<boolean>;
+    enableContentTrustCosign?: pulumi.Input<boolean | undefined>;
     /**
      * A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the project that will be created in harbor.
      */
-    name?: pulumi.Input<string>;
-    /**
-     * The project id of this resource.
-     */
-    projectId?: pulumi.Input<number>;
+    name?: pulumi.Input<string | undefined>;
+    projectId?: pulumi.Input<number | undefined>;
+    proxyCacheLocalOnNotFound?: pulumi.Input<boolean | undefined>;
+    proxySpeedKb?: pulumi.Input<number | undefined>;
     /**
      * The project will be public accessibility.(Default: `false`)
      */
-    public?: pulumi.Input<boolean>;
-    /**
-     * To enable project as Proxy Cache.
-     */
-    registryId?: pulumi.Input<number>;
+    public?: pulumi.Input<boolean | undefined>;
+    registryId?: pulumi.Input<number | undefined>;
     /**
      * The storage quota of the project in GB's.
      */
-    storageQuota?: pulumi.Input<number>;
+    storageQuota?: pulumi.Input<number | undefined>;
+    /**
+     * The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via `harbor.InterrogationServices`.
+     */
+    vulnerabilityScanner?: pulumi.Input<string | undefined>;
     /**
      * Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
      */
-    vulnerabilityScanning?: pulumi.Input<boolean>;
+    vulnerabilityScanning?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -200,45 +206,48 @@ export interface ProjectArgs {
     /**
      * Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
      */
-    autoSbomGeneration?: pulumi.Input<boolean>;
+    autoSbomGeneration?: pulumi.Input<boolean | undefined>;
     /**
      * Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
      */
-    cveAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    cveAllowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
+     * Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: null)
      */
-    deploymentSecurity?: pulumi.Input<string>;
+    deploymentSecurity?: pulumi.Input<string | undefined>;
     /**
      * Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
      */
-    enableContentTrust?: pulumi.Input<boolean>;
+    enableContentTrust?: pulumi.Input<boolean | undefined>;
     /**
      * Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
      */
-    enableContentTrustCosign?: pulumi.Input<boolean>;
+    enableContentTrustCosign?: pulumi.Input<boolean | undefined>;
     /**
      * A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the project that will be created in harbor.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    proxyCacheLocalOnNotFound?: pulumi.Input<boolean | undefined>;
+    proxySpeedKb?: pulumi.Input<number | undefined>;
     /**
      * The project will be public accessibility.(Default: `false`)
      */
-    public?: pulumi.Input<boolean>;
-    /**
-     * To enable project as Proxy Cache.
-     */
-    registryId?: pulumi.Input<number>;
+    public?: pulumi.Input<boolean | undefined>;
+    registryId?: pulumi.Input<number | undefined>;
     /**
      * The storage quota of the project in GB's.
      */
-    storageQuota?: pulumi.Input<number>;
+    storageQuota?: pulumi.Input<number | undefined>;
+    /**
+     * The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via `harbor.InterrogationServices`.
+     */
+    vulnerabilityScanner?: pulumi.Input<string | undefined>;
     /**
      * Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
      */
-    vulnerabilityScanning?: pulumi.Input<boolean>;
+    vulnerabilityScanning?: pulumi.Input<boolean | undefined>;
 }

@@ -23,10 +23,16 @@ namespace Pulumiverse.Harbor
         public Output<int> AuditRetentionHour { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
+        /// Valid values are `create`, `push`, `pull`, `delete`, `create_artifact`, `delete_artifact`, `pull_artifact`, `other`, those values can be comma separated. Harbor will include audit logs for those events in the purge (minimal version Harbor 2.13).
+        /// </summary>
+        [Output("includeEventTypes")]
+        public Output<string?> IncludeEventTypes { get; private set; } = null!;
+
+        /// <summary>
+        /// Valid values are `create`, `delete`, `pull`, those values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge. (Harbor &lt; 2.13, deprecated in favor of `include_event_types`)
         /// </summary>
         [Output("includeOperations")]
-        public Output<string> IncludeOperations { get; private set; } = null!;
+        public Output<string?> IncludeOperations { get; private set; } = null!;
 
         /// <summary>
         /// Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
@@ -88,10 +94,16 @@ namespace Pulumiverse.Harbor
         public Input<int> AuditRetentionHour { get; set; } = null!;
 
         /// <summary>
-        /// Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
+        /// Valid values are `create`, `push`, `pull`, `delete`, `create_artifact`, `delete_artifact`, `pull_artifact`, `other`, those values can be comma separated. Harbor will include audit logs for those events in the purge (minimal version Harbor 2.13).
         /// </summary>
-        [Input("includeOperations", required: true)]
-        public Input<string> IncludeOperations { get; set; } = null!;
+        [Input("includeEventTypes")]
+        public Input<string>? IncludeEventTypes { get; set; }
+
+        /// <summary>
+        /// Valid values are `create`, `delete`, `pull`, those values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge. (Harbor &lt; 2.13, deprecated in favor of `include_event_types`)
+        /// </summary>
+        [Input("includeOperations")]
+        public Input<string>? IncludeOperations { get; set; }
 
         /// <summary>
         /// Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
@@ -114,7 +126,13 @@ namespace Pulumiverse.Harbor
         public Input<int>? AuditRetentionHour { get; set; }
 
         /// <summary>
-        /// Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
+        /// Valid values are `create`, `push`, `pull`, `delete`, `create_artifact`, `delete_artifact`, `pull_artifact`, `other`, those values can be comma separated. Harbor will include audit logs for those events in the purge (minimal version Harbor 2.13).
+        /// </summary>
+        [Input("includeEventTypes")]
+        public Input<string>? IncludeEventTypes { get; set; }
+
+        /// <summary>
+        /// Valid values are `create`, `delete`, `pull`, those values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge. (Harbor &lt; 2.13, deprecated in favor of `include_event_types`)
         /// </summary>
         [Input("includeOperations")]
         public Input<string>? IncludeOperations { get; set; }

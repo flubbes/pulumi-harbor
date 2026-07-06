@@ -50,7 +50,7 @@ namespace Pulumiverse.Harbor
         public Output<string?> DestNamespace { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+        /// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `0`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
         /// </summary>
         [Output("destNamespaceReplace")]
         public Output<int?> DestNamespaceReplace { get; private set; } = null!;
@@ -96,6 +96,12 @@ namespace Pulumiverse.Harbor
         /// </summary>
         [Output("schedule")]
         public Output<string?> Schedule { get; private set; } = null!;
+
+        /// <summary>
+        /// , prevent parallel runs under the same replication. (Default: `false`)
+        /// </summary>
+        [Output("singleActiveReplication")]
+        public Output<bool?> SingleActiveReplication { get; private set; } = null!;
 
         /// <summary>
         /// The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
@@ -178,7 +184,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? DestNamespace { get; set; }
 
         /// <summary>
-        /// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+        /// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `0`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
         /// </summary>
         [Input("destNamespaceReplace")]
         public Input<int>? DestNamespaceReplace { get; set; }
@@ -228,6 +234,12 @@ namespace Pulumiverse.Harbor
         public Input<string>? Schedule { get; set; }
 
         /// <summary>
+        /// , prevent parallel runs under the same replication. (Default: `false`)
+        /// </summary>
+        [Input("singleActiveReplication")]
+        public Input<bool>? SingleActiveReplication { get; set; }
+
+        /// <summary>
         /// The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
         /// </summary>
         [Input("speed")]
@@ -269,7 +281,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? DestNamespace { get; set; }
 
         /// <summary>
-        /// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+        /// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `0`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
         /// </summary>
         [Input("destNamespaceReplace")]
         public Input<int>? DestNamespaceReplace { get; set; }
@@ -320,6 +332,12 @@ namespace Pulumiverse.Harbor
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
+
+        /// <summary>
+        /// , prevent parallel runs under the same replication. (Default: `false`)
+        /// </summary>
+        [Input("singleActiveReplication")]
+        public Input<bool>? SingleActiveReplication { get; set; }
 
         /// <summary>
         /// The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).

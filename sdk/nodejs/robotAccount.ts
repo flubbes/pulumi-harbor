@@ -24,6 +24,10 @@ import * as utilities from "./utilities";
  * Other than system level robot accounts, project level robot accounts can interact on project level only.
  * The [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.
  *
+ * ### Project with Write-only Secret
+ *
+ * ### Project with Write-only Secret from Ephemeral Random Secret
+ *
  * The above example creates a project level robot account with permissions to
  * - pull repository on project "main"
  * - push repository on project "main"
@@ -65,30 +69,34 @@ export class RobotAccount extends pulumi.CustomResource {
     /**
      * The description of the robot account will be displayed in harbor.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Disables the robot account when set to `true`.
      */
-    public readonly disable!: pulumi.Output<boolean | undefined>;
+    declare public readonly disable: pulumi.Output<boolean | undefined>;
     /**
      * By default, the robot account will not expire. Set it to the amount of days until the account should expire.
      */
-    public readonly duration!: pulumi.Output<number | undefined>;
-    public /*out*/ readonly fullName!: pulumi.Output<string>;
+    declare public readonly duration: pulumi.Output<number | undefined>;
+    declare public /*out*/ readonly fullName: pulumi.Output<string>;
     /**
      * Level of the robot account, currently either `system` or `project`.
      */
-    public readonly level!: pulumi.Output<string>;
+    declare public readonly level: pulumi.Output<string>;
     /**
      * The name of the project that will be created in harbor.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly permissions!: pulumi.Output<outputs.RobotAccountPermission[]>;
-    public /*out*/ readonly robotId!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly permissions: pulumi.Output<outputs.RobotAccountPermission[]>;
+    declare public /*out*/ readonly robotId: pulumi.Output<string>;
     /**
      * The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
      */
-    public readonly secret!: pulumi.Output<string>;
+    declare public readonly secret: pulumi.Output<string>;
+    /**
+     * Rotation trigger for write-only secret updates. Must be used together with `secretWo`.
+     */
+    declare public readonly secretWoVersion: pulumi.Output<number | undefined>;
 
     /**
      * Create a RobotAccount resource with the given unique name, arguments, and options.
@@ -103,30 +111,32 @@ export class RobotAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RobotAccountState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disable"] = state ? state.disable : undefined;
-            resourceInputs["duration"] = state ? state.duration : undefined;
-            resourceInputs["fullName"] = state ? state.fullName : undefined;
-            resourceInputs["level"] = state ? state.level : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["robotId"] = state ? state.robotId : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disable"] = state?.disable;
+            resourceInputs["duration"] = state?.duration;
+            resourceInputs["fullName"] = state?.fullName;
+            resourceInputs["level"] = state?.level;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["robotId"] = state?.robotId;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["secretWoVersion"] = state?.secretWoVersion;
         } else {
             const args = argsOrState as RobotAccountArgs | undefined;
-            if ((!args || args.level === undefined) && !opts.urn) {
+            if (args?.level === undefined && !opts.urn) {
                 throw new Error("Missing required property 'level'");
             }
-            if ((!args || args.permissions === undefined) && !opts.urn) {
+            if (args?.permissions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'permissions'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disable"] = args ? args.disable : undefined;
-            resourceInputs["duration"] = args ? args.duration : undefined;
-            resourceInputs["level"] = args ? args.level : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disable"] = args?.disable;
+            resourceInputs["duration"] = args?.duration;
+            resourceInputs["level"] = args?.level;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["permissions"] = args?.permissions;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
+            resourceInputs["secretWoVersion"] = args?.secretWoVersion;
             resourceInputs["fullName"] = undefined /*out*/;
             resourceInputs["robotId"] = undefined /*out*/;
         }
@@ -144,30 +154,34 @@ export interface RobotAccountState {
     /**
      * The description of the robot account will be displayed in harbor.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Disables the robot account when set to `true`.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * By default, the robot account will not expire. Set it to the amount of days until the account should expire.
      */
-    duration?: pulumi.Input<number>;
-    fullName?: pulumi.Input<string>;
+    duration?: pulumi.Input<number | undefined>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * Level of the robot account, currently either `system` or `project`.
      */
-    level?: pulumi.Input<string>;
+    level?: pulumi.Input<string | undefined>;
     /**
      * The name of the project that will be created in harbor.
      */
-    name?: pulumi.Input<string>;
-    permissions?: pulumi.Input<pulumi.Input<inputs.RobotAccountPermission>[]>;
-    robotId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    permissions?: pulumi.Input<pulumi.Input<inputs.RobotAccountPermission>[] | undefined>;
+    robotId?: pulumi.Input<string | undefined>;
     /**
      * The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
+    /**
+     * Rotation trigger for write-only secret updates. Must be used together with `secretWo`.
+     */
+    secretWoVersion?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -177,15 +191,15 @@ export interface RobotAccountArgs {
     /**
      * The description of the robot account will be displayed in harbor.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Disables the robot account when set to `true`.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * By default, the robot account will not expire. Set it to the amount of days until the account should expire.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * Level of the robot account, currently either `system` or `project`.
      */
@@ -193,10 +207,14 @@ export interface RobotAccountArgs {
     /**
      * The name of the project that will be created in harbor.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     permissions: pulumi.Input<pulumi.Input<inputs.RobotAccountPermission>[]>;
     /**
      * The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
+    /**
+     * Rotation trigger for write-only secret updates. Must be used together with `secretWo`.
+     */
+    secretWoVersion?: pulumi.Input<number | undefined>;
 }

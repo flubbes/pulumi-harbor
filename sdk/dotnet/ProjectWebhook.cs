@@ -49,6 +49,9 @@ namespace Pulumiverse.Harbor
         [Output("notifyType")]
         public Output<string> NotifyType { get; private set; } = null!;
 
+        [Output("payloadFormat")]
+        public Output<string?> PayloadFormat { get; private set; } = null!;
+
         /// <summary>
         /// The project id of the harbor that webhook related to.
         /// </summary>
@@ -144,6 +147,9 @@ namespace Pulumiverse.Harbor
         [Input("notifyType", required: true)]
         public Input<string> NotifyType { get; set; } = null!;
 
+        [Input("payloadFormat")]
+        public Input<string>? PayloadFormat { get; set; }
+
         /// <summary>
         /// The project id of the harbor that webhook related to.
         /// </summary>
@@ -199,6 +205,9 @@ namespace Pulumiverse.Harbor
         /// </summary>
         [Input("notifyType")]
         public Input<string>? NotifyType { get; set; }
+
+        [Input("payloadFormat")]
+        public Input<string>? PayloadFormat { get; set; }
 
         /// <summary>
         /// The project id of the harbor that webhook related to.

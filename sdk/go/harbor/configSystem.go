@@ -18,6 +18,8 @@ type ConfigSystem struct {
 	// The endpoint to forward audit logs to.
 	AuditLogForwardEndpoint pulumi.StringPtrOutput             `pulumi:"auditLogForwardEndpoint"`
 	BannerMessage           ConfigSystemBannerMessagePtrOutput `pulumi:"bannerMessage"`
+	// Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.
+	NotificationEnable pulumi.BoolPtrOutput `pulumi:"notificationEnable"`
 	// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
 	ProjectCreationRestriction pulumi.StringPtrOutput `pulumi:"projectCreationRestriction"`
 	// Whether or not the system is in read only mode.
@@ -67,6 +69,8 @@ type configSystemState struct {
 	// The endpoint to forward audit logs to.
 	AuditLogForwardEndpoint *string                    `pulumi:"auditLogForwardEndpoint"`
 	BannerMessage           *ConfigSystemBannerMessage `pulumi:"bannerMessage"`
+	// Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.
+	NotificationEnable *bool `pulumi:"notificationEnable"`
 	// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
 	ProjectCreationRestriction *string `pulumi:"projectCreationRestriction"`
 	// Whether or not the system is in read only mode.
@@ -87,6 +91,8 @@ type ConfigSystemState struct {
 	// The endpoint to forward audit logs to.
 	AuditLogForwardEndpoint pulumi.StringPtrInput
 	BannerMessage           ConfigSystemBannerMessagePtrInput
+	// Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.
+	NotificationEnable pulumi.BoolPtrInput
 	// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
 	ProjectCreationRestriction pulumi.StringPtrInput
 	// Whether or not the system is in read only mode.
@@ -111,6 +117,8 @@ type configSystemArgs struct {
 	// The endpoint to forward audit logs to.
 	AuditLogForwardEndpoint *string                    `pulumi:"auditLogForwardEndpoint"`
 	BannerMessage           *ConfigSystemBannerMessage `pulumi:"bannerMessage"`
+	// Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.
+	NotificationEnable *bool `pulumi:"notificationEnable"`
 	// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
 	ProjectCreationRestriction *string `pulumi:"projectCreationRestriction"`
 	// Whether or not the system is in read only mode.
@@ -132,6 +140,8 @@ type ConfigSystemArgs struct {
 	// The endpoint to forward audit logs to.
 	AuditLogForwardEndpoint pulumi.StringPtrInput
 	BannerMessage           ConfigSystemBannerMessagePtrInput
+	// Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.
+	NotificationEnable pulumi.BoolPtrInput
 	// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
 	ProjectCreationRestriction pulumi.StringPtrInput
 	// Whether or not the system is in read only mode.
@@ -242,6 +252,11 @@ func (o ConfigSystemOutput) AuditLogForwardEndpoint() pulumi.StringPtrOutput {
 
 func (o ConfigSystemOutput) BannerMessage() ConfigSystemBannerMessagePtrOutput {
 	return o.ApplyT(func(v *ConfigSystem) ConfigSystemBannerMessagePtrOutput { return v.BannerMessage }).(ConfigSystemBannerMessagePtrOutput)
+}
+
+// Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.
+func (o ConfigSystemOutput) NotificationEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigSystem) pulumi.BoolPtrOutput { return v.NotificationEnable }).(pulumi.BoolPtrOutput)
 }
 
 // Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`

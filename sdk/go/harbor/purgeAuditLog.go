@@ -18,8 +18,10 @@ type PurgeAuditLog struct {
 
 	// To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.
 	AuditRetentionHour pulumi.IntOutput `pulumi:"auditRetentionHour"`
-	// Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
-	IncludeOperations pulumi.StringOutput `pulumi:"includeOperations"`
+	// Valid values are `create`, `push`, `pull`, `delete`, `createArtifact`, `deleteArtifact`, `pullArtifact`, `other`, those values can be comma separated. Harbor will include audit logs for those events in the purge (minimal version Harbor 2.13).
+	IncludeEventTypes pulumi.StringPtrOutput `pulumi:"includeEventTypes"`
+	// Valid values are `create`, `delete`, `pull`, those values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge. (Harbor < 2.13, deprecated in favor of `includeEventTypes`)
+	IncludeOperations pulumi.StringPtrOutput `pulumi:"includeOperations"`
 	// Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
 	Schedule pulumi.StringOutput `pulumi:"schedule"`
 }
@@ -33,9 +35,6 @@ func NewPurgeAuditLog(ctx *pulumi.Context,
 
 	if args.AuditRetentionHour == nil {
 		return nil, errors.New("invalid value for required argument 'AuditRetentionHour'")
-	}
-	if args.IncludeOperations == nil {
-		return nil, errors.New("invalid value for required argument 'IncludeOperations'")
 	}
 	if args.Schedule == nil {
 		return nil, errors.New("invalid value for required argument 'Schedule'")
@@ -65,7 +64,9 @@ func GetPurgeAuditLog(ctx *pulumi.Context,
 type purgeAuditLogState struct {
 	// To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.
 	AuditRetentionHour *int `pulumi:"auditRetentionHour"`
-	// Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
+	// Valid values are `create`, `push`, `pull`, `delete`, `createArtifact`, `deleteArtifact`, `pullArtifact`, `other`, those values can be comma separated. Harbor will include audit logs for those events in the purge (minimal version Harbor 2.13).
+	IncludeEventTypes *string `pulumi:"includeEventTypes"`
+	// Valid values are `create`, `delete`, `pull`, those values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge. (Harbor < 2.13, deprecated in favor of `includeEventTypes`)
 	IncludeOperations *string `pulumi:"includeOperations"`
 	// Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
 	Schedule *string `pulumi:"schedule"`
@@ -74,7 +75,9 @@ type purgeAuditLogState struct {
 type PurgeAuditLogState struct {
 	// To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.
 	AuditRetentionHour pulumi.IntPtrInput
-	// Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
+	// Valid values are `create`, `push`, `pull`, `delete`, `createArtifact`, `deleteArtifact`, `pullArtifact`, `other`, those values can be comma separated. Harbor will include audit logs for those events in the purge (minimal version Harbor 2.13).
+	IncludeEventTypes pulumi.StringPtrInput
+	// Valid values are `create`, `delete`, `pull`, those values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge. (Harbor < 2.13, deprecated in favor of `includeEventTypes`)
 	IncludeOperations pulumi.StringPtrInput
 	// Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
 	Schedule pulumi.StringPtrInput
@@ -87,8 +90,10 @@ func (PurgeAuditLogState) ElementType() reflect.Type {
 type purgeAuditLogArgs struct {
 	// To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.
 	AuditRetentionHour int `pulumi:"auditRetentionHour"`
-	// Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
-	IncludeOperations string `pulumi:"includeOperations"`
+	// Valid values are `create`, `push`, `pull`, `delete`, `createArtifact`, `deleteArtifact`, `pullArtifact`, `other`, those values can be comma separated. Harbor will include audit logs for those events in the purge (minimal version Harbor 2.13).
+	IncludeEventTypes *string `pulumi:"includeEventTypes"`
+	// Valid values are `create`, `delete`, `pull`, those values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge. (Harbor < 2.13, deprecated in favor of `includeEventTypes`)
+	IncludeOperations *string `pulumi:"includeOperations"`
 	// Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
 	Schedule string `pulumi:"schedule"`
 }
@@ -97,8 +102,10 @@ type purgeAuditLogArgs struct {
 type PurgeAuditLogArgs struct {
 	// To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.
 	AuditRetentionHour pulumi.IntInput
-	// Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
-	IncludeOperations pulumi.StringInput
+	// Valid values are `create`, `push`, `pull`, `delete`, `createArtifact`, `deleteArtifact`, `pullArtifact`, `other`, those values can be comma separated. Harbor will include audit logs for those events in the purge (minimal version Harbor 2.13).
+	IncludeEventTypes pulumi.StringPtrInput
+	// Valid values are `create`, `delete`, `pull`, those values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge. (Harbor < 2.13, deprecated in favor of `includeEventTypes`)
+	IncludeOperations pulumi.StringPtrInput
 	// Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
 	Schedule pulumi.StringInput
 }
@@ -195,9 +202,14 @@ func (o PurgeAuditLogOutput) AuditRetentionHour() pulumi.IntOutput {
 	return o.ApplyT(func(v *PurgeAuditLog) pulumi.IntOutput { return v.AuditRetentionHour }).(pulumi.IntOutput)
 }
 
-// Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
-func (o PurgeAuditLogOutput) IncludeOperations() pulumi.StringOutput {
-	return o.ApplyT(func(v *PurgeAuditLog) pulumi.StringOutput { return v.IncludeOperations }).(pulumi.StringOutput)
+// Valid values are `create`, `push`, `pull`, `delete`, `createArtifact`, `deleteArtifact`, `pullArtifact`, `other`, those values can be comma separated. Harbor will include audit logs for those events in the purge (minimal version Harbor 2.13).
+func (o PurgeAuditLogOutput) IncludeEventTypes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PurgeAuditLog) pulumi.StringPtrOutput { return v.IncludeEventTypes }).(pulumi.StringPtrOutput)
+}
+
+// Valid values are `create`, `delete`, `pull`, those values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge. (Harbor < 2.13, deprecated in favor of `includeEventTypes`)
+func (o PurgeAuditLogOutput) IncludeOperations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PurgeAuditLog) pulumi.StringPtrOutput { return v.IncludeOperations }).(pulumi.StringPtrOutput)
 }
 
 // Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
