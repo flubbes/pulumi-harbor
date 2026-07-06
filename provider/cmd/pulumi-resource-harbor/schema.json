@@ -68,6 +68,14 @@
             "bearerToken": {
                 "type": "string"
             },
+            "headers": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "string"
+                },
+                "description": "A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name.\nUseful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.\n",
+                "secret": true
+            },
             "insecure": {
                 "type": "boolean",
                 "default": true,
@@ -464,6 +472,14 @@
             "bearerToken": {
                 "type": "string"
             },
+            "headers": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "string"
+                },
+                "description": "A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name.\nUseful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.\n",
+                "secret": true
+            },
             "insecure": {
                 "type": "boolean"
             },
@@ -491,6 +507,14 @@
             },
             "bearerToken": {
                 "type": "string"
+            },
+            "headers": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "string"
+                },
+                "description": "A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name.\nUseful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.\n",
+                "secret": true
             },
             "insecure": {
                 "type": "boolean",
@@ -539,7 +563,7 @@
     },
     "resources": {
         "harbor:index/configAuth:ConfigAuth": {
-            "description": "## Example Usage\n\n### OIDC\n\n```terraform\nresource \"harbor_config_auth\" \"oidc\" {\n  auth_mode          = \"oidc_auth\"\n  primary_auth_mode  = true\n  oidc_name          = \"azure\"\n  oidc_endpoint      = \"https://login.microsoftonline.com/{GUID goes here}/v2.0\"\n  oidc_client_id     = \"OIDC Client ID goes here\"\n  oidc_client_secret = \"ODDC Client Secret goes here\"\n  oidc_scope         = \"openid,email\"\n  oidc_verify_cert   = true\n  oidc_auto_onboard  = true\n  oidc_user_claim    = \"name\"\n  oidc_admin_group   = \"administrators\"\n}\n```\n\n### LDAP\n\n```terraform\nresource \"harbor_config_auth\" \"ldap\" {\n  auth_mode            = \"ldap_auth\"\n  primary_auth_mode    = true\n  ldap_url             = \"openldap.default.svc.cluster.local:389\"\n  ldap_search_dn       = \"cn=admin,dc=example,dc=org\"\n  ldap_search_password = \"Not@SecurePassw0rd\"\n  ldap_base_dn         = \"dc=example,dc=org\"\n  ldap_uid             = \"email\"\n  ldap_verify_cert     = false\n}\n```\n",
+            "description": "## Example Usage\n\n### OIDC\n\n```terraform\nresource \"harbor_config_auth\" \"oidc\" {\n  auth_mode          = \"oidc_auth\"\n  primary_auth_mode  = true\n  oidc_name          = \"azure\"\n  oidc_endpoint      = \"https://login.microsoftonline.com/{GUID goes here}/v2.0\"\n  oidc_client_id     = \"OIDC Client ID goes here\"\n  oidc_client_secret = \"ODDC Client Secret goes here\"\n  oidc_scope         = \"openid,email\"\n  oidc_verify_cert   = true\n  oidc_auto_onboard  = true\n  oidc_user_claim    = \"name\"\n  oidc_admin_group   = \"administrators\"\n}\n```\n\n### OIDC with Write-only Client Secret\n\n```terraform\nresource \"harbor_config_auth\" \"oidc\" {\n  auth_mode                     = \"oidc_auth\"\n  primary_auth_mode             = true\n  oidc_name                     = \"azure\"\n  oidc_endpoint                 = \"https://login.microsoftonline.com/{GUID goes here}/v2.0\"\n  oidc_client_id                = \"OIDC Client ID goes here\"\n  oidc_client_secret_wo         = \"OIDC Client Secret goes here\"\n  oidc_client_secret_wo_version = 1\n  oidc_scope                    = \"openid,email\"\n  oidc_verify_cert              = true\n  oidc_auto_onboard             = true\n  oidc_user_claim               = \"name\"\n  oidc_admin_group              = \"administrators\"\n}\n```\n\n### LDAP\n\n```terraform\nresource \"harbor_config_auth\" \"ldap\" {\n  auth_mode            = \"ldap_auth\"\n  primary_auth_mode    = true\n  ldap_url             = \"openldap.default.svc.cluster.local:389\"\n  ldap_search_dn       = \"cn=admin,dc=example,dc=org\"\n  ldap_search_password = \"Not@SecurePassw0rd\"\n  ldap_base_dn         = \"dc=example,dc=org\"\n  ldap_uid             = \"email\"\n  ldap_verify_cert     = false\n}\n```\n",
             "properties": {
                 "authMode": {
                     "type": "string",
@@ -604,6 +628,9 @@
                     "type": "string",
                     "secret": true
                 },
+                "oidcClientSecretWoVersion": {
+                    "type": "integer"
+                },
                 "oidcEndpoint": {
                     "type": "string"
                 },
@@ -612,6 +639,9 @@
                 },
                 "oidcGroupsClaim": {
                     "type": "string"
+                },
+                "oidcLogout": {
+                    "type": "boolean"
                 },
                 "oidcName": {
                     "type": "string"
@@ -696,6 +726,9 @@
                     "type": "string",
                     "secret": true
                 },
+                "oidcClientSecretWoVersion": {
+                    "type": "integer"
+                },
                 "oidcEndpoint": {
                     "type": "string"
                 },
@@ -704,6 +737,9 @@
                 },
                 "oidcGroupsClaim": {
                     "type": "string"
+                },
+                "oidcLogout": {
+                    "type": "boolean"
                 },
                 "oidcName": {
                     "type": "string"
@@ -790,6 +826,9 @@
                         "type": "string",
                         "secret": true
                     },
+                    "oidcClientSecretWoVersion": {
+                        "type": "integer"
+                    },
                     "oidcEndpoint": {
                         "type": "string"
                     },
@@ -798,6 +837,9 @@
                     },
                     "oidcGroupsClaim": {
                         "type": "string"
+                    },
+                    "oidcLogout": {
+                        "type": "boolean"
                     },
                     "oidcName": {
                         "type": "string"
@@ -889,7 +931,7 @@
             }
         },
         "harbor:index/configSystem:ConfigSystem": {
-            "description": "## Example Usage\n\n```terraform\nresource \"harbor_config_system\" \"main\" {\n  project_creation_restriction = \"adminonly\"\n  robot_token_expiration       = 30\n  robot_name_prefix            = \"harbor@\"\n  storage_per_project          = 100\n}\n```\n",
+            "description": "## Example Usage\n\n```terraform\nresource \"harbor_config_system\" \"main\" {\n  project_creation_restriction = \"adminonly\"\n  robot_token_expiration       = 30\n  robot_name_prefix            = \"harbor@\"\n  storage_per_project          = 100\n  notification_enable          = true\n}\n```\n",
             "properties": {
                 "auditLogForwardEndpoint": {
                     "type": "string",
@@ -897,6 +939,10 @@
                 },
                 "bannerMessage": {
                     "$ref": "#/types/harbor:index/ConfigSystemBannerMessage:ConfigSystemBannerMessage"
+                },
+                "notificationEnable": {
+                    "type": "boolean",
+                    "description": "Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.\n"
                 },
                 "projectCreationRestriction": {
                     "type": "string",
@@ -934,6 +980,10 @@
                 },
                 "bannerMessage": {
                     "$ref": "#/types/harbor:index/ConfigSystemBannerMessage:ConfigSystemBannerMessage"
+                },
+                "notificationEnable": {
+                    "type": "boolean",
+                    "description": "Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.\n"
                 },
                 "projectCreationRestriction": {
                     "type": "string",
@@ -973,6 +1023,10 @@
                     },
                     "bannerMessage": {
                         "$ref": "#/types/harbor:index/ConfigSystemBannerMessage:ConfigSystemBannerMessage"
+                    },
+                    "notificationEnable": {
+                        "type": "boolean",
+                        "description": "Whether or not webhook/notification functionality is enabled globally. When `false`, all project-level webhook policies are silently ignored. Defaults to `true`.\n"
                     },
                     "projectCreationRestriction": {
                         "type": "string",
@@ -1019,7 +1073,7 @@
                 },
                 "workers": {
                     "type": "integer",
-                    "description": "Number of workers to run the garbage collection, value must be between 1 and 5.\n"
+                    "description": "Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.\n"
                 }
             },
             "required": [
@@ -1036,7 +1090,7 @@
                 },
                 "workers": {
                     "type": "integer",
-                    "description": "Number of workers to run the garbage collection, value must be between 1 and 5.\n"
+                    "description": "Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.\n"
                 }
             },
             "requiredInputs": [
@@ -1055,7 +1109,7 @@
                     },
                     "workers": {
                         "type": "integer",
-                        "description": "Number of workers to run the garbage collection, value must be between 1 and 5.\n"
+                        "description": "Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.\n"
                     }
                 },
                 "type": "object"
@@ -1065,16 +1119,13 @@
             "description": "## Example Usage\n\n```terraform\nresource \"harbor_group\" \"storage-group\" {\n  group_name = \"storage-group\"\n  group_type = 3\n  ldap_group_dn = \"storage-group\"\n}\n```\n\n## Import\n\n```sh\n$ pulumi import harbor:index/group:Group storage-group /usergroups/19\n```\n\n",
             "properties": {
                 "groupName": {
-                    "type": "string",
-                    "description": "The name of the group.\n"
+                    "type": "string"
                 },
                 "groupType": {
-                    "type": "integer",
-                    "description": "3. Note: group type 3 is OIDC group.\n"
+                    "type": "integer"
                 },
                 "ldapGroupDn": {
-                    "type": "string",
-                    "description": "The distinguished name of the group within AD/LDAP.\n"
+                    "type": "string"
                 }
             },
             "required": [
@@ -1084,16 +1135,13 @@
             "inputProperties": {
                 "groupName": {
                     "type": "string",
-                    "description": "The name of the group.\n",
                     "willReplaceOnChanges": true
                 },
                 "groupType": {
-                    "type": "integer",
-                    "description": "3. Note: group type 3 is OIDC group.\n"
+                    "type": "integer"
                 },
                 "ldapGroupDn": {
-                    "type": "string",
-                    "description": "The distinguished name of the group within AD/LDAP.\n"
+                    "type": "string"
                 }
             },
             "requiredInputs": [
@@ -1105,16 +1153,13 @@
                 "properties": {
                     "groupName": {
                         "type": "string",
-                        "description": "The name of the group.\n",
                         "willReplaceOnChanges": true
                     },
                     "groupType": {
-                        "type": "integer",
-                        "description": "3. Note: group type 3 is OIDC group.\n"
+                        "type": "integer"
                     },
                     "ldapGroupDn": {
-                        "type": "string",
-                        "description": "The distinguished name of the group within AD/LDAP.\n"
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -1490,7 +1535,7 @@
             }
         },
         "harbor:index/project:Project": {
-            "description": "## Example Usage\n\n### Hosted\n\n```terraform\nresource \"harbor_project\" \"main\" {\n  name                        = \"main\"\n  public                      = false               # (Optional) Default value is false\n  vulnerability_scanning      = true                # (Optional) Default value is true. Automatically scan images on push\n  enable_content_trust        = true                # (Optional) Default value is false. Deny unsigned images from being pulled (notary)\n  enable_content_trust_cosign = false               # (Optional) Default value is false. Deny unsigned images from being pulled (cosign)\n  auto_sbom_generation        = true                # (Optional) Default value is false. Automatically generate SBOMs for images\n}\n```\n\n### Proxy\n\n```terraform\nresource \"harbor_project\" \"main\" {\n  name        = \"acctest\"\n  registry_id = harbor_registry.docker.registry_id\n}\n\nresource \"harbor_registry\" \"docker\" {\n  provider_name = \"docker-hub\"\n  name          = \"test\"\n  endpoint_url  = \"https://hub.docker.com\"\n}\n```\n\n## Import\n\n```sh\n$ pulumi import harbor:index/project:Project main /projects/1\n```\n\n",
+            "description": "## Example Usage\n\n### Hosted\n\n```terraform\nresource \"harbor_project\" \"main\" {\n  name                        = \"main\"\n  public                      = false               # (Optional) Default value is false\n  vulnerability_scanning      = true                # (Optional) Default value is true. Automatically scan images on push\n  vulnerability_scanner       = \"Trivy\"             # (Optional) Override the global default scanner for this project\n  enable_content_trust        = true                # (Optional) Default value is false. Deny unsigned images from being pulled (notary)\n  enable_content_trust_cosign = false               # (Optional) Default value is false. Deny unsigned images from being pulled (cosign)\n  auto_sbom_generation        = true                # (Optional) Default value is false. Automatically generate SBOMs for images\n}\n```\n\n### Proxy\n\n```terraform\nresource \"harbor_project\" \"main\" {\n  name        = \"acctest\"\n  registry_id = harbor_registry.docker.registry_id\n}\n\nresource \"harbor_registry\" \"docker\" {\n  provider_name = \"docker-hub\"\n  name          = \"test\"\n  endpoint_url  = \"https://hub.docker.com\"\n}\n```\n\n## Import\n\n```sh\n$ pulumi import harbor:index/project:Project main /projects/1\n```\n\n",
             "properties": {
                 "autoSbomGeneration": {
                     "type": "boolean",
@@ -1505,7 +1550,7 @@
                 },
                 "deploymentSecurity": {
                     "type": "string",
-                    "description": "Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `\"critical\"`, `\"high\"`, `\"medium\"`, `\"low\"`, `\"none\"`. (Default: `\"\"` - empty)\n"
+                    "description": "Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `\"critical\"`, `\"high\"`, `\"medium\"`, `\"low\"`, `\"none\"`. (Default: null)\n"
                 },
                 "enableContentTrust": {
                     "type": "boolean",
@@ -1524,20 +1569,28 @@
                     "description": "The name of the project that will be created in harbor.\n"
                 },
                 "projectId": {
-                    "type": "integer",
-                    "description": "The project id of this resource.\n"
+                    "type": "integer"
+                },
+                "proxyCacheLocalOnNotFound": {
+                    "type": "boolean"
+                },
+                "proxySpeedKb": {
+                    "type": "integer"
                 },
                 "public": {
                     "type": "boolean",
                     "description": "The project will be public accessibility.(Default: `false`)\n"
                 },
                 "registryId": {
-                    "type": "integer",
-                    "description": "To enable project as Proxy Cache.\n"
+                    "type": "integer"
                 },
                 "storageQuota": {
                     "type": "integer",
                     "description": "The storage quota of the project in GB's.\n"
+                },
+                "vulnerabilityScanner": {
+                    "type": "string",
+                    "description": "The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via `harbor.InterrogationServices`.\n"
                 },
                 "vulnerabilityScanning": {
                     "type": "boolean",
@@ -1563,7 +1616,7 @@
                 },
                 "deploymentSecurity": {
                     "type": "string",
-                    "description": "Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `\"critical\"`, `\"high\"`, `\"medium\"`, `\"low\"`, `\"none\"`. (Default: `\"\"` - empty)\n"
+                    "description": "Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `\"critical\"`, `\"high\"`, `\"medium\"`, `\"low\"`, `\"none\"`. (Default: null)\n"
                 },
                 "enableContentTrust": {
                     "type": "boolean",
@@ -1582,18 +1635,27 @@
                     "description": "The name of the project that will be created in harbor.\n",
                     "willReplaceOnChanges": true
                 },
+                "proxyCacheLocalOnNotFound": {
+                    "type": "boolean"
+                },
+                "proxySpeedKb": {
+                    "type": "integer"
+                },
                 "public": {
                     "type": "boolean",
                     "description": "The project will be public accessibility.(Default: `false`)\n"
                 },
                 "registryId": {
                     "type": "integer",
-                    "description": "To enable project as Proxy Cache.\n",
                     "willReplaceOnChanges": true
                 },
                 "storageQuota": {
                     "type": "integer",
                     "description": "The storage quota of the project in GB's.\n"
+                },
+                "vulnerabilityScanner": {
+                    "type": "string",
+                    "description": "The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via `harbor.InterrogationServices`.\n"
                 },
                 "vulnerabilityScanning": {
                     "type": "boolean",
@@ -1616,7 +1678,7 @@
                     },
                     "deploymentSecurity": {
                         "type": "string",
-                        "description": "Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `\"critical\"`, `\"high\"`, `\"medium\"`, `\"low\"`, `\"none\"`. (Default: `\"\"` - empty)\n"
+                        "description": "Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `\"critical\"`, `\"high\"`, `\"medium\"`, `\"low\"`, `\"none\"`. (Default: null)\n"
                     },
                     "enableContentTrust": {
                         "type": "boolean",
@@ -1636,8 +1698,13 @@
                         "willReplaceOnChanges": true
                     },
                     "projectId": {
-                        "type": "integer",
-                        "description": "The project id of this resource.\n"
+                        "type": "integer"
+                    },
+                    "proxyCacheLocalOnNotFound": {
+                        "type": "boolean"
+                    },
+                    "proxySpeedKb": {
+                        "type": "integer"
                     },
                     "public": {
                         "type": "boolean",
@@ -1645,12 +1712,15 @@
                     },
                     "registryId": {
                         "type": "integer",
-                        "description": "To enable project as Proxy Cache.\n",
                         "willReplaceOnChanges": true
                     },
                     "storageQuota": {
                         "type": "integer",
                         "description": "The storage quota of the project in GB's.\n"
+                    },
+                    "vulnerabilityScanner": {
+                        "type": "string",
+                        "description": "The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via `harbor.InterrogationServices`.\n"
                     },
                     "vulnerabilityScanning": {
                         "type": "boolean",
@@ -1862,6 +1932,9 @@
                     "type": "string",
                     "description": "The notification type either `http` or `slack`.\n"
                 },
+                "payloadFormat": {
+                    "type": "string"
+                },
                 "projectId": {
                     "type": "string",
                     "description": "The project id of the harbor that webhook related to.\n"
@@ -1906,6 +1979,9 @@
                 "notifyType": {
                     "type": "string",
                     "description": "The notification type either `http` or `slack`.\n"
+                },
+                "payloadFormat": {
+                    "type": "string"
                 },
                 "projectId": {
                     "type": "string",
@@ -1953,6 +2029,9 @@
                         "type": "string",
                         "description": "The notification type either `http` or `slack`.\n"
                     },
+                    "payloadFormat": {
+                        "type": "string"
+                    },
                     "projectId": {
                         "type": "string",
                         "description": "The project id of the harbor that webhook related to.\n"
@@ -1971,9 +2050,13 @@
                     "type": "integer",
                     "description": "To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.\n"
                 },
+                "includeEventTypes": {
+                    "type": "string",
+                    "description": "Valid values are `create`, `push`, `pull`, `delete`, `create_artifact`, `delete_artifact`, `pull_artifact`, `other`, those values can be comma separated. Harbor will include audit logs for those events in the purge (minimal version Harbor 2.13).\n"
+                },
                 "includeOperations": {
                     "type": "string",
-                    "description": "Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.\n"
+                    "description": "Valid values are `create`, `delete`, `pull`, those values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge. (Harbor \u003c 2.13, deprecated in favor of `include_event_types`)\n"
                 },
                 "schedule": {
                     "type": "string",
@@ -1982,7 +2065,6 @@
             },
             "required": [
                 "auditRetentionHour",
-                "includeOperations",
                 "schedule"
             ],
             "inputProperties": {
@@ -1990,9 +2072,13 @@
                     "type": "integer",
                     "description": "To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.\n"
                 },
+                "includeEventTypes": {
+                    "type": "string",
+                    "description": "Valid values are `create`, `push`, `pull`, `delete`, `create_artifact`, `delete_artifact`, `pull_artifact`, `other`, those values can be comma separated. Harbor will include audit logs for those events in the purge (minimal version Harbor 2.13).\n"
+                },
                 "includeOperations": {
                     "type": "string",
-                    "description": "Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.\n"
+                    "description": "Valid values are `create`, `delete`, `pull`, those values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge. (Harbor \u003c 2.13, deprecated in favor of `include_event_types`)\n"
                 },
                 "schedule": {
                     "type": "string",
@@ -2001,7 +2087,6 @@
             },
             "requiredInputs": [
                 "auditRetentionHour",
-                "includeOperations",
                 "schedule"
             ],
             "stateInputs": {
@@ -2011,9 +2096,13 @@
                         "type": "integer",
                         "description": "To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.\n"
                     },
+                    "includeEventTypes": {
+                        "type": "string",
+                        "description": "Valid values are `create`, `push`, `pull`, `delete`, `create_artifact`, `delete_artifact`, `pull_artifact`, `other`, those values can be comma separated. Harbor will include audit logs for those events in the purge (minimal version Harbor 2.13).\n"
+                    },
                     "includeOperations": {
                         "type": "string",
-                        "description": "Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.\n"
+                        "description": "Valid values are `create`, `delete`, `pull`, those values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge. (Harbor \u003c 2.13, deprecated in favor of `include_event_types`)\n"
                     },
                     "schedule": {
                         "type": "string",
@@ -2024,7 +2113,7 @@
             }
         },
         "harbor:index/registry:Registry": {
-            "description": "## Example Usage\n\n```terraform\nresource \"harbor_registry\" \"main\" {\n  provider_name = \"docker-hub\"\n  name          = \"test_docker_harbor\"\n  endpoint_url  = \"https://hub.docker.com\"\n}\n```\n\n## Import\n\n```sh\n$ pulumi import harbor:index/registry:Registry main /registries/7\n```\n\n",
+            "description": "## Example Usage\n\n```terraform\nresource \"harbor_registry\" \"main\" {\n  provider_name  = \"docker-hub\"\n  name           = \"test_docker_harbor\"\n  endpoint_url   = \"https://hub.docker.com\"\n}\n```\n\n## Import\n\n```sh\n$ pulumi import harbor:index/registry:Registry main /registries/7\n```\n\n",
             "properties": {
                 "accessId": {
                     "type": "string"
@@ -2033,12 +2122,15 @@
                     "type": "string",
                     "secret": true
                 },
+                "caCertificate": {
+                    "type": "string"
+                },
                 "description": {
                     "type": "string"
                 },
                 "endpointUrl": {
                     "type": "string",
-                    "description": "The url endpoint for the external container register ie `\"https://hub.docker.com\"`\n"
+                    "description": "The URL endpoint for the external container register i.e. `\"https://hub.docker.com\"`\n"
                 },
                 "insecure": {
                     "type": "boolean"
@@ -2073,12 +2165,15 @@
                     "type": "string",
                     "secret": true
                 },
+                "caCertificate": {
+                    "type": "string"
+                },
                 "description": {
                     "type": "string"
                 },
                 "endpointUrl": {
                     "type": "string",
-                    "description": "The url endpoint for the external container register ie `\"https://hub.docker.com\"`\n"
+                    "description": "The URL endpoint for the external container register i.e. `\"https://hub.docker.com\"`\n"
                 },
                 "insecure": {
                     "type": "boolean"
@@ -2107,12 +2202,15 @@
                         "type": "string",
                         "secret": true
                     },
+                    "caCertificate": {
+                        "type": "string"
+                    },
                     "description": {
                         "type": "string"
                     },
                     "endpointUrl": {
                         "type": "string",
-                        "description": "The url endpoint for the external container register ie `\"https://hub.docker.com\"`\n"
+                        "description": "The URL endpoint for the external container register i.e. `\"https://hub.docker.com\"`\n"
                     },
                     "insecure": {
                         "type": "boolean"
@@ -2160,7 +2258,7 @@
                 },
                 "destNamespaceReplace": {
                     "type": "integer",
-                    "description": "Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)\n"
+                    "description": "Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `0`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -2194,6 +2292,10 @@
                 "schedule": {
                     "type": "string",
                     "description": "The scheduled time of when the container register will be push / pull. In cron base format. Hourly `\"0 0 * * * *\"`, Daily `\"0 0 0 * * *\"`, Monthly `\"0 0 0 * * 0\"`. Can be one of the following: `event_based`, `manual`, `cron format` (Default: `manual`)\n"
+                },
+                "singleActiveReplication": {
+                    "type": "boolean",
+                    "description": ", prevent parallel runs under the same replication. (Default: `false`)\n"
                 },
                 "speed": {
                     "type": "integer",
@@ -2229,7 +2331,7 @@
                 },
                 "destNamespaceReplace": {
                     "type": "integer",
-                    "description": "Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)\n"
+                    "description": "Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `0`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -2260,6 +2362,10 @@
                 "schedule": {
                     "type": "string",
                     "description": "The scheduled time of when the container register will be push / pull. In cron base format. Hourly `\"0 0 * * * *\"`, Daily `\"0 0 0 * * *\"`, Monthly `\"0 0 0 * * 0\"`. Can be one of the following: `event_based`, `manual`, `cron format` (Default: `manual`)\n"
+                },
+                "singleActiveReplication": {
+                    "type": "boolean",
+                    "description": ", prevent parallel runs under the same replication. (Default: `false`)\n"
                 },
                 "speed": {
                     "type": "integer",
@@ -2295,7 +2401,7 @@
                     },
                     "destNamespaceReplace": {
                         "type": "integer",
-                        "description": "Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)\n"
+                        "description": "Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `0`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)\n"
                     },
                     "enabled": {
                         "type": "boolean",
@@ -2329,6 +2435,10 @@
                     "schedule": {
                         "type": "string",
                         "description": "The scheduled time of when the container register will be push / pull. In cron base format. Hourly `\"0 0 * * * *\"`, Daily `\"0 0 0 * * *\"`, Monthly `\"0 0 0 * * 0\"`. Can be one of the following: `event_based`, `manual`, `cron format` (Default: `manual`)\n"
+                    },
+                    "singleActiveReplication": {
+                        "type": "boolean",
+                        "description": ", prevent parallel runs under the same replication. (Default: `false`)\n"
                     },
                     "speed": {
                         "type": "integer",
@@ -2404,7 +2514,7 @@
             }
         },
         "harbor:index/robotAccount:RobotAccount": {
-            "description": "## Example Usage\n\n### System Level\nIntroduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.\n\n### Global\n\n```terraform\nresource \"random_password\" \"password\" {\n  length  = 12\n  special = false\n}\n\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_robot_account\" \"system\" {\n  name        = \"example-system\"\n  description = \"system level robot account\"\n  level       = \"system\"\n  secret      = resource.random_password.password.result\n  permissions {\n    access {\n      action   = \"create\"\n      resource = \"label\"\n    }\n    kind      = \"system\"\n    namespace = \"/\"\n  }\n  permissions {\n    access {\n      action   = \"push\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = harbor_project.main.name\n  }\n  permissions {\n    access {\n      action   = \"pull\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = \"*\"\n  }\n}\n```\n\nThe above example, creates a system level robot account with permissions to\n- permission to create labels on system level\n- pull repository across all projects\n- push repository to project \"my-project-name\"\n\n### Project\n\nOther than system level robot accounts, project level robot accounts can interact on project level only.\nThe [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.\n\n```terraform\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_robot_account\" \"project\" {\n  name        = \"example-project\"\n  description = \"project level robot account\"\n  level       = \"project\"\n  permissions {\n    access {\n      action   = \"pull\"\n      resource = \"repository\"\n    }\n    access {\n      action   = \"push\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = harbor_project.main.name\n  }\n}\n```\n\nThe above example creates a project level robot account with permissions to\n- pull repository on project \"main\"\n- push repository on project \"main\"\n\n## Import\n\n```sh\n$ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123\n```\n\n",
+            "description": "## Example Usage\n\n### System Level\nIntroduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.\n\n### Global\n\n```terraform\nresource \"random_password\" \"password\" {\n  length  = 12\n  special = false\n}\n\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_robot_account\" \"system\" {\n  name        = \"example-system\"\n  description = \"system level robot account\"\n  level       = \"system\"\n  secret      = resource.random_password.password.result\n  permissions {\n    access {\n      action   = \"create\"\n      resource = \"label\"\n    }\n    kind      = \"system\"\n    namespace = \"/\"\n  }\n  permissions {\n    access {\n      action   = \"push\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = harbor_project.main.name\n  }\n  permissions {\n    access {\n      action   = \"pull\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = \"*\"\n  }\n}\n```\n\nThe above example, creates a system level robot account with permissions to\n- permission to create labels on system level\n- pull repository across all projects\n- push repository to project \"my-project-name\"\n\n### Project\n\nOther than system level robot accounts, project level robot accounts can interact on project level only.\nThe [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.\n\n```terraform\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_robot_account\" \"project\" {\n  name        = \"example-project\"\n  description = \"project level robot account\"\n  level       = \"project\"\n  permissions {\n    access {\n      action   = \"pull\"\n      resource = \"repository\"\n    }\n    access {\n      action   = \"push\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = harbor_project.main.name\n  }\n}\n```\n\n### Project with Write-only Secret\n\n```terraform\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_robot_account\" \"project\" {\n  name              = \"example-project\"\n  description       = \"project level robot account\"\n  level             = \"project\"\n  secret_wo         = \"StrongSecret123!\"\n  secret_wo_version = 1\n  permissions {\n    access {\n      action   = \"pull\"\n      resource = \"repository\"\n    }\n    access {\n      action   = \"push\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = harbor_project.main.name\n  }\n}\n```\n\n### Project with Write-only Secret from Ephemeral Random Secret\n\n```terraform\nephemeral \"random_password\" \"robot_secret\" {\n  length           = 16\n  special          = true\n  override_special = \"!#$%\u0026*()-_=+[]{}\u003c\u003e:?\"\n}\n\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_robot_account\" \"project\" {\n  name              = \"example-project\"\n  description       = \"project level robot account\"\n  level             = \"project\"\n  secret_wo         = tostring(ephemeral.random_password.robot_secret.result)\n  secret_wo_version = 1\n  permissions {\n    access {\n      action   = \"pull\"\n      resource = \"repository\"\n    }\n    access {\n      action   = \"push\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = harbor_project.main.name\n  }\n}\n```\n\nThe above example creates a project level robot account with permissions to\n- pull repository on project \"main\"\n- push repository on project \"main\"\n\n## Import\n\n```sh\n$ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123\n```\n\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -2442,6 +2552,10 @@
                     "type": "string",
                     "description": "The secret of the robot account used for authentication. Defaults to random generated string from Harbor.\n",
                     "secret": true
+                },
+                "secretWoVersion": {
+                    "type": "integer",
+                    "description": "Rotation trigger for write-only secret updates. Must be used together with `secret_wo`.\n"
                 }
             },
             "required": [
@@ -2485,6 +2599,10 @@
                     "type": "string",
                     "description": "The secret of the robot account used for authentication. Defaults to random generated string from Harbor.\n",
                     "secret": true
+                },
+                "secretWoVersion": {
+                    "type": "integer",
+                    "description": "Rotation trigger for write-only secret updates. Must be used together with `secret_wo`.\n"
                 }
             },
             "requiredInputs": [
@@ -2532,6 +2650,10 @@
                         "type": "string",
                         "description": "The secret of the robot account used for authentication. Defaults to random generated string from Harbor.\n",
                         "secret": true
+                    },
+                    "secretWoVersion": {
+                        "type": "integer",
+                        "description": "Rotation trigger for write-only secret updates. Must be used together with `secret_wo`.\n"
                     }
                 },
                 "type": "object"
@@ -2569,7 +2691,7 @@
             }
         },
         "harbor:index/user:User": {
-            "description": "## Example Usage\n\n```terraform\nresource \"harbor_user\" \"main\" {\n  username = \"john\"\n  password = \"Password12345!\"\n  full_name = \"John Smith\"\n  email = \"john@smith.com\"\n}\n```\n\n## Import\n\n```sh\n$ pulumi import harbor:index/user:User main /users/19\n```\n\n",
+            "description": "## Example Usage\n\n```terraform\nresource \"harbor_user\" \"main\" {\n  username  = \"john\"\n  password  = \"Password12345!\"\n  full_name = \"John Smith\"\n  email     = \"john@smith.com\"\n}\n```\n\n### Write-only Password\n\n```terraform\nresource \"harbor_user\" \"main\" {\n  username            = \"john\"\n  password_wo         = \"Password12345!\"\n  password_wo_version = 1\n  full_name           = \"John Smith\"\n  email               = \"john@smith.com\"\n}\n```\n\n### Write-only Password from Ephemeral Random Secret\n\n```terraform\nephemeral \"random_password\" \"user_password\" {\n  length           = 16\n  special          = true\n  override_special = \"!#$%\u0026*()-_=+[]{}\u003c\u003e:?\"\n}\n\nresource \"harbor_user\" \"main\" {\n  username            = \"john\"\n  password_wo         = tostring(ephemeral.random_password.user_password.result)\n  password_wo_version = 1\n  full_name           = \"John Smith\"\n  email               = \"john@smith.com\"\n}\n```\n\n## Import\n\n```sh\n$ pulumi import harbor:index/user:User main /users/19\n```\n\n",
             "properties": {
                 "admin": {
                     "type": "boolean",
@@ -2589,8 +2711,12 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "The password for the internal user.\n",
+                    "description": "The password for the internal user. Conflicts with `password_wo_version`.\n",
                     "secret": true
+                },
+                "passwordWoVersion": {
+                    "type": "integer",
+                    "description": "Rotation trigger for write-only password updates. Must be used together with `password_wo`.\n"
                 },
                 "username": {
                     "type": "string",
@@ -2600,7 +2726,6 @@
             "required": [
                 "email",
                 "fullName",
-                "password",
                 "username"
             ],
             "inputProperties": {
@@ -2622,8 +2747,12 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "The password for the internal user.\n",
+                    "description": "The password for the internal user. Conflicts with `password_wo_version`.\n",
                     "secret": true
+                },
+                "passwordWoVersion": {
+                    "type": "integer",
+                    "description": "Rotation trigger for write-only password updates. Must be used together with `password_wo`.\n"
                 },
                 "username": {
                     "type": "string",
@@ -2634,7 +2763,6 @@
             "requiredInputs": [
                 "email",
                 "fullName",
-                "password",
                 "username"
             ],
             "stateInputs": {
@@ -2658,8 +2786,12 @@
                     },
                     "password": {
                         "type": "string",
-                        "description": "The password for the internal user.\n",
+                        "description": "The password for the internal user. Conflicts with `password_wo_version`.\n",
                         "secret": true
+                    },
+                    "passwordWoVersion": {
+                        "type": "integer",
+                        "description": "Rotation trigger for write-only password updates. Must be used together with `password_wo`.\n"
                     },
                     "username": {
                         "type": "string",
@@ -2755,6 +2887,10 @@
                         "type": "string",
                         "description": "The type of the project : Project or ProxyCache.\n"
                     },
+                    "vulnerabilityScanner": {
+                        "type": "string",
+                        "description": "The name of the vulnerability scanner assigned to the project.\n"
+                    },
                     "vulnerabilityScanning": {
                         "type": "boolean",
                         "description": "If the images is scanned for vulnerabilities when push to harbor.\n"
@@ -2766,6 +2902,7 @@
                     "projectId",
                     "public",
                     "type",
+                    "vulnerabilityScanner",
                     "vulnerabilityScanning",
                     "id"
                 ]
@@ -2932,6 +3069,10 @@
             "outputs": {
                 "description": "A collection of values returned by getRegistry.\n",
                 "properties": {
+                    "caCertificate": {
+                        "type": "string",
+                        "description": "The PEM-encoded CA certificate trusting the registry\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "The description of the external container register.\n"
@@ -2950,7 +3091,7 @@
                     },
                     "registryId": {
                         "type": "integer",
-                        "description": "The id of the register within harbor.\n"
+                        "description": "The ID of the register within harbor.\n"
                     },
                     "status": {
                         "type": "string",
@@ -2962,11 +3103,12 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "The url endpoint for the external container register\n"
+                        "description": "The URL endpoint for the external container register\n"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "caCertificate",
                     "description",
                     "insecure",
                     "name",
