@@ -37,8 +37,8 @@ jobs:
           go-version: ${{matrix.goversion}}
       - name: Install pulumictl
         run: |
-          wget https://github.com/pulumi/pulumictl/releases/download/v0.0.42/pulumictl-v0.0.42-linux-amd64.tar.gz -O /tmp/pulumictl-v0.0.42-linux-amd64.tar.gz
-          tar -xvf /tmp/pulumictl-v0.0.42-linux-amd64.tar.gz -C /tmp
+          wget https://github.com/pulumi/pulumictl/releases/download/v0.0.50/pulumictl-v0.0.50-linux-amd64.tar.gz -O /tmp/pulumictl-v0.0.50-linux-amd64.tar.gz
+          tar -xvf /tmp/pulumictl-v0.0.50-linux-amd64.tar.gz -C /tmp
           mv /tmp/pulumictl /usr/local/bin
       # - name: Install pulumictl
       #   uses: jaxxstorm/action-install-gh-release@cd6b2b78ad38bdd294341cda064ec0692b06215b # tag=v1.14.0
