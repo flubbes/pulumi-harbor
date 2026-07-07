@@ -16,37 +16,77 @@ public final class ReplicationFilterArgs extends com.pulumi.resources.ResourceAr
 
     public static final ReplicationFilterArgs Empty = new ReplicationFilterArgs();
 
+    /**
+     * Matches or excludes the result. Can be one of the following. &lt;span pulumi-lang-nodejs=&#34;`matches`&#34; pulumi-lang-dotnet=&#34;`Matches`&#34; pulumi-lang-go=&#34;`matches`&#34; pulumi-lang-python=&#34;`matches`&#34; pulumi-lang-yaml=&#34;`matches`&#34; pulumi-lang-java=&#34;`matches`&#34; pulumi-lang-hcl=&#34;`matches`&#34;&gt;`matches`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`excludes`&#34; pulumi-lang-dotnet=&#34;`Excludes`&#34; pulumi-lang-go=&#34;`excludes`&#34; pulumi-lang-python=&#34;`excludes`&#34; pulumi-lang-yaml=&#34;`excludes`&#34; pulumi-lang-java=&#34;`excludes`&#34; pulumi-lang-hcl=&#34;`excludes`&#34;&gt;`excludes`&lt;/span&gt;
+     * 
+     */
     @Import(name="decoration")
     private @Nullable Output<String> decoration;
 
+    /**
+     * @return Matches or excludes the result. Can be one of the following. &lt;span pulumi-lang-nodejs=&#34;`matches`&#34; pulumi-lang-dotnet=&#34;`Matches`&#34; pulumi-lang-go=&#34;`matches`&#34; pulumi-lang-python=&#34;`matches`&#34; pulumi-lang-yaml=&#34;`matches`&#34; pulumi-lang-java=&#34;`matches`&#34; pulumi-lang-hcl=&#34;`matches`&#34;&gt;`matches`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`excludes`&#34; pulumi-lang-dotnet=&#34;`Excludes`&#34; pulumi-lang-go=&#34;`excludes`&#34; pulumi-lang-python=&#34;`excludes`&#34; pulumi-lang-yaml=&#34;`excludes`&#34; pulumi-lang-java=&#34;`excludes`&#34; pulumi-lang-hcl=&#34;`excludes`&#34;&gt;`excludes`&lt;/span&gt;
+     * 
+     */
     public Optional<Output<String>> decoration() {
         return Optional.ofNullable(this.decoration);
     }
 
+    /**
+     * Filter on the resource according to labels.
+     * 
+     */
     @Import(name="labels")
     private @Nullable Output<List<String>> labels;
 
+    /**
+     * @return Filter on the resource according to labels.
+     * 
+     */
     public Optional<Output<List<String>>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
+    /**
+     * Filter on the name of the resource.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Filter on the name of the resource.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Filter on the resource type. Can be one of the following types. &lt;span pulumi-lang-nodejs=&#34;`chart`&#34; pulumi-lang-dotnet=&#34;`Chart`&#34; pulumi-lang-go=&#34;`chart`&#34; pulumi-lang-python=&#34;`chart`&#34; pulumi-lang-yaml=&#34;`chart`&#34; pulumi-lang-java=&#34;`chart`&#34; pulumi-lang-hcl=&#34;`chart`&#34;&gt;`chart`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`artifact`&#34; pulumi-lang-dotnet=&#34;`Artifact`&#34; pulumi-lang-go=&#34;`artifact`&#34; pulumi-lang-python=&#34;`artifact`&#34; pulumi-lang-yaml=&#34;`artifact`&#34; pulumi-lang-java=&#34;`artifact`&#34; pulumi-lang-hcl=&#34;`artifact`&#34;&gt;`artifact`&lt;/span&gt;
+     * 
+     */
     @Import(name="resource")
     private @Nullable Output<String> resource;
 
+    /**
+     * @return Filter on the resource type. Can be one of the following types. &lt;span pulumi-lang-nodejs=&#34;`chart`&#34; pulumi-lang-dotnet=&#34;`Chart`&#34; pulumi-lang-go=&#34;`chart`&#34; pulumi-lang-python=&#34;`chart`&#34; pulumi-lang-yaml=&#34;`chart`&#34; pulumi-lang-java=&#34;`chart`&#34; pulumi-lang-hcl=&#34;`chart`&#34;&gt;`chart`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`artifact`&#34; pulumi-lang-dotnet=&#34;`Artifact`&#34; pulumi-lang-go=&#34;`artifact`&#34; pulumi-lang-python=&#34;`artifact`&#34; pulumi-lang-yaml=&#34;`artifact`&#34; pulumi-lang-java=&#34;`artifact`&#34; pulumi-lang-hcl=&#34;`artifact`&#34;&gt;`artifact`&lt;/span&gt;
+     * 
+     */
     public Optional<Output<String>> resource() {
         return Optional.ofNullable(this.resource);
     }
 
+    /**
+     * Filter on the tag/version of the resource.
+     * 
+     */
     @Import(name="tag")
     private @Nullable Output<String> tag;
 
+    /**
+     * @return Filter on the tag/version of the resource.
+     * 
+     */
     public Optional<Output<String>> tag() {
         return Optional.ofNullable(this.tag);
     }
@@ -79,51 +119,117 @@ public final class ReplicationFilterArgs extends com.pulumi.resources.ResourceAr
             $ = new ReplicationFilterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param decoration Matches or excludes the result. Can be one of the following. &lt;span pulumi-lang-nodejs=&#34;`matches`&#34; pulumi-lang-dotnet=&#34;`Matches`&#34; pulumi-lang-go=&#34;`matches`&#34; pulumi-lang-python=&#34;`matches`&#34; pulumi-lang-yaml=&#34;`matches`&#34; pulumi-lang-java=&#34;`matches`&#34; pulumi-lang-hcl=&#34;`matches`&#34;&gt;`matches`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`excludes`&#34; pulumi-lang-dotnet=&#34;`Excludes`&#34; pulumi-lang-go=&#34;`excludes`&#34; pulumi-lang-python=&#34;`excludes`&#34; pulumi-lang-yaml=&#34;`excludes`&#34; pulumi-lang-java=&#34;`excludes`&#34; pulumi-lang-hcl=&#34;`excludes`&#34;&gt;`excludes`&lt;/span&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder decoration(@Nullable Output<String> decoration) {
             $.decoration = decoration;
             return this;
         }
 
+        /**
+         * @param decoration Matches or excludes the result. Can be one of the following. &lt;span pulumi-lang-nodejs=&#34;`matches`&#34; pulumi-lang-dotnet=&#34;`Matches`&#34; pulumi-lang-go=&#34;`matches`&#34; pulumi-lang-python=&#34;`matches`&#34; pulumi-lang-yaml=&#34;`matches`&#34; pulumi-lang-java=&#34;`matches`&#34; pulumi-lang-hcl=&#34;`matches`&#34;&gt;`matches`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`excludes`&#34; pulumi-lang-dotnet=&#34;`Excludes`&#34; pulumi-lang-go=&#34;`excludes`&#34; pulumi-lang-python=&#34;`excludes`&#34; pulumi-lang-yaml=&#34;`excludes`&#34; pulumi-lang-java=&#34;`excludes`&#34; pulumi-lang-hcl=&#34;`excludes`&#34;&gt;`excludes`&lt;/span&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder decoration(String decoration) {
             return decoration(Output.of(decoration));
         }
 
+        /**
+         * @param labels Filter on the resource according to labels.
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(@Nullable Output<List<String>> labels) {
             $.labels = labels;
             return this;
         }
 
+        /**
+         * @param labels Filter on the resource according to labels.
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(List<String> labels) {
             return labels(Output.of(labels));
         }
 
+        /**
+         * @param labels Filter on the resource according to labels.
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(String... labels) {
             return labels(List.of(labels));
         }
 
+        /**
+         * @param name Filter on the name of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Filter on the name of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param resource Filter on the resource type. Can be one of the following types. &lt;span pulumi-lang-nodejs=&#34;`chart`&#34; pulumi-lang-dotnet=&#34;`Chart`&#34; pulumi-lang-go=&#34;`chart`&#34; pulumi-lang-python=&#34;`chart`&#34; pulumi-lang-yaml=&#34;`chart`&#34; pulumi-lang-java=&#34;`chart`&#34; pulumi-lang-hcl=&#34;`chart`&#34;&gt;`chart`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`artifact`&#34; pulumi-lang-dotnet=&#34;`Artifact`&#34; pulumi-lang-go=&#34;`artifact`&#34; pulumi-lang-python=&#34;`artifact`&#34; pulumi-lang-yaml=&#34;`artifact`&#34; pulumi-lang-java=&#34;`artifact`&#34; pulumi-lang-hcl=&#34;`artifact`&#34;&gt;`artifact`&lt;/span&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder resource(@Nullable Output<String> resource) {
             $.resource = resource;
             return this;
         }
 
+        /**
+         * @param resource Filter on the resource type. Can be one of the following types. &lt;span pulumi-lang-nodejs=&#34;`chart`&#34; pulumi-lang-dotnet=&#34;`Chart`&#34; pulumi-lang-go=&#34;`chart`&#34; pulumi-lang-python=&#34;`chart`&#34; pulumi-lang-yaml=&#34;`chart`&#34; pulumi-lang-java=&#34;`chart`&#34; pulumi-lang-hcl=&#34;`chart`&#34;&gt;`chart`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`artifact`&#34; pulumi-lang-dotnet=&#34;`Artifact`&#34; pulumi-lang-go=&#34;`artifact`&#34; pulumi-lang-python=&#34;`artifact`&#34; pulumi-lang-yaml=&#34;`artifact`&#34; pulumi-lang-java=&#34;`artifact`&#34; pulumi-lang-hcl=&#34;`artifact`&#34;&gt;`artifact`&lt;/span&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder resource(String resource) {
             return resource(Output.of(resource));
         }
 
+        /**
+         * @param tag Filter on the tag/version of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tag(@Nullable Output<String> tag) {
             $.tag = tag;
             return this;
         }
 
+        /**
+         * @param tag Filter on the tag/version of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tag(String tag) {
             return tag(Output.of(tag));
         }

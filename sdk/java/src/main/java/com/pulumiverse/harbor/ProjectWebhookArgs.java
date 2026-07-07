@@ -5,6 +5,7 @@ package com.pulumiverse.harbor;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -18,74 +19,50 @@ public final class ProjectWebhookArgs extends com.pulumi.resources.ResourceArgs 
     public static final ProjectWebhookArgs Empty = new ProjectWebhookArgs();
 
     /**
-     * The address of the webhook
+     * The address of the webhook.
      * 
      */
     @Import(name="address", required=true)
     private Output<String> address;
 
     /**
-     * @return The address of the webhook
+     * @return The address of the webhook.
      * 
      */
     public Output<String> address() {
         return this.address;
     }
 
-    /**
-     * authentication header for you the webhook
-     * 
-     */
     @Import(name="authHeader")
     private @Nullable Output<String> authHeader;
 
-    /**
-     * @return authentication header for you the webhook
-     * 
-     */
     public Optional<Output<String>> authHeader() {
         return Optional.ofNullable(this.authHeader);
     }
 
-    /**
-     * _ (Optional, string) A description of the webhook
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return _ (Optional, string) A description of the webhook
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
-    /**
-     * , To enable / disable the webhook. Default `true`
-     * 
-     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
-    /**
-     * @return , To enable / disable the webhook. Default `true`
-     * 
-     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+     * The type events you want to subscript to can be
      * 
      */
     @Import(name="eventsTypes", required=true)
     private Output<List<String>> eventsTypes;
 
     /**
-     * @return ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+     * @return The type events you want to subscript to can be
      * 
      */
     public Output<List<String>> eventsTypes() {
@@ -108,18 +85,25 @@ public final class ProjectWebhookArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The notification type either `http` or `slack`
+     * The notification type either &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34; pulumi-lang-hcl=&#34;`http`&#34;&gt;`http`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`slack`&#34; pulumi-lang-dotnet=&#34;`Slack`&#34; pulumi-lang-go=&#34;`slack`&#34; pulumi-lang-python=&#34;`slack`&#34; pulumi-lang-yaml=&#34;`slack`&#34; pulumi-lang-java=&#34;`slack`&#34; pulumi-lang-hcl=&#34;`slack`&#34;&gt;`slack`&lt;/span&gt;.
      * 
      */
     @Import(name="notifyType", required=true)
     private Output<String> notifyType;
 
     /**
-     * @return The notification type either `http` or `slack`
+     * @return The notification type either &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34; pulumi-lang-hcl=&#34;`http`&#34;&gt;`http`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`slack`&#34; pulumi-lang-dotnet=&#34;`Slack`&#34; pulumi-lang-go=&#34;`slack`&#34; pulumi-lang-python=&#34;`slack`&#34; pulumi-lang-yaml=&#34;`slack`&#34; pulumi-lang-java=&#34;`slack`&#34; pulumi-lang-hcl=&#34;`slack`&#34;&gt;`slack`&lt;/span&gt;.
      * 
      */
     public Output<String> notifyType() {
         return this.notifyType;
+    }
+
+    @Import(name="payloadFormat")
+    private @Nullable Output<String> payloadFormat;
+
+    public Optional<Output<String>> payloadFormat() {
+        return Optional.ofNullable(this.payloadFormat);
     }
 
     /**
@@ -137,17 +121,9 @@ public final class ProjectWebhookArgs extends com.pulumi.resources.ResourceArgs 
         return this.projectId;
     }
 
-    /**
-     * checks the for validate SSL certificate.
-     * 
-     */
     @Import(name="skipCertVerify")
     private @Nullable Output<Boolean> skipCertVerify;
 
-    /**
-     * @return checks the for validate SSL certificate.
-     * 
-     */
     public Optional<Output<Boolean>> skipCertVerify() {
         return Optional.ofNullable(this.skipCertVerify);
     }
@@ -162,6 +138,7 @@ public final class ProjectWebhookArgs extends com.pulumi.resources.ResourceArgs 
         this.eventsTypes = $.eventsTypes;
         this.name = $.name;
         this.notifyType = $.notifyType;
+        this.payloadFormat = $.payloadFormat;
         this.projectId = $.projectId;
         this.skipCertVerify = $.skipCertVerify;
     }
@@ -185,7 +162,7 @@ public final class ProjectWebhookArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param address The address of the webhook
+         * @param address The address of the webhook.
          * 
          * @return builder
          * 
@@ -196,7 +173,7 @@ public final class ProjectWebhookArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param address The address of the webhook
+         * @param address The address of the webhook.
          * 
          * @return builder
          * 
@@ -205,71 +182,35 @@ public final class ProjectWebhookArgs extends com.pulumi.resources.ResourceArgs 
             return address(Output.of(address));
         }
 
-        /**
-         * @param authHeader authentication header for you the webhook
-         * 
-         * @return builder
-         * 
-         */
         public Builder authHeader(@Nullable Output<String> authHeader) {
             $.authHeader = authHeader;
             return this;
         }
 
-        /**
-         * @param authHeader authentication header for you the webhook
-         * 
-         * @return builder
-         * 
-         */
         public Builder authHeader(String authHeader) {
             return authHeader(Output.of(authHeader));
         }
 
-        /**
-         * @param description _ (Optional, string) A description of the webhook
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description _ (Optional, string) A description of the webhook
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
-        /**
-         * @param enabled , To enable / disable the webhook. Default `true`
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        /**
-         * @param enabled , To enable / disable the webhook. Default `true`
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param eventsTypes ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+         * @param eventsTypes The type events you want to subscript to can be
          * 
          * @return builder
          * 
@@ -280,7 +221,7 @@ public final class ProjectWebhookArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param eventsTypes ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+         * @param eventsTypes The type events you want to subscript to can be
          * 
          * @return builder
          * 
@@ -290,7 +231,7 @@ public final class ProjectWebhookArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param eventsTypes ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+         * @param eventsTypes The type events you want to subscript to can be
          * 
          * @return builder
          * 
@@ -321,7 +262,7 @@ public final class ProjectWebhookArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param notifyType The notification type either `http` or `slack`
+         * @param notifyType The notification type either &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34; pulumi-lang-hcl=&#34;`http`&#34;&gt;`http`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`slack`&#34; pulumi-lang-dotnet=&#34;`Slack`&#34; pulumi-lang-go=&#34;`slack`&#34; pulumi-lang-python=&#34;`slack`&#34; pulumi-lang-yaml=&#34;`slack`&#34; pulumi-lang-java=&#34;`slack`&#34; pulumi-lang-hcl=&#34;`slack`&#34;&gt;`slack`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -332,13 +273,22 @@ public final class ProjectWebhookArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param notifyType The notification type either `http` or `slack`
+         * @param notifyType The notification type either &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34; pulumi-lang-hcl=&#34;`http`&#34;&gt;`http`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`slack`&#34; pulumi-lang-dotnet=&#34;`Slack`&#34; pulumi-lang-go=&#34;`slack`&#34; pulumi-lang-python=&#34;`slack`&#34; pulumi-lang-yaml=&#34;`slack`&#34; pulumi-lang-java=&#34;`slack`&#34; pulumi-lang-hcl=&#34;`slack`&#34;&gt;`slack`&lt;/span&gt;.
          * 
          * @return builder
          * 
          */
         public Builder notifyType(String notifyType) {
             return notifyType(Output.of(notifyType));
+        }
+
+        public Builder payloadFormat(@Nullable Output<String> payloadFormat) {
+            $.payloadFormat = payloadFormat;
+            return this;
+        }
+
+        public Builder payloadFormat(String payloadFormat) {
+            return payloadFormat(Output.of(payloadFormat));
         }
 
         /**
@@ -362,32 +312,28 @@ public final class ProjectWebhookArgs extends com.pulumi.resources.ResourceArgs 
             return projectId(Output.of(projectId));
         }
 
-        /**
-         * @param skipCertVerify checks the for validate SSL certificate.
-         * 
-         * @return builder
-         * 
-         */
         public Builder skipCertVerify(@Nullable Output<Boolean> skipCertVerify) {
             $.skipCertVerify = skipCertVerify;
             return this;
         }
 
-        /**
-         * @param skipCertVerify checks the for validate SSL certificate.
-         * 
-         * @return builder
-         * 
-         */
         public Builder skipCertVerify(Boolean skipCertVerify) {
             return skipCertVerify(Output.of(skipCertVerify));
         }
 
         public ProjectWebhookArgs build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
-            $.eventsTypes = Objects.requireNonNull($.eventsTypes, "expected parameter 'eventsTypes' to be non-null");
-            $.notifyType = Objects.requireNonNull($.notifyType, "expected parameter 'notifyType' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("ProjectWebhookArgs", "address");
+            }
+            if ($.eventsTypes == null) {
+                throw new MissingRequiredPropertyException("ProjectWebhookArgs", "eventsTypes");
+            }
+            if ($.notifyType == null) {
+                throw new MissingRequiredPropertyException("ProjectWebhookArgs", "notifyType");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("ProjectWebhookArgs", "projectId");
+            }
             return $;
         }
     }

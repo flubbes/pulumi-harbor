@@ -11,6 +11,7 @@ import com.pulumiverse.harbor.UserArgs;
 import com.pulumiverse.harbor.Utilities;
 import com.pulumiverse.harbor.inputs.UserState;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -18,84 +19,131 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
- * package generated_program;
  * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harbor.User;
- * import com.pulumi.harbor.UserArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
+ * ### Write-only Password
  * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var main = new User(&#34;main&#34;, UserArgs.builder()        
- *             .email(&#34;john@smith.com&#34;)
- *             .fullName(&#34;John Smith&#34;)
- *             .password(&#34;Password12345!&#34;)
- *             .username(&#34;john&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
+ * ### Write-only Password from Ephemeral Random Secret
  * 
  * ## Import
  * 
- * An internal user harbor user can be imported using the `user id` eg, `
- * 
  * ```sh
- *  $ pulumi import harbor:index/user:User main /users/19
+ * $ pulumi import harbor:index/user:User main /users/19
  * ```
- * 
- *  `
  * 
  */
 @ResourceType(type="harbor:index/user:User")
 public class User extends com.pulumi.resources.CustomResource {
+    /**
+     * If the user will have admin rights within Harbor (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
     @Export(name="admin", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> admin;
 
+    /**
+     * @return If the user will have admin rights within Harbor (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
     public Output<Optional<Boolean>> admin() {
         return Codegen.optional(this.admin);
     }
+    /**
+     * Any comments for that are need for the internal user.
+     * 
+     */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
+    /**
+     * @return Any comments for that are need for the internal user.
+     * 
+     */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
+    /**
+     * The email address of the internal user.
+     * 
+     */
     @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
+    /**
+     * @return The email address of the internal user.
+     * 
+     */
     public Output<String> email() {
         return this.email;
     }
+    /**
+     * The Full Name of the internal user.
+     * 
+     */
     @Export(name="fullName", refs={String.class}, tree="[0]")
     private Output<String> fullName;
 
+    /**
+     * @return The Full Name of the internal user.
+     * 
+     */
     public Output<String> fullName() {
         return this.fullName;
     }
+    /**
+     * The password for the internal user. Conflicts with &lt;span pulumi-lang-nodejs=&#34;`passwordWoVersion`&#34; pulumi-lang-dotnet=&#34;`PasswordWoVersion`&#34; pulumi-lang-go=&#34;`passwordWoVersion`&#34; pulumi-lang-python=&#34;`password_wo_version`&#34; pulumi-lang-yaml=&#34;`passwordWoVersion`&#34; pulumi-lang-java=&#34;`passwordWoVersion`&#34; pulumi-lang-hcl=&#34;`password_wo_version`&#34;&gt;`passwordWoVersion`&lt;/span&gt;.
+     * 
+     */
     @Export(name="password", refs={String.class}, tree="[0]")
-    private Output<String> password;
+    private Output</* @Nullable */ String> password;
 
-    public Output<String> password() {
-        return this.password;
+    /**
+     * @return The password for the internal user. Conflicts with &lt;span pulumi-lang-nodejs=&#34;`passwordWoVersion`&#34; pulumi-lang-dotnet=&#34;`PasswordWoVersion`&#34; pulumi-lang-go=&#34;`passwordWoVersion`&#34; pulumi-lang-python=&#34;`password_wo_version`&#34; pulumi-lang-yaml=&#34;`passwordWoVersion`&#34; pulumi-lang-java=&#34;`passwordWoVersion`&#34; pulumi-lang-hcl=&#34;`password_wo_version`&#34;&gt;`passwordWoVersion`&lt;/span&gt;.
+     * 
+     */
+    public Output<Optional<String>> password() {
+        return Codegen.optional(this.password);
     }
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative for &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34; pulumi-lang-hcl=&#34;`password`&#34;&gt;`password`&lt;/span&gt;. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`passwordWoVersion`&#34; pulumi-lang-dotnet=&#34;`PasswordWoVersion`&#34; pulumi-lang-go=&#34;`passwordWoVersion`&#34; pulumi-lang-python=&#34;`password_wo_version`&#34; pulumi-lang-yaml=&#34;`passwordWoVersion`&#34; pulumi-lang-java=&#34;`passwordWoVersion`&#34; pulumi-lang-hcl=&#34;`password_wo_version`&#34;&gt;`passwordWoVersion`&lt;/span&gt;.
+     * 
+     */
+    @Export(name="passwordWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative for &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34; pulumi-lang-hcl=&#34;`password`&#34;&gt;`password`&lt;/span&gt;. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`passwordWoVersion`&#34; pulumi-lang-dotnet=&#34;`PasswordWoVersion`&#34; pulumi-lang-go=&#34;`passwordWoVersion`&#34; pulumi-lang-python=&#34;`password_wo_version`&#34; pulumi-lang-yaml=&#34;`passwordWoVersion`&#34; pulumi-lang-java=&#34;`passwordWoVersion`&#34; pulumi-lang-hcl=&#34;`password_wo_version`&#34;&gt;`passwordWoVersion`&lt;/span&gt;.
+     * 
+     */
+    public Output<Optional<String>> passwordWo() {
+        return Codegen.optional(this.passwordWo);
+    }
+    /**
+     * Rotation trigger for write-only password updates. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`passwordWo`&#34; pulumi-lang-dotnet=&#34;`PasswordWo`&#34; pulumi-lang-go=&#34;`passwordWo`&#34; pulumi-lang-python=&#34;`password_wo`&#34; pulumi-lang-yaml=&#34;`passwordWo`&#34; pulumi-lang-java=&#34;`passwordWo`&#34; pulumi-lang-hcl=&#34;`password_wo`&#34;&gt;`passwordWo`&lt;/span&gt;.
+     * 
+     */
+    @Export(name="passwordWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> passwordWoVersion;
+
+    /**
+     * @return Rotation trigger for write-only password updates. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`passwordWo`&#34; pulumi-lang-dotnet=&#34;`PasswordWo`&#34; pulumi-lang-go=&#34;`passwordWo`&#34; pulumi-lang-python=&#34;`password_wo`&#34; pulumi-lang-yaml=&#34;`passwordWo`&#34; pulumi-lang-java=&#34;`passwordWo`&#34; pulumi-lang-hcl=&#34;`password_wo`&#34;&gt;`passwordWo`&lt;/span&gt;.
+     * 
+     */
+    public Output<Optional<Integer>> passwordWoVersion() {
+        return Codegen.optional(this.passwordWoVersion);
+    }
+    /**
+     * The username of the internal user.
+     * 
+     */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
+    /**
+     * @return The username of the internal user.
+     * 
+     */
     public Output<String> username() {
         return this.username;
     }
@@ -104,7 +152,7 @@ public class User extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public User(String name) {
+    public User(java.lang.String name) {
         this(name, UserArgs.Empty);
     }
     /**
@@ -112,7 +160,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public User(String name, UserArgs args) {
+    public User(java.lang.String name, UserArgs args) {
         this(name, args, null);
     }
     /**
@@ -121,19 +169,28 @@ public class User extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public User(String name, UserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/user:User", name, args == null ? UserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public User(java.lang.String name, UserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/user:User", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private User(String name, Output<String> id, @Nullable UserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/user:User", name, state, makeResourceOptions(options, id));
+    private User(java.lang.String name, Output<java.lang.String> id, @Nullable UserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/user:User", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static UserArgs makeArgs(UserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? UserArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/pulumiverse/pulumi-harbor")
             .additionalSecretOutputs(List.of(
-                "password"
+                "password",
+                "passwordWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
@@ -148,7 +205,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static User get(String name, Output<String> id, @Nullable UserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static User get(java.lang.String name, Output<java.lang.String> id, @Nullable UserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new User(name, id, state, options);
     }
 }

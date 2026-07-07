@@ -17,82 +17,53 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harbor.Project;
- * import com.pulumi.harbor.ImmutableTagRule;
- * import com.pulumi.harbor.ImmutableTagRuleArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var mainProject = new Project(&#34;mainProject&#34;);
- * 
- *         var mainImmutableTagRule = new ImmutableTagRule(&#34;mainImmutableTagRule&#34;, ImmutableTagRuleArgs.builder()        
- *             .projectId(mainProject.id())
- *             .repoMatching(&#34;**&#34;)
- *             .tagExcluding(&#34;latest&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 
- * Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg, `
- * 
  * ```sh
- *  $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25
+ * $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25
  * ```
- * 
- *  `
  * 
  */
 @ResourceType(type="harbor:index/immutableTagRule:ImmutableTagRule")
 public class ImmutableTagRule extends com.pulumi.resources.CustomResource {
     /**
-     * Specify if the rule is disable or not. Defaults to `false`
+     * Specify if the rule is disable or not. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;
      * 
      */
     @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
-     * @return Specify if the rule is disable or not. Defaults to `false`
+     * @return Specify if the rule is disable or not. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;
      * 
      */
     public Output<Optional<Boolean>> disabled() {
         return Codegen.optional(this.disabled);
     }
+    /**
+     * The project id of which you would like to apply this policy.
+     * 
+     */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
+    /**
+     * @return The project id of which you would like to apply this policy.
+     * 
+     */
     public Output<String> projectId() {
         return this.projectId;
     }
     /**
-     * For the repositories excuding.
+     * For the repositories excluding.
      * 
      */
     @Export(name="repoExcluding", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repoExcluding;
 
     /**
-     * @return For the repositories excuding.
+     * @return For the repositories excluding.
      * 
      */
     public Output<Optional<String>> repoExcluding() {
@@ -113,14 +84,14 @@ public class ImmutableTagRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.repoMatching);
     }
     /**
-     * For the tag excuding.
+     * For the tag excluding.
      * 
      */
     @Export(name="tagExcluding", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tagExcluding;
 
     /**
-     * @return For the tag excuding.
+     * @return For the tag excluding.
      * 
      */
     public Output<Optional<String>> tagExcluding() {
@@ -145,7 +116,7 @@ public class ImmutableTagRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ImmutableTagRule(String name) {
+    public ImmutableTagRule(java.lang.String name) {
         this(name, ImmutableTagRuleArgs.Empty);
     }
     /**
@@ -153,7 +124,7 @@ public class ImmutableTagRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ImmutableTagRule(String name, ImmutableTagRuleArgs args) {
+    public ImmutableTagRule(java.lang.String name, ImmutableTagRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -162,17 +133,25 @@ public class ImmutableTagRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ImmutableTagRule(String name, ImmutableTagRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/immutableTagRule:ImmutableTagRule", name, args == null ? ImmutableTagRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ImmutableTagRule(java.lang.String name, ImmutableTagRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/immutableTagRule:ImmutableTagRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ImmutableTagRule(String name, Output<String> id, @Nullable ImmutableTagRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/immutableTagRule:ImmutableTagRule", name, state, makeResourceOptions(options, id));
+    private ImmutableTagRule(java.lang.String name, Output<java.lang.String> id, @Nullable ImmutableTagRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/immutableTagRule:ImmutableTagRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ImmutableTagRuleArgs makeArgs(ImmutableTagRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ImmutableTagRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/pulumiverse/pulumi-harbor")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }
@@ -186,7 +165,7 @@ public class ImmutableTagRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ImmutableTagRule get(String name, Output<String> id, @Nullable ImmutableTagRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ImmutableTagRule get(java.lang.String name, Output<java.lang.String> id, @Nullable ImmutableTagRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ImmutableTagRule(name, id, state, options);
     }
 }

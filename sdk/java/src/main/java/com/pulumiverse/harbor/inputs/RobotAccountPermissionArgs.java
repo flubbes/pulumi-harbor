@@ -5,6 +5,7 @@ package com.pulumiverse.harbor.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumiverse.harbor.inputs.RobotAccountPermissionAccessArgs;
 import java.lang.String;
 import java.util.List;
@@ -22,16 +23,32 @@ public final class RobotAccountPermissionArgs extends com.pulumi.resources.Resou
         return this.accesses;
     }
 
+    /**
+     * Either &lt;span pulumi-lang-nodejs=&#34;`system`&#34; pulumi-lang-dotnet=&#34;`System`&#34; pulumi-lang-go=&#34;`system`&#34; pulumi-lang-python=&#34;`system`&#34; pulumi-lang-yaml=&#34;`system`&#34; pulumi-lang-java=&#34;`system`&#34; pulumi-lang-hcl=&#34;`system`&#34;&gt;`system`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`project`&#34; pulumi-lang-dotnet=&#34;`Project`&#34; pulumi-lang-go=&#34;`project`&#34; pulumi-lang-python=&#34;`project`&#34; pulumi-lang-yaml=&#34;`project`&#34; pulumi-lang-java=&#34;`project`&#34; pulumi-lang-hcl=&#34;`project`&#34;&gt;`project`&lt;/span&gt;.
+     * 
+     */
     @Import(name="kind", required=true)
     private Output<String> kind;
 
+    /**
+     * @return Either &lt;span pulumi-lang-nodejs=&#34;`system`&#34; pulumi-lang-dotnet=&#34;`System`&#34; pulumi-lang-go=&#34;`system`&#34; pulumi-lang-python=&#34;`system`&#34; pulumi-lang-yaml=&#34;`system`&#34; pulumi-lang-java=&#34;`system`&#34; pulumi-lang-hcl=&#34;`system`&#34;&gt;`system`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`project`&#34; pulumi-lang-dotnet=&#34;`Project`&#34; pulumi-lang-go=&#34;`project`&#34; pulumi-lang-python=&#34;`project`&#34; pulumi-lang-yaml=&#34;`project`&#34; pulumi-lang-java=&#34;`project`&#34; pulumi-lang-hcl=&#34;`project`&#34;&gt;`project`&lt;/span&gt;.
+     * 
+     */
     public Output<String> kind() {
         return this.kind;
     }
 
+    /**
+     * namespace is the name of your project. For kind &lt;span pulumi-lang-nodejs=&#34;`system`&#34; pulumi-lang-dotnet=&#34;`System`&#34; pulumi-lang-go=&#34;`system`&#34; pulumi-lang-python=&#34;`system`&#34; pulumi-lang-yaml=&#34;`system`&#34; pulumi-lang-java=&#34;`system`&#34; pulumi-lang-hcl=&#34;`system`&#34;&gt;`system`&lt;/span&gt; permissions, always use `/` as namespace. Use `*` to match all projects.
+     * 
+     */
     @Import(name="namespace", required=true)
     private Output<String> namespace;
 
+    /**
+     * @return namespace is the name of your project. For kind &lt;span pulumi-lang-nodejs=&#34;`system`&#34; pulumi-lang-dotnet=&#34;`System`&#34; pulumi-lang-go=&#34;`system`&#34; pulumi-lang-python=&#34;`system`&#34; pulumi-lang-yaml=&#34;`system`&#34; pulumi-lang-java=&#34;`system`&#34; pulumi-lang-hcl=&#34;`system`&#34;&gt;`system`&lt;/span&gt; permissions, always use `/` as namespace. Use `*` to match all projects.
+     * 
+     */
     public Output<String> namespace() {
         return this.namespace;
     }
@@ -75,28 +92,58 @@ public final class RobotAccountPermissionArgs extends com.pulumi.resources.Resou
             return accesses(List.of(accesses));
         }
 
+        /**
+         * @param kind Either &lt;span pulumi-lang-nodejs=&#34;`system`&#34; pulumi-lang-dotnet=&#34;`System`&#34; pulumi-lang-go=&#34;`system`&#34; pulumi-lang-python=&#34;`system`&#34; pulumi-lang-yaml=&#34;`system`&#34; pulumi-lang-java=&#34;`system`&#34; pulumi-lang-hcl=&#34;`system`&#34;&gt;`system`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`project`&#34; pulumi-lang-dotnet=&#34;`Project`&#34; pulumi-lang-go=&#34;`project`&#34; pulumi-lang-python=&#34;`project`&#34; pulumi-lang-yaml=&#34;`project`&#34; pulumi-lang-java=&#34;`project`&#34; pulumi-lang-hcl=&#34;`project`&#34;&gt;`project`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kind(Output<String> kind) {
             $.kind = kind;
             return this;
         }
 
+        /**
+         * @param kind Either &lt;span pulumi-lang-nodejs=&#34;`system`&#34; pulumi-lang-dotnet=&#34;`System`&#34; pulumi-lang-go=&#34;`system`&#34; pulumi-lang-python=&#34;`system`&#34; pulumi-lang-yaml=&#34;`system`&#34; pulumi-lang-java=&#34;`system`&#34; pulumi-lang-hcl=&#34;`system`&#34;&gt;`system`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`project`&#34; pulumi-lang-dotnet=&#34;`Project`&#34; pulumi-lang-go=&#34;`project`&#34; pulumi-lang-python=&#34;`project`&#34; pulumi-lang-yaml=&#34;`project`&#34; pulumi-lang-java=&#34;`project`&#34; pulumi-lang-hcl=&#34;`project`&#34;&gt;`project`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kind(String kind) {
             return kind(Output.of(kind));
         }
 
+        /**
+         * @param namespace namespace is the name of your project. For kind &lt;span pulumi-lang-nodejs=&#34;`system`&#34; pulumi-lang-dotnet=&#34;`System`&#34; pulumi-lang-go=&#34;`system`&#34; pulumi-lang-python=&#34;`system`&#34; pulumi-lang-yaml=&#34;`system`&#34; pulumi-lang-java=&#34;`system`&#34; pulumi-lang-hcl=&#34;`system`&#34;&gt;`system`&lt;/span&gt; permissions, always use `/` as namespace. Use `*` to match all projects.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(Output<String> namespace) {
             $.namespace = namespace;
             return this;
         }
 
+        /**
+         * @param namespace namespace is the name of your project. For kind &lt;span pulumi-lang-nodejs=&#34;`system`&#34; pulumi-lang-dotnet=&#34;`System`&#34; pulumi-lang-go=&#34;`system`&#34; pulumi-lang-python=&#34;`system`&#34; pulumi-lang-yaml=&#34;`system`&#34; pulumi-lang-java=&#34;`system`&#34; pulumi-lang-hcl=&#34;`system`&#34;&gt;`system`&lt;/span&gt; permissions, always use `/` as namespace. Use `*` to match all projects.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(String namespace) {
             return namespace(Output.of(namespace));
         }
 
         public RobotAccountPermissionArgs build() {
-            $.accesses = Objects.requireNonNull($.accesses, "expected parameter 'accesses' to be non-null");
-            $.kind = Objects.requireNonNull($.kind, "expected parameter 'kind' to be non-null");
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
+            if ($.accesses == null) {
+                throw new MissingRequiredPropertyException("RobotAccountPermissionArgs", "accesses");
+            }
+            if ($.kind == null) {
+                throw new MissingRequiredPropertyException("RobotAccountPermissionArgs", "kind");
+            }
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("RobotAccountPermissionArgs", "namespace");
+            }
             return $;
         }
     }

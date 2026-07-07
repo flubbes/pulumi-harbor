@@ -12,25 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ReplicationFilter {
+    /**
+     * @return Matches or excludes the result. Can be one of the following. &lt;span pulumi-lang-nodejs=&#34;`matches`&#34; pulumi-lang-dotnet=&#34;`Matches`&#34; pulumi-lang-go=&#34;`matches`&#34; pulumi-lang-python=&#34;`matches`&#34; pulumi-lang-yaml=&#34;`matches`&#34; pulumi-lang-java=&#34;`matches`&#34; pulumi-lang-hcl=&#34;`matches`&#34;&gt;`matches`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`excludes`&#34; pulumi-lang-dotnet=&#34;`Excludes`&#34; pulumi-lang-go=&#34;`excludes`&#34; pulumi-lang-python=&#34;`excludes`&#34; pulumi-lang-yaml=&#34;`excludes`&#34; pulumi-lang-java=&#34;`excludes`&#34; pulumi-lang-hcl=&#34;`excludes`&#34;&gt;`excludes`&lt;/span&gt;
+     * 
+     */
     private @Nullable String decoration;
+    /**
+     * @return Filter on the resource according to labels.
+     * 
+     */
     private @Nullable List<String> labels;
+    /**
+     * @return Filter on the name of the resource.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return Filter on the resource type. Can be one of the following types. &lt;span pulumi-lang-nodejs=&#34;`chart`&#34; pulumi-lang-dotnet=&#34;`Chart`&#34; pulumi-lang-go=&#34;`chart`&#34; pulumi-lang-python=&#34;`chart`&#34; pulumi-lang-yaml=&#34;`chart`&#34; pulumi-lang-java=&#34;`chart`&#34; pulumi-lang-hcl=&#34;`chart`&#34;&gt;`chart`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`artifact`&#34; pulumi-lang-dotnet=&#34;`Artifact`&#34; pulumi-lang-go=&#34;`artifact`&#34; pulumi-lang-python=&#34;`artifact`&#34; pulumi-lang-yaml=&#34;`artifact`&#34; pulumi-lang-java=&#34;`artifact`&#34; pulumi-lang-hcl=&#34;`artifact`&#34;&gt;`artifact`&lt;/span&gt;
+     * 
+     */
     private @Nullable String resource;
+    /**
+     * @return Filter on the tag/version of the resource.
+     * 
+     */
     private @Nullable String tag;
 
     private ReplicationFilter() {}
+    /**
+     * @return Matches or excludes the result. Can be one of the following. &lt;span pulumi-lang-nodejs=&#34;`matches`&#34; pulumi-lang-dotnet=&#34;`Matches`&#34; pulumi-lang-go=&#34;`matches`&#34; pulumi-lang-python=&#34;`matches`&#34; pulumi-lang-yaml=&#34;`matches`&#34; pulumi-lang-java=&#34;`matches`&#34; pulumi-lang-hcl=&#34;`matches`&#34;&gt;`matches`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`excludes`&#34; pulumi-lang-dotnet=&#34;`Excludes`&#34; pulumi-lang-go=&#34;`excludes`&#34; pulumi-lang-python=&#34;`excludes`&#34; pulumi-lang-yaml=&#34;`excludes`&#34; pulumi-lang-java=&#34;`excludes`&#34; pulumi-lang-hcl=&#34;`excludes`&#34;&gt;`excludes`&lt;/span&gt;
+     * 
+     */
     public Optional<String> decoration() {
         return Optional.ofNullable(this.decoration);
     }
+    /**
+     * @return Filter on the resource according to labels.
+     * 
+     */
     public List<String> labels() {
         return this.labels == null ? List.of() : this.labels;
     }
+    /**
+     * @return Filter on the name of the resource.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Filter on the resource type. Can be one of the following types. &lt;span pulumi-lang-nodejs=&#34;`chart`&#34; pulumi-lang-dotnet=&#34;`Chart`&#34; pulumi-lang-go=&#34;`chart`&#34; pulumi-lang-python=&#34;`chart`&#34; pulumi-lang-yaml=&#34;`chart`&#34; pulumi-lang-java=&#34;`chart`&#34; pulumi-lang-hcl=&#34;`chart`&#34;&gt;`chart`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`artifact`&#34; pulumi-lang-dotnet=&#34;`Artifact`&#34; pulumi-lang-go=&#34;`artifact`&#34; pulumi-lang-python=&#34;`artifact`&#34; pulumi-lang-yaml=&#34;`artifact`&#34; pulumi-lang-java=&#34;`artifact`&#34; pulumi-lang-hcl=&#34;`artifact`&#34;&gt;`artifact`&lt;/span&gt;
+     * 
+     */
     public Optional<String> resource() {
         return Optional.ofNullable(this.resource);
     }
+    /**
+     * @return Filter on the tag/version of the resource.
+     * 
+     */
     public Optional<String> tag() {
         return Optional.ofNullable(this.tag);
     }
@@ -61,11 +101,13 @@ public final class ReplicationFilter {
 
         @CustomType.Setter
         public Builder decoration(@Nullable String decoration) {
+
             this.decoration = decoration;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable List<String> labels) {
+
             this.labels = labels;
             return this;
         }
@@ -74,27 +116,30 @@ public final class ReplicationFilter {
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder resource(@Nullable String resource) {
+
             this.resource = resource;
             return this;
         }
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }
         public ReplicationFilter build() {
-            final var o = new ReplicationFilter();
-            o.decoration = decoration;
-            o.labels = labels;
-            o.name = name;
-            o.resource = resource;
-            o.tag = tag;
-            return o;
+            final var _resultValue = new ReplicationFilter();
+            _resultValue.decoration = decoration;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.resource = resource;
+            _resultValue.tag = tag;
+            return _resultValue;
         }
     }
 }

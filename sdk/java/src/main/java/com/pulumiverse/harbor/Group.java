@@ -12,49 +12,17 @@ import com.pulumiverse.harbor.Utilities;
 import com.pulumiverse.harbor.inputs.GroupState;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harbor.Group;
- * import com.pulumi.harbor.GroupArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var storage_group = new Group(&#34;storage-group&#34;, GroupArgs.builder()        
- *             .groupName(&#34;storage-group&#34;)
- *             .groupType(3)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 
- * An OIDC group can be imported using the `group id` eg, `
- * 
  * ```sh
- *  $ pulumi import harbor:index/group:Group storage-group /usergroups/19
+ * $ pulumi import harbor:index/group:Group storage-group /usergroups/19
  * ```
- * 
- *  `
  * 
  */
 @ResourceType(type="harbor:index/group:Group")
@@ -71,12 +39,18 @@ public class Group extends com.pulumi.resources.CustomResource {
     public Output<Integer> groupType() {
         return this.groupType;
     }
+    @Export(name="ldapGroupDn", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ldapGroupDn;
+
+    public Output<Optional<String>> ldapGroupDn() {
+        return Codegen.optional(this.ldapGroupDn);
+    }
 
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Group(String name) {
+    public Group(java.lang.String name) {
         this(name, GroupArgs.Empty);
     }
     /**
@@ -84,7 +58,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Group(String name, GroupArgs args) {
+    public Group(java.lang.String name, GroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -93,17 +67,25 @@ public class Group extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Group(String name, GroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/group:Group", name, args == null ? GroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Group(java.lang.String name, GroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/group:Group", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Group(String name, Output<String> id, @Nullable GroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/group:Group", name, state, makeResourceOptions(options, id));
+    private Group(java.lang.String name, Output<java.lang.String> id, @Nullable GroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/group:Group", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GroupArgs makeArgs(GroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/pulumiverse/pulumi-harbor")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }
@@ -117,7 +99,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Group get(String name, Output<String> id, @Nullable GroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Group get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Group(name, id, state, options);
     }
 }

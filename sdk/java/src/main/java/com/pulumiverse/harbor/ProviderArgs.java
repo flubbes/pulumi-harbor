@@ -5,9 +5,11 @@ package com.pulumiverse.harbor;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -24,6 +26,28 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.apiVersion);
     }
 
+    @Import(name="bearerToken")
+    private @Nullable Output<String> bearerToken;
+
+    public Optional<Output<String>> bearerToken() {
+        return Optional.ofNullable(this.bearerToken);
+    }
+
+    /**
+     * A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name. Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
+     * 
+     */
+    @Import(name="headers", json=true)
+    private @Nullable Output<Map<String,String>> headers;
+
+    /**
+     * @return A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name. Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> headers() {
+        return Optional.ofNullable(this.headers);
+    }
+
     @Import(name="insecure", json=true)
     private @Nullable Output<Boolean> insecure;
 
@@ -38,11 +62,25 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.password);
     }
 
-    @Import(name="url", required=true)
-    private Output<String> url;
+    @Import(name="robotPrefix")
+    private @Nullable Output<String> robotPrefix;
 
-    public Output<String> url() {
-        return this.url;
+    public Optional<Output<String>> robotPrefix() {
+        return Optional.ofNullable(this.robotPrefix);
+    }
+
+    @Import(name="sessionId")
+    private @Nullable Output<String> sessionId;
+
+    public Optional<Output<String>> sessionId() {
+        return Optional.ofNullable(this.sessionId);
+    }
+
+    @Import(name="url")
+    private @Nullable Output<String> url;
+
+    public Optional<Output<String>> url() {
+        return Optional.ofNullable(this.url);
     }
 
     @Import(name="username")
@@ -56,8 +94,12 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     private ProviderArgs(ProviderArgs $) {
         this.apiVersion = $.apiVersion;
+        this.bearerToken = $.bearerToken;
+        this.headers = $.headers;
         this.insecure = $.insecure;
         this.password = $.password;
+        this.robotPrefix = $.robotPrefix;
+        this.sessionId = $.sessionId;
         this.url = $.url;
         this.username = $.username;
     }
@@ -89,6 +131,36 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return apiVersion(Output.of(apiVersion));
         }
 
+        public Builder bearerToken(@Nullable Output<String> bearerToken) {
+            $.bearerToken = bearerToken;
+            return this;
+        }
+
+        public Builder bearerToken(String bearerToken) {
+            return bearerToken(Output.of(bearerToken));
+        }
+
+        /**
+         * @param headers A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name. Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headers(@Nullable Output<Map<String,String>> headers) {
+            $.headers = headers;
+            return this;
+        }
+
+        /**
+         * @param headers A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name. Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headers(Map<String,String> headers) {
+            return headers(Output.of(headers));
+        }
+
         public Builder insecure(@Nullable Output<Boolean> insecure) {
             $.insecure = insecure;
             return this;
@@ -107,7 +179,25 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return password(Output.of(password));
         }
 
-        public Builder url(Output<String> url) {
+        public Builder robotPrefix(@Nullable Output<String> robotPrefix) {
+            $.robotPrefix = robotPrefix;
+            return this;
+        }
+
+        public Builder robotPrefix(String robotPrefix) {
+            return robotPrefix(Output.of(robotPrefix));
+        }
+
+        public Builder sessionId(@Nullable Output<String> sessionId) {
+            $.sessionId = sessionId;
+            return this;
+        }
+
+        public Builder sessionId(String sessionId) {
+            return sessionId(Output.of(sessionId));
+        }
+
+        public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
@@ -126,7 +216,11 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
+            $.apiVersion = Codegen.integerProp("apiVersion").output().arg($.apiVersion).def(2).getNullable();
+            $.insecure = Codegen.booleanProp("insecure").output().arg($.insecure).env("HARBOR_IGNORE_CERT").def(true).getNullable();
+            $.password = Codegen.stringProp("password").secret().arg($.password).env("HARBOR_PASSWORD").getNullable();
+            $.url = Codegen.stringProp("url").output().arg($.url).env("HARBOR_URL").getNullable();
+            $.username = Codegen.stringProp("username").output().arg($.username).env("HARBOR_USERNAME").getNullable();
             return $;
         }
     }

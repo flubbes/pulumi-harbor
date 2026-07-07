@@ -3,28 +3,46 @@
 
 package com.pulumiverse.harbor;
 
+import com.pulumi.core.TypeShape;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 
 public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("harbor");
     public Optional<Integer> apiVersion() {
-        return Codegen.integerProp("apiVersion").config(config).get();
+        return Codegen.integerProp("apiVersion").config(config).def(2).get();
+    }
+    public Optional<String> bearerToken() {
+        return Codegen.stringProp("bearerToken").config(config).get();
+    }
+/**
+ * A map of custom HTTP headers to set on every API request. Each header overwrites any existing header of the same name. Useful for passing traffic through a WAF or proxy. A `Host` entry sets the request Host.
+ * 
+ */
+    public Optional<Map<String,String>> headers() {
+        return Codegen.objectProp("headers", TypeShape.<Map<String,String>>builder(Map.class).addParameter(String.class).addParameter(String.class).build()).config(config).get();
     }
     public Optional<Boolean> insecure() {
-        return Codegen.booleanProp("insecure").config(config).get();
+        return Codegen.booleanProp("insecure").config(config).env("HARBOR_IGNORE_CERT").def(true).get();
     }
     public Optional<String> password() {
-        return Codegen.stringProp("password").config(config).get();
+        return Codegen.stringProp("password").config(config).env("HARBOR_PASSWORD").get();
+    }
+    public Optional<String> robotPrefix() {
+        return Codegen.stringProp("robotPrefix").config(config).get();
+    }
+    public Optional<String> sessionId() {
+        return Codegen.stringProp("sessionId").config(config).get();
     }
     public String url() {
-        return Codegen.stringProp("url").config(config).require();
+        return Codegen.stringProp("url").config(config).env("HARBOR_URL").require();
     }
     public Optional<String> username() {
-        return Codegen.stringProp("username").config(config).get();
+        return Codegen.stringProp("username").config(config).env("HARBOR_USERNAME").get();
     }
 }

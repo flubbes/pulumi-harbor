@@ -5,6 +5,7 @@ package com.pulumiverse.harbor;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -13,9 +14,17 @@ public final class TasksArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TasksArgs Empty = new TasksArgs();
 
+    /**
+     * The frequency of the vulnerability scanning is done. Can be to **&#34;hourly&#34;**, **&#34;daily&#34;** or **&#34;weekly&#34;**
+     * 
+     */
     @Import(name="vulnerabilityScanPolicy", required=true)
     private Output<String> vulnerabilityScanPolicy;
 
+    /**
+     * @return The frequency of the vulnerability scanning is done. Can be to **&#34;hourly&#34;**, **&#34;daily&#34;** or **&#34;weekly&#34;**
+     * 
+     */
     public Output<String> vulnerabilityScanPolicy() {
         return this.vulnerabilityScanPolicy;
     }
@@ -44,17 +53,31 @@ public final class TasksArgs extends com.pulumi.resources.ResourceArgs {
             $ = new TasksArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param vulnerabilityScanPolicy The frequency of the vulnerability scanning is done. Can be to **&#34;hourly&#34;**, **&#34;daily&#34;** or **&#34;weekly&#34;**
+         * 
+         * @return builder
+         * 
+         */
         public Builder vulnerabilityScanPolicy(Output<String> vulnerabilityScanPolicy) {
             $.vulnerabilityScanPolicy = vulnerabilityScanPolicy;
             return this;
         }
 
+        /**
+         * @param vulnerabilityScanPolicy The frequency of the vulnerability scanning is done. Can be to **&#34;hourly&#34;**, **&#34;daily&#34;** or **&#34;weekly&#34;**
+         * 
+         * @return builder
+         * 
+         */
         public Builder vulnerabilityScanPolicy(String vulnerabilityScanPolicy) {
             return vulnerabilityScanPolicy(Output.of(vulnerabilityScanPolicy));
         }
 
         public TasksArgs build() {
-            $.vulnerabilityScanPolicy = Objects.requireNonNull($.vulnerabilityScanPolicy, "expected parameter 'vulnerabilityScanPolicy' to be non-null");
+            if ($.vulnerabilityScanPolicy == null) {
+                throw new MissingRequiredPropertyException("TasksArgs", "vulnerabilityScanPolicy");
+            }
             return $;
         }
     }

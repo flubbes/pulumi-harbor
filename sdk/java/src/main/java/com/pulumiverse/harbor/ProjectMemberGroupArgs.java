@@ -5,6 +5,7 @@ package com.pulumiverse.harbor;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -37,23 +38,47 @@ public final class ProjectMemberGroupArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.ldapGroupDn);
     }
 
+    /**
+     * The project id of the project that the entity will have access to.
+     * 
+     */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
+    /**
+     * @return The project id of the project that the entity will have access to.
+     * 
+     */
     public Output<String> projectId() {
         return this.projectId;
     }
 
+    /**
+     * The permissions that the entity will be granted.
+     * 
+     */
     @Import(name="role", required=true)
     private Output<String> role;
 
+    /**
+     * @return The permissions that the entity will be granted.
+     * 
+     */
     public Output<String> role() {
         return this.role;
     }
 
+    /**
+     * The group type.  Can be set to `&#34;ldap&#34;`, `&#34;internal&#34;` or `&#34;oidc&#34;`.
+     * 
+     */
     @Import(name="type", required=true)
     private Output<String> type;
 
+    /**
+     * @return The group type.  Can be set to `&#34;ldap&#34;`, `&#34;internal&#34;` or `&#34;oidc&#34;`.
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
@@ -114,37 +139,79 @@ public final class ProjectMemberGroupArgs extends com.pulumi.resources.ResourceA
             return ldapGroupDn(Output.of(ldapGroupDn));
         }
 
+        /**
+         * @param projectId The project id of the project that the entity will have access to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
 
+        /**
+         * @param projectId The project id of the project that the entity will have access to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
         }
 
+        /**
+         * @param role The permissions that the entity will be granted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(Output<String> role) {
             $.role = role;
             return this;
         }
 
+        /**
+         * @param role The permissions that the entity will be granted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(String role) {
             return role(Output.of(role));
         }
 
+        /**
+         * @param type The group type.  Can be set to `&#34;ldap&#34;`, `&#34;internal&#34;` or `&#34;oidc&#34;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The group type.  Can be set to `&#34;ldap&#34;`, `&#34;internal&#34;` or `&#34;oidc&#34;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }
 
         public ProjectMemberGroupArgs build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("ProjectMemberGroupArgs", "projectId");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("ProjectMemberGroupArgs", "role");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ProjectMemberGroupArgs", "type");
+            }
             return $;
         }
     }

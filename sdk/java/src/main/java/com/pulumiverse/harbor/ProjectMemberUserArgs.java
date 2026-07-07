@@ -5,6 +5,7 @@ package com.pulumiverse.harbor;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -13,23 +14,47 @@ public final class ProjectMemberUserArgs extends com.pulumi.resources.ResourceAr
 
     public static final ProjectMemberUserArgs Empty = new ProjectMemberUserArgs();
 
+    /**
+     * The project id of the project that the entity will have access to.
+     * 
+     */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
+    /**
+     * @return The project id of the project that the entity will have access to.
+     * 
+     */
     public Output<String> projectId() {
         return this.projectId;
     }
 
+    /**
+     * The permissions that the entity will be granted.
+     * 
+     */
     @Import(name="role", required=true)
     private Output<String> role;
 
+    /**
+     * @return The permissions that the entity will be granted.
+     * 
+     */
     public Output<String> role() {
         return this.role;
     }
 
+    /**
+     * The name of the member entity.
+     * 
+     */
     @Import(name="userName", required=true)
     private Output<String> userName;
 
+    /**
+     * @return The name of the member entity.
+     * 
+     */
     public Output<String> userName() {
         return this.userName;
     }
@@ -60,37 +85,79 @@ public final class ProjectMemberUserArgs extends com.pulumi.resources.ResourceAr
             $ = new ProjectMemberUserArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param projectId The project id of the project that the entity will have access to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
 
+        /**
+         * @param projectId The project id of the project that the entity will have access to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
         }
 
+        /**
+         * @param role The permissions that the entity will be granted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(Output<String> role) {
             $.role = role;
             return this;
         }
 
+        /**
+         * @param role The permissions that the entity will be granted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(String role) {
             return role(Output.of(role));
         }
 
+        /**
+         * @param userName The name of the member entity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userName(Output<String> userName) {
             $.userName = userName;
             return this;
         }
 
+        /**
+         * @param userName The name of the member entity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userName(String userName) {
             return userName(Output.of(userName));
         }
 
         public ProjectMemberUserArgs build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.userName = Objects.requireNonNull($.userName, "expected parameter 'userName' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("ProjectMemberUserArgs", "projectId");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("ProjectMemberUserArgs", "role");
+            }
+            if ($.userName == null) {
+                throw new MissingRequiredPropertyException("ProjectMemberUserArgs", "userName");
+            }
             return $;
         }
     }

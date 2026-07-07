@@ -10,7 +10,7 @@ PROVIDER_PATH    := provider/v3
 VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 
 JAVA_GEN 		 := pulumi-java-gen
-JAVA_GEN_VERSION := v0.8.0
+JAVA_GEN_VERSION := v1.32.0
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell pulumictl get version)
@@ -97,7 +97,7 @@ build_go:: install_plugins tfgen # build the go sdk
 
 build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
 build_java:: $(WORKING_DIR)/bin/$(JAVA_GEN)
-	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java  --build gradle-nexus --skip-examples
+	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java  --build gradle-nexus
 	cd sdk/java/ && \
 		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
 		gradle --console=plain build

@@ -4,6 +4,7 @@
 package com.pulumiverse.harbor.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumiverse.harbor.outputs.RobotAccountPermissionAccess;
 import java.lang.String;
 import java.util.List;
@@ -12,16 +13,32 @@ import java.util.Objects;
 @CustomType
 public final class RobotAccountPermission {
     private List<RobotAccountPermissionAccess> accesses;
+    /**
+     * @return Either &lt;span pulumi-lang-nodejs=&#34;`system`&#34; pulumi-lang-dotnet=&#34;`System`&#34; pulumi-lang-go=&#34;`system`&#34; pulumi-lang-python=&#34;`system`&#34; pulumi-lang-yaml=&#34;`system`&#34; pulumi-lang-java=&#34;`system`&#34; pulumi-lang-hcl=&#34;`system`&#34;&gt;`system`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`project`&#34; pulumi-lang-dotnet=&#34;`Project`&#34; pulumi-lang-go=&#34;`project`&#34; pulumi-lang-python=&#34;`project`&#34; pulumi-lang-yaml=&#34;`project`&#34; pulumi-lang-java=&#34;`project`&#34; pulumi-lang-hcl=&#34;`project`&#34;&gt;`project`&lt;/span&gt;.
+     * 
+     */
     private String kind;
+    /**
+     * @return namespace is the name of your project. For kind &lt;span pulumi-lang-nodejs=&#34;`system`&#34; pulumi-lang-dotnet=&#34;`System`&#34; pulumi-lang-go=&#34;`system`&#34; pulumi-lang-python=&#34;`system`&#34; pulumi-lang-yaml=&#34;`system`&#34; pulumi-lang-java=&#34;`system`&#34; pulumi-lang-hcl=&#34;`system`&#34;&gt;`system`&lt;/span&gt; permissions, always use `/` as namespace. Use `*` to match all projects.
+     * 
+     */
     private String namespace;
 
     private RobotAccountPermission() {}
     public List<RobotAccountPermissionAccess> accesses() {
         return this.accesses;
     }
+    /**
+     * @return Either &lt;span pulumi-lang-nodejs=&#34;`system`&#34; pulumi-lang-dotnet=&#34;`System`&#34; pulumi-lang-go=&#34;`system`&#34; pulumi-lang-python=&#34;`system`&#34; pulumi-lang-yaml=&#34;`system`&#34; pulumi-lang-java=&#34;`system`&#34; pulumi-lang-hcl=&#34;`system`&#34;&gt;`system`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`project`&#34; pulumi-lang-dotnet=&#34;`Project`&#34; pulumi-lang-go=&#34;`project`&#34; pulumi-lang-python=&#34;`project`&#34; pulumi-lang-yaml=&#34;`project`&#34; pulumi-lang-java=&#34;`project`&#34; pulumi-lang-hcl=&#34;`project`&#34;&gt;`project`&lt;/span&gt;.
+     * 
+     */
     public String kind() {
         return this.kind;
     }
+    /**
+     * @return namespace is the name of your project. For kind &lt;span pulumi-lang-nodejs=&#34;`system`&#34; pulumi-lang-dotnet=&#34;`System`&#34; pulumi-lang-go=&#34;`system`&#34; pulumi-lang-python=&#34;`system`&#34; pulumi-lang-yaml=&#34;`system`&#34; pulumi-lang-java=&#34;`system`&#34; pulumi-lang-hcl=&#34;`system`&#34;&gt;`system`&lt;/span&gt; permissions, always use `/` as namespace. Use `*` to match all projects.
+     * 
+     */
     public String namespace() {
         return this.namespace;
     }
@@ -48,7 +65,10 @@ public final class RobotAccountPermission {
 
         @CustomType.Setter
         public Builder accesses(List<RobotAccountPermissionAccess> accesses) {
-            this.accesses = Objects.requireNonNull(accesses);
+            if (accesses == null) {
+              throw new MissingRequiredPropertyException("RobotAccountPermission", "accesses");
+            }
+            this.accesses = accesses;
             return this;
         }
         public Builder accesses(RobotAccountPermissionAccess... accesses) {
@@ -56,20 +76,26 @@ public final class RobotAccountPermission {
         }
         @CustomType.Setter
         public Builder kind(String kind) {
-            this.kind = Objects.requireNonNull(kind);
+            if (kind == null) {
+              throw new MissingRequiredPropertyException("RobotAccountPermission", "kind");
+            }
+            this.kind = kind;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("RobotAccountPermission", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         public RobotAccountPermission build() {
-            final var o = new RobotAccountPermission();
-            o.accesses = accesses;
-            o.kind = kind;
-            o.namespace = namespace;
-            return o;
+            final var _resultValue = new RobotAccountPermission();
+            _resultValue.accesses = accesses;
+            _resultValue.kind = kind;
+            _resultValue.namespace = namespace;
+            return _resultValue;
         }
     }
 }

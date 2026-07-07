@@ -19,167 +19,79 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## # Resource: harbor.RobotAccount
- * 
- * Harbor supports different levels of robot accounts. Currently `system` and `project` level robot accounts are supported.
- * 
  * ## Example Usage
+ * 
  * ### System Level
  * Introduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.
- * ```java
- * package generated_program;
  * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomPassword;
- * import com.pulumi.random.RandomPasswordArgs;
- * import com.pulumi.harbor.Project;
- * import com.pulumi.harbor.RobotAccount;
- * import com.pulumi.harbor.RobotAccountArgs;
- * import com.pulumi.harbor.inputs.RobotAccountPermissionArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var password = new RandomPassword(&#34;password&#34;, RandomPasswordArgs.builder()        
- *             .length(12)
- *             .special(false)
- *             .build());
- * 
- *         var main = new Project(&#34;main&#34;);
- * 
- *         var system = new RobotAccount(&#34;system&#34;, RobotAccountArgs.builder()        
- *             .description(&#34;system level robot account&#34;)
- *             .level(&#34;system&#34;)
- *             .secret(resource.random_password().password().result())
- *             .permissions(            
- *                 RobotAccountPermissionArgs.builder()
- *                     .accesses(RobotAccountPermissionAccessArgs.builder()
- *                         .action(&#34;create&#34;)
- *                         .resource(&#34;labels&#34;)
- *                         .build())
- *                     .kind(&#34;system&#34;)
- *                     .namespace(&#34;/&#34;)
- *                     .build(),
- *                 RobotAccountPermissionArgs.builder()
- *                     .accesses(                    
- *                         RobotAccountPermissionAccessArgs.builder()
- *                             .action(&#34;push&#34;)
- *                             .resource(&#34;repository&#34;)
- *                             .build(),
- *                         RobotAccountPermissionAccessArgs.builder()
- *                             .action(&#34;read&#34;)
- *                             .resource(&#34;helm-chart&#34;)
- *                             .build(),
- *                         RobotAccountPermissionAccessArgs.builder()
- *                             .action(&#34;read&#34;)
- *                             .resource(&#34;helm-chart-version&#34;)
- *                             .build())
- *                     .kind(&#34;project&#34;)
- *                     .namespace(main.name())
- *                     .build(),
- *                 RobotAccountPermissionArgs.builder()
- *                     .accesses(RobotAccountPermissionAccessArgs.builder()
- *                         .action(&#34;pull&#34;)
- *                         .resource(&#34;repository&#34;)
- *                         .build())
- *                     .kind(&#34;project&#34;)
- *                     .namespace(&#34;*&#34;)
- *                     .build())
- *             .build());
- * 
- *     }
- * }
- * ```
+ * ### Global
  * 
  * The above example, creates a system level robot account with permissions to
  * - permission to create labels on system level
  * - pull repository across all projects
  * - push repository to project &#34;my-project-name&#34;
- * - read helm-chart and helm-chart-version in project &#34;my-project-name&#34;
- * ### Project Level
+ * 
+ * ### Project
  * 
  * Other than system level robot accounts, project level robot accounts can interact on project level only.
  * The [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.
- * ```java
- * package generated_program;
  * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harbor.Project;
- * import com.pulumi.harbor.RobotAccount;
- * import com.pulumi.harbor.RobotAccountArgs;
- * import com.pulumi.harbor.inputs.RobotAccountPermissionArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
+ * ### Project with Write-only Secret
  * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var main = new Project(&#34;main&#34;);
- * 
- *         var project = new RobotAccount(&#34;project&#34;, RobotAccountArgs.builder()        
- *             .description(&#34;project level robot account&#34;)
- *             .level(&#34;project&#34;)
- *             .permissions(RobotAccountPermissionArgs.builder()
- *                 .accesses(                
- *                     RobotAccountPermissionAccessArgs.builder()
- *                         .action(&#34;pull&#34;)
- *                         .resource(&#34;repository&#34;)
- *                         .build(),
- *                     RobotAccountPermissionAccessArgs.builder()
- *                         .action(&#34;push&#34;)
- *                         .resource(&#34;repository&#34;)
- *                         .build())
- *                 .kind(&#34;project&#34;)
- *                 .namespace(main.name())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
+ * ### Project with Write-only Secret from Ephemeral Random Secret
  * 
  * The above example creates a project level robot account with permissions to
  * - pull repository on project &#34;main&#34;
  * - push repository on project &#34;main&#34;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123
+ * ```
+ * 
  */
 @ResourceType(type="harbor:index/robotAccount:RobotAccount")
 public class RobotAccount extends com.pulumi.resources.CustomResource {
+    /**
+     * The description of the robot account will be displayed in harbor.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return The description of the robot account will be displayed in harbor.
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * Disables the robot account when set to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+     * 
+     */
     @Export(name="disable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disable;
 
+    /**
+     * @return Disables the robot account when set to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+     * 
+     */
     public Output<Optional<Boolean>> disable() {
         return Codegen.optional(this.disable);
     }
+    /**
+     * By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+     * 
+     */
     @Export(name="duration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> duration;
 
+    /**
+     * @return By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+     * 
+     */
     public Output<Optional<Integer>> duration() {
         return Codegen.optional(this.duration);
     }
@@ -189,15 +101,31 @@ public class RobotAccount extends com.pulumi.resources.CustomResource {
     public Output<String> fullName() {
         return this.fullName;
     }
+    /**
+     * Level of the robot account, currently either &lt;span pulumi-lang-nodejs=&#34;`system`&#34; pulumi-lang-dotnet=&#34;`System`&#34; pulumi-lang-go=&#34;`system`&#34; pulumi-lang-python=&#34;`system`&#34; pulumi-lang-yaml=&#34;`system`&#34; pulumi-lang-java=&#34;`system`&#34; pulumi-lang-hcl=&#34;`system`&#34;&gt;`system`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`project`&#34; pulumi-lang-dotnet=&#34;`Project`&#34; pulumi-lang-go=&#34;`project`&#34; pulumi-lang-python=&#34;`project`&#34; pulumi-lang-yaml=&#34;`project`&#34; pulumi-lang-java=&#34;`project`&#34; pulumi-lang-hcl=&#34;`project`&#34;&gt;`project`&lt;/span&gt;.
+     * 
+     */
     @Export(name="level", refs={String.class}, tree="[0]")
     private Output<String> level;
 
+    /**
+     * @return Level of the robot account, currently either &lt;span pulumi-lang-nodejs=&#34;`system`&#34; pulumi-lang-dotnet=&#34;`System`&#34; pulumi-lang-go=&#34;`system`&#34; pulumi-lang-python=&#34;`system`&#34; pulumi-lang-yaml=&#34;`system`&#34; pulumi-lang-java=&#34;`system`&#34; pulumi-lang-hcl=&#34;`system`&#34;&gt;`system`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`project`&#34; pulumi-lang-dotnet=&#34;`Project`&#34; pulumi-lang-go=&#34;`project`&#34; pulumi-lang-python=&#34;`project`&#34; pulumi-lang-yaml=&#34;`project`&#34; pulumi-lang-java=&#34;`project`&#34; pulumi-lang-hcl=&#34;`project`&#34;&gt;`project`&lt;/span&gt;.
+     * 
+     */
     public Output<String> level() {
         return this.level;
     }
+    /**
+     * The name of the project that will be created in harbor.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return The name of the project that will be created in harbor.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -213,18 +141,56 @@ public class RobotAccount extends com.pulumi.resources.CustomResource {
     public Output<String> robotId() {
         return this.robotId;
     }
+    /**
+     * The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+     * 
+     */
     @Export(name="secret", refs={String.class}, tree="[0]")
     private Output<String> secret;
 
+    /**
+     * @return The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+     * 
+     */
     public Output<String> secret() {
         return this.secret;
+    }
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative for &lt;span pulumi-lang-nodejs=&#34;`secret`&#34; pulumi-lang-dotnet=&#34;`Secret`&#34; pulumi-lang-go=&#34;`secret`&#34; pulumi-lang-python=&#34;`secret`&#34; pulumi-lang-yaml=&#34;`secret`&#34; pulumi-lang-java=&#34;`secret`&#34; pulumi-lang-hcl=&#34;`secret`&#34;&gt;`secret`&lt;/span&gt;. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`secretWoVersion`&#34; pulumi-lang-dotnet=&#34;`SecretWoVersion`&#34; pulumi-lang-go=&#34;`secretWoVersion`&#34; pulumi-lang-python=&#34;`secret_wo_version`&#34; pulumi-lang-yaml=&#34;`secretWoVersion`&#34; pulumi-lang-java=&#34;`secretWoVersion`&#34; pulumi-lang-hcl=&#34;`secret_wo_version`&#34;&gt;`secretWoVersion`&lt;/span&gt;.
+     * 
+     */
+    @Export(name="secretWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> secretWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative for &lt;span pulumi-lang-nodejs=&#34;`secret`&#34; pulumi-lang-dotnet=&#34;`Secret`&#34; pulumi-lang-go=&#34;`secret`&#34; pulumi-lang-python=&#34;`secret`&#34; pulumi-lang-yaml=&#34;`secret`&#34; pulumi-lang-java=&#34;`secret`&#34; pulumi-lang-hcl=&#34;`secret`&#34;&gt;`secret`&lt;/span&gt;. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`secretWoVersion`&#34; pulumi-lang-dotnet=&#34;`SecretWoVersion`&#34; pulumi-lang-go=&#34;`secretWoVersion`&#34; pulumi-lang-python=&#34;`secret_wo_version`&#34; pulumi-lang-yaml=&#34;`secretWoVersion`&#34; pulumi-lang-java=&#34;`secretWoVersion`&#34; pulumi-lang-hcl=&#34;`secret_wo_version`&#34;&gt;`secretWoVersion`&lt;/span&gt;.
+     * 
+     */
+    public Output<Optional<String>> secretWo() {
+        return Codegen.optional(this.secretWo);
+    }
+    /**
+     * Rotation trigger for write-only secret updates. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`secretWo`&#34; pulumi-lang-dotnet=&#34;`SecretWo`&#34; pulumi-lang-go=&#34;`secretWo`&#34; pulumi-lang-python=&#34;`secret_wo`&#34; pulumi-lang-yaml=&#34;`secretWo`&#34; pulumi-lang-java=&#34;`secretWo`&#34; pulumi-lang-hcl=&#34;`secret_wo`&#34;&gt;`secretWo`&lt;/span&gt;.
+     * 
+     */
+    @Export(name="secretWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> secretWoVersion;
+
+    /**
+     * @return Rotation trigger for write-only secret updates. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`secretWo`&#34; pulumi-lang-dotnet=&#34;`SecretWo`&#34; pulumi-lang-go=&#34;`secretWo`&#34; pulumi-lang-python=&#34;`secret_wo`&#34; pulumi-lang-yaml=&#34;`secretWo`&#34; pulumi-lang-java=&#34;`secretWo`&#34; pulumi-lang-hcl=&#34;`secret_wo`&#34;&gt;`secretWo`&lt;/span&gt;.
+     * 
+     */
+    public Output<Optional<Integer>> secretWoVersion() {
+        return Codegen.optional(this.secretWoVersion);
     }
 
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RobotAccount(String name) {
+    public RobotAccount(java.lang.String name) {
         this(name, RobotAccountArgs.Empty);
     }
     /**
@@ -232,7 +198,7 @@ public class RobotAccount extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RobotAccount(String name, RobotAccountArgs args) {
+    public RobotAccount(java.lang.String name, RobotAccountArgs args) {
         this(name, args, null);
     }
     /**
@@ -241,19 +207,28 @@ public class RobotAccount extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RobotAccount(String name, RobotAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/robotAccount:RobotAccount", name, args == null ? RobotAccountArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RobotAccount(java.lang.String name, RobotAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/robotAccount:RobotAccount", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RobotAccount(String name, Output<String> id, @Nullable RobotAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/robotAccount:RobotAccount", name, state, makeResourceOptions(options, id));
+    private RobotAccount(java.lang.String name, Output<java.lang.String> id, @Nullable RobotAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/robotAccount:RobotAccount", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RobotAccountArgs makeArgs(RobotAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RobotAccountArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/pulumiverse/pulumi-harbor")
             .additionalSecretOutputs(List.of(
-                "secret"
+                "secret",
+                "secretWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
@@ -268,7 +243,7 @@ public class RobotAccount extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RobotAccount get(String name, Output<String> id, @Nullable RobotAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RobotAccount get(java.lang.String name, Output<java.lang.String> id, @Nullable RobotAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RobotAccount(name, id, state, options);
     }
 }

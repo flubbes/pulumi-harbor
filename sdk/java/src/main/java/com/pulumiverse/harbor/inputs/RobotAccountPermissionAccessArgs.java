@@ -5,6 +5,7 @@ package com.pulumiverse.harbor.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,23 +16,47 @@ public final class RobotAccountPermissionAccessArgs extends com.pulumi.resources
 
     public static final RobotAccountPermissionAccessArgs Empty = new RobotAccountPermissionAccessArgs();
 
+    /**
+     * Eg. &lt;span pulumi-lang-nodejs=&#34;`push`&#34; pulumi-lang-dotnet=&#34;`Push`&#34; pulumi-lang-go=&#34;`push`&#34; pulumi-lang-python=&#34;`push`&#34; pulumi-lang-yaml=&#34;`push`&#34; pulumi-lang-java=&#34;`push`&#34; pulumi-lang-hcl=&#34;`push`&#34;&gt;`push`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`pull`&#34; pulumi-lang-dotnet=&#34;`Pull`&#34; pulumi-lang-go=&#34;`pull`&#34; pulumi-lang-python=&#34;`pull`&#34; pulumi-lang-yaml=&#34;`pull`&#34; pulumi-lang-java=&#34;`pull`&#34; pulumi-lang-hcl=&#34;`pull`&#34;&gt;`pull`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`read`&#34; pulumi-lang-dotnet=&#34;`Read`&#34; pulumi-lang-go=&#34;`read`&#34; pulumi-lang-python=&#34;`read`&#34; pulumi-lang-yaml=&#34;`read`&#34; pulumi-lang-java=&#34;`read`&#34; pulumi-lang-hcl=&#34;`read`&#34;&gt;`read`&lt;/span&gt;, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+     * 
+     */
     @Import(name="action", required=true)
     private Output<String> action;
 
+    /**
+     * @return Eg. &lt;span pulumi-lang-nodejs=&#34;`push`&#34; pulumi-lang-dotnet=&#34;`Push`&#34; pulumi-lang-go=&#34;`push`&#34; pulumi-lang-python=&#34;`push`&#34; pulumi-lang-yaml=&#34;`push`&#34; pulumi-lang-java=&#34;`push`&#34; pulumi-lang-hcl=&#34;`push`&#34;&gt;`push`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`pull`&#34; pulumi-lang-dotnet=&#34;`Pull`&#34; pulumi-lang-go=&#34;`pull`&#34; pulumi-lang-python=&#34;`pull`&#34; pulumi-lang-yaml=&#34;`pull`&#34; pulumi-lang-java=&#34;`pull`&#34; pulumi-lang-hcl=&#34;`pull`&#34;&gt;`pull`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`read`&#34; pulumi-lang-dotnet=&#34;`Read`&#34; pulumi-lang-go=&#34;`read`&#34; pulumi-lang-python=&#34;`read`&#34; pulumi-lang-yaml=&#34;`read`&#34; pulumi-lang-java=&#34;`read`&#34; pulumi-lang-hcl=&#34;`read`&#34;&gt;`read`&lt;/span&gt;, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+     * 
+     */
     public Output<String> action() {
         return this.action;
     }
 
+    /**
+     * Either &lt;span pulumi-lang-nodejs=&#34;`allow`&#34; pulumi-lang-dotnet=&#34;`Allow`&#34; pulumi-lang-go=&#34;`allow`&#34; pulumi-lang-python=&#34;`allow`&#34; pulumi-lang-yaml=&#34;`allow`&#34; pulumi-lang-java=&#34;`allow`&#34; pulumi-lang-hcl=&#34;`allow`&#34;&gt;`allow`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`deny`&#34; pulumi-lang-dotnet=&#34;`Deny`&#34; pulumi-lang-go=&#34;`deny`&#34; pulumi-lang-python=&#34;`deny`&#34; pulumi-lang-yaml=&#34;`deny`&#34; pulumi-lang-java=&#34;`deny`&#34; pulumi-lang-hcl=&#34;`deny`&#34;&gt;`deny`&lt;/span&gt;. Defaults to &lt;span pulumi-lang-nodejs=&#34;`allow`&#34; pulumi-lang-dotnet=&#34;`Allow`&#34; pulumi-lang-go=&#34;`allow`&#34; pulumi-lang-python=&#34;`allow`&#34; pulumi-lang-yaml=&#34;`allow`&#34; pulumi-lang-java=&#34;`allow`&#34; pulumi-lang-hcl=&#34;`allow`&#34;&gt;`allow`&lt;/span&gt;.
+     * 
+     */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
+    /**
+     * @return Either &lt;span pulumi-lang-nodejs=&#34;`allow`&#34; pulumi-lang-dotnet=&#34;`Allow`&#34; pulumi-lang-go=&#34;`allow`&#34; pulumi-lang-python=&#34;`allow`&#34; pulumi-lang-yaml=&#34;`allow`&#34; pulumi-lang-java=&#34;`allow`&#34; pulumi-lang-hcl=&#34;`allow`&#34;&gt;`allow`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`deny`&#34; pulumi-lang-dotnet=&#34;`Deny`&#34; pulumi-lang-go=&#34;`deny`&#34; pulumi-lang-python=&#34;`deny`&#34; pulumi-lang-yaml=&#34;`deny`&#34; pulumi-lang-java=&#34;`deny`&#34; pulumi-lang-hcl=&#34;`deny`&#34;&gt;`deny`&lt;/span&gt;. Defaults to &lt;span pulumi-lang-nodejs=&#34;`allow`&#34; pulumi-lang-dotnet=&#34;`Allow`&#34; pulumi-lang-go=&#34;`allow`&#34; pulumi-lang-python=&#34;`allow`&#34; pulumi-lang-yaml=&#34;`allow`&#34; pulumi-lang-java=&#34;`allow`&#34; pulumi-lang-hcl=&#34;`allow`&#34;&gt;`allow`&lt;/span&gt;.
+     * 
+     */
     public Optional<Output<String>> effect() {
         return Optional.ofNullable(this.effect);
     }
 
+    /**
+     * Eg. &lt;span pulumi-lang-nodejs=&#34;`repository`&#34; pulumi-lang-dotnet=&#34;`Repository`&#34; pulumi-lang-go=&#34;`repository`&#34; pulumi-lang-python=&#34;`repository`&#34; pulumi-lang-yaml=&#34;`repository`&#34; pulumi-lang-java=&#34;`repository`&#34; pulumi-lang-hcl=&#34;`repository`&#34;&gt;`repository`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`labels`&#34; pulumi-lang-dotnet=&#34;`Labels`&#34; pulumi-lang-go=&#34;`labels`&#34; pulumi-lang-python=&#34;`labels`&#34; pulumi-lang-yaml=&#34;`labels`&#34; pulumi-lang-java=&#34;`labels`&#34; pulumi-lang-hcl=&#34;`labels`&#34;&gt;`labels`&lt;/span&gt;, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+     * 
+     */
     @Import(name="resource", required=true)
     private Output<String> resource;
 
+    /**
+     * @return Eg. &lt;span pulumi-lang-nodejs=&#34;`repository`&#34; pulumi-lang-dotnet=&#34;`Repository`&#34; pulumi-lang-go=&#34;`repository`&#34; pulumi-lang-python=&#34;`repository`&#34; pulumi-lang-yaml=&#34;`repository`&#34; pulumi-lang-java=&#34;`repository`&#34; pulumi-lang-hcl=&#34;`repository`&#34;&gt;`repository`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`labels`&#34; pulumi-lang-dotnet=&#34;`Labels`&#34; pulumi-lang-go=&#34;`labels`&#34; pulumi-lang-python=&#34;`labels`&#34; pulumi-lang-yaml=&#34;`labels`&#34; pulumi-lang-java=&#34;`labels`&#34; pulumi-lang-hcl=&#34;`labels`&#34;&gt;`labels`&lt;/span&gt;, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+     * 
+     */
     public Output<String> resource() {
         return this.resource;
     }
@@ -62,36 +87,76 @@ public final class RobotAccountPermissionAccessArgs extends com.pulumi.resources
             $ = new RobotAccountPermissionAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param action Eg. &lt;span pulumi-lang-nodejs=&#34;`push`&#34; pulumi-lang-dotnet=&#34;`Push`&#34; pulumi-lang-go=&#34;`push`&#34; pulumi-lang-python=&#34;`push`&#34; pulumi-lang-yaml=&#34;`push`&#34; pulumi-lang-java=&#34;`push`&#34; pulumi-lang-hcl=&#34;`push`&#34;&gt;`push`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`pull`&#34; pulumi-lang-dotnet=&#34;`Pull`&#34; pulumi-lang-go=&#34;`pull`&#34; pulumi-lang-python=&#34;`pull`&#34; pulumi-lang-yaml=&#34;`pull`&#34; pulumi-lang-java=&#34;`pull`&#34; pulumi-lang-hcl=&#34;`pull`&#34;&gt;`pull`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`read`&#34; pulumi-lang-dotnet=&#34;`Read`&#34; pulumi-lang-go=&#34;`read`&#34; pulumi-lang-python=&#34;`read`&#34; pulumi-lang-yaml=&#34;`read`&#34; pulumi-lang-java=&#34;`read`&#34; pulumi-lang-hcl=&#34;`read`&#34;&gt;`read`&lt;/span&gt;, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+         * 
+         * @return builder
+         * 
+         */
         public Builder action(Output<String> action) {
             $.action = action;
             return this;
         }
 
+        /**
+         * @param action Eg. &lt;span pulumi-lang-nodejs=&#34;`push`&#34; pulumi-lang-dotnet=&#34;`Push`&#34; pulumi-lang-go=&#34;`push`&#34; pulumi-lang-python=&#34;`push`&#34; pulumi-lang-yaml=&#34;`push`&#34; pulumi-lang-java=&#34;`push`&#34; pulumi-lang-hcl=&#34;`push`&#34;&gt;`push`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`pull`&#34; pulumi-lang-dotnet=&#34;`Pull`&#34; pulumi-lang-go=&#34;`pull`&#34; pulumi-lang-python=&#34;`pull`&#34; pulumi-lang-yaml=&#34;`pull`&#34; pulumi-lang-java=&#34;`pull`&#34; pulumi-lang-hcl=&#34;`pull`&#34;&gt;`pull`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`read`&#34; pulumi-lang-dotnet=&#34;`Read`&#34; pulumi-lang-go=&#34;`read`&#34; pulumi-lang-python=&#34;`read`&#34; pulumi-lang-yaml=&#34;`read`&#34; pulumi-lang-java=&#34;`read`&#34; pulumi-lang-hcl=&#34;`read`&#34;&gt;`read`&lt;/span&gt;, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+         * 
+         * @return builder
+         * 
+         */
         public Builder action(String action) {
             return action(Output.of(action));
         }
 
+        /**
+         * @param effect Either &lt;span pulumi-lang-nodejs=&#34;`allow`&#34; pulumi-lang-dotnet=&#34;`Allow`&#34; pulumi-lang-go=&#34;`allow`&#34; pulumi-lang-python=&#34;`allow`&#34; pulumi-lang-yaml=&#34;`allow`&#34; pulumi-lang-java=&#34;`allow`&#34; pulumi-lang-hcl=&#34;`allow`&#34;&gt;`allow`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`deny`&#34; pulumi-lang-dotnet=&#34;`Deny`&#34; pulumi-lang-go=&#34;`deny`&#34; pulumi-lang-python=&#34;`deny`&#34; pulumi-lang-yaml=&#34;`deny`&#34; pulumi-lang-java=&#34;`deny`&#34; pulumi-lang-hcl=&#34;`deny`&#34;&gt;`deny`&lt;/span&gt;. Defaults to &lt;span pulumi-lang-nodejs=&#34;`allow`&#34; pulumi-lang-dotnet=&#34;`Allow`&#34; pulumi-lang-go=&#34;`allow`&#34; pulumi-lang-python=&#34;`allow`&#34; pulumi-lang-yaml=&#34;`allow`&#34; pulumi-lang-java=&#34;`allow`&#34; pulumi-lang-hcl=&#34;`allow`&#34;&gt;`allow`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effect(@Nullable Output<String> effect) {
             $.effect = effect;
             return this;
         }
 
+        /**
+         * @param effect Either &lt;span pulumi-lang-nodejs=&#34;`allow`&#34; pulumi-lang-dotnet=&#34;`Allow`&#34; pulumi-lang-go=&#34;`allow`&#34; pulumi-lang-python=&#34;`allow`&#34; pulumi-lang-yaml=&#34;`allow`&#34; pulumi-lang-java=&#34;`allow`&#34; pulumi-lang-hcl=&#34;`allow`&#34;&gt;`allow`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`deny`&#34; pulumi-lang-dotnet=&#34;`Deny`&#34; pulumi-lang-go=&#34;`deny`&#34; pulumi-lang-python=&#34;`deny`&#34; pulumi-lang-yaml=&#34;`deny`&#34; pulumi-lang-java=&#34;`deny`&#34; pulumi-lang-hcl=&#34;`deny`&#34;&gt;`deny`&lt;/span&gt;. Defaults to &lt;span pulumi-lang-nodejs=&#34;`allow`&#34; pulumi-lang-dotnet=&#34;`Allow`&#34; pulumi-lang-go=&#34;`allow`&#34; pulumi-lang-python=&#34;`allow`&#34; pulumi-lang-yaml=&#34;`allow`&#34; pulumi-lang-java=&#34;`allow`&#34; pulumi-lang-hcl=&#34;`allow`&#34;&gt;`allow`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effect(String effect) {
             return effect(Output.of(effect));
         }
 
+        /**
+         * @param resource Eg. &lt;span pulumi-lang-nodejs=&#34;`repository`&#34; pulumi-lang-dotnet=&#34;`Repository`&#34; pulumi-lang-go=&#34;`repository`&#34; pulumi-lang-python=&#34;`repository`&#34; pulumi-lang-yaml=&#34;`repository`&#34; pulumi-lang-java=&#34;`repository`&#34; pulumi-lang-hcl=&#34;`repository`&#34;&gt;`repository`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`labels`&#34; pulumi-lang-dotnet=&#34;`Labels`&#34; pulumi-lang-go=&#34;`labels`&#34; pulumi-lang-python=&#34;`labels`&#34; pulumi-lang-yaml=&#34;`labels`&#34; pulumi-lang-java=&#34;`labels`&#34; pulumi-lang-hcl=&#34;`labels`&#34;&gt;`labels`&lt;/span&gt;, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+         * 
+         * @return builder
+         * 
+         */
         public Builder resource(Output<String> resource) {
             $.resource = resource;
             return this;
         }
 
+        /**
+         * @param resource Eg. &lt;span pulumi-lang-nodejs=&#34;`repository`&#34; pulumi-lang-dotnet=&#34;`Repository`&#34; pulumi-lang-go=&#34;`repository`&#34; pulumi-lang-python=&#34;`repository`&#34; pulumi-lang-yaml=&#34;`repository`&#34; pulumi-lang-java=&#34;`repository`&#34; pulumi-lang-hcl=&#34;`repository`&#34;&gt;`repository`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`labels`&#34; pulumi-lang-dotnet=&#34;`Labels`&#34; pulumi-lang-go=&#34;`labels`&#34; pulumi-lang-python=&#34;`labels`&#34; pulumi-lang-yaml=&#34;`labels`&#34; pulumi-lang-java=&#34;`labels`&#34; pulumi-lang-hcl=&#34;`labels`&#34;&gt;`labels`&lt;/span&gt;, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+         * 
+         * @return builder
+         * 
+         */
         public Builder resource(String resource) {
             return resource(Output.of(resource));
         }
 
         public RobotAccountPermissionAccessArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.resource = Objects.requireNonNull($.resource, "expected parameter 'resource' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("RobotAccountPermissionAccessArgs", "action");
+            }
+            if ($.resource == null) {
+                throw new MissingRequiredPropertyException("RobotAccountPermissionAccessArgs", "resource");
+            }
             return $;
         }
     }

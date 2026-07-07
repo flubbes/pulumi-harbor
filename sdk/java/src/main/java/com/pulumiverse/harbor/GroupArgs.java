@@ -5,9 +5,12 @@ package com.pulumiverse.harbor;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
@@ -28,11 +31,19 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         return this.groupType;
     }
 
+    @Import(name="ldapGroupDn")
+    private @Nullable Output<String> ldapGroupDn;
+
+    public Optional<Output<String>> ldapGroupDn() {
+        return Optional.ofNullable(this.ldapGroupDn);
+    }
+
     private GroupArgs() {}
 
     private GroupArgs(GroupArgs $) {
         this.groupName = $.groupName;
         this.groupType = $.groupType;
+        this.ldapGroupDn = $.ldapGroupDn;
     }
 
     public static Builder builder() {
@@ -71,9 +82,22 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
             return groupType(Output.of(groupType));
         }
 
+        public Builder ldapGroupDn(@Nullable Output<String> ldapGroupDn) {
+            $.ldapGroupDn = ldapGroupDn;
+            return this;
+        }
+
+        public Builder ldapGroupDn(String ldapGroupDn) {
+            return ldapGroupDn(Output.of(ldapGroupDn));
+        }
+
         public GroupArgs build() {
-            $.groupName = Objects.requireNonNull($.groupName, "expected parameter 'groupName' to be non-null");
-            $.groupType = Objects.requireNonNull($.groupType, "expected parameter 'groupType' to be non-null");
+            if ($.groupName == null) {
+                throw new MissingRequiredPropertyException("GroupArgs", "groupName");
+            }
+            if ($.groupType == null) {
+                throw new MissingRequiredPropertyException("GroupArgs", "groupType");
+            }
             return $;
         }
     }

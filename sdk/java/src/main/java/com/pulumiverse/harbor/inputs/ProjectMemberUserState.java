@@ -16,30 +16,62 @@ public final class ProjectMemberUserState extends com.pulumi.resources.ResourceA
 
     public static final ProjectMemberUserState Empty = new ProjectMemberUserState();
 
+    /**
+     * The member id of the member.
+     * 
+     */
     @Import(name="memberId")
     private @Nullable Output<Integer> memberId;
 
+    /**
+     * @return The member id of the member.
+     * 
+     */
     public Optional<Output<Integer>> memberId() {
         return Optional.ofNullable(this.memberId);
     }
 
+    /**
+     * The project id of the project that the entity will have access to.
+     * 
+     */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
+    /**
+     * @return The project id of the project that the entity will have access to.
+     * 
+     */
     public Optional<Output<String>> projectId() {
         return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * The permissions that the entity will be granted.
+     * 
+     */
     @Import(name="role")
     private @Nullable Output<String> role;
 
+    /**
+     * @return The permissions that the entity will be granted.
+     * 
+     */
     public Optional<Output<String>> role() {
         return Optional.ofNullable(this.role);
     }
 
+    /**
+     * The name of the member entity.
+     * 
+     */
     @Import(name="userName")
     private @Nullable Output<String> userName;
 
+    /**
+     * @return The name of the member entity.
+     * 
+     */
     public Optional<Output<String>> userName() {
         return Optional.ofNullable(this.userName);
     }
@@ -71,38 +103,86 @@ public final class ProjectMemberUserState extends com.pulumi.resources.ResourceA
             $ = new ProjectMemberUserState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param memberId The member id of the member.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memberId(@Nullable Output<Integer> memberId) {
             $.memberId = memberId;
             return this;
         }
 
+        /**
+         * @param memberId The member id of the member.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memberId(Integer memberId) {
             return memberId(Output.of(memberId));
         }
 
+        /**
+         * @param projectId The project id of the project that the entity will have access to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(@Nullable Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
 
+        /**
+         * @param projectId The project id of the project that the entity will have access to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
         }
 
+        /**
+         * @param role The permissions that the entity will be granted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(@Nullable Output<String> role) {
             $.role = role;
             return this;
         }
 
+        /**
+         * @param role The permissions that the entity will be granted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(String role) {
             return role(Output.of(role));
         }
 
+        /**
+         * @param userName The name of the member entity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userName(@Nullable Output<String> userName) {
             $.userName = userName;
             return this;
         }
 
+        /**
+         * @param userName The name of the member entity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userName(String userName) {
             return userName(Output.of(userName));
         }

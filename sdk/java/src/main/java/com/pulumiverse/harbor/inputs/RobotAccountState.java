@@ -19,23 +19,47 @@ public final class RobotAccountState extends com.pulumi.resources.ResourceArgs {
 
     public static final RobotAccountState Empty = new RobotAccountState();
 
+    /**
+     * The description of the robot account will be displayed in harbor.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return The description of the robot account will be displayed in harbor.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Disables the robot account when set to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+     * 
+     */
     @Import(name="disable")
     private @Nullable Output<Boolean> disable;
 
+    /**
+     * @return Disables the robot account when set to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+     * 
+     */
     public Optional<Output<Boolean>> disable() {
         return Optional.ofNullable(this.disable);
     }
 
+    /**
+     * By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+     * 
+     */
     @Import(name="duration")
     private @Nullable Output<Integer> duration;
 
+    /**
+     * @return By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+     * 
+     */
     public Optional<Output<Integer>> duration() {
         return Optional.ofNullable(this.duration);
     }
@@ -47,16 +71,32 @@ public final class RobotAccountState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.fullName);
     }
 
+    /**
+     * Level of the robot account, currently either &lt;span pulumi-lang-nodejs=&#34;`system`&#34; pulumi-lang-dotnet=&#34;`System`&#34; pulumi-lang-go=&#34;`system`&#34; pulumi-lang-python=&#34;`system`&#34; pulumi-lang-yaml=&#34;`system`&#34; pulumi-lang-java=&#34;`system`&#34; pulumi-lang-hcl=&#34;`system`&#34;&gt;`system`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`project`&#34; pulumi-lang-dotnet=&#34;`Project`&#34; pulumi-lang-go=&#34;`project`&#34; pulumi-lang-python=&#34;`project`&#34; pulumi-lang-yaml=&#34;`project`&#34; pulumi-lang-java=&#34;`project`&#34; pulumi-lang-hcl=&#34;`project`&#34;&gt;`project`&lt;/span&gt;.
+     * 
+     */
     @Import(name="level")
     private @Nullable Output<String> level;
 
+    /**
+     * @return Level of the robot account, currently either &lt;span pulumi-lang-nodejs=&#34;`system`&#34; pulumi-lang-dotnet=&#34;`System`&#34; pulumi-lang-go=&#34;`system`&#34; pulumi-lang-python=&#34;`system`&#34; pulumi-lang-yaml=&#34;`system`&#34; pulumi-lang-java=&#34;`system`&#34; pulumi-lang-hcl=&#34;`system`&#34;&gt;`system`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`project`&#34; pulumi-lang-dotnet=&#34;`Project`&#34; pulumi-lang-go=&#34;`project`&#34; pulumi-lang-python=&#34;`project`&#34; pulumi-lang-yaml=&#34;`project`&#34; pulumi-lang-java=&#34;`project`&#34; pulumi-lang-hcl=&#34;`project`&#34;&gt;`project`&lt;/span&gt;.
+     * 
+     */
     public Optional<Output<String>> level() {
         return Optional.ofNullable(this.level);
     }
 
+    /**
+     * The name of the project that will be created in harbor.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The name of the project that will be created in harbor.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -75,11 +115,51 @@ public final class RobotAccountState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.robotId);
     }
 
+    /**
+     * The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+     * 
+     */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
+    /**
+     * @return The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+     * 
+     */
     public Optional<Output<String>> secret() {
         return Optional.ofNullable(this.secret);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative for &lt;span pulumi-lang-nodejs=&#34;`secret`&#34; pulumi-lang-dotnet=&#34;`Secret`&#34; pulumi-lang-go=&#34;`secret`&#34; pulumi-lang-python=&#34;`secret`&#34; pulumi-lang-yaml=&#34;`secret`&#34; pulumi-lang-java=&#34;`secret`&#34; pulumi-lang-hcl=&#34;`secret`&#34;&gt;`secret`&lt;/span&gt;. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`secretWoVersion`&#34; pulumi-lang-dotnet=&#34;`SecretWoVersion`&#34; pulumi-lang-go=&#34;`secretWoVersion`&#34; pulumi-lang-python=&#34;`secret_wo_version`&#34; pulumi-lang-yaml=&#34;`secretWoVersion`&#34; pulumi-lang-java=&#34;`secretWoVersion`&#34; pulumi-lang-hcl=&#34;`secret_wo_version`&#34;&gt;`secretWoVersion`&lt;/span&gt;.
+     * 
+     */
+    @Import(name="secretWo")
+    private @Nullable Output<String> secretWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative for &lt;span pulumi-lang-nodejs=&#34;`secret`&#34; pulumi-lang-dotnet=&#34;`Secret`&#34; pulumi-lang-go=&#34;`secret`&#34; pulumi-lang-python=&#34;`secret`&#34; pulumi-lang-yaml=&#34;`secret`&#34; pulumi-lang-java=&#34;`secret`&#34; pulumi-lang-hcl=&#34;`secret`&#34;&gt;`secret`&lt;/span&gt;. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`secretWoVersion`&#34; pulumi-lang-dotnet=&#34;`SecretWoVersion`&#34; pulumi-lang-go=&#34;`secretWoVersion`&#34; pulumi-lang-python=&#34;`secret_wo_version`&#34; pulumi-lang-yaml=&#34;`secretWoVersion`&#34; pulumi-lang-java=&#34;`secretWoVersion`&#34; pulumi-lang-hcl=&#34;`secret_wo_version`&#34;&gt;`secretWoVersion`&lt;/span&gt;.
+     * 
+     */
+    public Optional<Output<String>> secretWo() {
+        return Optional.ofNullable(this.secretWo);
+    }
+
+    /**
+     * Rotation trigger for write-only secret updates. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`secretWo`&#34; pulumi-lang-dotnet=&#34;`SecretWo`&#34; pulumi-lang-go=&#34;`secretWo`&#34; pulumi-lang-python=&#34;`secret_wo`&#34; pulumi-lang-yaml=&#34;`secretWo`&#34; pulumi-lang-java=&#34;`secretWo`&#34; pulumi-lang-hcl=&#34;`secret_wo`&#34;&gt;`secretWo`&lt;/span&gt;.
+     * 
+     */
+    @Import(name="secretWoVersion")
+    private @Nullable Output<Integer> secretWoVersion;
+
+    /**
+     * @return Rotation trigger for write-only secret updates. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`secretWo`&#34; pulumi-lang-dotnet=&#34;`SecretWo`&#34; pulumi-lang-go=&#34;`secretWo`&#34; pulumi-lang-python=&#34;`secret_wo`&#34; pulumi-lang-yaml=&#34;`secretWo`&#34; pulumi-lang-java=&#34;`secretWo`&#34; pulumi-lang-hcl=&#34;`secret_wo`&#34;&gt;`secretWo`&lt;/span&gt;.
+     * 
+     */
+    public Optional<Output<Integer>> secretWoVersion() {
+        return Optional.ofNullable(this.secretWoVersion);
     }
 
     private RobotAccountState() {}
@@ -94,6 +174,8 @@ public final class RobotAccountState extends com.pulumi.resources.ResourceArgs {
         this.permissions = $.permissions;
         this.robotId = $.robotId;
         this.secret = $.secret;
+        this.secretWo = $.secretWo;
+        this.secretWoVersion = $.secretWoVersion;
     }
 
     public static Builder builder() {
@@ -114,29 +196,65 @@ public final class RobotAccountState extends com.pulumi.resources.ResourceArgs {
             $ = new RobotAccountState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param description The description of the robot account will be displayed in harbor.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description The description of the robot account will be displayed in harbor.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param disable Disables the robot account when set to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disable(@Nullable Output<Boolean> disable) {
             $.disable = disable;
             return this;
         }
 
+        /**
+         * @param disable Disables the robot account when set to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disable(Boolean disable) {
             return disable(Output.of(disable));
         }
 
+        /**
+         * @param duration By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(@Nullable Output<Integer> duration) {
             $.duration = duration;
             return this;
         }
 
+        /**
+         * @param duration By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(Integer duration) {
             return duration(Output.of(duration));
         }
@@ -150,20 +268,44 @@ public final class RobotAccountState extends com.pulumi.resources.ResourceArgs {
             return fullName(Output.of(fullName));
         }
 
+        /**
+         * @param level Level of the robot account, currently either &lt;span pulumi-lang-nodejs=&#34;`system`&#34; pulumi-lang-dotnet=&#34;`System`&#34; pulumi-lang-go=&#34;`system`&#34; pulumi-lang-python=&#34;`system`&#34; pulumi-lang-yaml=&#34;`system`&#34; pulumi-lang-java=&#34;`system`&#34; pulumi-lang-hcl=&#34;`system`&#34;&gt;`system`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`project`&#34; pulumi-lang-dotnet=&#34;`Project`&#34; pulumi-lang-go=&#34;`project`&#34; pulumi-lang-python=&#34;`project`&#34; pulumi-lang-yaml=&#34;`project`&#34; pulumi-lang-java=&#34;`project`&#34; pulumi-lang-hcl=&#34;`project`&#34;&gt;`project`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder level(@Nullable Output<String> level) {
             $.level = level;
             return this;
         }
 
+        /**
+         * @param level Level of the robot account, currently either &lt;span pulumi-lang-nodejs=&#34;`system`&#34; pulumi-lang-dotnet=&#34;`System`&#34; pulumi-lang-go=&#34;`system`&#34; pulumi-lang-python=&#34;`system`&#34; pulumi-lang-yaml=&#34;`system`&#34; pulumi-lang-java=&#34;`system`&#34; pulumi-lang-hcl=&#34;`system`&#34;&gt;`system`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`project`&#34; pulumi-lang-dotnet=&#34;`Project`&#34; pulumi-lang-go=&#34;`project`&#34; pulumi-lang-python=&#34;`project`&#34; pulumi-lang-yaml=&#34;`project`&#34; pulumi-lang-java=&#34;`project`&#34; pulumi-lang-hcl=&#34;`project`&#34;&gt;`project`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder level(String level) {
             return level(Output.of(level));
         }
 
+        /**
+         * @param name The name of the project that will be created in harbor.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the project that will be created in harbor.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -190,13 +332,69 @@ public final class RobotAccountState extends com.pulumi.resources.ResourceArgs {
             return robotId(Output.of(robotId));
         }
 
+        /**
+         * @param secret The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(@Nullable Output<String> secret) {
             $.secret = secret;
             return this;
         }
 
+        /**
+         * @param secret The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(String secret) {
             return secret(Output.of(secret));
+        }
+
+        /**
+         * @param secretWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Write-only alternative for &lt;span pulumi-lang-nodejs=&#34;`secret`&#34; pulumi-lang-dotnet=&#34;`Secret`&#34; pulumi-lang-go=&#34;`secret`&#34; pulumi-lang-python=&#34;`secret`&#34; pulumi-lang-yaml=&#34;`secret`&#34; pulumi-lang-java=&#34;`secret`&#34; pulumi-lang-hcl=&#34;`secret`&#34;&gt;`secret`&lt;/span&gt;. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`secretWoVersion`&#34; pulumi-lang-dotnet=&#34;`SecretWoVersion`&#34; pulumi-lang-go=&#34;`secretWoVersion`&#34; pulumi-lang-python=&#34;`secret_wo_version`&#34; pulumi-lang-yaml=&#34;`secretWoVersion`&#34; pulumi-lang-java=&#34;`secretWoVersion`&#34; pulumi-lang-hcl=&#34;`secret_wo_version`&#34;&gt;`secretWoVersion`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretWo(@Nullable Output<String> secretWo) {
+            $.secretWo = secretWo;
+            return this;
+        }
+
+        /**
+         * @param secretWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Write-only alternative for &lt;span pulumi-lang-nodejs=&#34;`secret`&#34; pulumi-lang-dotnet=&#34;`Secret`&#34; pulumi-lang-go=&#34;`secret`&#34; pulumi-lang-python=&#34;`secret`&#34; pulumi-lang-yaml=&#34;`secret`&#34; pulumi-lang-java=&#34;`secret`&#34; pulumi-lang-hcl=&#34;`secret`&#34;&gt;`secret`&lt;/span&gt;. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`secretWoVersion`&#34; pulumi-lang-dotnet=&#34;`SecretWoVersion`&#34; pulumi-lang-go=&#34;`secretWoVersion`&#34; pulumi-lang-python=&#34;`secret_wo_version`&#34; pulumi-lang-yaml=&#34;`secretWoVersion`&#34; pulumi-lang-java=&#34;`secretWoVersion`&#34; pulumi-lang-hcl=&#34;`secret_wo_version`&#34;&gt;`secretWoVersion`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretWo(String secretWo) {
+            return secretWo(Output.of(secretWo));
+        }
+
+        /**
+         * @param secretWoVersion Rotation trigger for write-only secret updates. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`secretWo`&#34; pulumi-lang-dotnet=&#34;`SecretWo`&#34; pulumi-lang-go=&#34;`secretWo`&#34; pulumi-lang-python=&#34;`secret_wo`&#34; pulumi-lang-yaml=&#34;`secretWo`&#34; pulumi-lang-java=&#34;`secretWo`&#34; pulumi-lang-hcl=&#34;`secret_wo`&#34;&gt;`secretWo`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretWoVersion(@Nullable Output<Integer> secretWoVersion) {
+            $.secretWoVersion = secretWoVersion;
+            return this;
+        }
+
+        /**
+         * @param secretWoVersion Rotation trigger for write-only secret updates. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`secretWo`&#34; pulumi-lang-dotnet=&#34;`SecretWo`&#34; pulumi-lang-go=&#34;`secretWo`&#34; pulumi-lang-python=&#34;`secret_wo`&#34; pulumi-lang-yaml=&#34;`secretWo`&#34; pulumi-lang-java=&#34;`secretWo`&#34; pulumi-lang-hcl=&#34;`secret_wo`&#34;&gt;`secretWo`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretWoVersion(Integer secretWoVersion) {
+            return secretWoVersion(Output.of(secretWoVersion));
         }
 
         public RobotAccountState build() {

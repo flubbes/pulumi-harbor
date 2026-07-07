@@ -5,6 +5,7 @@ package com.pulumiverse.harbor;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -30,6 +31,13 @@ public final class RegistryArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.accessSecret);
     }
 
+    @Import(name="caCertificate")
+    private @Nullable Output<String> caCertificate;
+
+    public Optional<Output<String>> caCertificate() {
+        return Optional.ofNullable(this.caCertificate);
+    }
+
     @Import(name="description")
     private @Nullable Output<String> description;
 
@@ -37,9 +45,17 @@ public final class RegistryArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * The URL endpoint for the external container register i.e. `&#34;https://hub.docker.com&#34;`
+     * 
+     */
     @Import(name="endpointUrl", required=true)
     private Output<String> endpointUrl;
 
+    /**
+     * @return The URL endpoint for the external container register i.e. `&#34;https://hub.docker.com&#34;`
+     * 
+     */
     public Output<String> endpointUrl() {
         return this.endpointUrl;
     }
@@ -51,16 +67,32 @@ public final class RegistryArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.insecure);
     }
 
+    /**
+     * The name of the register.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The name of the register.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The name of the provider.
+     * 
+     */
     @Import(name="providerName", required=true)
     private Output<String> providerName;
 
+    /**
+     * @return The name of the provider.
+     * 
+     */
     public Output<String> providerName() {
         return this.providerName;
     }
@@ -70,6 +102,7 @@ public final class RegistryArgs extends com.pulumi.resources.ResourceArgs {
     private RegistryArgs(RegistryArgs $) {
         this.accessId = $.accessId;
         this.accessSecret = $.accessSecret;
+        this.caCertificate = $.caCertificate;
         this.description = $.description;
         this.endpointUrl = $.endpointUrl;
         this.insecure = $.insecure;
@@ -113,6 +146,15 @@ public final class RegistryArgs extends com.pulumi.resources.ResourceArgs {
             return accessSecret(Output.of(accessSecret));
         }
 
+        public Builder caCertificate(@Nullable Output<String> caCertificate) {
+            $.caCertificate = caCertificate;
+            return this;
+        }
+
+        public Builder caCertificate(String caCertificate) {
+            return caCertificate(Output.of(caCertificate));
+        }
+
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
@@ -122,11 +164,23 @@ public final class RegistryArgs extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        /**
+         * @param endpointUrl The URL endpoint for the external container register i.e. `&#34;https://hub.docker.com&#34;`
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointUrl(Output<String> endpointUrl) {
             $.endpointUrl = endpointUrl;
             return this;
         }
 
+        /**
+         * @param endpointUrl The URL endpoint for the external container register i.e. `&#34;https://hub.docker.com&#34;`
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointUrl(String endpointUrl) {
             return endpointUrl(Output.of(endpointUrl));
         }
@@ -140,27 +194,55 @@ public final class RegistryArgs extends com.pulumi.resources.ResourceArgs {
             return insecure(Output.of(insecure));
         }
 
+        /**
+         * @param name The name of the register.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the register.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param providerName The name of the provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder providerName(Output<String> providerName) {
             $.providerName = providerName;
             return this;
         }
 
+        /**
+         * @param providerName The name of the provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder providerName(String providerName) {
             return providerName(Output.of(providerName));
         }
 
         public RegistryArgs build() {
-            $.endpointUrl = Objects.requireNonNull($.endpointUrl, "expected parameter 'endpointUrl' to be non-null");
-            $.providerName = Objects.requireNonNull($.providerName, "expected parameter 'providerName' to be non-null");
+            if ($.endpointUrl == null) {
+                throw new MissingRequiredPropertyException("RegistryArgs", "endpointUrl");
+            }
+            if ($.providerName == null) {
+                throw new MissingRequiredPropertyException("RegistryArgs", "providerName");
+            }
             return $;
         }
     }

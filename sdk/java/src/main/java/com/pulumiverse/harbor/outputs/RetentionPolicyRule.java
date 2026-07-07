@@ -13,137 +13,49 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RetentionPolicyRule {
-    /**
-     * @return retain always.
-     * 
-     */
     private @Nullable Boolean alwaysRetain;
-    /**
-     * @return Specify if the rule is disable or not. Defaults to `false`
-     * 
-     */
     private @Nullable Boolean disabled;
-    /**
-     * @return retain the most recently pulled n artifacts.
-     * 
-     */
     private @Nullable Integer mostRecentlyPulled;
-    /**
-     * @return retain the most recently pushed n artifacts.
-     * 
-     */
     private @Nullable Integer mostRecentlyPushed;
-    /**
-     * @return retains the artifacts pulled within the lasts n days.
-     * 
-     */
     private @Nullable Integer nDaysSinceLastPull;
-    /**
-     * @return retains the artifacts pushed within the lasts n days.
-     * 
-     */
     private @Nullable Integer nDaysSinceLastPush;
-    /**
-     * @return For the repositories excuding.
-     * 
-     */
     private @Nullable String repoExcluding;
-    /**
-     * @return For the repositories matching.
-     * 
-     */
     private @Nullable String repoMatching;
-    /**
-     * @return For the tag excuding.
-     * 
-     */
     private @Nullable String tagExcluding;
-    /**
-     * @return For the tag matching.
-     * 
-     */
     private @Nullable String tagMatching;
-    /**
-     * @return with untagged artifacts. Defaults to `true`
-     * 
-     */
     private @Nullable Boolean untaggedArtifacts;
 
     private RetentionPolicyRule() {}
-    /**
-     * @return retain always.
-     * 
-     */
     public Optional<Boolean> alwaysRetain() {
         return Optional.ofNullable(this.alwaysRetain);
     }
-    /**
-     * @return Specify if the rule is disable or not. Defaults to `false`
-     * 
-     */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
-    /**
-     * @return retain the most recently pulled n artifacts.
-     * 
-     */
     public Optional<Integer> mostRecentlyPulled() {
         return Optional.ofNullable(this.mostRecentlyPulled);
     }
-    /**
-     * @return retain the most recently pushed n artifacts.
-     * 
-     */
     public Optional<Integer> mostRecentlyPushed() {
         return Optional.ofNullable(this.mostRecentlyPushed);
     }
-    /**
-     * @return retains the artifacts pulled within the lasts n days.
-     * 
-     */
     public Optional<Integer> nDaysSinceLastPull() {
         return Optional.ofNullable(this.nDaysSinceLastPull);
     }
-    /**
-     * @return retains the artifacts pushed within the lasts n days.
-     * 
-     */
     public Optional<Integer> nDaysSinceLastPush() {
         return Optional.ofNullable(this.nDaysSinceLastPush);
     }
-    /**
-     * @return For the repositories excuding.
-     * 
-     */
     public Optional<String> repoExcluding() {
         return Optional.ofNullable(this.repoExcluding);
     }
-    /**
-     * @return For the repositories matching.
-     * 
-     */
     public Optional<String> repoMatching() {
         return Optional.ofNullable(this.repoMatching);
     }
-    /**
-     * @return For the tag excuding.
-     * 
-     */
     public Optional<String> tagExcluding() {
         return Optional.ofNullable(this.tagExcluding);
     }
-    /**
-     * @return For the tag matching.
-     * 
-     */
     public Optional<String> tagMatching() {
         return Optional.ofNullable(this.tagMatching);
     }
-    /**
-     * @return with untagged artifacts. Defaults to `true`
-     * 
-     */
     public Optional<Boolean> untaggedArtifacts() {
         return Optional.ofNullable(this.untaggedArtifacts);
     }
@@ -186,73 +98,84 @@ public final class RetentionPolicyRule {
 
         @CustomType.Setter
         public Builder alwaysRetain(@Nullable Boolean alwaysRetain) {
+
             this.alwaysRetain = alwaysRetain;
             return this;
         }
         @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
+
             this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder mostRecentlyPulled(@Nullable Integer mostRecentlyPulled) {
+
             this.mostRecentlyPulled = mostRecentlyPulled;
             return this;
         }
         @CustomType.Setter
         public Builder mostRecentlyPushed(@Nullable Integer mostRecentlyPushed) {
+
             this.mostRecentlyPushed = mostRecentlyPushed;
             return this;
         }
         @CustomType.Setter
         public Builder nDaysSinceLastPull(@Nullable Integer nDaysSinceLastPull) {
+
             this.nDaysSinceLastPull = nDaysSinceLastPull;
             return this;
         }
         @CustomType.Setter
         public Builder nDaysSinceLastPush(@Nullable Integer nDaysSinceLastPush) {
+
             this.nDaysSinceLastPush = nDaysSinceLastPush;
             return this;
         }
         @CustomType.Setter
         public Builder repoExcluding(@Nullable String repoExcluding) {
+
             this.repoExcluding = repoExcluding;
             return this;
         }
         @CustomType.Setter
         public Builder repoMatching(@Nullable String repoMatching) {
+
             this.repoMatching = repoMatching;
             return this;
         }
         @CustomType.Setter
         public Builder tagExcluding(@Nullable String tagExcluding) {
+
             this.tagExcluding = tagExcluding;
             return this;
         }
         @CustomType.Setter
         public Builder tagMatching(@Nullable String tagMatching) {
+
             this.tagMatching = tagMatching;
             return this;
         }
         @CustomType.Setter
         public Builder untaggedArtifacts(@Nullable Boolean untaggedArtifacts) {
+
             this.untaggedArtifacts = untaggedArtifacts;
             return this;
         }
         public RetentionPolicyRule build() {
-            final var o = new RetentionPolicyRule();
-            o.alwaysRetain = alwaysRetain;
-            o.disabled = disabled;
-            o.mostRecentlyPulled = mostRecentlyPulled;
-            o.mostRecentlyPushed = mostRecentlyPushed;
-            o.nDaysSinceLastPull = nDaysSinceLastPull;
-            o.nDaysSinceLastPush = nDaysSinceLastPush;
-            o.repoExcluding = repoExcluding;
-            o.repoMatching = repoMatching;
-            o.tagExcluding = tagExcluding;
-            o.tagMatching = tagMatching;
-            o.untaggedArtifacts = untaggedArtifacts;
-            return o;
+            final var _resultValue = new RetentionPolicyRule();
+            _resultValue.alwaysRetain = alwaysRetain;
+            _resultValue.disabled = disabled;
+            _resultValue.mostRecentlyPulled = mostRecentlyPulled;
+            _resultValue.mostRecentlyPushed = mostRecentlyPushed;
+            _resultValue.nDaysSinceLastPull = nDaysSinceLastPull;
+            _resultValue.nDaysSinceLastPush = nDaysSinceLastPush;
+            _resultValue.repoExcluding = repoExcluding;
+            _resultValue.repoMatching = repoMatching;
+            _resultValue.tagExcluding = tagExcluding;
+            _resultValue.tagMatching = tagMatching;
+            _resultValue.untaggedArtifacts = untaggedArtifacts;
+            return _resultValue;
         }
     }
 }

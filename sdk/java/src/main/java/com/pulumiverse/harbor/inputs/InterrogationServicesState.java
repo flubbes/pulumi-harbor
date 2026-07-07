@@ -16,14 +16,14 @@ public final class InterrogationServicesState extends com.pulumi.resources.Resou
     public static final InterrogationServicesState Empty = new InterrogationServicesState();
 
     /**
-     * Sets the default interrogation service **Clair**
+     * Sets the default interrogation service `&#34;Clair&#34;`
      * 
      */
     @Import(name="defaultScanner")
     private @Nullable Output<String> defaultScanner;
 
     /**
-     * @return Sets the default interrogation service **Clair**
+     * @return Sets the default interrogation service `&#34;Clair&#34;`
      * 
      */
     public Optional<Output<String>> defaultScanner() {
@@ -31,14 +31,14 @@ public final class InterrogationServicesState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+     * The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
      * 
      */
     @Import(name="vulnerabilityScanPolicy")
     private @Nullable Output<String> vulnerabilityScanPolicy;
 
     /**
-     * @return The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+     * @return The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
      * 
      */
     public Optional<Output<String>> vulnerabilityScanPolicy() {
@@ -71,7 +71,7 @@ public final class InterrogationServicesState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param defaultScanner Sets the default interrogation service **Clair**
+         * @param defaultScanner Sets the default interrogation service `&#34;Clair&#34;`
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class InterrogationServicesState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param defaultScanner Sets the default interrogation service **Clair**
+         * @param defaultScanner Sets the default interrogation service `&#34;Clair&#34;`
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class InterrogationServicesState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param vulnerabilityScanPolicy The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+         * @param vulnerabilityScanPolicy The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class InterrogationServicesState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param vulnerabilityScanPolicy The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+         * @param vulnerabilityScanPolicy The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
          * 
          * @return builder
          * 

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumiverse.harbor.ProviderArgs;
 import com.pulumiverse.harbor.Utilities;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -22,17 +23,35 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="pulumi:providers:harbor")
 public class Provider extends com.pulumi.resources.ProviderResource {
+    @Export(name="bearerToken", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> bearerToken;
+
+    public Output<Optional<String>> bearerToken() {
+        return Codegen.optional(this.bearerToken);
+    }
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
-    @Export(name="url", refs={String.class}, tree="[0]")
-    private Output<String> url;
+    @Export(name="robotPrefix", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> robotPrefix;
 
-    public Output<String> url() {
-        return this.url;
+    public Output<Optional<String>> robotPrefix() {
+        return Codegen.optional(this.robotPrefix);
+    }
+    @Export(name="sessionId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sessionId;
+
+    public Output<Optional<String>> sessionId() {
+        return Codegen.optional(this.sessionId);
+    }
+    @Export(name="url", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> url;
+
+    public Output<Optional<String>> url() {
+        return Codegen.optional(this.url);
     }
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
@@ -45,7 +64,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Provider(String name) {
+    public Provider(java.lang.String name) {
         this(name, ProviderArgs.Empty);
     }
     /**
@@ -53,7 +72,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Provider(String name, ProviderArgs args) {
+    public Provider(java.lang.String name, @Nullable ProviderArgs args) {
         this(name, args, null);
     }
     /**
@@ -62,13 +81,24 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Provider(String name, ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor", name, args == null ? ProviderArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Provider(java.lang.String name, @Nullable ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ProviderArgs makeArgs(@Nullable ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProviderArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/pulumiverse/pulumi-harbor")
+            .additionalSecretOutputs(List.of(
+                "password"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -6,6 +6,7 @@ package com.pulumiverse.harbor.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,44 +17,124 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
 
     public static final UserState Empty = new UserState();
 
+    /**
+     * If the user will have admin rights within Harbor (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
     @Import(name="admin")
     private @Nullable Output<Boolean> admin;
 
+    /**
+     * @return If the user will have admin rights within Harbor (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
     public Optional<Output<Boolean>> admin() {
         return Optional.ofNullable(this.admin);
     }
 
+    /**
+     * Any comments for that are need for the internal user.
+     * 
+     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
+    /**
+     * @return Any comments for that are need for the internal user.
+     * 
+     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
 
+    /**
+     * The email address of the internal user.
+     * 
+     */
     @Import(name="email")
     private @Nullable Output<String> email;
 
+    /**
+     * @return The email address of the internal user.
+     * 
+     */
     public Optional<Output<String>> email() {
         return Optional.ofNullable(this.email);
     }
 
+    /**
+     * The Full Name of the internal user.
+     * 
+     */
     @Import(name="fullName")
     private @Nullable Output<String> fullName;
 
+    /**
+     * @return The Full Name of the internal user.
+     * 
+     */
     public Optional<Output<String>> fullName() {
         return Optional.ofNullable(this.fullName);
     }
 
+    /**
+     * The password for the internal user. Conflicts with &lt;span pulumi-lang-nodejs=&#34;`passwordWoVersion`&#34; pulumi-lang-dotnet=&#34;`PasswordWoVersion`&#34; pulumi-lang-go=&#34;`passwordWoVersion`&#34; pulumi-lang-python=&#34;`password_wo_version`&#34; pulumi-lang-yaml=&#34;`passwordWoVersion`&#34; pulumi-lang-java=&#34;`passwordWoVersion`&#34; pulumi-lang-hcl=&#34;`password_wo_version`&#34;&gt;`passwordWoVersion`&lt;/span&gt;.
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return The password for the internal user. Conflicts with &lt;span pulumi-lang-nodejs=&#34;`passwordWoVersion`&#34; pulumi-lang-dotnet=&#34;`PasswordWoVersion`&#34; pulumi-lang-go=&#34;`passwordWoVersion`&#34; pulumi-lang-python=&#34;`password_wo_version`&#34; pulumi-lang-yaml=&#34;`passwordWoVersion`&#34; pulumi-lang-java=&#34;`passwordWoVersion`&#34; pulumi-lang-hcl=&#34;`password_wo_version`&#34;&gt;`passwordWoVersion`&lt;/span&gt;.
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
 
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative for &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34; pulumi-lang-hcl=&#34;`password`&#34;&gt;`password`&lt;/span&gt;. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`passwordWoVersion`&#34; pulumi-lang-dotnet=&#34;`PasswordWoVersion`&#34; pulumi-lang-go=&#34;`passwordWoVersion`&#34; pulumi-lang-python=&#34;`password_wo_version`&#34; pulumi-lang-yaml=&#34;`passwordWoVersion`&#34; pulumi-lang-java=&#34;`passwordWoVersion`&#34; pulumi-lang-hcl=&#34;`password_wo_version`&#34;&gt;`passwordWoVersion`&lt;/span&gt;.
+     * 
+     */
+    @Import(name="passwordWo")
+    private @Nullable Output<String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative for &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34; pulumi-lang-hcl=&#34;`password`&#34;&gt;`password`&lt;/span&gt;. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`passwordWoVersion`&#34; pulumi-lang-dotnet=&#34;`PasswordWoVersion`&#34; pulumi-lang-go=&#34;`passwordWoVersion`&#34; pulumi-lang-python=&#34;`password_wo_version`&#34; pulumi-lang-yaml=&#34;`passwordWoVersion`&#34; pulumi-lang-java=&#34;`passwordWoVersion`&#34; pulumi-lang-hcl=&#34;`password_wo_version`&#34;&gt;`passwordWoVersion`&lt;/span&gt;.
+     * 
+     */
+    public Optional<Output<String>> passwordWo() {
+        return Optional.ofNullable(this.passwordWo);
+    }
+
+    /**
+     * Rotation trigger for write-only password updates. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`passwordWo`&#34; pulumi-lang-dotnet=&#34;`PasswordWo`&#34; pulumi-lang-go=&#34;`passwordWo`&#34; pulumi-lang-python=&#34;`password_wo`&#34; pulumi-lang-yaml=&#34;`passwordWo`&#34; pulumi-lang-java=&#34;`passwordWo`&#34; pulumi-lang-hcl=&#34;`password_wo`&#34;&gt;`passwordWo`&lt;/span&gt;.
+     * 
+     */
+    @Import(name="passwordWoVersion")
+    private @Nullable Output<Integer> passwordWoVersion;
+
+    /**
+     * @return Rotation trigger for write-only password updates. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`passwordWo`&#34; pulumi-lang-dotnet=&#34;`PasswordWo`&#34; pulumi-lang-go=&#34;`passwordWo`&#34; pulumi-lang-python=&#34;`password_wo`&#34; pulumi-lang-yaml=&#34;`passwordWo`&#34; pulumi-lang-java=&#34;`passwordWo`&#34; pulumi-lang-hcl=&#34;`password_wo`&#34;&gt;`passwordWo`&lt;/span&gt;.
+     * 
+     */
+    public Optional<Output<Integer>> passwordWoVersion() {
+        return Optional.ofNullable(this.passwordWoVersion);
+    }
+
+    /**
+     * The username of the internal user.
+     * 
+     */
     @Import(name="username")
     private @Nullable Output<String> username;
 
+    /**
+     * @return The username of the internal user.
+     * 
+     */
     public Optional<Output<String>> username() {
         return Optional.ofNullable(this.username);
     }
@@ -66,6 +147,8 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         this.email = $.email;
         this.fullName = $.fullName;
         this.password = $.password;
+        this.passwordWo = $.passwordWo;
+        this.passwordWoVersion = $.passwordWoVersion;
         this.username = $.username;
     }
 
@@ -87,56 +170,172 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
             $ = new UserState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param admin If the user will have admin rights within Harbor (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder admin(@Nullable Output<Boolean> admin) {
             $.admin = admin;
             return this;
         }
 
+        /**
+         * @param admin If the user will have admin rights within Harbor (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder admin(Boolean admin) {
             return admin(Output.of(admin));
         }
 
+        /**
+         * @param comment Any comments for that are need for the internal user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
+        /**
+         * @param comment Any comments for that are need for the internal user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
 
+        /**
+         * @param email The email address of the internal user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(@Nullable Output<String> email) {
             $.email = email;
             return this;
         }
 
+        /**
+         * @param email The email address of the internal user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(String email) {
             return email(Output.of(email));
         }
 
+        /**
+         * @param fullName The Full Name of the internal user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullName(@Nullable Output<String> fullName) {
             $.fullName = fullName;
             return this;
         }
 
+        /**
+         * @param fullName The Full Name of the internal user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullName(String fullName) {
             return fullName(Output.of(fullName));
         }
 
+        /**
+         * @param password The password for the internal user. Conflicts with &lt;span pulumi-lang-nodejs=&#34;`passwordWoVersion`&#34; pulumi-lang-dotnet=&#34;`PasswordWoVersion`&#34; pulumi-lang-go=&#34;`passwordWoVersion`&#34; pulumi-lang-python=&#34;`password_wo_version`&#34; pulumi-lang-yaml=&#34;`passwordWoVersion`&#34; pulumi-lang-java=&#34;`passwordWoVersion`&#34; pulumi-lang-hcl=&#34;`password_wo_version`&#34;&gt;`passwordWoVersion`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password The password for the internal user. Conflicts with &lt;span pulumi-lang-nodejs=&#34;`passwordWoVersion`&#34; pulumi-lang-dotnet=&#34;`PasswordWoVersion`&#34; pulumi-lang-go=&#34;`passwordWoVersion`&#34; pulumi-lang-python=&#34;`password_wo_version`&#34; pulumi-lang-yaml=&#34;`passwordWoVersion`&#34; pulumi-lang-java=&#34;`passwordWoVersion`&#34; pulumi-lang-hcl=&#34;`password_wo_version`&#34;&gt;`passwordWoVersion`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
 
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Write-only alternative for &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34; pulumi-lang-hcl=&#34;`password`&#34;&gt;`password`&lt;/span&gt;. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`passwordWoVersion`&#34; pulumi-lang-dotnet=&#34;`PasswordWoVersion`&#34; pulumi-lang-go=&#34;`passwordWoVersion`&#34; pulumi-lang-python=&#34;`password_wo_version`&#34; pulumi-lang-yaml=&#34;`passwordWoVersion`&#34; pulumi-lang-java=&#34;`passwordWoVersion`&#34; pulumi-lang-hcl=&#34;`password_wo_version`&#34;&gt;`passwordWoVersion`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(@Nullable Output<String> passwordWo) {
+            $.passwordWo = passwordWo;
+            return this;
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Write-only alternative for &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34; pulumi-lang-hcl=&#34;`password`&#34;&gt;`password`&lt;/span&gt;. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`passwordWoVersion`&#34; pulumi-lang-dotnet=&#34;`PasswordWoVersion`&#34; pulumi-lang-go=&#34;`passwordWoVersion`&#34; pulumi-lang-python=&#34;`password_wo_version`&#34; pulumi-lang-yaml=&#34;`passwordWoVersion`&#34; pulumi-lang-java=&#34;`passwordWoVersion`&#34; pulumi-lang-hcl=&#34;`password_wo_version`&#34;&gt;`passwordWoVersion`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(String passwordWo) {
+            return passwordWo(Output.of(passwordWo));
+        }
+
+        /**
+         * @param passwordWoVersion Rotation trigger for write-only password updates. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`passwordWo`&#34; pulumi-lang-dotnet=&#34;`PasswordWo`&#34; pulumi-lang-go=&#34;`passwordWo`&#34; pulumi-lang-python=&#34;`password_wo`&#34; pulumi-lang-yaml=&#34;`passwordWo`&#34; pulumi-lang-java=&#34;`passwordWo`&#34; pulumi-lang-hcl=&#34;`password_wo`&#34;&gt;`passwordWo`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(@Nullable Output<Integer> passwordWoVersion) {
+            $.passwordWoVersion = passwordWoVersion;
+            return this;
+        }
+
+        /**
+         * @param passwordWoVersion Rotation trigger for write-only password updates. Must be used together with &lt;span pulumi-lang-nodejs=&#34;`passwordWo`&#34; pulumi-lang-dotnet=&#34;`PasswordWo`&#34; pulumi-lang-go=&#34;`passwordWo`&#34; pulumi-lang-python=&#34;`password_wo`&#34; pulumi-lang-yaml=&#34;`passwordWo`&#34; pulumi-lang-java=&#34;`passwordWo`&#34; pulumi-lang-hcl=&#34;`password_wo`&#34;&gt;`passwordWo`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(Integer passwordWoVersion) {
+            return passwordWoVersion(Output.of(passwordWoVersion));
+        }
+
+        /**
+         * @param username The username of the internal user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(@Nullable Output<String> username) {
             $.username = username;
             return this;
         }
 
+        /**
+         * @param username The username of the internal user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(String username) {
             return username(Output.of(username));
         }

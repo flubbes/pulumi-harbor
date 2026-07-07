@@ -18,87 +18,31 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harbor.Project;
- * import com.pulumi.harbor.RetentionPolicy;
- * import com.pulumi.harbor.RetentionPolicyArgs;
- * import com.pulumi.harbor.inputs.RetentionPolicyRuleArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var mainProject = new Project(&#34;mainProject&#34;);
- * 
- *         var mainRetentionPolicy = new RetentionPolicy(&#34;mainRetentionPolicy&#34;, RetentionPolicyArgs.builder()        
- *             .scope(mainProject.id())
- *             .schedule(&#34;daily&#34;)
- *             .rules(            
- *                 RetentionPolicyRuleArgs.builder()
- *                     .nDaysSinceLastPull(5)
- *                     .repoMatching(&#34;**&#34;)
- *                     .tagMatching(&#34;latest&#34;)
- *                     .build(),
- *                 RetentionPolicyRuleArgs.builder()
- *                     .nDaysSinceLastPush(10)
- *                     .repoMatching(&#34;**&#34;)
- *                     .tagMatching(&#34;latest&#34;)
- *                     .build())
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 
- * Harbor retention policy can be imported using the `retention_policy id` eg, `
- * 
  * ```sh
- *  $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10
+ * $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10
  * ```
- * 
- *  `
  * 
  */
 @ResourceType(type="harbor:index/retentionPolicy:RetentionPolicy")
 public class RetentionPolicy extends com.pulumi.resources.CustomResource {
-    /**
-     * Al collection of rule blocks as documented below.
-     * 
-     */
     @Export(name="rules", refs={List.class,RetentionPolicyRule.class}, tree="[0,1]")
     private Output<List<RetentionPolicyRule>> rules;
 
-    /**
-     * @return Al collection of rule blocks as documented below.
-     * 
-     */
     public Output<List<RetentionPolicyRule>> rules() {
         return this.rules;
     }
     /**
-     * The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+     * The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
      * 
      */
     @Export(name="schedule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schedule;
 
     /**
-     * @return The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+     * @return The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
      * 
      */
     public Output<Optional<String>> schedule() {
@@ -123,7 +67,7 @@ public class RetentionPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RetentionPolicy(String name) {
+    public RetentionPolicy(java.lang.String name) {
         this(name, RetentionPolicyArgs.Empty);
     }
     /**
@@ -131,7 +75,7 @@ public class RetentionPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RetentionPolicy(String name, RetentionPolicyArgs args) {
+    public RetentionPolicy(java.lang.String name, RetentionPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -140,17 +84,25 @@ public class RetentionPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RetentionPolicy(String name, RetentionPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/retentionPolicy:RetentionPolicy", name, args == null ? RetentionPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RetentionPolicy(java.lang.String name, RetentionPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/retentionPolicy:RetentionPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RetentionPolicy(String name, Output<String> id, @Nullable RetentionPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/retentionPolicy:RetentionPolicy", name, state, makeResourceOptions(options, id));
+    private RetentionPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable RetentionPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/retentionPolicy:RetentionPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RetentionPolicyArgs makeArgs(RetentionPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RetentionPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/pulumiverse/pulumi-harbor")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }
@@ -164,7 +116,7 @@ public class RetentionPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RetentionPolicy get(String name, Output<String> id, @Nullable RetentionPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RetentionPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable RetentionPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RetentionPolicy(name, id, state, options);
     }
 }

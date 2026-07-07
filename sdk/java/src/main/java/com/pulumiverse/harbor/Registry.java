@@ -19,45 +19,12 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harbor.Registry;
- * import com.pulumi.harbor.RegistryArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var main = new Registry(&#34;main&#34;, RegistryArgs.builder()        
- *             .endpointUrl(&#34;https://hub.docker.com&#34;)
- *             .providerName(&#34;docker-hub&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 
- * Harbor project can be imported using the `registry id` eg, `
- * 
  * ```sh
- *  $ pulumi import harbor:index/registry:Registry main /registries/7
+ * $ pulumi import harbor:index/registry:Registry main /registries/7
  * ```
- * 
- *  `
  * 
  */
 @ResourceType(type="harbor:index/registry:Registry")
@@ -74,15 +41,29 @@ public class Registry extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> accessSecret() {
         return Codegen.optional(this.accessSecret);
     }
+    @Export(name="caCertificate", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> caCertificate;
+
+    public Output<Optional<String>> caCertificate() {
+        return Codegen.optional(this.caCertificate);
+    }
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * The URL endpoint for the external container register i.e. `&#34;https://hub.docker.com&#34;`
+     * 
+     */
     @Export(name="endpointUrl", refs={String.class}, tree="[0]")
     private Output<String> endpointUrl;
 
+    /**
+     * @return The URL endpoint for the external container register i.e. `&#34;https://hub.docker.com&#34;`
+     * 
+     */
     public Output<String> endpointUrl() {
         return this.endpointUrl;
     }
@@ -92,15 +73,31 @@ public class Registry extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> insecure() {
         return Codegen.optional(this.insecure);
     }
+    /**
+     * The name of the register.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return The name of the register.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The name of the provider.
+     * 
+     */
     @Export(name="providerName", refs={String.class}, tree="[0]")
     private Output<String> providerName;
 
+    /**
+     * @return The name of the provider.
+     * 
+     */
     public Output<String> providerName() {
         return this.providerName;
     }
@@ -121,7 +118,7 @@ public class Registry extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Registry(String name) {
+    public Registry(java.lang.String name) {
         this(name, RegistryArgs.Empty);
     }
     /**
@@ -129,7 +126,7 @@ public class Registry extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Registry(String name, RegistryArgs args) {
+    public Registry(java.lang.String name, RegistryArgs args) {
         this(name, args, null);
     }
     /**
@@ -138,17 +135,25 @@ public class Registry extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Registry(String name, RegistryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/registry:Registry", name, args == null ? RegistryArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Registry(java.lang.String name, RegistryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/registry:Registry", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Registry(String name, Output<String> id, @Nullable RegistryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/registry:Registry", name, state, makeResourceOptions(options, id));
+    private Registry(java.lang.String name, Output<java.lang.String> id, @Nullable RegistryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/registry:Registry", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RegistryArgs makeArgs(RegistryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegistryArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/pulumiverse/pulumi-harbor")
             .additionalSecretOutputs(List.of(
                 "accessSecret"
             ))
@@ -165,7 +170,7 @@ public class Registry extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Registry get(String name, Output<String> id, @Nullable RegistryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Registry get(java.lang.String name, Output<java.lang.String> id, @Nullable RegistryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Registry(name, id, state, options);
     }
 }

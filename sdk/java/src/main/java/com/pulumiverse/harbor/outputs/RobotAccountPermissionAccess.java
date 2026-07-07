@@ -4,6 +4,7 @@
 package com.pulumiverse.harbor.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RobotAccountPermissionAccess {
+    /**
+     * @return Eg. &lt;span pulumi-lang-nodejs=&#34;`push`&#34; pulumi-lang-dotnet=&#34;`Push`&#34; pulumi-lang-go=&#34;`push`&#34; pulumi-lang-python=&#34;`push`&#34; pulumi-lang-yaml=&#34;`push`&#34; pulumi-lang-java=&#34;`push`&#34; pulumi-lang-hcl=&#34;`push`&#34;&gt;`push`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`pull`&#34; pulumi-lang-dotnet=&#34;`Pull`&#34; pulumi-lang-go=&#34;`pull`&#34; pulumi-lang-python=&#34;`pull`&#34; pulumi-lang-yaml=&#34;`pull`&#34; pulumi-lang-java=&#34;`pull`&#34; pulumi-lang-hcl=&#34;`pull`&#34;&gt;`pull`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`read`&#34; pulumi-lang-dotnet=&#34;`Read`&#34; pulumi-lang-go=&#34;`read`&#34; pulumi-lang-python=&#34;`read`&#34; pulumi-lang-yaml=&#34;`read`&#34; pulumi-lang-java=&#34;`read`&#34; pulumi-lang-hcl=&#34;`read`&#34;&gt;`read`&lt;/span&gt;, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+     * 
+     */
     private String action;
+    /**
+     * @return Either &lt;span pulumi-lang-nodejs=&#34;`allow`&#34; pulumi-lang-dotnet=&#34;`Allow`&#34; pulumi-lang-go=&#34;`allow`&#34; pulumi-lang-python=&#34;`allow`&#34; pulumi-lang-yaml=&#34;`allow`&#34; pulumi-lang-java=&#34;`allow`&#34; pulumi-lang-hcl=&#34;`allow`&#34;&gt;`allow`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`deny`&#34; pulumi-lang-dotnet=&#34;`Deny`&#34; pulumi-lang-go=&#34;`deny`&#34; pulumi-lang-python=&#34;`deny`&#34; pulumi-lang-yaml=&#34;`deny`&#34; pulumi-lang-java=&#34;`deny`&#34; pulumi-lang-hcl=&#34;`deny`&#34;&gt;`deny`&lt;/span&gt;. Defaults to &lt;span pulumi-lang-nodejs=&#34;`allow`&#34; pulumi-lang-dotnet=&#34;`Allow`&#34; pulumi-lang-go=&#34;`allow`&#34; pulumi-lang-python=&#34;`allow`&#34; pulumi-lang-yaml=&#34;`allow`&#34; pulumi-lang-java=&#34;`allow`&#34; pulumi-lang-hcl=&#34;`allow`&#34;&gt;`allow`&lt;/span&gt;.
+     * 
+     */
     private @Nullable String effect;
+    /**
+     * @return Eg. &lt;span pulumi-lang-nodejs=&#34;`repository`&#34; pulumi-lang-dotnet=&#34;`Repository`&#34; pulumi-lang-go=&#34;`repository`&#34; pulumi-lang-python=&#34;`repository`&#34; pulumi-lang-yaml=&#34;`repository`&#34; pulumi-lang-java=&#34;`repository`&#34; pulumi-lang-hcl=&#34;`repository`&#34;&gt;`repository`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`labels`&#34; pulumi-lang-dotnet=&#34;`Labels`&#34; pulumi-lang-go=&#34;`labels`&#34; pulumi-lang-python=&#34;`labels`&#34; pulumi-lang-yaml=&#34;`labels`&#34; pulumi-lang-java=&#34;`labels`&#34; pulumi-lang-hcl=&#34;`labels`&#34;&gt;`labels`&lt;/span&gt;, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+     * 
+     */
     private String resource;
 
     private RobotAccountPermissionAccess() {}
+    /**
+     * @return Eg. &lt;span pulumi-lang-nodejs=&#34;`push`&#34; pulumi-lang-dotnet=&#34;`Push`&#34; pulumi-lang-go=&#34;`push`&#34; pulumi-lang-python=&#34;`push`&#34; pulumi-lang-yaml=&#34;`push`&#34; pulumi-lang-java=&#34;`push`&#34; pulumi-lang-hcl=&#34;`push`&#34;&gt;`push`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`pull`&#34; pulumi-lang-dotnet=&#34;`Pull`&#34; pulumi-lang-go=&#34;`pull`&#34; pulumi-lang-python=&#34;`pull`&#34; pulumi-lang-yaml=&#34;`pull`&#34; pulumi-lang-java=&#34;`pull`&#34; pulumi-lang-hcl=&#34;`pull`&#34;&gt;`pull`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`read`&#34; pulumi-lang-dotnet=&#34;`Read`&#34; pulumi-lang-go=&#34;`read`&#34; pulumi-lang-python=&#34;`read`&#34; pulumi-lang-yaml=&#34;`read`&#34; pulumi-lang-java=&#34;`read`&#34; pulumi-lang-hcl=&#34;`read`&#34;&gt;`read`&lt;/span&gt;, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+     * 
+     */
     public String action() {
         return this.action;
     }
+    /**
+     * @return Either &lt;span pulumi-lang-nodejs=&#34;`allow`&#34; pulumi-lang-dotnet=&#34;`Allow`&#34; pulumi-lang-go=&#34;`allow`&#34; pulumi-lang-python=&#34;`allow`&#34; pulumi-lang-yaml=&#34;`allow`&#34; pulumi-lang-java=&#34;`allow`&#34; pulumi-lang-hcl=&#34;`allow`&#34;&gt;`allow`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`deny`&#34; pulumi-lang-dotnet=&#34;`Deny`&#34; pulumi-lang-go=&#34;`deny`&#34; pulumi-lang-python=&#34;`deny`&#34; pulumi-lang-yaml=&#34;`deny`&#34; pulumi-lang-java=&#34;`deny`&#34; pulumi-lang-hcl=&#34;`deny`&#34;&gt;`deny`&lt;/span&gt;. Defaults to &lt;span pulumi-lang-nodejs=&#34;`allow`&#34; pulumi-lang-dotnet=&#34;`Allow`&#34; pulumi-lang-go=&#34;`allow`&#34; pulumi-lang-python=&#34;`allow`&#34; pulumi-lang-yaml=&#34;`allow`&#34; pulumi-lang-java=&#34;`allow`&#34; pulumi-lang-hcl=&#34;`allow`&#34;&gt;`allow`&lt;/span&gt;.
+     * 
+     */
     public Optional<String> effect() {
         return Optional.ofNullable(this.effect);
     }
+    /**
+     * @return Eg. &lt;span pulumi-lang-nodejs=&#34;`repository`&#34; pulumi-lang-dotnet=&#34;`Repository`&#34; pulumi-lang-go=&#34;`repository`&#34; pulumi-lang-python=&#34;`repository`&#34; pulumi-lang-yaml=&#34;`repository`&#34; pulumi-lang-java=&#34;`repository`&#34; pulumi-lang-hcl=&#34;`repository`&#34;&gt;`repository`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`labels`&#34; pulumi-lang-dotnet=&#34;`Labels`&#34; pulumi-lang-go=&#34;`labels`&#34; pulumi-lang-python=&#34;`labels`&#34; pulumi-lang-yaml=&#34;`labels`&#34; pulumi-lang-java=&#34;`labels`&#34; pulumi-lang-hcl=&#34;`labels`&#34;&gt;`labels`&lt;/span&gt;, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+     * 
+     */
     public String resource() {
         return this.resource;
     }
@@ -48,25 +73,32 @@ public final class RobotAccountPermissionAccess {
 
         @CustomType.Setter
         public Builder action(String action) {
-            this.action = Objects.requireNonNull(action);
+            if (action == null) {
+              throw new MissingRequiredPropertyException("RobotAccountPermissionAccess", "action");
+            }
+            this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder effect(@Nullable String effect) {
+
             this.effect = effect;
             return this;
         }
         @CustomType.Setter
         public Builder resource(String resource) {
-            this.resource = Objects.requireNonNull(resource);
+            if (resource == null) {
+              throw new MissingRequiredPropertyException("RobotAccountPermissionAccess", "resource");
+            }
+            this.resource = resource;
             return this;
         }
         public RobotAccountPermissionAccess build() {
-            final var o = new RobotAccountPermissionAccess();
-            o.action = action;
-            o.effect = effect;
-            o.resource = resource;
-            return o;
+            final var _resultValue = new RobotAccountPermissionAccess();
+            _resultValue.action = action;
+            _resultValue.effect = effect;
+            _resultValue.resource = resource;
+            return _resultValue;
         }
     }
 }

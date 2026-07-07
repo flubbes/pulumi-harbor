@@ -5,6 +5,7 @@ package com.pulumiverse.harbor;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -17,36 +18,44 @@ public final class ImmutableTagRuleArgs extends com.pulumi.resources.ResourceArg
     public static final ImmutableTagRuleArgs Empty = new ImmutableTagRuleArgs();
 
     /**
-     * Specify if the rule is disable or not. Defaults to `false`
+     * Specify if the rule is disable or not. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Specify if the rule is disable or not. Defaults to `false`
+     * @return Specify if the rule is disable or not. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;
      * 
      */
     public Optional<Output<Boolean>> disabled() {
         return Optional.ofNullable(this.disabled);
     }
 
+    /**
+     * The project id of which you would like to apply this policy.
+     * 
+     */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
+    /**
+     * @return The project id of which you would like to apply this policy.
+     * 
+     */
     public Output<String> projectId() {
         return this.projectId;
     }
 
     /**
-     * For the repositories excuding.
+     * For the repositories excluding.
      * 
      */
     @Import(name="repoExcluding")
     private @Nullable Output<String> repoExcluding;
 
     /**
-     * @return For the repositories excuding.
+     * @return For the repositories excluding.
      * 
      */
     public Optional<Output<String>> repoExcluding() {
@@ -69,14 +78,14 @@ public final class ImmutableTagRuleArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * For the tag excuding.
+     * For the tag excluding.
      * 
      */
     @Import(name="tagExcluding")
     private @Nullable Output<String> tagExcluding;
 
     /**
-     * @return For the tag excuding.
+     * @return For the tag excluding.
      * 
      */
     public Optional<Output<String>> tagExcluding() {
@@ -128,7 +137,7 @@ public final class ImmutableTagRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param disabled Specify if the rule is disable or not. Defaults to `false`
+         * @param disabled Specify if the rule is disable or not. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;
          * 
          * @return builder
          * 
@@ -139,7 +148,7 @@ public final class ImmutableTagRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param disabled Specify if the rule is disable or not. Defaults to `false`
+         * @param disabled Specify if the rule is disable or not. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;
          * 
          * @return builder
          * 
@@ -148,17 +157,29 @@ public final class ImmutableTagRuleArgs extends com.pulumi.resources.ResourceArg
             return disabled(Output.of(disabled));
         }
 
+        /**
+         * @param projectId The project id of which you would like to apply this policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
 
+        /**
+         * @param projectId The project id of which you would like to apply this policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
         }
 
         /**
-         * @param repoExcluding For the repositories excuding.
+         * @param repoExcluding For the repositories excluding.
          * 
          * @return builder
          * 
@@ -169,7 +190,7 @@ public final class ImmutableTagRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param repoExcluding For the repositories excuding.
+         * @param repoExcluding For the repositories excluding.
          * 
          * @return builder
          * 
@@ -200,7 +221,7 @@ public final class ImmutableTagRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tagExcluding For the tag excuding.
+         * @param tagExcluding For the tag excluding.
          * 
          * @return builder
          * 
@@ -211,7 +232,7 @@ public final class ImmutableTagRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tagExcluding For the tag excuding.
+         * @param tagExcluding For the tag excluding.
          * 
          * @return builder
          * 
@@ -242,7 +263,9 @@ public final class ImmutableTagRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ImmutableTagRuleArgs build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("ImmutableTagRuleArgs", "projectId");
+            }
             return $;
         }
     }

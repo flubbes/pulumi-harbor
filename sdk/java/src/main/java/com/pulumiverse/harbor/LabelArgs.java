@@ -15,30 +15,62 @@ public final class LabelArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final LabelArgs Empty = new LabelArgs();
 
+    /**
+     * The color of the label within harbor (Default: #FFFFF)
+     * 
+     */
     @Import(name="color")
     private @Nullable Output<String> color;
 
+    /**
+     * @return The color of the label within harbor (Default: #FFFFF)
+     * 
+     */
     public Optional<Output<String>> color() {
         return Optional.ofNullable(this.color);
     }
 
+    /**
+     * The Description of the label within harbor
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return The Description of the label within harbor
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * The of name of the label within harbor.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The of name of the label within harbor.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The id of the project with harbor.
+     * 
+     */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
+    /**
+     * @return The id of the project with harbor.
+     * 
+     */
     public Optional<Output<String>> projectId() {
         return Optional.ofNullable(this.projectId);
     }
@@ -70,38 +102,86 @@ public final class LabelArgs extends com.pulumi.resources.ResourceArgs {
             $ = new LabelArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param color The color of the label within harbor (Default: #FFFFF)
+         * 
+         * @return builder
+         * 
+         */
         public Builder color(@Nullable Output<String> color) {
             $.color = color;
             return this;
         }
 
+        /**
+         * @param color The color of the label within harbor (Default: #FFFFF)
+         * 
+         * @return builder
+         * 
+         */
         public Builder color(String color) {
             return color(Output.of(color));
         }
 
+        /**
+         * @param description The Description of the label within harbor
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description The Description of the label within harbor
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param name The of name of the label within harbor.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The of name of the label within harbor.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param projectId The id of the project with harbor.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(@Nullable Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
 
+        /**
+         * @param projectId The id of the project with harbor.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
         }

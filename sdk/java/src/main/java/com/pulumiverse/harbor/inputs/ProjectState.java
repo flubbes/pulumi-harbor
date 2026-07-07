@@ -19,6 +19,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     public static final ProjectState Empty = new ProjectState();
 
     /**
+     * Automatically generate SBOM for images pushed to this project. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;) can only be used with Harbor version v2.11.0 and above
+     * 
+     */
+    @Import(name="autoSbomGeneration")
+    private @Nullable Output<Boolean> autoSbomGeneration;
+
+    /**
+     * @return Automatically generate SBOM for images pushed to this project. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;) can only be used with Harbor version v2.11.0 and above
+     * 
+     */
+    public Optional<Output<Boolean>> autoSbomGeneration() {
+        return Optional.ofNullable(this.autoSbomGeneration);
+    }
+
+    /**
      * Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `[&#34;CVE-123&#34;, &#34;CVE-145&#34;]` or `[&#34;CVE-123&#34;]`
      * 
      */
@@ -34,14 +49,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `&#34;&#34;` - empty)
+     * Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `&#34;critical&#34;`, `&#34;high&#34;`, `&#34;medium&#34;`, `&#34;low&#34;`, `&#34;none&#34;`. (Default: null)
      * 
      */
     @Import(name="deploymentSecurity")
     private @Nullable Output<String> deploymentSecurity;
 
     /**
-     * @return Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `&#34;&#34;` - empty)
+     * @return Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `&#34;critical&#34;`, `&#34;high&#34;`, `&#34;medium&#34;`, `&#34;low&#34;`, `&#34;none&#34;`. (Default: null)
      * 
      */
     public Optional<Output<String>> deploymentSecurity() {
@@ -49,18 +64,33 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `&#34;true&#34;` or `&#34;false&#34;` (Default: false)
+     * Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="enableContentTrust")
     private @Nullable Output<Boolean> enableContentTrust;
 
     /**
-     * @return Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `&#34;true&#34;` or `&#34;false&#34;` (Default: false)
+     * @return Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> enableContentTrust() {
         return Optional.ofNullable(this.enableContentTrust);
+    }
+
+    /**
+     * Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    @Import(name="enableContentTrustCosign")
+    private @Nullable Output<Boolean> enableContentTrustCosign;
+
+    /**
+     * @return Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    public Optional<Output<Boolean>> enableContentTrustCosign() {
+        return Optional.ofNullable(this.enableContentTrustCosign);
     }
 
     /**
@@ -93,60 +123,58 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The id of the project with harbor.
-     * 
-     */
     @Import(name="projectId")
     private @Nullable Output<Integer> projectId;
 
-    /**
-     * @return The id of the project with harbor.
-     * 
-     */
     public Optional<Output<Integer>> projectId() {
         return Optional.ofNullable(this.projectId);
     }
 
-    /**
-     * The project will be public accessibility. Can be set to `&#34;true&#34;` or `&#34;false&#34;` (Default: false)
-     * 
-     */
-    @Import(name="public")
-    private @Nullable Output<String> public_;
+    @Import(name="proxyCacheLocalOnNotFound")
+    private @Nullable Output<Boolean> proxyCacheLocalOnNotFound;
 
-    /**
-     * @return The project will be public accessibility. Can be set to `&#34;true&#34;` or `&#34;false&#34;` (Default: false)
-     * 
-     */
-    public Optional<Output<String>> public_() {
-        return Optional.ofNullable(this.public_);
+    public Optional<Output<Boolean>> proxyCacheLocalOnNotFound() {
+        return Optional.ofNullable(this.proxyCacheLocalOnNotFound);
+    }
+
+    @Import(name="proxySpeedKb")
+    private @Nullable Output<Integer> proxySpeedKb;
+
+    public Optional<Output<Integer>> proxySpeedKb() {
+        return Optional.ofNullable(this.proxySpeedKb);
     }
 
     /**
-     * To enabled project as Proxy Cache
+     * The project will be public accessibility.(Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
+    @Import(name="public")
+    private @Nullable Output<Boolean> public_;
+
+    /**
+     * @return The project will be public accessibility.(Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    public Optional<Output<Boolean>> public_() {
+        return Optional.ofNullable(this.public_);
+    }
+
     @Import(name="registryId")
     private @Nullable Output<Integer> registryId;
 
-    /**
-     * @return To enabled project as Proxy Cache
-     * 
-     */
     public Optional<Output<Integer>> registryId() {
         return Optional.ofNullable(this.registryId);
     }
 
     /**
-     * The storage quota of the project in GB&#39;s
+     * The storage quota of the project in GB&#39;s.
      * 
      */
     @Import(name="storageQuota")
     private @Nullable Output<Integer> storageQuota;
 
     /**
-     * @return The storage quota of the project in GB&#39;s
+     * @return The storage quota of the project in GB&#39;s.
      * 
      */
     public Optional<Output<Integer>> storageQuota() {
@@ -154,14 +182,29 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Images will be scanned for vulnerabilities when push to harbor. Can be set to `&#34;true&#34;` or `&#34;false&#34;` (Default: true)
+     * The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via &lt;span pulumi-lang-nodejs=&#34;`harbor.InterrogationServices`&#34; pulumi-lang-dotnet=&#34;`harbor.InterrogationServices`&#34; pulumi-lang-go=&#34;`InterrogationServices`&#34; pulumi-lang-python=&#34;`InterrogationServices`&#34; pulumi-lang-yaml=&#34;`harbor.InterrogationServices`&#34; pulumi-lang-java=&#34;`harbor.InterrogationServices`&#34; pulumi-lang-hcl=&#34;`harbor_interrogation_services`&#34;&gt;`harbor.InterrogationServices`&lt;/span&gt;.
+     * 
+     */
+    @Import(name="vulnerabilityScanner")
+    private @Nullable Output<String> vulnerabilityScanner;
+
+    /**
+     * @return The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via &lt;span pulumi-lang-nodejs=&#34;`harbor.InterrogationServices`&#34; pulumi-lang-dotnet=&#34;`harbor.InterrogationServices`&#34; pulumi-lang-go=&#34;`InterrogationServices`&#34; pulumi-lang-python=&#34;`InterrogationServices`&#34; pulumi-lang-yaml=&#34;`harbor.InterrogationServices`&#34; pulumi-lang-java=&#34;`harbor.InterrogationServices`&#34; pulumi-lang-hcl=&#34;`harbor_interrogation_services`&#34;&gt;`harbor.InterrogationServices`&lt;/span&gt;.
+     * 
+     */
+    public Optional<Output<String>> vulnerabilityScanner() {
+        return Optional.ofNullable(this.vulnerabilityScanner);
+    }
+
+    /**
+     * Images will be scanned for vulnerabilities when push to harbor. (Default: &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
      * 
      */
     @Import(name="vulnerabilityScanning")
     private @Nullable Output<Boolean> vulnerabilityScanning;
 
     /**
-     * @return Images will be scanned for vulnerabilities when push to harbor. Can be set to `&#34;true&#34;` or `&#34;false&#34;` (Default: true)
+     * @return Images will be scanned for vulnerabilities when push to harbor. (Default: &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
      * 
      */
     public Optional<Output<Boolean>> vulnerabilityScanning() {
@@ -171,15 +214,20 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     private ProjectState() {}
 
     private ProjectState(ProjectState $) {
+        this.autoSbomGeneration = $.autoSbomGeneration;
         this.cveAllowlists = $.cveAllowlists;
         this.deploymentSecurity = $.deploymentSecurity;
         this.enableContentTrust = $.enableContentTrust;
+        this.enableContentTrustCosign = $.enableContentTrustCosign;
         this.forceDestroy = $.forceDestroy;
         this.name = $.name;
         this.projectId = $.projectId;
+        this.proxyCacheLocalOnNotFound = $.proxyCacheLocalOnNotFound;
+        this.proxySpeedKb = $.proxySpeedKb;
         this.public_ = $.public_;
         this.registryId = $.registryId;
         this.storageQuota = $.storageQuota;
+        this.vulnerabilityScanner = $.vulnerabilityScanner;
         this.vulnerabilityScanning = $.vulnerabilityScanning;
     }
 
@@ -199,6 +247,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ProjectState defaults) {
             $ = new ProjectState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoSbomGeneration Automatically generate SBOM for images pushed to this project. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;) can only be used with Harbor version v2.11.0 and above
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoSbomGeneration(@Nullable Output<Boolean> autoSbomGeneration) {
+            $.autoSbomGeneration = autoSbomGeneration;
+            return this;
+        }
+
+        /**
+         * @param autoSbomGeneration Automatically generate SBOM for images pushed to this project. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;) can only be used with Harbor version v2.11.0 and above
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoSbomGeneration(Boolean autoSbomGeneration) {
+            return autoSbomGeneration(Output.of(autoSbomGeneration));
         }
 
         /**
@@ -233,7 +302,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deploymentSecurity Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `&#34;&#34;` - empty)
+         * @param deploymentSecurity Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `&#34;critical&#34;`, `&#34;high&#34;`, `&#34;medium&#34;`, `&#34;low&#34;`, `&#34;none&#34;`. (Default: null)
          * 
          * @return builder
          * 
@@ -244,7 +313,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deploymentSecurity Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `&#34;&#34;` - empty)
+         * @param deploymentSecurity Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `&#34;critical&#34;`, `&#34;high&#34;`, `&#34;medium&#34;`, `&#34;low&#34;`, `&#34;none&#34;`. (Default: null)
          * 
          * @return builder
          * 
@@ -254,7 +323,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableContentTrust Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `&#34;true&#34;` or `&#34;false&#34;` (Default: false)
+         * @param enableContentTrust Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -265,13 +334,34 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableContentTrust Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `&#34;true&#34;` or `&#34;false&#34;` (Default: false)
+         * @param enableContentTrust Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
          */
         public Builder enableContentTrust(Boolean enableContentTrust) {
             return enableContentTrust(Output.of(enableContentTrust));
+        }
+
+        /**
+         * @param enableContentTrustCosign Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableContentTrustCosign(@Nullable Output<Boolean> enableContentTrustCosign) {
+            $.enableContentTrustCosign = enableContentTrustCosign;
+            return this;
+        }
+
+        /**
+         * @param enableContentTrustCosign Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableContentTrustCosign(Boolean enableContentTrustCosign) {
+            return enableContentTrustCosign(Output.of(enableContentTrustCosign));
         }
 
         /**
@@ -316,71 +406,65 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
-        /**
-         * @param projectId The id of the project with harbor.
-         * 
-         * @return builder
-         * 
-         */
         public Builder projectId(@Nullable Output<Integer> projectId) {
             $.projectId = projectId;
             return this;
         }
 
-        /**
-         * @param projectId The id of the project with harbor.
-         * 
-         * @return builder
-         * 
-         */
         public Builder projectId(Integer projectId) {
             return projectId(Output.of(projectId));
         }
 
+        public Builder proxyCacheLocalOnNotFound(@Nullable Output<Boolean> proxyCacheLocalOnNotFound) {
+            $.proxyCacheLocalOnNotFound = proxyCacheLocalOnNotFound;
+            return this;
+        }
+
+        public Builder proxyCacheLocalOnNotFound(Boolean proxyCacheLocalOnNotFound) {
+            return proxyCacheLocalOnNotFound(Output.of(proxyCacheLocalOnNotFound));
+        }
+
+        public Builder proxySpeedKb(@Nullable Output<Integer> proxySpeedKb) {
+            $.proxySpeedKb = proxySpeedKb;
+            return this;
+        }
+
+        public Builder proxySpeedKb(Integer proxySpeedKb) {
+            return proxySpeedKb(Output.of(proxySpeedKb));
+        }
+
         /**
-         * @param public_ The project will be public accessibility. Can be set to `&#34;true&#34;` or `&#34;false&#34;` (Default: false)
+         * @param public_ The project will be public accessibility.(Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
          */
-        public Builder public_(@Nullable Output<String> public_) {
+        public Builder public_(@Nullable Output<Boolean> public_) {
             $.public_ = public_;
             return this;
         }
 
         /**
-         * @param public_ The project will be public accessibility. Can be set to `&#34;true&#34;` or `&#34;false&#34;` (Default: false)
+         * @param public_ The project will be public accessibility.(Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
          */
-        public Builder public_(String public_) {
+        public Builder public_(Boolean public_) {
             return public_(Output.of(public_));
         }
 
-        /**
-         * @param registryId To enabled project as Proxy Cache
-         * 
-         * @return builder
-         * 
-         */
         public Builder registryId(@Nullable Output<Integer> registryId) {
             $.registryId = registryId;
             return this;
         }
 
-        /**
-         * @param registryId To enabled project as Proxy Cache
-         * 
-         * @return builder
-         * 
-         */
         public Builder registryId(Integer registryId) {
             return registryId(Output.of(registryId));
         }
 
         /**
-         * @param storageQuota The storage quota of the project in GB&#39;s
+         * @param storageQuota The storage quota of the project in GB&#39;s.
          * 
          * @return builder
          * 
@@ -391,7 +475,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageQuota The storage quota of the project in GB&#39;s
+         * @param storageQuota The storage quota of the project in GB&#39;s.
          * 
          * @return builder
          * 
@@ -401,7 +485,28 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vulnerabilityScanning Images will be scanned for vulnerabilities when push to harbor. Can be set to `&#34;true&#34;` or `&#34;false&#34;` (Default: true)
+         * @param vulnerabilityScanner The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via &lt;span pulumi-lang-nodejs=&#34;`harbor.InterrogationServices`&#34; pulumi-lang-dotnet=&#34;`harbor.InterrogationServices`&#34; pulumi-lang-go=&#34;`InterrogationServices`&#34; pulumi-lang-python=&#34;`InterrogationServices`&#34; pulumi-lang-yaml=&#34;`harbor.InterrogationServices`&#34; pulumi-lang-java=&#34;`harbor.InterrogationServices`&#34; pulumi-lang-hcl=&#34;`harbor_interrogation_services`&#34;&gt;`harbor.InterrogationServices`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vulnerabilityScanner(@Nullable Output<String> vulnerabilityScanner) {
+            $.vulnerabilityScanner = vulnerabilityScanner;
+            return this;
+        }
+
+        /**
+         * @param vulnerabilityScanner The name of the vulnerability scanner to use for this project, overriding the global default scanner. If not set, the project uses the global default scanner configured via &lt;span pulumi-lang-nodejs=&#34;`harbor.InterrogationServices`&#34; pulumi-lang-dotnet=&#34;`harbor.InterrogationServices`&#34; pulumi-lang-go=&#34;`InterrogationServices`&#34; pulumi-lang-python=&#34;`InterrogationServices`&#34; pulumi-lang-yaml=&#34;`harbor.InterrogationServices`&#34; pulumi-lang-java=&#34;`harbor.InterrogationServices`&#34; pulumi-lang-hcl=&#34;`harbor_interrogation_services`&#34;&gt;`harbor.InterrogationServices`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vulnerabilityScanner(String vulnerabilityScanner) {
+            return vulnerabilityScanner(Output.of(vulnerabilityScanner));
+        }
+
+        /**
+         * @param vulnerabilityScanning Images will be scanned for vulnerabilities when push to harbor. (Default: &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -412,7 +517,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vulnerabilityScanning Images will be scanned for vulnerabilities when push to harbor. Can be set to `&#34;true&#34;` or `&#34;false&#34;` (Default: true)
+         * @param vulnerabilityScanning Images will be scanned for vulnerabilities when push to harbor. (Default: &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
          * 
          * @return builder
          * 

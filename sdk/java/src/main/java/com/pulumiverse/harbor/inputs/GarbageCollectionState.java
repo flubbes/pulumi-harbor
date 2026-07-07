@@ -6,6 +6,7 @@ package com.pulumiverse.harbor.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,18 +17,49 @@ public final class GarbageCollectionState extends com.pulumi.resources.ResourceA
 
     public static final GarbageCollectionState Empty = new GarbageCollectionState();
 
+    /**
+     * Allow garbage collection on untagged artifacts.
+     * 
+     */
     @Import(name="deleteUntagged")
     private @Nullable Output<Boolean> deleteUntagged;
 
+    /**
+     * @return Allow garbage collection on untagged artifacts.
+     * 
+     */
     public Optional<Output<Boolean>> deleteUntagged() {
         return Optional.ofNullable(this.deleteUntagged);
     }
 
+    /**
+     * Sets the schedule how often the Garbage Collection will run.  Can be to `&#34;hourly&#34;`, `&#34;daily&#34;`, `&#34;weekly&#34;` or can be a custom cron string ie, `&#34;0 5 4 * * *&#34;`
+     * 
+     */
     @Import(name="schedule")
     private @Nullable Output<String> schedule;
 
+    /**
+     * @return Sets the schedule how often the Garbage Collection will run.  Can be to `&#34;hourly&#34;`, `&#34;daily&#34;`, `&#34;weekly&#34;` or can be a custom cron string ie, `&#34;0 5 4 * * *&#34;`
+     * 
+     */
     public Optional<Output<String>> schedule() {
         return Optional.ofNullable(this.schedule);
+    }
+
+    /**
+     * Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.
+     * 
+     */
+    @Import(name="workers")
+    private @Nullable Output<Integer> workers;
+
+    /**
+     * @return Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.
+     * 
+     */
+    public Optional<Output<Integer>> workers() {
+        return Optional.ofNullable(this.workers);
     }
 
     private GarbageCollectionState() {}
@@ -35,6 +67,7 @@ public final class GarbageCollectionState extends com.pulumi.resources.ResourceA
     private GarbageCollectionState(GarbageCollectionState $) {
         this.deleteUntagged = $.deleteUntagged;
         this.schedule = $.schedule;
+        this.workers = $.workers;
     }
 
     public static Builder builder() {
@@ -55,22 +88,67 @@ public final class GarbageCollectionState extends com.pulumi.resources.ResourceA
             $ = new GarbageCollectionState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param deleteUntagged Allow garbage collection on untagged artifacts.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteUntagged(@Nullable Output<Boolean> deleteUntagged) {
             $.deleteUntagged = deleteUntagged;
             return this;
         }
 
+        /**
+         * @param deleteUntagged Allow garbage collection on untagged artifacts.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteUntagged(Boolean deleteUntagged) {
             return deleteUntagged(Output.of(deleteUntagged));
         }
 
+        /**
+         * @param schedule Sets the schedule how often the Garbage Collection will run.  Can be to `&#34;hourly&#34;`, `&#34;daily&#34;`, `&#34;weekly&#34;` or can be a custom cron string ie, `&#34;0 5 4 * * *&#34;`
+         * 
+         * @return builder
+         * 
+         */
         public Builder schedule(@Nullable Output<String> schedule) {
             $.schedule = schedule;
             return this;
         }
 
+        /**
+         * @param schedule Sets the schedule how often the Garbage Collection will run.  Can be to `&#34;hourly&#34;`, `&#34;daily&#34;`, `&#34;weekly&#34;` or can be a custom cron string ie, `&#34;0 5 4 * * *&#34;`
+         * 
+         * @return builder
+         * 
+         */
         public Builder schedule(String schedule) {
             return schedule(Output.of(schedule));
+        }
+
+        /**
+         * @param workers Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workers(@Nullable Output<Integer> workers) {
+            $.workers = workers;
+            return this;
+        }
+
+        /**
+         * @param workers Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workers(Integer workers) {
+            return workers(Output.of(workers));
         }
 
         public GarbageCollectionState build() {

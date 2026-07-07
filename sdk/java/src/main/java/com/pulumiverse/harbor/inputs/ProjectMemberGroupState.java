@@ -44,23 +44,47 @@ public final class ProjectMemberGroupState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.memberId);
     }
 
+    /**
+     * The project id of the project that the entity will have access to.
+     * 
+     */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
+    /**
+     * @return The project id of the project that the entity will have access to.
+     * 
+     */
     public Optional<Output<String>> projectId() {
         return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * The permissions that the entity will be granted.
+     * 
+     */
     @Import(name="role")
     private @Nullable Output<String> role;
 
+    /**
+     * @return The permissions that the entity will be granted.
+     * 
+     */
     public Optional<Output<String>> role() {
         return Optional.ofNullable(this.role);
     }
 
+    /**
+     * The group type.  Can be set to `&#34;ldap&#34;`, `&#34;internal&#34;` or `&#34;oidc&#34;`.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return The group type.  Can be set to `&#34;ldap&#34;`, `&#34;internal&#34;` or `&#34;oidc&#34;`.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -131,29 +155,65 @@ public final class ProjectMemberGroupState extends com.pulumi.resources.Resource
             return memberId(Output.of(memberId));
         }
 
+        /**
+         * @param projectId The project id of the project that the entity will have access to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(@Nullable Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
 
+        /**
+         * @param projectId The project id of the project that the entity will have access to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
         }
 
+        /**
+         * @param role The permissions that the entity will be granted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(@Nullable Output<String> role) {
             $.role = role;
             return this;
         }
 
+        /**
+         * @param role The permissions that the entity will be granted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(String role) {
             return role(Output.of(role));
         }
 
+        /**
+         * @param type The group type.  Can be set to `&#34;ldap&#34;`, `&#34;internal&#34;` or `&#34;oidc&#34;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The group type.  Can be set to `&#34;ldap&#34;`, `&#34;internal&#34;` or `&#34;oidc&#34;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

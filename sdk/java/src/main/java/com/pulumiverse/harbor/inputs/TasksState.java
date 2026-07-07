@@ -15,9 +15,17 @@ public final class TasksState extends com.pulumi.resources.ResourceArgs {
 
     public static final TasksState Empty = new TasksState();
 
+    /**
+     * The frequency of the vulnerability scanning is done. Can be to **&#34;hourly&#34;**, **&#34;daily&#34;** or **&#34;weekly&#34;**
+     * 
+     */
     @Import(name="vulnerabilityScanPolicy")
     private @Nullable Output<String> vulnerabilityScanPolicy;
 
+    /**
+     * @return The frequency of the vulnerability scanning is done. Can be to **&#34;hourly&#34;**, **&#34;daily&#34;** or **&#34;weekly&#34;**
+     * 
+     */
     public Optional<Output<String>> vulnerabilityScanPolicy() {
         return Optional.ofNullable(this.vulnerabilityScanPolicy);
     }
@@ -46,11 +54,23 @@ public final class TasksState extends com.pulumi.resources.ResourceArgs {
             $ = new TasksState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param vulnerabilityScanPolicy The frequency of the vulnerability scanning is done. Can be to **&#34;hourly&#34;**, **&#34;daily&#34;** or **&#34;weekly&#34;**
+         * 
+         * @return builder
+         * 
+         */
         public Builder vulnerabilityScanPolicy(@Nullable Output<String> vulnerabilityScanPolicy) {
             $.vulnerabilityScanPolicy = vulnerabilityScanPolicy;
             return this;
         }
 
+        /**
+         * @param vulnerabilityScanPolicy The frequency of the vulnerability scanning is done. Can be to **&#34;hourly&#34;**, **&#34;daily&#34;** or **&#34;weekly&#34;**
+         * 
+         * @return builder
+         * 
+         */
         public Builder vulnerabilityScanPolicy(String vulnerabilityScanPolicy) {
             return vulnerabilityScanPolicy(Output.of(vulnerabilityScanPolicy));
         }

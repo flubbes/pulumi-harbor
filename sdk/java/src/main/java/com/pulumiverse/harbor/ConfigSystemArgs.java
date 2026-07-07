@@ -5,6 +5,7 @@ package com.pulumiverse.harbor;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumiverse.harbor.inputs.ConfigSystemBannerMessageArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -17,41 +18,161 @@ public final class ConfigSystemArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ConfigSystemArgs Empty = new ConfigSystemArgs();
 
+    /**
+     * The endpoint to forward audit logs to.
+     * 
+     */
+    @Import(name="auditLogForwardEndpoint")
+    private @Nullable Output<String> auditLogForwardEndpoint;
+
+    /**
+     * @return The endpoint to forward audit logs to.
+     * 
+     */
+    public Optional<Output<String>> auditLogForwardEndpoint() {
+        return Optional.ofNullable(this.auditLogForwardEndpoint);
+    }
+
+    @Import(name="bannerMessage")
+    private @Nullable Output<ConfigSystemBannerMessageArgs> bannerMessage;
+
+    public Optional<Output<ConfigSystemBannerMessageArgs>> bannerMessage() {
+        return Optional.ofNullable(this.bannerMessage);
+    }
+
+    /**
+     * Whether or not webhook/notification functionality is enabled globally. When &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;, all project-level webhook policies are silently ignored. Defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+     * 
+     */
+    @Import(name="notificationEnable")
+    private @Nullable Output<Boolean> notificationEnable;
+
+    /**
+     * @return Whether or not webhook/notification functionality is enabled globally. When &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;, all project-level webhook policies are silently ignored. Defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+     * 
+     */
+    public Optional<Output<Boolean>> notificationEnable() {
+        return Optional.ofNullable(this.notificationEnable);
+    }
+
+    /**
+     * Who can create projects within Harbor. Can be `&#34;adminonly&#34;` or `&#34;everyone&#34;`
+     * 
+     */
     @Import(name="projectCreationRestriction")
     private @Nullable Output<String> projectCreationRestriction;
 
+    /**
+     * @return Who can create projects within Harbor. Can be `&#34;adminonly&#34;` or `&#34;everyone&#34;`
+     * 
+     */
     public Optional<Output<String>> projectCreationRestriction() {
         return Optional.ofNullable(this.projectCreationRestriction);
     }
 
+    /**
+     * Whether or not the system is in read only mode.
+     * 
+     */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
+    /**
+     * @return Whether or not the system is in read only mode.
+     * 
+     */
     public Optional<Output<Boolean>> readOnly() {
         return Optional.ofNullable(this.readOnly);
     }
 
+    /**
+     * Robot account prefix.
+     * 
+     */
     @Import(name="robotNamePrefix")
     private @Nullable Output<String> robotNamePrefix;
 
+    /**
+     * @return Robot account prefix.
+     * 
+     */
     public Optional<Output<String>> robotNamePrefix() {
         return Optional.ofNullable(this.robotNamePrefix);
     }
 
+    /**
+     * The amount of time in days a robot account will expire.
+     * 
+     */
     @Import(name="robotTokenExpiration")
     private @Nullable Output<Integer> robotTokenExpiration;
 
+    /**
+     * @return The amount of time in days a robot account will expire.
+     * 
+     */
     public Optional<Output<Integer>> robotTokenExpiration() {
         return Optional.ofNullable(this.robotTokenExpiration);
+    }
+
+    /**
+     * Whether or not to skip update pull time for scanner.
+     * 
+     */
+    @Import(name="scannerSkipUpdatePulltime")
+    private @Nullable Output<Boolean> scannerSkipUpdatePulltime;
+
+    /**
+     * @return Whether or not to skip update pull time for scanner.
+     * 
+     */
+    public Optional<Output<Boolean>> scannerSkipUpdatePulltime() {
+        return Optional.ofNullable(this.scannerSkipUpdatePulltime);
+    }
+
+    /**
+     * Whether or not to skip audit log database.
+     * 
+     */
+    @Import(name="skipAuditLogDatabase")
+    private @Nullable Output<Boolean> skipAuditLogDatabase;
+
+    /**
+     * @return Whether or not to skip audit log database.
+     * 
+     */
+    public Optional<Output<Boolean>> skipAuditLogDatabase() {
+        return Optional.ofNullable(this.skipAuditLogDatabase);
+    }
+
+    /**
+     * Default quota space per project in GIB. Default is -1 (unlimited).
+     * 
+     */
+    @Import(name="storagePerProject")
+    private @Nullable Output<Integer> storagePerProject;
+
+    /**
+     * @return Default quota space per project in GIB. Default is -1 (unlimited).
+     * 
+     */
+    public Optional<Output<Integer>> storagePerProject() {
+        return Optional.ofNullable(this.storagePerProject);
     }
 
     private ConfigSystemArgs() {}
 
     private ConfigSystemArgs(ConfigSystemArgs $) {
+        this.auditLogForwardEndpoint = $.auditLogForwardEndpoint;
+        this.bannerMessage = $.bannerMessage;
+        this.notificationEnable = $.notificationEnable;
         this.projectCreationRestriction = $.projectCreationRestriction;
         this.readOnly = $.readOnly;
         this.robotNamePrefix = $.robotNamePrefix;
         this.robotTokenExpiration = $.robotTokenExpiration;
+        this.scannerSkipUpdatePulltime = $.scannerSkipUpdatePulltime;
+        this.skipAuditLogDatabase = $.skipAuditLogDatabase;
+        this.storagePerProject = $.storagePerProject;
     }
 
     public static Builder builder() {
@@ -72,40 +193,202 @@ public final class ConfigSystemArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ConfigSystemArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param auditLogForwardEndpoint The endpoint to forward audit logs to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auditLogForwardEndpoint(@Nullable Output<String> auditLogForwardEndpoint) {
+            $.auditLogForwardEndpoint = auditLogForwardEndpoint;
+            return this;
+        }
+
+        /**
+         * @param auditLogForwardEndpoint The endpoint to forward audit logs to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auditLogForwardEndpoint(String auditLogForwardEndpoint) {
+            return auditLogForwardEndpoint(Output.of(auditLogForwardEndpoint));
+        }
+
+        public Builder bannerMessage(@Nullable Output<ConfigSystemBannerMessageArgs> bannerMessage) {
+            $.bannerMessage = bannerMessage;
+            return this;
+        }
+
+        public Builder bannerMessage(ConfigSystemBannerMessageArgs bannerMessage) {
+            return bannerMessage(Output.of(bannerMessage));
+        }
+
+        /**
+         * @param notificationEnable Whether or not webhook/notification functionality is enabled globally. When &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;, all project-level webhook policies are silently ignored. Defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationEnable(@Nullable Output<Boolean> notificationEnable) {
+            $.notificationEnable = notificationEnable;
+            return this;
+        }
+
+        /**
+         * @param notificationEnable Whether or not webhook/notification functionality is enabled globally. When &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;, all project-level webhook policies are silently ignored. Defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationEnable(Boolean notificationEnable) {
+            return notificationEnable(Output.of(notificationEnable));
+        }
+
+        /**
+         * @param projectCreationRestriction Who can create projects within Harbor. Can be `&#34;adminonly&#34;` or `&#34;everyone&#34;`
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectCreationRestriction(@Nullable Output<String> projectCreationRestriction) {
             $.projectCreationRestriction = projectCreationRestriction;
             return this;
         }
 
+        /**
+         * @param projectCreationRestriction Who can create projects within Harbor. Can be `&#34;adminonly&#34;` or `&#34;everyone&#34;`
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectCreationRestriction(String projectCreationRestriction) {
             return projectCreationRestriction(Output.of(projectCreationRestriction));
         }
 
+        /**
+         * @param readOnly Whether or not the system is in read only mode.
+         * 
+         * @return builder
+         * 
+         */
         public Builder readOnly(@Nullable Output<Boolean> readOnly) {
             $.readOnly = readOnly;
             return this;
         }
 
+        /**
+         * @param readOnly Whether or not the system is in read only mode.
+         * 
+         * @return builder
+         * 
+         */
         public Builder readOnly(Boolean readOnly) {
             return readOnly(Output.of(readOnly));
         }
 
+        /**
+         * @param robotNamePrefix Robot account prefix.
+         * 
+         * @return builder
+         * 
+         */
         public Builder robotNamePrefix(@Nullable Output<String> robotNamePrefix) {
             $.robotNamePrefix = robotNamePrefix;
             return this;
         }
 
+        /**
+         * @param robotNamePrefix Robot account prefix.
+         * 
+         * @return builder
+         * 
+         */
         public Builder robotNamePrefix(String robotNamePrefix) {
             return robotNamePrefix(Output.of(robotNamePrefix));
         }
 
+        /**
+         * @param robotTokenExpiration The amount of time in days a robot account will expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder robotTokenExpiration(@Nullable Output<Integer> robotTokenExpiration) {
             $.robotTokenExpiration = robotTokenExpiration;
             return this;
         }
 
+        /**
+         * @param robotTokenExpiration The amount of time in days a robot account will expire.
+         * 
+         * @return builder
+         * 
+         */
         public Builder robotTokenExpiration(Integer robotTokenExpiration) {
             return robotTokenExpiration(Output.of(robotTokenExpiration));
+        }
+
+        /**
+         * @param scannerSkipUpdatePulltime Whether or not to skip update pull time for scanner.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scannerSkipUpdatePulltime(@Nullable Output<Boolean> scannerSkipUpdatePulltime) {
+            $.scannerSkipUpdatePulltime = scannerSkipUpdatePulltime;
+            return this;
+        }
+
+        /**
+         * @param scannerSkipUpdatePulltime Whether or not to skip update pull time for scanner.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scannerSkipUpdatePulltime(Boolean scannerSkipUpdatePulltime) {
+            return scannerSkipUpdatePulltime(Output.of(scannerSkipUpdatePulltime));
+        }
+
+        /**
+         * @param skipAuditLogDatabase Whether or not to skip audit log database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipAuditLogDatabase(@Nullable Output<Boolean> skipAuditLogDatabase) {
+            $.skipAuditLogDatabase = skipAuditLogDatabase;
+            return this;
+        }
+
+        /**
+         * @param skipAuditLogDatabase Whether or not to skip audit log database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipAuditLogDatabase(Boolean skipAuditLogDatabase) {
+            return skipAuditLogDatabase(Output.of(skipAuditLogDatabase));
+        }
+
+        /**
+         * @param storagePerProject Default quota space per project in GIB. Default is -1 (unlimited).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePerProject(@Nullable Output<Integer> storagePerProject) {
+            $.storagePerProject = storagePerProject;
+            return this;
+        }
+
+        /**
+         * @param storagePerProject Default quota space per project in GIB. Default is -1 (unlimited).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePerProject(Integer storagePerProject) {
+            return storagePerProject(Output.of(storagePerProject));
         }
 
         public ConfigSystemArgs build() {

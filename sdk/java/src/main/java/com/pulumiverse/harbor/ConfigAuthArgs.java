@@ -5,7 +5,9 @@ package com.pulumiverse.harbor;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,9 +18,17 @@ public final class ConfigAuthArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ConfigAuthArgs Empty = new ConfigAuthArgs();
 
+    /**
+     * Harbor authentication mode. Can be `&lt;span pulumi-lang-nodejs=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;OidcAuth&#34;&#34; pulumi-lang-go=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-python=&#34;&#34;oidc_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-java=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;oidc_auth&#34;&#34;&gt;&#34;oidcAuth&#34;&lt;/span&gt;`, `&lt;span pulumi-lang-nodejs=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;DbAuth&#34;&#34; pulumi-lang-go=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-python=&#34;&#34;db_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-java=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;db_auth&#34;&#34;&gt;&#34;dbAuth&#34;&lt;/span&gt;` or `&lt;span pulumi-lang-nodejs=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;LdapAuth&#34;&#34; pulumi-lang-go=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-python=&#34;&#34;ldap_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-java=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;ldap_auth&#34;&#34;&gt;&#34;ldapAuth&#34;&lt;/span&gt;`. (Default: `&lt;span pulumi-lang-nodejs=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;DbAuth&#34;&#34; pulumi-lang-go=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-python=&#34;&#34;db_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-java=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;db_auth&#34;&#34;&gt;&#34;dbAuth&#34;&lt;/span&gt;`)
+     * 
+     */
     @Import(name="authMode", required=true)
     private Output<String> authMode;
 
+    /**
+     * @return Harbor authentication mode. Can be `&lt;span pulumi-lang-nodejs=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;OidcAuth&#34;&#34; pulumi-lang-go=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-python=&#34;&#34;oidc_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-java=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;oidc_auth&#34;&#34;&gt;&#34;oidcAuth&#34;&lt;/span&gt;`, `&lt;span pulumi-lang-nodejs=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;DbAuth&#34;&#34; pulumi-lang-go=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-python=&#34;&#34;db_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-java=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;db_auth&#34;&#34;&gt;&#34;dbAuth&#34;&lt;/span&gt;` or `&lt;span pulumi-lang-nodejs=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;LdapAuth&#34;&#34; pulumi-lang-go=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-python=&#34;&#34;ldap_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-java=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;ldap_auth&#34;&#34;&gt;&#34;ldapAuth&#34;&lt;/span&gt;`. (Default: `&lt;span pulumi-lang-nodejs=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;DbAuth&#34;&#34; pulumi-lang-go=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-python=&#34;&#34;db_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-java=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;db_auth&#34;&#34;&gt;&#34;dbAuth&#34;&lt;/span&gt;`)
+     * 
+     */
     public Output<String> authMode() {
         return this.authMode;
     }
@@ -156,6 +166,28 @@ public final class ConfigAuthArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.oidcClientSecret);
     }
 
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * 
+     */
+    @Import(name="oidcClientSecretWo")
+    private @Nullable Output<String> oidcClientSecretWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * 
+     */
+    public Optional<Output<String>> oidcClientSecretWo() {
+        return Optional.ofNullable(this.oidcClientSecretWo);
+    }
+
+    @Import(name="oidcClientSecretWoVersion")
+    private @Nullable Output<Integer> oidcClientSecretWoVersion;
+
+    public Optional<Output<Integer>> oidcClientSecretWoVersion() {
+        return Optional.ofNullable(this.oidcClientSecretWoVersion);
+    }
+
     @Import(name="oidcEndpoint")
     private @Nullable Output<String> oidcEndpoint;
 
@@ -163,11 +195,25 @@ public final class ConfigAuthArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.oidcEndpoint);
     }
 
+    @Import(name="oidcGroupFilter")
+    private @Nullable Output<String> oidcGroupFilter;
+
+    public Optional<Output<String>> oidcGroupFilter() {
+        return Optional.ofNullable(this.oidcGroupFilter);
+    }
+
     @Import(name="oidcGroupsClaim")
     private @Nullable Output<String> oidcGroupsClaim;
 
     public Optional<Output<String>> oidcGroupsClaim() {
         return Optional.ofNullable(this.oidcGroupsClaim);
+    }
+
+    @Import(name="oidcLogout")
+    private @Nullable Output<Boolean> oidcLogout;
+
+    public Optional<Output<Boolean>> oidcLogout() {
+        return Optional.ofNullable(this.oidcLogout);
     }
 
     @Import(name="oidcName")
@@ -198,6 +244,13 @@ public final class ConfigAuthArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.oidcVerifyCert);
     }
 
+    @Import(name="primaryAuthMode")
+    private @Nullable Output<Boolean> primaryAuthMode;
+
+    public Optional<Output<Boolean>> primaryAuthMode() {
+        return Optional.ofNullable(this.primaryAuthMode);
+    }
+
     private ConfigAuthArgs() {}
 
     private ConfigAuthArgs(ConfigAuthArgs $) {
@@ -221,12 +274,17 @@ public final class ConfigAuthArgs extends com.pulumi.resources.ResourceArgs {
         this.oidcAutoOnboard = $.oidcAutoOnboard;
         this.oidcClientId = $.oidcClientId;
         this.oidcClientSecret = $.oidcClientSecret;
+        this.oidcClientSecretWo = $.oidcClientSecretWo;
+        this.oidcClientSecretWoVersion = $.oidcClientSecretWoVersion;
         this.oidcEndpoint = $.oidcEndpoint;
+        this.oidcGroupFilter = $.oidcGroupFilter;
         this.oidcGroupsClaim = $.oidcGroupsClaim;
+        this.oidcLogout = $.oidcLogout;
         this.oidcName = $.oidcName;
         this.oidcScope = $.oidcScope;
         this.oidcUserClaim = $.oidcUserClaim;
         this.oidcVerifyCert = $.oidcVerifyCert;
+        this.primaryAuthMode = $.primaryAuthMode;
     }
 
     public static Builder builder() {
@@ -247,11 +305,23 @@ public final class ConfigAuthArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ConfigAuthArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param authMode Harbor authentication mode. Can be `&lt;span pulumi-lang-nodejs=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;OidcAuth&#34;&#34; pulumi-lang-go=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-python=&#34;&#34;oidc_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-java=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;oidc_auth&#34;&#34;&gt;&#34;oidcAuth&#34;&lt;/span&gt;`, `&lt;span pulumi-lang-nodejs=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;DbAuth&#34;&#34; pulumi-lang-go=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-python=&#34;&#34;db_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-java=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;db_auth&#34;&#34;&gt;&#34;dbAuth&#34;&lt;/span&gt;` or `&lt;span pulumi-lang-nodejs=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;LdapAuth&#34;&#34; pulumi-lang-go=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-python=&#34;&#34;ldap_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-java=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;ldap_auth&#34;&#34;&gt;&#34;ldapAuth&#34;&lt;/span&gt;`. (Default: `&lt;span pulumi-lang-nodejs=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;DbAuth&#34;&#34; pulumi-lang-go=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-python=&#34;&#34;db_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-java=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;db_auth&#34;&#34;&gt;&#34;dbAuth&#34;&lt;/span&gt;`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder authMode(Output<String> authMode) {
             $.authMode = authMode;
             return this;
         }
 
+        /**
+         * @param authMode Harbor authentication mode. Can be `&lt;span pulumi-lang-nodejs=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;OidcAuth&#34;&#34; pulumi-lang-go=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-python=&#34;&#34;oidc_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-java=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;oidc_auth&#34;&#34;&gt;&#34;oidcAuth&#34;&lt;/span&gt;`, `&lt;span pulumi-lang-nodejs=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;DbAuth&#34;&#34; pulumi-lang-go=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-python=&#34;&#34;db_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-java=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;db_auth&#34;&#34;&gt;&#34;dbAuth&#34;&lt;/span&gt;` or `&lt;span pulumi-lang-nodejs=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;LdapAuth&#34;&#34; pulumi-lang-go=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-python=&#34;&#34;ldap_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-java=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;ldap_auth&#34;&#34;&gt;&#34;ldapAuth&#34;&lt;/span&gt;`. (Default: `&lt;span pulumi-lang-nodejs=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;DbAuth&#34;&#34; pulumi-lang-go=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-python=&#34;&#34;db_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-java=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;db_auth&#34;&#34;&gt;&#34;dbAuth&#34;&lt;/span&gt;`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder authMode(String authMode) {
             return authMode(Output.of(authMode));
         }
@@ -427,6 +497,36 @@ public final class ConfigAuthArgs extends com.pulumi.resources.ResourceArgs {
             return oidcClientSecret(Output.of(oidcClientSecret));
         }
 
+        /**
+         * @param oidcClientSecretWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcClientSecretWo(@Nullable Output<String> oidcClientSecretWo) {
+            $.oidcClientSecretWo = oidcClientSecretWo;
+            return this;
+        }
+
+        /**
+         * @param oidcClientSecretWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcClientSecretWo(String oidcClientSecretWo) {
+            return oidcClientSecretWo(Output.of(oidcClientSecretWo));
+        }
+
+        public Builder oidcClientSecretWoVersion(@Nullable Output<Integer> oidcClientSecretWoVersion) {
+            $.oidcClientSecretWoVersion = oidcClientSecretWoVersion;
+            return this;
+        }
+
+        public Builder oidcClientSecretWoVersion(Integer oidcClientSecretWoVersion) {
+            return oidcClientSecretWoVersion(Output.of(oidcClientSecretWoVersion));
+        }
+
         public Builder oidcEndpoint(@Nullable Output<String> oidcEndpoint) {
             $.oidcEndpoint = oidcEndpoint;
             return this;
@@ -436,6 +536,15 @@ public final class ConfigAuthArgs extends com.pulumi.resources.ResourceArgs {
             return oidcEndpoint(Output.of(oidcEndpoint));
         }
 
+        public Builder oidcGroupFilter(@Nullable Output<String> oidcGroupFilter) {
+            $.oidcGroupFilter = oidcGroupFilter;
+            return this;
+        }
+
+        public Builder oidcGroupFilter(String oidcGroupFilter) {
+            return oidcGroupFilter(Output.of(oidcGroupFilter));
+        }
+
         public Builder oidcGroupsClaim(@Nullable Output<String> oidcGroupsClaim) {
             $.oidcGroupsClaim = oidcGroupsClaim;
             return this;
@@ -443,6 +552,15 @@ public final class ConfigAuthArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder oidcGroupsClaim(String oidcGroupsClaim) {
             return oidcGroupsClaim(Output.of(oidcGroupsClaim));
+        }
+
+        public Builder oidcLogout(@Nullable Output<Boolean> oidcLogout) {
+            $.oidcLogout = oidcLogout;
+            return this;
+        }
+
+        public Builder oidcLogout(Boolean oidcLogout) {
+            return oidcLogout(Output.of(oidcLogout));
         }
 
         public Builder oidcName(@Nullable Output<String> oidcName) {
@@ -481,8 +599,19 @@ public final class ConfigAuthArgs extends com.pulumi.resources.ResourceArgs {
             return oidcVerifyCert(Output.of(oidcVerifyCert));
         }
 
+        public Builder primaryAuthMode(@Nullable Output<Boolean> primaryAuthMode) {
+            $.primaryAuthMode = primaryAuthMode;
+            return this;
+        }
+
+        public Builder primaryAuthMode(Boolean primaryAuthMode) {
+            return primaryAuthMode(Output.of(primaryAuthMode));
+        }
+
         public ConfigAuthArgs build() {
-            $.authMode = Objects.requireNonNull($.authMode, "expected parameter 'authMode' to be non-null");
+            if ($.authMode == null) {
+                throw new MissingRequiredPropertyException("ConfigAuthArgs", "authMode");
+            }
             return $;
         }
     }

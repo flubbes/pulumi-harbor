@@ -15,41 +15,21 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harbor.Tasks;
- * import com.pulumi.harbor.TasksArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var main = new Tasks(&#34;main&#34;, TasksArgs.builder()        
- *             .vulnerabilityScanPolicy(&#34;daily&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  */
 @ResourceType(type="harbor:index/tasks:Tasks")
 public class Tasks extends com.pulumi.resources.CustomResource {
+    /**
+     * The frequency of the vulnerability scanning is done. Can be to **&#34;hourly&#34;**, **&#34;daily&#34;** or **&#34;weekly&#34;**
+     * 
+     */
     @Export(name="vulnerabilityScanPolicy", refs={String.class}, tree="[0]")
     private Output<String> vulnerabilityScanPolicy;
 
+    /**
+     * @return The frequency of the vulnerability scanning is done. Can be to **&#34;hourly&#34;**, **&#34;daily&#34;** or **&#34;weekly&#34;**
+     * 
+     */
     public Output<String> vulnerabilityScanPolicy() {
         return this.vulnerabilityScanPolicy;
     }
@@ -58,7 +38,7 @@ public class Tasks extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Tasks(String name) {
+    public Tasks(java.lang.String name) {
         this(name, TasksArgs.Empty);
     }
     /**
@@ -66,7 +46,7 @@ public class Tasks extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Tasks(String name, TasksArgs args) {
+    public Tasks(java.lang.String name, TasksArgs args) {
         this(name, args, null);
     }
     /**
@@ -75,17 +55,25 @@ public class Tasks extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Tasks(String name, TasksArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/tasks:Tasks", name, args == null ? TasksArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Tasks(java.lang.String name, TasksArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/tasks:Tasks", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Tasks(String name, Output<String> id, @Nullable TasksState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/tasks:Tasks", name, state, makeResourceOptions(options, id));
+    private Tasks(java.lang.String name, Output<java.lang.String> id, @Nullable TasksState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/tasks:Tasks", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TasksArgs makeArgs(TasksArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TasksArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/pulumiverse/pulumi-harbor")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }
@@ -99,7 +87,7 @@ public class Tasks extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Tasks get(String name, Output<String> id, @Nullable TasksState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Tasks get(java.lang.String name, Output<java.lang.String> id, @Nullable TasksState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Tasks(name, id, state, options);
     }
 }

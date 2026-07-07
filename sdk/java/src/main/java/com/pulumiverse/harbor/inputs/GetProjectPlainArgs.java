@@ -4,6 +4,7 @@
 package com.pulumiverse.harbor.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -12,9 +13,17 @@ public final class GetProjectPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetProjectPlainArgs Empty = new GetProjectPlainArgs();
 
+    /**
+     * The name of the project.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The name of the project.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -43,13 +52,21 @@ public final class GetProjectPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetProjectPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The name of the project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;
         }
 
         public GetProjectPlainArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetProjectPlainArgs", "name");
+            }
             return $;
         }
     }

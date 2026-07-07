@@ -17,30 +17,22 @@ public final class RetentionPolicyState extends com.pulumi.resources.ResourceArg
 
     public static final RetentionPolicyState Empty = new RetentionPolicyState();
 
-    /**
-     * Al collection of rule blocks as documented below.
-     * 
-     */
     @Import(name="rules")
     private @Nullable Output<List<RetentionPolicyRuleArgs>> rules;
 
-    /**
-     * @return Al collection of rule blocks as documented below.
-     * 
-     */
     public Optional<Output<List<RetentionPolicyRuleArgs>>> rules() {
         return Optional.ofNullable(this.rules);
     }
 
     /**
-     * The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+     * The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
      * 
      */
     @Import(name="schedule")
     private @Nullable Output<String> schedule;
 
     /**
-     * @return The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+     * @return The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
      * 
      */
     public Optional<Output<String>> schedule() {
@@ -88,39 +80,21 @@ public final class RetentionPolicyState extends com.pulumi.resources.ResourceArg
             $ = new RetentionPolicyState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param rules Al collection of rule blocks as documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rules(@Nullable Output<List<RetentionPolicyRuleArgs>> rules) {
             $.rules = rules;
             return this;
         }
 
-        /**
-         * @param rules Al collection of rule blocks as documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rules(List<RetentionPolicyRuleArgs> rules) {
             return rules(Output.of(rules));
         }
 
-        /**
-         * @param rules Al collection of rule blocks as documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rules(RetentionPolicyRuleArgs... rules) {
             return rules(List.of(rules));
         }
 
         /**
-         * @param schedule The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+         * @param schedule The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
          * 
          * @return builder
          * 
@@ -131,7 +105,7 @@ public final class RetentionPolicyState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param schedule The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+         * @param schedule The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
          * 
          * @return builder
          * 

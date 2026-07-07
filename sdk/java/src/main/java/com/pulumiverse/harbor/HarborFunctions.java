@@ -7,47 +7,86 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumiverse.harbor.Utilities;
+import com.pulumiverse.harbor.inputs.GetGroupsArgs;
+import com.pulumiverse.harbor.inputs.GetGroupsPlainArgs;
 import com.pulumiverse.harbor.inputs.GetProjectArgs;
+import com.pulumiverse.harbor.inputs.GetProjectMemberGroupsArgs;
+import com.pulumiverse.harbor.inputs.GetProjectMemberGroupsPlainArgs;
+import com.pulumiverse.harbor.inputs.GetProjectMemberUsersArgs;
+import com.pulumiverse.harbor.inputs.GetProjectMemberUsersPlainArgs;
 import com.pulumiverse.harbor.inputs.GetProjectPlainArgs;
+import com.pulumiverse.harbor.inputs.GetProjectsArgs;
+import com.pulumiverse.harbor.inputs.GetProjectsPlainArgs;
 import com.pulumiverse.harbor.inputs.GetRegistryArgs;
 import com.pulumiverse.harbor.inputs.GetRegistryPlainArgs;
+import com.pulumiverse.harbor.inputs.GetRobotAccountsArgs;
+import com.pulumiverse.harbor.inputs.GetRobotAccountsPlainArgs;
+import com.pulumiverse.harbor.inputs.GetUsersArgs;
+import com.pulumiverse.harbor.inputs.GetUsersPlainArgs;
+import com.pulumiverse.harbor.outputs.GetGroupsResult;
+import com.pulumiverse.harbor.outputs.GetProjectMemberGroupsResult;
+import com.pulumiverse.harbor.outputs.GetProjectMemberUsersResult;
 import com.pulumiverse.harbor.outputs.GetProjectResult;
+import com.pulumiverse.harbor.outputs.GetProjectsResult;
 import com.pulumiverse.harbor.outputs.GetRegistryResult;
+import com.pulumiverse.harbor.outputs.GetRobotAccountsResult;
+import com.pulumiverse.harbor.outputs.GetUsersResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class HarborFunctions {
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harbor.HarborFunctions;
-     * import com.pulumi.harbor.inputs.GetProjectArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
+     */
+    public static Output<GetGroupsResult> getGroups() {
+        return getGroups(GetGroupsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
      * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
+     */
+    public static CompletableFuture<GetGroupsResult> getGroupsPlain() {
+        return getGroupsPlain(GetGroupsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
      * 
-     *     public static void stack(Context ctx) {
-     *         final var main = HarborFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;library&#34;)
-     *             .build());
+     */
+    public static Output<GetGroupsResult> getGroups(GetGroupsArgs args) {
+        return getGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
      * 
-     *         ctx.export(&#34;projectId&#34;, main.applyValue(getProjectResult -&gt; getProjectResult.id()));
-     *     }
-     * }
-     * ```
+     */
+    public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args) {
+        return getGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harbor:index/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harbor:index/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harbor:index/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args) {
@@ -55,35 +94,6 @@ public final class HarborFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harbor.HarborFunctions;
-     * import com.pulumi.harbor.inputs.GetProjectArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var main = HarborFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;library&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;projectId&#34;, main.applyValue(getProjectResult -&gt; getProjectResult.id()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args) {
@@ -91,35 +101,6 @@ public final class HarborFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harbor.HarborFunctions;
-     * import com.pulumi.harbor.inputs.GetProjectArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var main = HarborFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;library&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;projectId&#34;, main.applyValue(getProjectResult -&gt; getProjectResult.id()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOptions options) {
@@ -127,35 +108,13 @@ public final class HarborFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harbor.HarborFunctions;
-     * import com.pulumi.harbor.inputs.GetProjectArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var main = HarborFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;library&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;projectId&#34;, main.applyValue(getProjectResult -&gt; getProjectResult.id()));
-     *     }
-     * }
-     * ```
+     */
+    public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harbor:index/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args, InvokeOptions options) {
@@ -163,35 +122,125 @@ public final class HarborFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harbor.HarborFunctions;
-     * import com.pulumi.harbor.inputs.GetRegistryArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
+     */
+    public static Output<GetProjectMemberGroupsResult> getProjectMemberGroups(GetProjectMemberGroupsArgs args) {
+        return getProjectMemberGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
      * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
+     */
+    public static CompletableFuture<GetProjectMemberGroupsResult> getProjectMemberGroupsPlain(GetProjectMemberGroupsPlainArgs args) {
+        return getProjectMemberGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
      * 
-     *     public static void stack(Context ctx) {
-     *         final var main = HarborFunctions.getRegistry(GetRegistryArgs.builder()
-     *             .name(&#34;test_docker_harbor&#34;)
-     *             .build());
+     */
+    public static Output<GetProjectMemberGroupsResult> getProjectMemberGroups(GetProjectMemberGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harbor:index/getProjectMemberGroups:getProjectMemberGroups", TypeShape.of(GetProjectMemberGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
      * 
-     *         ctx.export(&#34;harborRegistryId&#34;, main.applyValue(getRegistryResult -&gt; getRegistryResult.id()));
-     *     }
-     * }
-     * ```
+     */
+    public static Output<GetProjectMemberGroupsResult> getProjectMemberGroups(GetProjectMemberGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harbor:index/getProjectMemberGroups:getProjectMemberGroups", TypeShape.of(GetProjectMemberGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetProjectMemberGroupsResult> getProjectMemberGroupsPlain(GetProjectMemberGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harbor:index/getProjectMemberGroups:getProjectMemberGroups", TypeShape.of(GetProjectMemberGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetProjectMemberUsersResult> getProjectMemberUsers(GetProjectMemberUsersArgs args) {
+        return getProjectMemberUsers(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetProjectMemberUsersResult> getProjectMemberUsersPlain(GetProjectMemberUsersPlainArgs args) {
+        return getProjectMemberUsersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetProjectMemberUsersResult> getProjectMemberUsers(GetProjectMemberUsersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harbor:index/getProjectMemberUsers:getProjectMemberUsers", TypeShape.of(GetProjectMemberUsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetProjectMemberUsersResult> getProjectMemberUsers(GetProjectMemberUsersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harbor:index/getProjectMemberUsers:getProjectMemberUsers", TypeShape.of(GetProjectMemberUsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetProjectMemberUsersResult> getProjectMemberUsersPlain(GetProjectMemberUsersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harbor:index/getProjectMemberUsers:getProjectMemberUsers", TypeShape.of(GetProjectMemberUsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetProjectsResult> getProjects() {
+        return getProjects(GetProjectsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetProjectsResult> getProjectsPlain() {
+        return getProjectsPlain(GetProjectsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetProjectsResult> getProjects(GetProjectsArgs args) {
+        return getProjects(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetProjectsResult> getProjectsPlain(GetProjectsPlainArgs args) {
+        return getProjectsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetProjectsResult> getProjects(GetProjectsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harbor:index/getProjects:getProjects", TypeShape.of(GetProjectsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetProjectsResult> getProjects(GetProjectsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harbor:index/getProjects:getProjects", TypeShape.of(GetProjectsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetProjectsResult> getProjectsPlain(GetProjectsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harbor:index/getProjects:getProjects", TypeShape.of(GetProjectsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
      * 
      */
     public static Output<GetRegistryResult> getRegistry(GetRegistryArgs args) {
@@ -199,35 +248,6 @@ public final class HarborFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harbor.HarborFunctions;
-     * import com.pulumi.harbor.inputs.GetRegistryArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var main = HarborFunctions.getRegistry(GetRegistryArgs.builder()
-     *             .name(&#34;test_docker_harbor&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;harborRegistryId&#34;, main.applyValue(getRegistryResult -&gt; getRegistryResult.id()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetRegistryResult> getRegistryPlain(GetRegistryPlainArgs args) {
@@ -235,35 +255,6 @@ public final class HarborFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harbor.HarborFunctions;
-     * import com.pulumi.harbor.inputs.GetRegistryArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var main = HarborFunctions.getRegistry(GetRegistryArgs.builder()
-     *             .name(&#34;test_docker_harbor&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;harborRegistryId&#34;, main.applyValue(getRegistryResult -&gt; getRegistryResult.id()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetRegistryResult> getRegistry(GetRegistryArgs args, InvokeOptions options) {
@@ -271,38 +262,114 @@ public final class HarborFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harbor.HarborFunctions;
-     * import com.pulumi.harbor.inputs.GetRegistryArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var main = HarborFunctions.getRegistry(GetRegistryArgs.builder()
-     *             .name(&#34;test_docker_harbor&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;harborRegistryId&#34;, main.applyValue(getRegistryResult -&gt; getRegistryResult.id()));
-     *     }
-     * }
-     * ```
+     */
+    public static Output<GetRegistryResult> getRegistry(GetRegistryArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harbor:index/getRegistry:getRegistry", TypeShape.of(GetRegistryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetRegistryResult> getRegistryPlain(GetRegistryPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harbor:index/getRegistry:getRegistry", TypeShape.of(GetRegistryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetRobotAccountsResult> getRobotAccounts() {
+        return getRobotAccounts(GetRobotAccountsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetRobotAccountsResult> getRobotAccountsPlain() {
+        return getRobotAccountsPlain(GetRobotAccountsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetRobotAccountsResult> getRobotAccounts(GetRobotAccountsArgs args) {
+        return getRobotAccounts(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetRobotAccountsResult> getRobotAccountsPlain(GetRobotAccountsPlainArgs args) {
+        return getRobotAccountsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetRobotAccountsResult> getRobotAccounts(GetRobotAccountsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harbor:index/getRobotAccounts:getRobotAccounts", TypeShape.of(GetRobotAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetRobotAccountsResult> getRobotAccounts(GetRobotAccountsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harbor:index/getRobotAccounts:getRobotAccounts", TypeShape.of(GetRobotAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetRobotAccountsResult> getRobotAccountsPlain(GetRobotAccountsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harbor:index/getRobotAccounts:getRobotAccounts", TypeShape.of(GetRobotAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetUsersResult> getUsers() {
+        return getUsers(GetUsersArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetUsersResult> getUsersPlain() {
+        return getUsersPlain(GetUsersPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetUsersResult> getUsers(GetUsersArgs args) {
+        return getUsers(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args) {
+        return getUsersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harbor:index/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harbor:index/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harbor:index/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
     }
 }

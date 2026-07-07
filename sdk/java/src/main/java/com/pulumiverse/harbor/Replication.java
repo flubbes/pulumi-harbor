@@ -20,85 +20,12 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harbor.Registry;
- * import com.pulumi.harbor.RegistryArgs;
- * import com.pulumi.harbor.Replication;
- * import com.pulumi.harbor.ReplicationArgs;
- * import com.pulumi.harbor.inputs.ReplicationFilterArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var main = new Registry(&#34;main&#34;, RegistryArgs.builder()        
- *             .providerName(&#34;docker-hub&#34;)
- *             .endpointUrl(&#34;https://hub.docker.com&#34;)
- *             .build());
- * 
- *         var push = new Replication(&#34;push&#34;, ReplicationArgs.builder()        
- *             .action(&#34;push&#34;)
- *             .registryId(main.registryId())
- *             .build());
- * 
- *         var alpineReplication = new Replication(&#34;alpineReplication&#34;, ReplicationArgs.builder()        
- *             .action(&#34;pull&#34;)
- *             .registryId(main.registryId())
- *             .schedule(&#34;* 0/15 * * * *&#34;)
- *             .filters(            
- *                 ReplicationFilterArgs.builder()
- *                     .name(&#34;library/alpine&#34;)
- *                     .build(),
- *                 ReplicationFilterArgs.builder()
- *                     .tag(&#34;3.*.*&#34;)
- *                     .build(),
- *                 ReplicationFilterArgs.builder()
- *                     .resource(&#34;artifact&#34;)
- *                     .build(),
- *                 ReplicationFilterArgs.builder()
- *                     .labels(&#34;qa&#34;)
- *                     .build())
- *             .build());
- * 
- *         var alpineIndex_replicationReplication = new Replication(&#34;alpineIndex/replicationReplication&#34;, ReplicationArgs.builder()        
- *             .action(&#34;pull&#34;)
- *             .registryId(main.registryId())
- *             .schedule(&#34;event_based&#34;)
- *             .filters(            
- *                 ReplicationFilterArgs.builder()
- *                     .name(&#34;library/alpine&#34;)
- *                     .build(),
- *                 ReplicationFilterArgs.builder()
- *                     .tag(&#34;3.*.*&#34;)
- *                     .build())
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 
- * Harbor project can be imported using the `replication id` eg, `
- * 
  * ```sh
- *  $ pulumi import harbor:index/replication:Replication main /replication/policies/1
+ * $ pulumi import harbor:index/replication:Replication main /replication/policies/1
  * ```
- * 
- *  `
  * 
  */
 @ResourceType(type="harbor:index/replication:Replication")
@@ -109,35 +36,103 @@ public class Replication extends com.pulumi.resources.CustomResource {
     public Output<String> action() {
         return this.action;
     }
+    /**
+     * Specify whether to enable the artifact blobs copied by chunks. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    @Export(name="copyByChunk", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> copyByChunk;
+
+    /**
+     * @return Specify whether to enable the artifact blobs copied by chunks. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    public Output<Optional<Boolean>> copyByChunk() {
+        return Codegen.optional(this.copyByChunk);
+    }
+    /**
+     * Specify whether to delete the remote resources when locally deleted. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
     @Export(name="deletion", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletion;
 
+    /**
+     * @return Specify whether to delete the remote resources when locally deleted. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
     public Output<Optional<Boolean>> deletion() {
         return Codegen.optional(this.deletion);
     }
+    /**
+     * Description of the replication policy.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return Description of the replication policy.
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
+     * 
+     */
     @Export(name="destNamespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destNamespace;
 
+    /**
+     * @return Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
+     * 
+     */
     public Output<Optional<String>> destNamespace() {
         return Codegen.optional(this.destNamespace);
     }
+    /**
+     * Specify the destination namespace flattening policy. Integers from `-1` to &lt;span pulumi-lang-nodejs=&#34;`3`&#34; pulumi-lang-dotnet=&#34;`3`&#34; pulumi-lang-go=&#34;`3`&#34; pulumi-lang-python=&#34;`3`&#34; pulumi-lang-yaml=&#34;`3`&#34; pulumi-lang-java=&#34;`3`&#34; pulumi-lang-hcl=&#34;`3`&#34;&gt;`3`&lt;/span&gt; are valid values in the harbor API. A value of `-1` will &#39;Flatten All Levels&#39;, &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; means &#39;No Flattening&#39;, &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt; &#39;Flatten 1 Level&#39;, &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34; pulumi-lang-hcl=&#34;`2`&#34;&gt;`2`&lt;/span&gt; &#39;Flatten 2 Levels&#39;, &lt;span pulumi-lang-nodejs=&#34;`3`&#34; pulumi-lang-dotnet=&#34;`3`&#34; pulumi-lang-go=&#34;`3`&#34; pulumi-lang-python=&#34;`3`&#34; pulumi-lang-yaml=&#34;`3`&#34; pulumi-lang-java=&#34;`3`&#34; pulumi-lang-hcl=&#34;`3`&#34;&gt;`3`&lt;/span&gt; &#39;Flatten 3 Levels&#39; (Default: &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+     * 
+     */
     @Export(name="destNamespaceReplace", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> destNamespaceReplace;
 
+    /**
+     * @return Specify the destination namespace flattening policy. Integers from `-1` to &lt;span pulumi-lang-nodejs=&#34;`3`&#34; pulumi-lang-dotnet=&#34;`3`&#34; pulumi-lang-go=&#34;`3`&#34; pulumi-lang-python=&#34;`3`&#34; pulumi-lang-yaml=&#34;`3`&#34; pulumi-lang-java=&#34;`3`&#34; pulumi-lang-hcl=&#34;`3`&#34;&gt;`3`&lt;/span&gt; are valid values in the harbor API. A value of `-1` will &#39;Flatten All Levels&#39;, &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; means &#39;No Flattening&#39;, &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt; &#39;Flatten 1 Level&#39;, &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34; pulumi-lang-hcl=&#34;`2`&#34;&gt;`2`&lt;/span&gt; &#39;Flatten 2 Levels&#39;, &lt;span pulumi-lang-nodejs=&#34;`3`&#34; pulumi-lang-dotnet=&#34;`3`&#34; pulumi-lang-go=&#34;`3`&#34; pulumi-lang-python=&#34;`3`&#34; pulumi-lang-yaml=&#34;`3`&#34; pulumi-lang-java=&#34;`3`&#34; pulumi-lang-hcl=&#34;`3`&#34;&gt;`3`&lt;/span&gt; &#39;Flatten 3 Levels&#39; (Default: &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+     * 
+     */
     public Output<Optional<Integer>> destNamespaceReplace() {
         return Codegen.optional(this.destNamespaceReplace);
     }
+    /**
+     * Specify whether the replication is enabled. (Default: &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+     * 
+     */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
+    /**
+     * @return Specify whether the replication is enabled. (Default: &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+     * 
+     */
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
+    }
+    /**
+     * Specify whether to execute the replication rule if new or modified. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    @Export(name="executeOnChanged", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> executeOnChanged;
+
+    /**
+     * @return Specify whether to execute the replication rule if new or modified. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    public Output<Optional<Boolean>> executeOnChanged() {
+        return Codegen.optional(this.executeOnChanged);
     }
     @Export(name="filters", refs={List.class,ReplicationFilter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ReplicationFilter>> filters;
@@ -145,21 +140,45 @@ public class Replication extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ReplicationFilter>>> filters() {
         return Codegen.optional(this.filters);
     }
+    /**
+     * The name of the replication.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return The name of the replication.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Specify whether to override the resources at the destination if a resources with the same name exist. (Default: &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+     * 
+     */
     @Export(name="override", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> override;
 
+    /**
+     * @return Specify whether to override the resources at the destination if a resources with the same name exist. (Default: &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+     * 
+     */
     public Output<Optional<Boolean>> override() {
         return Codegen.optional(this.override);
     }
+    /**
+     * The registry ID of the Registry Endpoint.
+     * 
+     */
     @Export(name="registryId", refs={Integer.class}, tree="[0]")
     private Output<Integer> registryId;
 
+    /**
+     * @return The registry ID of the Registry Endpoint.
+     * 
+     */
     public Output<Integer> registryId() {
         return this.registryId;
     }
@@ -169,15 +188,45 @@ public class Replication extends com.pulumi.resources.CustomResource {
     public Output<Integer> replicationPolicyId() {
         return this.replicationPolicyId;
     }
+    /**
+     * The scheduled time of when the container register will be push / pull. In cron base format. Hourly `&#34;0 0 * * * *&#34;`, Daily `&#34;0 0 0 * * *&#34;`, Monthly `&#34;0 0 0 * * 0&#34;`. Can be one of the following: &lt;span pulumi-lang-nodejs=&#34;`eventBased`&#34; pulumi-lang-dotnet=&#34;`EventBased`&#34; pulumi-lang-go=&#34;`eventBased`&#34; pulumi-lang-python=&#34;`event_based`&#34; pulumi-lang-yaml=&#34;`eventBased`&#34; pulumi-lang-java=&#34;`eventBased`&#34; pulumi-lang-hcl=&#34;`event_based`&#34;&gt;`eventBased`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`manual`&#34; pulumi-lang-dotnet=&#34;`Manual`&#34; pulumi-lang-go=&#34;`manual`&#34; pulumi-lang-python=&#34;`manual`&#34; pulumi-lang-yaml=&#34;`manual`&#34; pulumi-lang-java=&#34;`manual`&#34; pulumi-lang-hcl=&#34;`manual`&#34;&gt;`manual`&lt;/span&gt;, `cron format` (Default: &lt;span pulumi-lang-nodejs=&#34;`manual`&#34; pulumi-lang-dotnet=&#34;`Manual`&#34; pulumi-lang-go=&#34;`manual`&#34; pulumi-lang-python=&#34;`manual`&#34; pulumi-lang-yaml=&#34;`manual`&#34; pulumi-lang-java=&#34;`manual`&#34; pulumi-lang-hcl=&#34;`manual`&#34;&gt;`manual`&lt;/span&gt;)
+     * 
+     */
     @Export(name="schedule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schedule;
 
+    /**
+     * @return The scheduled time of when the container register will be push / pull. In cron base format. Hourly `&#34;0 0 * * * *&#34;`, Daily `&#34;0 0 0 * * *&#34;`, Monthly `&#34;0 0 0 * * 0&#34;`. Can be one of the following: &lt;span pulumi-lang-nodejs=&#34;`eventBased`&#34; pulumi-lang-dotnet=&#34;`EventBased`&#34; pulumi-lang-go=&#34;`eventBased`&#34; pulumi-lang-python=&#34;`event_based`&#34; pulumi-lang-yaml=&#34;`eventBased`&#34; pulumi-lang-java=&#34;`eventBased`&#34; pulumi-lang-hcl=&#34;`event_based`&#34;&gt;`eventBased`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`manual`&#34; pulumi-lang-dotnet=&#34;`Manual`&#34; pulumi-lang-go=&#34;`manual`&#34; pulumi-lang-python=&#34;`manual`&#34; pulumi-lang-yaml=&#34;`manual`&#34; pulumi-lang-java=&#34;`manual`&#34; pulumi-lang-hcl=&#34;`manual`&#34;&gt;`manual`&lt;/span&gt;, `cron format` (Default: &lt;span pulumi-lang-nodejs=&#34;`manual`&#34; pulumi-lang-dotnet=&#34;`Manual`&#34; pulumi-lang-go=&#34;`manual`&#34; pulumi-lang-python=&#34;`manual`&#34; pulumi-lang-yaml=&#34;`manual`&#34; pulumi-lang-java=&#34;`manual`&#34; pulumi-lang-hcl=&#34;`manual`&#34;&gt;`manual`&lt;/span&gt;)
+     * 
+     */
     public Output<Optional<String>> schedule() {
         return Codegen.optional(this.schedule);
     }
+    /**
+     * , prevent parallel runs under the same replication. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    @Export(name="singleActiveReplication", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> singleActiveReplication;
+
+    /**
+     * @return , prevent parallel runs under the same replication. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    public Output<Optional<Boolean>> singleActiveReplication() {
+        return Codegen.optional(this.singleActiveReplication);
+    }
+    /**
+     * The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
+     * 
+     */
     @Export(name="speed", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> speed;
 
+    /**
+     * @return The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
+     * 
+     */
     public Output<Optional<Integer>> speed() {
         return Codegen.optional(this.speed);
     }
@@ -186,7 +235,7 @@ public class Replication extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Replication(String name) {
+    public Replication(java.lang.String name) {
         this(name, ReplicationArgs.Empty);
     }
     /**
@@ -194,7 +243,7 @@ public class Replication extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Replication(String name, ReplicationArgs args) {
+    public Replication(java.lang.String name, ReplicationArgs args) {
         this(name, args, null);
     }
     /**
@@ -203,17 +252,25 @@ public class Replication extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Replication(String name, ReplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/replication:Replication", name, args == null ? ReplicationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Replication(java.lang.String name, ReplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/replication:Replication", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Replication(String name, Output<String> id, @Nullable ReplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/replication:Replication", name, state, makeResourceOptions(options, id));
+    private Replication(java.lang.String name, Output<java.lang.String> id, @Nullable ReplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/replication:Replication", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ReplicationArgs makeArgs(ReplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ReplicationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/pulumiverse/pulumi-harbor")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }
@@ -227,7 +284,7 @@ public class Replication extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Replication get(String name, Output<String> id, @Nullable ReplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Replication get(java.lang.String name, Output<java.lang.String> id, @Nullable ReplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Replication(name, id, state, options);
     }
 }

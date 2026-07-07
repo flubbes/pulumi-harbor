@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumiverse.harbor.ConfigSystemArgs;
 import com.pulumiverse.harbor.Utilities;
 import com.pulumiverse.harbor.inputs.ConfigSystemState;
+import com.pulumiverse.harbor.outputs.ConfigSystemBannerMessage;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -18,70 +19,148 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harbor.ConfigSystem;
- * import com.pulumi.harbor.ConfigSystemArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var main = new ConfigSystem(&#34;main&#34;, ConfigSystemArgs.builder()        
- *             .projectCreationRestriction(&#34;adminonly&#34;)
- *             .robotNamePrefix(&#34;harbor@&#34;)
- *             .robotTokenExpiration(30)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  */
 @ResourceType(type="harbor:index/configSystem:ConfigSystem")
 public class ConfigSystem extends com.pulumi.resources.CustomResource {
+    /**
+     * The endpoint to forward audit logs to.
+     * 
+     */
+    @Export(name="auditLogForwardEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> auditLogForwardEndpoint;
+
+    /**
+     * @return The endpoint to forward audit logs to.
+     * 
+     */
+    public Output<Optional<String>> auditLogForwardEndpoint() {
+        return Codegen.optional(this.auditLogForwardEndpoint);
+    }
+    @Export(name="bannerMessage", refs={ConfigSystemBannerMessage.class}, tree="[0]")
+    private Output</* @Nullable */ ConfigSystemBannerMessage> bannerMessage;
+
+    public Output<Optional<ConfigSystemBannerMessage>> bannerMessage() {
+        return Codegen.optional(this.bannerMessage);
+    }
+    /**
+     * Whether or not webhook/notification functionality is enabled globally. When &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;, all project-level webhook policies are silently ignored. Defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+     * 
+     */
+    @Export(name="notificationEnable", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> notificationEnable;
+
+    /**
+     * @return Whether or not webhook/notification functionality is enabled globally. When &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;, all project-level webhook policies are silently ignored. Defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+     * 
+     */
+    public Output<Optional<Boolean>> notificationEnable() {
+        return Codegen.optional(this.notificationEnable);
+    }
+    /**
+     * Who can create projects within Harbor. Can be `&#34;adminonly&#34;` or `&#34;everyone&#34;`
+     * 
+     */
     @Export(name="projectCreationRestriction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectCreationRestriction;
 
+    /**
+     * @return Who can create projects within Harbor. Can be `&#34;adminonly&#34;` or `&#34;everyone&#34;`
+     * 
+     */
     public Output<Optional<String>> projectCreationRestriction() {
         return Codegen.optional(this.projectCreationRestriction);
     }
+    /**
+     * Whether or not the system is in read only mode.
+     * 
+     */
     @Export(name="readOnly", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> readOnly;
 
+    /**
+     * @return Whether or not the system is in read only mode.
+     * 
+     */
     public Output<Optional<Boolean>> readOnly() {
         return Codegen.optional(this.readOnly);
     }
+    /**
+     * Robot account prefix.
+     * 
+     */
     @Export(name="robotNamePrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> robotNamePrefix;
 
+    /**
+     * @return Robot account prefix.
+     * 
+     */
     public Output<Optional<String>> robotNamePrefix() {
         return Codegen.optional(this.robotNamePrefix);
     }
+    /**
+     * The amount of time in days a robot account will expire.
+     * 
+     */
     @Export(name="robotTokenExpiration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> robotTokenExpiration;
 
+    /**
+     * @return The amount of time in days a robot account will expire.
+     * 
+     */
     public Output<Optional<Integer>> robotTokenExpiration() {
         return Codegen.optional(this.robotTokenExpiration);
+    }
+    /**
+     * Whether or not to skip update pull time for scanner.
+     * 
+     */
+    @Export(name="scannerSkipUpdatePulltime", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> scannerSkipUpdatePulltime;
+
+    /**
+     * @return Whether or not to skip update pull time for scanner.
+     * 
+     */
+    public Output<Optional<Boolean>> scannerSkipUpdatePulltime() {
+        return Codegen.optional(this.scannerSkipUpdatePulltime);
+    }
+    /**
+     * Whether or not to skip audit log database.
+     * 
+     */
+    @Export(name="skipAuditLogDatabase", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> skipAuditLogDatabase;
+
+    /**
+     * @return Whether or not to skip audit log database.
+     * 
+     */
+    public Output<Optional<Boolean>> skipAuditLogDatabase() {
+        return Codegen.optional(this.skipAuditLogDatabase);
+    }
+    /**
+     * Default quota space per project in GIB. Default is -1 (unlimited).
+     * 
+     */
+    @Export(name="storagePerProject", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> storagePerProject;
+
+    /**
+     * @return Default quota space per project in GIB. Default is -1 (unlimited).
+     * 
+     */
+    public Output<Optional<Integer>> storagePerProject() {
+        return Codegen.optional(this.storagePerProject);
     }
 
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConfigSystem(String name) {
+    public ConfigSystem(java.lang.String name) {
         this(name, ConfigSystemArgs.Empty);
     }
     /**
@@ -89,7 +168,7 @@ public class ConfigSystem extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConfigSystem(String name, @Nullable ConfigSystemArgs args) {
+    public ConfigSystem(java.lang.String name, @Nullable ConfigSystemArgs args) {
         this(name, args, null);
     }
     /**
@@ -98,17 +177,25 @@ public class ConfigSystem extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConfigSystem(String name, @Nullable ConfigSystemArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/configSystem:ConfigSystem", name, args == null ? ConfigSystemArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ConfigSystem(java.lang.String name, @Nullable ConfigSystemArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/configSystem:ConfigSystem", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConfigSystem(String name, Output<String> id, @Nullable ConfigSystemState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/configSystem:ConfigSystem", name, state, makeResourceOptions(options, id));
+    private ConfigSystem(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigSystemState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/configSystem:ConfigSystem", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ConfigSystemArgs makeArgs(@Nullable ConfigSystemArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConfigSystemArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/pulumiverse/pulumi-harbor")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }
@@ -122,7 +209,7 @@ public class ConfigSystem extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConfigSystem get(String name, Output<String> id, @Nullable ConfigSystemState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConfigSystem get(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigSystemState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConfigSystem(name, id, state, options);
     }
 }

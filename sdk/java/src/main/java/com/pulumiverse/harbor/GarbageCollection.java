@@ -11,63 +11,65 @@ import com.pulumiverse.harbor.GarbageCollectionArgs;
 import com.pulumiverse.harbor.Utilities;
 import com.pulumiverse.harbor.inputs.GarbageCollectionState;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harbor.GarbageCollection;
- * import com.pulumi.harbor.GarbageCollectionArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var main = new GarbageCollection(&#34;main&#34;, GarbageCollectionArgs.builder()        
- *             .deleteUntagged(true)
- *             .schedule(&#34;Daily&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  */
 @ResourceType(type="harbor:index/garbageCollection:GarbageCollection")
 public class GarbageCollection extends com.pulumi.resources.CustomResource {
+    /**
+     * Allow garbage collection on untagged artifacts.
+     * 
+     */
     @Export(name="deleteUntagged", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteUntagged;
 
+    /**
+     * @return Allow garbage collection on untagged artifacts.
+     * 
+     */
     public Output<Optional<Boolean>> deleteUntagged() {
         return Codegen.optional(this.deleteUntagged);
     }
+    /**
+     * Sets the schedule how often the Garbage Collection will run.  Can be to `&#34;hourly&#34;`, `&#34;daily&#34;`, `&#34;weekly&#34;` or can be a custom cron string ie, `&#34;0 5 4 * * *&#34;`
+     * 
+     */
     @Export(name="schedule", refs={String.class}, tree="[0]")
     private Output<String> schedule;
 
+    /**
+     * @return Sets the schedule how often the Garbage Collection will run.  Can be to `&#34;hourly&#34;`, `&#34;daily&#34;`, `&#34;weekly&#34;` or can be a custom cron string ie, `&#34;0 5 4 * * *&#34;`
+     * 
+     */
     public Output<String> schedule() {
         return this.schedule;
+    }
+    /**
+     * Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.
+     * 
+     */
+    @Export(name="workers", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> workers;
+
+    /**
+     * @return Number of workers to run the garbage collection, value must be greater than or equal to one. Harbor limits the number of concurrent workers internally, setting this value higher than what Harbor supports will result in an error.
+     * 
+     */
+    public Output<Optional<Integer>> workers() {
+        return Codegen.optional(this.workers);
     }
 
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GarbageCollection(String name) {
+    public GarbageCollection(java.lang.String name) {
         this(name, GarbageCollectionArgs.Empty);
     }
     /**
@@ -75,7 +77,7 @@ public class GarbageCollection extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GarbageCollection(String name, GarbageCollectionArgs args) {
+    public GarbageCollection(java.lang.String name, GarbageCollectionArgs args) {
         this(name, args, null);
     }
     /**
@@ -84,17 +86,25 @@ public class GarbageCollection extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GarbageCollection(String name, GarbageCollectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/garbageCollection:GarbageCollection", name, args == null ? GarbageCollectionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GarbageCollection(java.lang.String name, GarbageCollectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/garbageCollection:GarbageCollection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GarbageCollection(String name, Output<String> id, @Nullable GarbageCollectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/garbageCollection:GarbageCollection", name, state, makeResourceOptions(options, id));
+    private GarbageCollection(java.lang.String name, Output<java.lang.String> id, @Nullable GarbageCollectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/garbageCollection:GarbageCollection", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GarbageCollectionArgs makeArgs(GarbageCollectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GarbageCollectionArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/pulumiverse/pulumi-harbor")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }
@@ -108,7 +118,7 @@ public class GarbageCollection extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GarbageCollection get(String name, Output<String> id, @Nullable GarbageCollectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GarbageCollection get(java.lang.String name, Output<java.lang.String> id, @Nullable GarbageCollectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GarbageCollection(name, id, state, options);
     }
 }

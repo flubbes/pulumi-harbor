@@ -31,6 +31,13 @@ public final class RegistryState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.accessSecret);
     }
 
+    @Import(name="caCertificate")
+    private @Nullable Output<String> caCertificate;
+
+    public Optional<Output<String>> caCertificate() {
+        return Optional.ofNullable(this.caCertificate);
+    }
+
     @Import(name="description")
     private @Nullable Output<String> description;
 
@@ -38,9 +45,17 @@ public final class RegistryState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * The URL endpoint for the external container register i.e. `&#34;https://hub.docker.com&#34;`
+     * 
+     */
     @Import(name="endpointUrl")
     private @Nullable Output<String> endpointUrl;
 
+    /**
+     * @return The URL endpoint for the external container register i.e. `&#34;https://hub.docker.com&#34;`
+     * 
+     */
     public Optional<Output<String>> endpointUrl() {
         return Optional.ofNullable(this.endpointUrl);
     }
@@ -52,16 +67,32 @@ public final class RegistryState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.insecure);
     }
 
+    /**
+     * The name of the register.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The name of the register.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The name of the provider.
+     * 
+     */
     @Import(name="providerName")
     private @Nullable Output<String> providerName;
 
+    /**
+     * @return The name of the provider.
+     * 
+     */
     public Optional<Output<String>> providerName() {
         return Optional.ofNullable(this.providerName);
     }
@@ -85,6 +116,7 @@ public final class RegistryState extends com.pulumi.resources.ResourceArgs {
     private RegistryState(RegistryState $) {
         this.accessId = $.accessId;
         this.accessSecret = $.accessSecret;
+        this.caCertificate = $.caCertificate;
         this.description = $.description;
         this.endpointUrl = $.endpointUrl;
         this.insecure = $.insecure;
@@ -130,6 +162,15 @@ public final class RegistryState extends com.pulumi.resources.ResourceArgs {
             return accessSecret(Output.of(accessSecret));
         }
 
+        public Builder caCertificate(@Nullable Output<String> caCertificate) {
+            $.caCertificate = caCertificate;
+            return this;
+        }
+
+        public Builder caCertificate(String caCertificate) {
+            return caCertificate(Output.of(caCertificate));
+        }
+
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
@@ -139,11 +180,23 @@ public final class RegistryState extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        /**
+         * @param endpointUrl The URL endpoint for the external container register i.e. `&#34;https://hub.docker.com&#34;`
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointUrl(@Nullable Output<String> endpointUrl) {
             $.endpointUrl = endpointUrl;
             return this;
         }
 
+        /**
+         * @param endpointUrl The URL endpoint for the external container register i.e. `&#34;https://hub.docker.com&#34;`
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointUrl(String endpointUrl) {
             return endpointUrl(Output.of(endpointUrl));
         }
@@ -157,20 +210,44 @@ public final class RegistryState extends com.pulumi.resources.ResourceArgs {
             return insecure(Output.of(insecure));
         }
 
+        /**
+         * @param name The name of the register.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the register.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param providerName The name of the provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder providerName(@Nullable Output<String> providerName) {
             $.providerName = providerName;
             return this;
         }
 
+        /**
+         * @param providerName The name of the provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder providerName(String providerName) {
             return providerName(Output.of(providerName));
         }

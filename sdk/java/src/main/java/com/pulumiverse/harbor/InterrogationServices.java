@@ -16,61 +16,33 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harbor.InterrogationServices;
- * import com.pulumi.harbor.InterrogationServicesArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var main = new InterrogationServices(&#34;main&#34;, InterrogationServicesArgs.builder()        
- *             .vulnerabilityScanPolicy(&#34;daily&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  */
 @ResourceType(type="harbor:index/interrogationServices:InterrogationServices")
 public class InterrogationServices extends com.pulumi.resources.CustomResource {
     /**
-     * Sets the default interrogation service **Clair**
+     * Sets the default interrogation service `&#34;Clair&#34;`
      * 
      */
     @Export(name="defaultScanner", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultScanner;
 
     /**
-     * @return Sets the default interrogation service **Clair**
+     * @return Sets the default interrogation service `&#34;Clair&#34;`
      * 
      */
     public Output<Optional<String>> defaultScanner() {
         return Codegen.optional(this.defaultScanner);
     }
     /**
-     * The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+     * The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
      * 
      */
     @Export(name="vulnerabilityScanPolicy", refs={String.class}, tree="[0]")
     private Output<String> vulnerabilityScanPolicy;
 
     /**
-     * @return The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+     * @return The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
      * 
      */
     public Output<String> vulnerabilityScanPolicy() {
@@ -81,7 +53,7 @@ public class InterrogationServices extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InterrogationServices(String name) {
+    public InterrogationServices(java.lang.String name) {
         this(name, InterrogationServicesArgs.Empty);
     }
     /**
@@ -89,7 +61,7 @@ public class InterrogationServices extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InterrogationServices(String name, InterrogationServicesArgs args) {
+    public InterrogationServices(java.lang.String name, InterrogationServicesArgs args) {
         this(name, args, null);
     }
     /**
@@ -98,17 +70,25 @@ public class InterrogationServices extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InterrogationServices(String name, InterrogationServicesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/interrogationServices:InterrogationServices", name, args == null ? InterrogationServicesArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public InterrogationServices(java.lang.String name, InterrogationServicesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/interrogationServices:InterrogationServices", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InterrogationServices(String name, Output<String> id, @Nullable InterrogationServicesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/interrogationServices:InterrogationServices", name, state, makeResourceOptions(options, id));
+    private InterrogationServices(java.lang.String name, Output<java.lang.String> id, @Nullable InterrogationServicesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/interrogationServices:InterrogationServices", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static InterrogationServicesArgs makeArgs(InterrogationServicesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InterrogationServicesArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/pulumiverse/pulumi-harbor")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }
@@ -122,7 +102,7 @@ public class InterrogationServices extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InterrogationServices get(String name, Output<String> id, @Nullable InterrogationServicesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InterrogationServices get(java.lang.String name, Output<java.lang.String> id, @Nullable InterrogationServicesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InterrogationServices(name, id, state, options);
     }
 }

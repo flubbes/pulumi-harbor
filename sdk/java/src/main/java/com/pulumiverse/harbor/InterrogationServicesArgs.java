@@ -5,6 +5,7 @@ package com.pulumiverse.harbor;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +17,14 @@ public final class InterrogationServicesArgs extends com.pulumi.resources.Resour
     public static final InterrogationServicesArgs Empty = new InterrogationServicesArgs();
 
     /**
-     * Sets the default interrogation service **Clair**
+     * Sets the default interrogation service `&#34;Clair&#34;`
      * 
      */
     @Import(name="defaultScanner")
     private @Nullable Output<String> defaultScanner;
 
     /**
-     * @return Sets the default interrogation service **Clair**
+     * @return Sets the default interrogation service `&#34;Clair&#34;`
      * 
      */
     public Optional<Output<String>> defaultScanner() {
@@ -31,14 +32,14 @@ public final class InterrogationServicesArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+     * The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
      * 
      */
     @Import(name="vulnerabilityScanPolicy", required=true)
     private Output<String> vulnerabilityScanPolicy;
 
     /**
-     * @return The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+     * @return The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
      * 
      */
     public Output<String> vulnerabilityScanPolicy() {
@@ -71,7 +72,7 @@ public final class InterrogationServicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param defaultScanner Sets the default interrogation service **Clair**
+         * @param defaultScanner Sets the default interrogation service `&#34;Clair&#34;`
          * 
          * @return builder
          * 
@@ -82,7 +83,7 @@ public final class InterrogationServicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param defaultScanner Sets the default interrogation service **Clair**
+         * @param defaultScanner Sets the default interrogation service `&#34;Clair&#34;`
          * 
          * @return builder
          * 
@@ -92,7 +93,7 @@ public final class InterrogationServicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param vulnerabilityScanPolicy The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+         * @param vulnerabilityScanPolicy The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
          * 
          * @return builder
          * 
@@ -103,7 +104,7 @@ public final class InterrogationServicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param vulnerabilityScanPolicy The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+         * @param vulnerabilityScanPolicy The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
          * 
          * @return builder
          * 
@@ -113,7 +114,9 @@ public final class InterrogationServicesArgs extends com.pulumi.resources.Resour
         }
 
         public InterrogationServicesArgs build() {
-            $.vulnerabilityScanPolicy = Objects.requireNonNull($.vulnerabilityScanPolicy, "expected parameter 'vulnerabilityScanPolicy' to be non-null");
+            if ($.vulnerabilityScanPolicy == null) {
+                throw new MissingRequiredPropertyException("InterrogationServicesArgs", "vulnerabilityScanPolicy");
+            }
             return $;
         }
     }

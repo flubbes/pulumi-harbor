@@ -11,16 +11,35 @@ import com.pulumiverse.harbor.ConfigAuthArgs;
 import com.pulumiverse.harbor.Utilities;
 import com.pulumiverse.harbor.inputs.ConfigAuthState;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Example Usage
+ * 
+ * ### OIDC
+ * 
+ * ### OIDC with Write-only Client Secret
+ * 
+ * ### LDAP
+ * 
+ */
 @ResourceType(type="harbor:index/configAuth:ConfigAuth")
 public class ConfigAuth extends com.pulumi.resources.CustomResource {
+    /**
+     * Harbor authentication mode. Can be `&lt;span pulumi-lang-nodejs=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;OidcAuth&#34;&#34; pulumi-lang-go=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-python=&#34;&#34;oidc_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-java=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;oidc_auth&#34;&#34;&gt;&#34;oidcAuth&#34;&lt;/span&gt;`, `&lt;span pulumi-lang-nodejs=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;DbAuth&#34;&#34; pulumi-lang-go=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-python=&#34;&#34;db_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-java=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;db_auth&#34;&#34;&gt;&#34;dbAuth&#34;&lt;/span&gt;` or `&lt;span pulumi-lang-nodejs=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;LdapAuth&#34;&#34; pulumi-lang-go=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-python=&#34;&#34;ldap_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-java=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;ldap_auth&#34;&#34;&gt;&#34;ldapAuth&#34;&lt;/span&gt;`. (Default: `&lt;span pulumi-lang-nodejs=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;DbAuth&#34;&#34; pulumi-lang-go=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-python=&#34;&#34;db_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-java=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;db_auth&#34;&#34;&gt;&#34;dbAuth&#34;&lt;/span&gt;`)
+     * 
+     */
     @Export(name="authMode", refs={String.class}, tree="[0]")
     private Output<String> authMode;
 
+    /**
+     * @return Harbor authentication mode. Can be `&lt;span pulumi-lang-nodejs=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;OidcAuth&#34;&#34; pulumi-lang-go=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-python=&#34;&#34;oidc_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-java=&#34;&#34;oidcAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;oidc_auth&#34;&#34;&gt;&#34;oidcAuth&#34;&lt;/span&gt;`, `&lt;span pulumi-lang-nodejs=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;DbAuth&#34;&#34; pulumi-lang-go=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-python=&#34;&#34;db_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-java=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;db_auth&#34;&#34;&gt;&#34;dbAuth&#34;&lt;/span&gt;` or `&lt;span pulumi-lang-nodejs=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;LdapAuth&#34;&#34; pulumi-lang-go=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-python=&#34;&#34;ldap_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-java=&#34;&#34;ldapAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;ldap_auth&#34;&#34;&gt;&#34;ldapAuth&#34;&lt;/span&gt;`. (Default: `&lt;span pulumi-lang-nodejs=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-dotnet=&#34;&#34;DbAuth&#34;&#34; pulumi-lang-go=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-python=&#34;&#34;db_auth&#34;&#34; pulumi-lang-yaml=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-java=&#34;&#34;dbAuth&#34;&#34; pulumi-lang-hcl=&#34;&#34;db_auth&#34;&#34;&gt;&#34;dbAuth&#34;&lt;/span&gt;`)
+     * 
+     */
     public Output<String> authMode() {
         return this.authMode;
     }
@@ -138,17 +157,49 @@ public class ConfigAuth extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> oidcClientSecret() {
         return Codegen.optional(this.oidcClientSecret);
     }
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * 
+     */
+    @Export(name="oidcClientSecretWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> oidcClientSecretWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * 
+     */
+    public Output<Optional<String>> oidcClientSecretWo() {
+        return Codegen.optional(this.oidcClientSecretWo);
+    }
+    @Export(name="oidcClientSecretWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> oidcClientSecretWoVersion;
+
+    public Output<Optional<Integer>> oidcClientSecretWoVersion() {
+        return Codegen.optional(this.oidcClientSecretWoVersion);
+    }
     @Export(name="oidcEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oidcEndpoint;
 
     public Output<Optional<String>> oidcEndpoint() {
         return Codegen.optional(this.oidcEndpoint);
     }
+    @Export(name="oidcGroupFilter", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> oidcGroupFilter;
+
+    public Output<Optional<String>> oidcGroupFilter() {
+        return Codegen.optional(this.oidcGroupFilter);
+    }
     @Export(name="oidcGroupsClaim", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oidcGroupsClaim;
 
     public Output<Optional<String>> oidcGroupsClaim() {
         return Codegen.optional(this.oidcGroupsClaim);
+    }
+    @Export(name="oidcLogout", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> oidcLogout;
+
+    public Output<Optional<Boolean>> oidcLogout() {
+        return Codegen.optional(this.oidcLogout);
     }
     @Export(name="oidcName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oidcName;
@@ -174,12 +225,18 @@ public class ConfigAuth extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> oidcVerifyCert() {
         return Codegen.optional(this.oidcVerifyCert);
     }
+    @Export(name="primaryAuthMode", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> primaryAuthMode;
+
+    public Output<Optional<Boolean>> primaryAuthMode() {
+        return Codegen.optional(this.primaryAuthMode);
+    }
 
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConfigAuth(String name) {
+    public ConfigAuth(java.lang.String name) {
         this(name, ConfigAuthArgs.Empty);
     }
     /**
@@ -187,7 +244,7 @@ public class ConfigAuth extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConfigAuth(String name, ConfigAuthArgs args) {
+    public ConfigAuth(java.lang.String name, ConfigAuthArgs args) {
         this(name, args, null);
     }
     /**
@@ -196,20 +253,29 @@ public class ConfigAuth extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConfigAuth(String name, ConfigAuthArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/configAuth:ConfigAuth", name, args == null ? ConfigAuthArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ConfigAuth(java.lang.String name, ConfigAuthArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/configAuth:ConfigAuth", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConfigAuth(String name, Output<String> id, @Nullable ConfigAuthState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/configAuth:ConfigAuth", name, state, makeResourceOptions(options, id));
+    private ConfigAuth(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigAuthState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/configAuth:ConfigAuth", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ConfigAuthArgs makeArgs(ConfigAuthArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConfigAuthArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/pulumiverse/pulumi-harbor")
             .additionalSecretOutputs(List.of(
                 "ldapSearchPassword",
-                "oidcClientSecret"
+                "oidcClientSecret",
+                "oidcClientSecretWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
@@ -224,7 +290,7 @@ public class ConfigAuth extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConfigAuth get(String name, Output<String> id, @Nullable ConfigAuthState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConfigAuth get(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigAuthState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConfigAuth(name, id, state, options);
     }
 }

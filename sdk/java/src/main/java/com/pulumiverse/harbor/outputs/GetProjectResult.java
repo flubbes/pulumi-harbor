@@ -4,6 +4,7 @@
 package com.pulumiverse.harbor.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -16,9 +17,35 @@ public final class GetProjectResult {
      * 
      */
     private String id;
+    /**
+     * @return The name of the project.
+     * 
+     */
     private String name;
+    /**
+     * @return The id of the project within harbor.
+     * 
+     */
     private Integer projectId;
+    /**
+     * @return If the project has public accessibility.
+     * 
+     */
     private Boolean public_;
+    /**
+     * @return The type of the project : Project or ProxyCache.
+     * 
+     */
+    private String type;
+    /**
+     * @return The name of the vulnerability scanner assigned to the project.
+     * 
+     */
+    private String vulnerabilityScanner;
+    /**
+     * @return If the images is scanned for vulnerabilities when push to harbor.
+     * 
+     */
     private Boolean vulnerabilityScanning;
 
     private GetProjectResult() {}
@@ -29,15 +56,45 @@ public final class GetProjectResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The name of the project.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The id of the project within harbor.
+     * 
+     */
     public Integer projectId() {
         return this.projectId;
     }
+    /**
+     * @return If the project has public accessibility.
+     * 
+     */
     public Boolean public_() {
         return this.public_;
     }
+    /**
+     * @return The type of the project : Project or ProxyCache.
+     * 
+     */
+    public String type() {
+        return this.type;
+    }
+    /**
+     * @return The name of the vulnerability scanner assigned to the project.
+     * 
+     */
+    public String vulnerabilityScanner() {
+        return this.vulnerabilityScanner;
+    }
+    /**
+     * @return If the images is scanned for vulnerabilities when push to harbor.
+     * 
+     */
     public Boolean vulnerabilityScanning() {
         return this.vulnerabilityScanning;
     }
@@ -55,6 +112,8 @@ public final class GetProjectResult {
         private String name;
         private Integer projectId;
         private Boolean public_;
+        private String type;
+        private String vulnerabilityScanner;
         private Boolean vulnerabilityScanning;
         public Builder() {}
         public Builder(GetProjectResult defaults) {
@@ -63,42 +122,77 @@ public final class GetProjectResult {
     	      this.name = defaults.name;
     	      this.projectId = defaults.projectId;
     	      this.public_ = defaults.public_;
+    	      this.type = defaults.type;
+    	      this.vulnerabilityScanner = defaults.vulnerabilityScanner;
     	      this.vulnerabilityScanning = defaults.vulnerabilityScanning;
         }
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(Integer projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter("public")
         public Builder public_(Boolean public_) {
-            this.public_ = Objects.requireNonNull(public_);
+            if (public_ == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "public_");
+            }
+            this.public_ = public_;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "type");
+            }
+            this.type = type;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vulnerabilityScanner(String vulnerabilityScanner) {
+            if (vulnerabilityScanner == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "vulnerabilityScanner");
+            }
+            this.vulnerabilityScanner = vulnerabilityScanner;
             return this;
         }
         @CustomType.Setter
         public Builder vulnerabilityScanning(Boolean vulnerabilityScanning) {
-            this.vulnerabilityScanning = Objects.requireNonNull(vulnerabilityScanning);
+            if (vulnerabilityScanning == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "vulnerabilityScanning");
+            }
+            this.vulnerabilityScanning = vulnerabilityScanning;
             return this;
         }
         public GetProjectResult build() {
-            final var o = new GetProjectResult();
-            o.id = id;
-            o.name = name;
-            o.projectId = projectId;
-            o.public_ = public_;
-            o.vulnerabilityScanning = vulnerabilityScanning;
-            return o;
+            final var _resultValue = new GetProjectResult();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.projectId = projectId;
+            _resultValue.public_ = public_;
+            _resultValue.type = type;
+            _resultValue.vulnerabilityScanner = vulnerabilityScanner;
+            _resultValue.vulnerabilityScanning = vulnerabilityScanning;
+            return _resultValue;
         }
     }
 }

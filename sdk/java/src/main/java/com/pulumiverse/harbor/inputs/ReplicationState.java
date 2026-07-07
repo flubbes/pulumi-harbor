@@ -26,39 +26,109 @@ public final class ReplicationState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.action);
     }
 
+    /**
+     * Specify whether to enable the artifact blobs copied by chunks. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    @Import(name="copyByChunk")
+    private @Nullable Output<Boolean> copyByChunk;
+
+    /**
+     * @return Specify whether to enable the artifact blobs copied by chunks. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    public Optional<Output<Boolean>> copyByChunk() {
+        return Optional.ofNullable(this.copyByChunk);
+    }
+
+    /**
+     * Specify whether to delete the remote resources when locally deleted. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
     @Import(name="deletion")
     private @Nullable Output<Boolean> deletion;
 
+    /**
+     * @return Specify whether to delete the remote resources when locally deleted. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
     public Optional<Output<Boolean>> deletion() {
         return Optional.ofNullable(this.deletion);
     }
 
+    /**
+     * Description of the replication policy.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return Description of the replication policy.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
+     * 
+     */
     @Import(name="destNamespace")
     private @Nullable Output<String> destNamespace;
 
+    /**
+     * @return Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
+     * 
+     */
     public Optional<Output<String>> destNamespace() {
         return Optional.ofNullable(this.destNamespace);
     }
 
+    /**
+     * Specify the destination namespace flattening policy. Integers from `-1` to &lt;span pulumi-lang-nodejs=&#34;`3`&#34; pulumi-lang-dotnet=&#34;`3`&#34; pulumi-lang-go=&#34;`3`&#34; pulumi-lang-python=&#34;`3`&#34; pulumi-lang-yaml=&#34;`3`&#34; pulumi-lang-java=&#34;`3`&#34; pulumi-lang-hcl=&#34;`3`&#34;&gt;`3`&lt;/span&gt; are valid values in the harbor API. A value of `-1` will &#39;Flatten All Levels&#39;, &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; means &#39;No Flattening&#39;, &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt; &#39;Flatten 1 Level&#39;, &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34; pulumi-lang-hcl=&#34;`2`&#34;&gt;`2`&lt;/span&gt; &#39;Flatten 2 Levels&#39;, &lt;span pulumi-lang-nodejs=&#34;`3`&#34; pulumi-lang-dotnet=&#34;`3`&#34; pulumi-lang-go=&#34;`3`&#34; pulumi-lang-python=&#34;`3`&#34; pulumi-lang-yaml=&#34;`3`&#34; pulumi-lang-java=&#34;`3`&#34; pulumi-lang-hcl=&#34;`3`&#34;&gt;`3`&lt;/span&gt; &#39;Flatten 3 Levels&#39; (Default: &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+     * 
+     */
     @Import(name="destNamespaceReplace")
     private @Nullable Output<Integer> destNamespaceReplace;
 
+    /**
+     * @return Specify the destination namespace flattening policy. Integers from `-1` to &lt;span pulumi-lang-nodejs=&#34;`3`&#34; pulumi-lang-dotnet=&#34;`3`&#34; pulumi-lang-go=&#34;`3`&#34; pulumi-lang-python=&#34;`3`&#34; pulumi-lang-yaml=&#34;`3`&#34; pulumi-lang-java=&#34;`3`&#34; pulumi-lang-hcl=&#34;`3`&#34;&gt;`3`&lt;/span&gt; are valid values in the harbor API. A value of `-1` will &#39;Flatten All Levels&#39;, &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; means &#39;No Flattening&#39;, &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt; &#39;Flatten 1 Level&#39;, &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34; pulumi-lang-hcl=&#34;`2`&#34;&gt;`2`&lt;/span&gt; &#39;Flatten 2 Levels&#39;, &lt;span pulumi-lang-nodejs=&#34;`3`&#34; pulumi-lang-dotnet=&#34;`3`&#34; pulumi-lang-go=&#34;`3`&#34; pulumi-lang-python=&#34;`3`&#34; pulumi-lang-yaml=&#34;`3`&#34; pulumi-lang-java=&#34;`3`&#34; pulumi-lang-hcl=&#34;`3`&#34;&gt;`3`&lt;/span&gt; &#39;Flatten 3 Levels&#39; (Default: &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+     * 
+     */
     public Optional<Output<Integer>> destNamespaceReplace() {
         return Optional.ofNullable(this.destNamespaceReplace);
     }
 
+    /**
+     * Specify whether the replication is enabled. (Default: &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Specify whether the replication is enabled. (Default: &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
+    }
+
+    /**
+     * Specify whether to execute the replication rule if new or modified. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    @Import(name="executeOnChanged")
+    private @Nullable Output<Boolean> executeOnChanged;
+
+    /**
+     * @return Specify whether to execute the replication rule if new or modified. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    public Optional<Output<Boolean>> executeOnChanged() {
+        return Optional.ofNullable(this.executeOnChanged);
     }
 
     @Import(name="filters")
@@ -68,23 +138,47 @@ public final class ReplicationState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.filters);
     }
 
+    /**
+     * The name of the replication.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The name of the replication.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Specify whether to override the resources at the destination if a resources with the same name exist. (Default: &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+     * 
+     */
     @Import(name="override")
     private @Nullable Output<Boolean> override;
 
+    /**
+     * @return Specify whether to override the resources at the destination if a resources with the same name exist. (Default: &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+     * 
+     */
     public Optional<Output<Boolean>> override() {
         return Optional.ofNullable(this.override);
     }
 
+    /**
+     * The registry ID of the Registry Endpoint.
+     * 
+     */
     @Import(name="registryId")
     private @Nullable Output<Integer> registryId;
 
+    /**
+     * @return The registry ID of the Registry Endpoint.
+     * 
+     */
     public Optional<Output<Integer>> registryId() {
         return Optional.ofNullable(this.registryId);
     }
@@ -96,16 +190,47 @@ public final class ReplicationState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.replicationPolicyId);
     }
 
+    /**
+     * The scheduled time of when the container register will be push / pull. In cron base format. Hourly `&#34;0 0 * * * *&#34;`, Daily `&#34;0 0 0 * * *&#34;`, Monthly `&#34;0 0 0 * * 0&#34;`. Can be one of the following: &lt;span pulumi-lang-nodejs=&#34;`eventBased`&#34; pulumi-lang-dotnet=&#34;`EventBased`&#34; pulumi-lang-go=&#34;`eventBased`&#34; pulumi-lang-python=&#34;`event_based`&#34; pulumi-lang-yaml=&#34;`eventBased`&#34; pulumi-lang-java=&#34;`eventBased`&#34; pulumi-lang-hcl=&#34;`event_based`&#34;&gt;`eventBased`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`manual`&#34; pulumi-lang-dotnet=&#34;`Manual`&#34; pulumi-lang-go=&#34;`manual`&#34; pulumi-lang-python=&#34;`manual`&#34; pulumi-lang-yaml=&#34;`manual`&#34; pulumi-lang-java=&#34;`manual`&#34; pulumi-lang-hcl=&#34;`manual`&#34;&gt;`manual`&lt;/span&gt;, `cron format` (Default: &lt;span pulumi-lang-nodejs=&#34;`manual`&#34; pulumi-lang-dotnet=&#34;`Manual`&#34; pulumi-lang-go=&#34;`manual`&#34; pulumi-lang-python=&#34;`manual`&#34; pulumi-lang-yaml=&#34;`manual`&#34; pulumi-lang-java=&#34;`manual`&#34; pulumi-lang-hcl=&#34;`manual`&#34;&gt;`manual`&lt;/span&gt;)
+     * 
+     */
     @Import(name="schedule")
     private @Nullable Output<String> schedule;
 
+    /**
+     * @return The scheduled time of when the container register will be push / pull. In cron base format. Hourly `&#34;0 0 * * * *&#34;`, Daily `&#34;0 0 0 * * *&#34;`, Monthly `&#34;0 0 0 * * 0&#34;`. Can be one of the following: &lt;span pulumi-lang-nodejs=&#34;`eventBased`&#34; pulumi-lang-dotnet=&#34;`EventBased`&#34; pulumi-lang-go=&#34;`eventBased`&#34; pulumi-lang-python=&#34;`event_based`&#34; pulumi-lang-yaml=&#34;`eventBased`&#34; pulumi-lang-java=&#34;`eventBased`&#34; pulumi-lang-hcl=&#34;`event_based`&#34;&gt;`eventBased`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`manual`&#34; pulumi-lang-dotnet=&#34;`Manual`&#34; pulumi-lang-go=&#34;`manual`&#34; pulumi-lang-python=&#34;`manual`&#34; pulumi-lang-yaml=&#34;`manual`&#34; pulumi-lang-java=&#34;`manual`&#34; pulumi-lang-hcl=&#34;`manual`&#34;&gt;`manual`&lt;/span&gt;, `cron format` (Default: &lt;span pulumi-lang-nodejs=&#34;`manual`&#34; pulumi-lang-dotnet=&#34;`Manual`&#34; pulumi-lang-go=&#34;`manual`&#34; pulumi-lang-python=&#34;`manual`&#34; pulumi-lang-yaml=&#34;`manual`&#34; pulumi-lang-java=&#34;`manual`&#34; pulumi-lang-hcl=&#34;`manual`&#34;&gt;`manual`&lt;/span&gt;)
+     * 
+     */
     public Optional<Output<String>> schedule() {
         return Optional.ofNullable(this.schedule);
     }
 
+    /**
+     * , prevent parallel runs under the same replication. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    @Import(name="singleActiveReplication")
+    private @Nullable Output<Boolean> singleActiveReplication;
+
+    /**
+     * @return , prevent parallel runs under the same replication. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    public Optional<Output<Boolean>> singleActiveReplication() {
+        return Optional.ofNullable(this.singleActiveReplication);
+    }
+
+    /**
+     * The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
+     * 
+     */
     @Import(name="speed")
     private @Nullable Output<Integer> speed;
 
+    /**
+     * @return The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
+     * 
+     */
     public Optional<Output<Integer>> speed() {
         return Optional.ofNullable(this.speed);
     }
@@ -114,17 +239,20 @@ public final class ReplicationState extends com.pulumi.resources.ResourceArgs {
 
     private ReplicationState(ReplicationState $) {
         this.action = $.action;
+        this.copyByChunk = $.copyByChunk;
         this.deletion = $.deletion;
         this.description = $.description;
         this.destNamespace = $.destNamespace;
         this.destNamespaceReplace = $.destNamespaceReplace;
         this.enabled = $.enabled;
+        this.executeOnChanged = $.executeOnChanged;
         this.filters = $.filters;
         this.name = $.name;
         this.override = $.override;
         this.registryId = $.registryId;
         this.replicationPolicyId = $.replicationPolicyId;
         this.schedule = $.schedule;
+        this.singleActiveReplication = $.singleActiveReplication;
         this.speed = $.speed;
     }
 
@@ -155,49 +283,151 @@ public final class ReplicationState extends com.pulumi.resources.ResourceArgs {
             return action(Output.of(action));
         }
 
+        /**
+         * @param copyByChunk Specify whether to enable the artifact blobs copied by chunks. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder copyByChunk(@Nullable Output<Boolean> copyByChunk) {
+            $.copyByChunk = copyByChunk;
+            return this;
+        }
+
+        /**
+         * @param copyByChunk Specify whether to enable the artifact blobs copied by chunks. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder copyByChunk(Boolean copyByChunk) {
+            return copyByChunk(Output.of(copyByChunk));
+        }
+
+        /**
+         * @param deletion Specify whether to delete the remote resources when locally deleted. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletion(@Nullable Output<Boolean> deletion) {
             $.deletion = deletion;
             return this;
         }
 
+        /**
+         * @param deletion Specify whether to delete the remote resources when locally deleted. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletion(Boolean deletion) {
             return deletion(Output.of(deletion));
         }
 
+        /**
+         * @param description Description of the replication policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description Description of the replication policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param destNamespace Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destNamespace(@Nullable Output<String> destNamespace) {
             $.destNamespace = destNamespace;
             return this;
         }
 
+        /**
+         * @param destNamespace Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destNamespace(String destNamespace) {
             return destNamespace(Output.of(destNamespace));
         }
 
+        /**
+         * @param destNamespaceReplace Specify the destination namespace flattening policy. Integers from `-1` to &lt;span pulumi-lang-nodejs=&#34;`3`&#34; pulumi-lang-dotnet=&#34;`3`&#34; pulumi-lang-go=&#34;`3`&#34; pulumi-lang-python=&#34;`3`&#34; pulumi-lang-yaml=&#34;`3`&#34; pulumi-lang-java=&#34;`3`&#34; pulumi-lang-hcl=&#34;`3`&#34;&gt;`3`&lt;/span&gt; are valid values in the harbor API. A value of `-1` will &#39;Flatten All Levels&#39;, &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; means &#39;No Flattening&#39;, &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt; &#39;Flatten 1 Level&#39;, &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34; pulumi-lang-hcl=&#34;`2`&#34;&gt;`2`&lt;/span&gt; &#39;Flatten 2 Levels&#39;, &lt;span pulumi-lang-nodejs=&#34;`3`&#34; pulumi-lang-dotnet=&#34;`3`&#34; pulumi-lang-go=&#34;`3`&#34; pulumi-lang-python=&#34;`3`&#34; pulumi-lang-yaml=&#34;`3`&#34; pulumi-lang-java=&#34;`3`&#34; pulumi-lang-hcl=&#34;`3`&#34;&gt;`3`&lt;/span&gt; &#39;Flatten 3 Levels&#39; (Default: &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+         * 
+         * @return builder
+         * 
+         */
         public Builder destNamespaceReplace(@Nullable Output<Integer> destNamespaceReplace) {
             $.destNamespaceReplace = destNamespaceReplace;
             return this;
         }
 
+        /**
+         * @param destNamespaceReplace Specify the destination namespace flattening policy. Integers from `-1` to &lt;span pulumi-lang-nodejs=&#34;`3`&#34; pulumi-lang-dotnet=&#34;`3`&#34; pulumi-lang-go=&#34;`3`&#34; pulumi-lang-python=&#34;`3`&#34; pulumi-lang-yaml=&#34;`3`&#34; pulumi-lang-java=&#34;`3`&#34; pulumi-lang-hcl=&#34;`3`&#34;&gt;`3`&lt;/span&gt; are valid values in the harbor API. A value of `-1` will &#39;Flatten All Levels&#39;, &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; means &#39;No Flattening&#39;, &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt; &#39;Flatten 1 Level&#39;, &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34; pulumi-lang-hcl=&#34;`2`&#34;&gt;`2`&lt;/span&gt; &#39;Flatten 2 Levels&#39;, &lt;span pulumi-lang-nodejs=&#34;`3`&#34; pulumi-lang-dotnet=&#34;`3`&#34; pulumi-lang-go=&#34;`3`&#34; pulumi-lang-python=&#34;`3`&#34; pulumi-lang-yaml=&#34;`3`&#34; pulumi-lang-java=&#34;`3`&#34; pulumi-lang-hcl=&#34;`3`&#34;&gt;`3`&lt;/span&gt; &#39;Flatten 3 Levels&#39; (Default: &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+         * 
+         * @return builder
+         * 
+         */
         public Builder destNamespaceReplace(Integer destNamespaceReplace) {
             return destNamespaceReplace(Output.of(destNamespaceReplace));
         }
 
+        /**
+         * @param enabled Specify whether the replication is enabled. (Default: &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Specify whether the replication is enabled. (Default: &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param executeOnChanged Specify whether to execute the replication rule if new or modified. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executeOnChanged(@Nullable Output<Boolean> executeOnChanged) {
+            $.executeOnChanged = executeOnChanged;
+            return this;
+        }
+
+        /**
+         * @param executeOnChanged Specify whether to execute the replication rule if new or modified. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executeOnChanged(Boolean executeOnChanged) {
+            return executeOnChanged(Output.of(executeOnChanged));
         }
 
         public Builder filters(@Nullable Output<List<ReplicationFilterArgs>> filters) {
@@ -213,29 +443,65 @@ public final class ReplicationState extends com.pulumi.resources.ResourceArgs {
             return filters(List.of(filters));
         }
 
+        /**
+         * @param name The name of the replication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the replication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param override Specify whether to override the resources at the destination if a resources with the same name exist. (Default: &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder override(@Nullable Output<Boolean> override) {
             $.override = override;
             return this;
         }
 
+        /**
+         * @param override Specify whether to override the resources at the destination if a resources with the same name exist. (Default: &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder override(Boolean override) {
             return override(Output.of(override));
         }
 
+        /**
+         * @param registryId The registry ID of the Registry Endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder registryId(@Nullable Output<Integer> registryId) {
             $.registryId = registryId;
             return this;
         }
 
+        /**
+         * @param registryId The registry ID of the Registry Endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder registryId(Integer registryId) {
             return registryId(Output.of(registryId));
         }
@@ -249,20 +515,65 @@ public final class ReplicationState extends com.pulumi.resources.ResourceArgs {
             return replicationPolicyId(Output.of(replicationPolicyId));
         }
 
+        /**
+         * @param schedule The scheduled time of when the container register will be push / pull. In cron base format. Hourly `&#34;0 0 * * * *&#34;`, Daily `&#34;0 0 0 * * *&#34;`, Monthly `&#34;0 0 0 * * 0&#34;`. Can be one of the following: &lt;span pulumi-lang-nodejs=&#34;`eventBased`&#34; pulumi-lang-dotnet=&#34;`EventBased`&#34; pulumi-lang-go=&#34;`eventBased`&#34; pulumi-lang-python=&#34;`event_based`&#34; pulumi-lang-yaml=&#34;`eventBased`&#34; pulumi-lang-java=&#34;`eventBased`&#34; pulumi-lang-hcl=&#34;`event_based`&#34;&gt;`eventBased`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`manual`&#34; pulumi-lang-dotnet=&#34;`Manual`&#34; pulumi-lang-go=&#34;`manual`&#34; pulumi-lang-python=&#34;`manual`&#34; pulumi-lang-yaml=&#34;`manual`&#34; pulumi-lang-java=&#34;`manual`&#34; pulumi-lang-hcl=&#34;`manual`&#34;&gt;`manual`&lt;/span&gt;, `cron format` (Default: &lt;span pulumi-lang-nodejs=&#34;`manual`&#34; pulumi-lang-dotnet=&#34;`Manual`&#34; pulumi-lang-go=&#34;`manual`&#34; pulumi-lang-python=&#34;`manual`&#34; pulumi-lang-yaml=&#34;`manual`&#34; pulumi-lang-java=&#34;`manual`&#34; pulumi-lang-hcl=&#34;`manual`&#34;&gt;`manual`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder schedule(@Nullable Output<String> schedule) {
             $.schedule = schedule;
             return this;
         }
 
+        /**
+         * @param schedule The scheduled time of when the container register will be push / pull. In cron base format. Hourly `&#34;0 0 * * * *&#34;`, Daily `&#34;0 0 0 * * *&#34;`, Monthly `&#34;0 0 0 * * 0&#34;`. Can be one of the following: &lt;span pulumi-lang-nodejs=&#34;`eventBased`&#34; pulumi-lang-dotnet=&#34;`EventBased`&#34; pulumi-lang-go=&#34;`eventBased`&#34; pulumi-lang-python=&#34;`event_based`&#34; pulumi-lang-yaml=&#34;`eventBased`&#34; pulumi-lang-java=&#34;`eventBased`&#34; pulumi-lang-hcl=&#34;`event_based`&#34;&gt;`eventBased`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`manual`&#34; pulumi-lang-dotnet=&#34;`Manual`&#34; pulumi-lang-go=&#34;`manual`&#34; pulumi-lang-python=&#34;`manual`&#34; pulumi-lang-yaml=&#34;`manual`&#34; pulumi-lang-java=&#34;`manual`&#34; pulumi-lang-hcl=&#34;`manual`&#34;&gt;`manual`&lt;/span&gt;, `cron format` (Default: &lt;span pulumi-lang-nodejs=&#34;`manual`&#34; pulumi-lang-dotnet=&#34;`Manual`&#34; pulumi-lang-go=&#34;`manual`&#34; pulumi-lang-python=&#34;`manual`&#34; pulumi-lang-yaml=&#34;`manual`&#34; pulumi-lang-java=&#34;`manual`&#34; pulumi-lang-hcl=&#34;`manual`&#34;&gt;`manual`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder schedule(String schedule) {
             return schedule(Output.of(schedule));
         }
 
+        /**
+         * @param singleActiveReplication , prevent parallel runs under the same replication. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder singleActiveReplication(@Nullable Output<Boolean> singleActiveReplication) {
+            $.singleActiveReplication = singleActiveReplication;
+            return this;
+        }
+
+        /**
+         * @param singleActiveReplication , prevent parallel runs under the same replication. (Default: &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder singleActiveReplication(Boolean singleActiveReplication) {
+            return singleActiveReplication(Output.of(singleActiveReplication));
+        }
+
+        /**
+         * @param speed The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
+         * 
+         * @return builder
+         * 
+         */
         public Builder speed(@Nullable Output<Integer> speed) {
             $.speed = speed;
             return this;
         }
 
+        /**
+         * @param speed The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
+         * 
+         * @return builder
+         * 
+         */
         public Builder speed(Integer speed) {
             return speed(Output.of(speed));
         }

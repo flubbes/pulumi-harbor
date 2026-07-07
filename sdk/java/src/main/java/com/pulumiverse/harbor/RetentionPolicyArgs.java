@@ -5,6 +5,7 @@ package com.pulumiverse.harbor;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumiverse.harbor.inputs.RetentionPolicyRuleArgs;
 import java.lang.String;
 import java.util.List;
@@ -17,30 +18,22 @@ public final class RetentionPolicyArgs extends com.pulumi.resources.ResourceArgs
 
     public static final RetentionPolicyArgs Empty = new RetentionPolicyArgs();
 
-    /**
-     * Al collection of rule blocks as documented below.
-     * 
-     */
     @Import(name="rules", required=true)
     private Output<List<RetentionPolicyRuleArgs>> rules;
 
-    /**
-     * @return Al collection of rule blocks as documented below.
-     * 
-     */
     public Output<List<RetentionPolicyRuleArgs>> rules() {
         return this.rules;
     }
 
     /**
-     * The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+     * The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
      * 
      */
     @Import(name="schedule")
     private @Nullable Output<String> schedule;
 
     /**
-     * @return The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+     * @return The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
      * 
      */
     public Optional<Output<String>> schedule() {
@@ -88,39 +81,21 @@ public final class RetentionPolicyArgs extends com.pulumi.resources.ResourceArgs
             $ = new RetentionPolicyArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param rules Al collection of rule blocks as documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rules(Output<List<RetentionPolicyRuleArgs>> rules) {
             $.rules = rules;
             return this;
         }
 
-        /**
-         * @param rules Al collection of rule blocks as documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rules(List<RetentionPolicyRuleArgs> rules) {
             return rules(Output.of(rules));
         }
 
-        /**
-         * @param rules Al collection of rule blocks as documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rules(RetentionPolicyRuleArgs... rules) {
             return rules(List.of(rules));
         }
 
         /**
-         * @param schedule The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+         * @param schedule The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
          * 
          * @return builder
          * 
@@ -131,7 +106,7 @@ public final class RetentionPolicyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param schedule The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+         * @param schedule The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
          * 
          * @return builder
          * 
@@ -162,8 +137,12 @@ public final class RetentionPolicyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public RetentionPolicyArgs build() {
-            $.rules = Objects.requireNonNull($.rules, "expected parameter 'rules' to be non-null");
-            $.scope = Objects.requireNonNull($.scope, "expected parameter 'scope' to be non-null");
+            if ($.rules == null) {
+                throw new MissingRequiredPropertyException("RetentionPolicyArgs", "rules");
+            }
+            if ($.scope == null) {
+                throw new MissingRequiredPropertyException("RetentionPolicyArgs", "scope");
+            }
             return $;
         }
     }

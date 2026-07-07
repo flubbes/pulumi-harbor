@@ -4,26 +4,72 @@
 package com.pulumiverse.harbor.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetRegistryResult {
+    /**
+     * @return The PEM-encoded CA certificate trusting the registry
+     * 
+     */
+    private String caCertificate;
+    /**
+     * @return The description of the external container register.
+     * 
+     */
     private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    private String insecure;
+    /**
+     * @return If the certificate of the external container register can be verified.
+     * 
+     */
+    private Boolean insecure;
+    /**
+     * @return The name of the register.
+     * 
+     */
     private String name;
+    /**
+     * @return The ID of the register within harbor.
+     * 
+     */
     private Integer registryId;
+    /**
+     * @return The health status of the external container register
+     * 
+     */
     private String status;
+    /**
+     * @return The type of the provider type.
+     * 
+     */
     private String type;
+    /**
+     * @return The URL endpoint for the external container register
+     * 
+     */
     private String url;
 
     private GetRegistryResult() {}
+    /**
+     * @return The PEM-encoded CA certificate trusting the registry
+     * 
+     */
+    public String caCertificate() {
+        return this.caCertificate;
+    }
+    /**
+     * @return The description of the external container register.
+     * 
+     */
     public String description() {
         return this.description;
     }
@@ -34,21 +80,45 @@ public final class GetRegistryResult {
     public String id() {
         return this.id;
     }
-    public String insecure() {
+    /**
+     * @return If the certificate of the external container register can be verified.
+     * 
+     */
+    public Boolean insecure() {
         return this.insecure;
     }
+    /**
+     * @return The name of the register.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The ID of the register within harbor.
+     * 
+     */
     public Integer registryId() {
         return this.registryId;
     }
+    /**
+     * @return The health status of the external container register
+     * 
+     */
     public String status() {
         return this.status;
     }
+    /**
+     * @return The type of the provider type.
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return The URL endpoint for the external container register
+     * 
+     */
     public String url() {
         return this.url;
     }
@@ -62,9 +132,10 @@ public final class GetRegistryResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String caCertificate;
         private String description;
         private String id;
-        private String insecure;
+        private Boolean insecure;
         private String name;
         private Integer registryId;
         private String status;
@@ -73,6 +144,7 @@ public final class GetRegistryResult {
         public Builder() {}
         public Builder(GetRegistryResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.caCertificate = defaults.caCertificate;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.insecure = defaults.insecure;
@@ -84,56 +156,89 @@ public final class GetRegistryResult {
         }
 
         @CustomType.Setter
+        public Builder caCertificate(String caCertificate) {
+            if (caCertificate == null) {
+              throw new MissingRequiredPropertyException("GetRegistryResult", "caCertificate");
+            }
+            this.caCertificate = caCertificate;
+            return this;
+        }
+        @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRegistryResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRegistryResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
-        public Builder insecure(String insecure) {
-            this.insecure = Objects.requireNonNull(insecure);
+        public Builder insecure(Boolean insecure) {
+            if (insecure == null) {
+              throw new MissingRequiredPropertyException("GetRegistryResult", "insecure");
+            }
+            this.insecure = insecure;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRegistryResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder registryId(Integer registryId) {
-            this.registryId = Objects.requireNonNull(registryId);
+            if (registryId == null) {
+              throw new MissingRequiredPropertyException("GetRegistryResult", "registryId");
+            }
+            this.registryId = registryId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetRegistryResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetRegistryResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetRegistryResult", "url");
+            }
+            this.url = url;
             return this;
         }
         public GetRegistryResult build() {
-            final var o = new GetRegistryResult();
-            o.description = description;
-            o.id = id;
-            o.insecure = insecure;
-            o.name = name;
-            o.registryId = registryId;
-            o.status = status;
-            o.type = type;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetRegistryResult();
+            _resultValue.caCertificate = caCertificate;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.insecure = insecure;
+            _resultValue.name = name;
+            _resultValue.registryId = registryId;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

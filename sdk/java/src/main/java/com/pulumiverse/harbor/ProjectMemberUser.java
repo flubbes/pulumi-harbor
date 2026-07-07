@@ -16,74 +16,69 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harbor.Project;
- * import com.pulumi.harbor.ProjectMemberUser;
- * import com.pulumi.harbor.ProjectMemberUserArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var mainProject = new Project(&#34;mainProject&#34;);
- * 
- *         var mainProjectMemberUser = new ProjectMemberUser(&#34;mainProjectMemberUser&#34;, ProjectMemberUserArgs.builder()        
- *             .projectId(mainProject.id())
- *             .userName(&#34;testing1&#34;)
- *             .role(&#34;projectadmin&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 
- * Harbor project member user can be imported using the `project id` and `member id` eg, `
- * 
  * ```sh
- *  $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200
+ * $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200
  * ```
- * 
- *  `
  * 
  */
 @ResourceType(type="harbor:index/projectMemberUser:ProjectMemberUser")
 public class ProjectMemberUser extends com.pulumi.resources.CustomResource {
+    /**
+     * The member id of the member.
+     * 
+     */
     @Export(name="memberId", refs={Integer.class}, tree="[0]")
     private Output<Integer> memberId;
 
+    /**
+     * @return The member id of the member.
+     * 
+     */
     public Output<Integer> memberId() {
         return this.memberId;
     }
+    /**
+     * The project id of the project that the entity will have access to.
+     * 
+     */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
+    /**
+     * @return The project id of the project that the entity will have access to.
+     * 
+     */
     public Output<String> projectId() {
         return this.projectId;
     }
+    /**
+     * The permissions that the entity will be granted.
+     * 
+     */
     @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
+    /**
+     * @return The permissions that the entity will be granted.
+     * 
+     */
     public Output<String> role() {
         return this.role;
     }
+    /**
+     * The name of the member entity.
+     * 
+     */
     @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
+    /**
+     * @return The name of the member entity.
+     * 
+     */
     public Output<String> userName() {
         return this.userName;
     }
@@ -92,7 +87,7 @@ public class ProjectMemberUser extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProjectMemberUser(String name) {
+    public ProjectMemberUser(java.lang.String name) {
         this(name, ProjectMemberUserArgs.Empty);
     }
     /**
@@ -100,7 +95,7 @@ public class ProjectMemberUser extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProjectMemberUser(String name, ProjectMemberUserArgs args) {
+    public ProjectMemberUser(java.lang.String name, ProjectMemberUserArgs args) {
         this(name, args, null);
     }
     /**
@@ -109,17 +104,25 @@ public class ProjectMemberUser extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProjectMemberUser(String name, ProjectMemberUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/projectMemberUser:ProjectMemberUser", name, args == null ? ProjectMemberUserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ProjectMemberUser(java.lang.String name, ProjectMemberUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/projectMemberUser:ProjectMemberUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProjectMemberUser(String name, Output<String> id, @Nullable ProjectMemberUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harbor:index/projectMemberUser:ProjectMemberUser", name, state, makeResourceOptions(options, id));
+    private ProjectMemberUser(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectMemberUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harbor:index/projectMemberUser:ProjectMemberUser", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ProjectMemberUserArgs makeArgs(ProjectMemberUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProjectMemberUserArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/pulumiverse/pulumi-harbor")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }
@@ -133,7 +136,7 @@ public class ProjectMemberUser extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProjectMemberUser get(String name, Output<String> id, @Nullable ProjectMemberUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProjectMemberUser get(java.lang.String name, Output<java.lang.String> id, @Nullable ProjectMemberUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProjectMemberUser(name, id, state, options);
     }
 }

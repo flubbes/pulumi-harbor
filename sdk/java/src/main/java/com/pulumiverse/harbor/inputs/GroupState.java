@@ -30,11 +30,19 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.groupType);
     }
 
+    @Import(name="ldapGroupDn")
+    private @Nullable Output<String> ldapGroupDn;
+
+    public Optional<Output<String>> ldapGroupDn() {
+        return Optional.ofNullable(this.ldapGroupDn);
+    }
+
     private GroupState() {}
 
     private GroupState(GroupState $) {
         this.groupName = $.groupName;
         this.groupType = $.groupType;
+        this.ldapGroupDn = $.ldapGroupDn;
     }
 
     public static Builder builder() {
@@ -71,6 +79,15 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
 
         public Builder groupType(Integer groupType) {
             return groupType(Output.of(groupType));
+        }
+
+        public Builder ldapGroupDn(@Nullable Output<String> ldapGroupDn) {
+            $.ldapGroupDn = ldapGroupDn;
+            return this;
+        }
+
+        public Builder ldapGroupDn(String ldapGroupDn) {
+            return ldapGroupDn(Output.of(ldapGroupDn));
         }
 
         public GroupState build() {
